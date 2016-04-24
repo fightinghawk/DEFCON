@@ -50,43 +50,50 @@ public class Poi {
 		this.estadistica = estadistica;
 	}
 
-	public double calcularDistanciaA(Location geoloc) {
+	public double calcularDistanciaA(Location geoloc) 
+	{
 		
 		double  latitud, longitud, miLatitud, miLongitud;
 		Location miLocalizacion;
 		
 		miLocalizacion = this.getGeoloc();
 		
-		miLatitud = miLocalizacion.getLatitude();
-		miLongitud = miLocalizacion.getLongitude();
+		miLatitud = miLocalizacion.getLatitud();
+		miLongitud = miLocalizacion.getLongitud();
 		
-		latitud = geoloc.getLatitude();
-		longitud = geoloc.getLongitude();
+		latitud = geoloc.getLatitud();
+		longitud = geoloc.getLongitud();
 		
-		//private  double distance(double lat1, double lon1, double lat2, double lon2, String unit) {
-			double theta = miLongitud - longitud;
-			double dist = Math.sin(deg2rad(miLatitud)) * Math.sin(deg2rad(latitud)) + Math.cos(deg2rad(miLatitud)) * Math.cos(deg2rad(latitud)) * Math.cos(deg2rad(theta));
-			dist = Math.acos(dist);
-			dist = rad2deg(dist);
-			dist = dist * 60 * 1.1515;
-			dist = dist * 1.609344;
+		double theta = miLongitud - longitud;
+		double dist = Math.sin(deg2rad(miLatitud)) * Math.sin(deg2rad(latitud)) + Math.cos(deg2rad(miLatitud)) * Math.cos(deg2rad(latitud)) * Math.cos(deg2rad(theta));
+		dist = Math.acos(dist);
+		dist = rad2deg(dist);
+		dist = dist * 60 * 1.1515;
+		dist = dist * 1.609344;
 	
-			return (dist);
+		return (dist);
 		}
 
-		/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-		/*::	This function converts decimal degrees to radians						 :*/
-		/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+		//convierte grados a radianes
 		private static double deg2rad(double deg) {
 			return (deg * Math.PI / 180.0);
 		}
 
-		/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-		/*::	This function converts radians to decimal degrees						 :*/
-		/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+		//convierte radianes a grados
 		private static double rad2deg(double rad) {
 			return (rad * 180 / Math.PI);
-		}
+	}
 	
+	public boolean esValido(Poi poi)
+	{
+		String nom;
+		nom = poi.getNombre();
+		
+		if (nom == null || nom == "")
+		{
+			return (false);
+		}
+		return(true);		
+	}
 }		
 		

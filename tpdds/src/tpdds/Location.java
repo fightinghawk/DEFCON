@@ -2,34 +2,34 @@ package tpdds;
 
 public class Location { 
 	
-    public double getLongitude() {
-		return longitude;
+	public double getLongitud() {
+		return longitud;
 	}
 
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
+	public void setLongitud(double longitud) {
+		this.longitud = longitud;
 	}
 
-	public double getLatitude() {
-		return latitude;
+	public double getLatitud() {
+		return latitud;
 	}
 
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
+	public void setLatitud(double latitud) {
+		this.latitud = latitud;
 	}
 
-	private double longitude;
-    private double latitude;   
+	private double longitud;
+    private double latitud;   
    
-    // Latitud y longitud se colocan en grados
-    public Location(double latitude, double longitude) {
-        this.latitude  = latitude;
-        this.longitude = longitude;
+    // Constructor Latitud y longitud se colocan en grados
+    public Location(double latitud, double longitud) {
+        this.latitud  = latitud;
+        this.longitud = longitud;
     }
 
-    // return string representation of this point
+    // devuelve un string para poder contrar la latitud y la longitd juntas
     public String toString() {
-        return " (" + latitude + ", " + longitude + ")";
+        return " (" + latitud + ", " + longitud + ")";
     }
 
 }

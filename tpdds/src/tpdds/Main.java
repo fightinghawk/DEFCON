@@ -50,6 +50,8 @@ public class Main {
 		
 		System.out.println("La distancia entre " + casa.getNombre() + " y " + bombonera.getNombre() + " es ");
 		System.out.printf("%6.3f Kilometros \n", distancia);
+		
+		System.out.println(casa.esValido(casa));
 
 		
 	}
