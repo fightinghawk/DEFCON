@@ -1,7 +1,16 @@
 package tpdds;
 
-public class Location { 
-	
+public class Location {
+
+	private double longitud;
+	private double latitud;
+
+	// Constructor Latitud y longitud se colocan en grados
+	public Location(double latitud, double longitud) {
+		this.latitud = latitud;
+		this.longitud = longitud;
+	}
+
 	public double getLongitud() {
 		return longitud;
 	}
@@ -18,18 +27,9 @@ public class Location {
 		this.latitud = latitud;
 	}
 
-	private double longitud;
-    private double latitud;   
-   
-    // Constructor Latitud y longitud se colocan en grados
-    public Location(double latitud, double longitud) {
-        this.latitud  = latitud;
-        this.longitud = longitud;
-    }
-
-    // devuelve un string para poder contrar la latitud y la longitd juntas
-    public String toString() {
-        return " (" + latitud + ", " + longitud + ")";
-    }
+	// devuelve un string para poder contrar la latitud y la longitd juntas
+	public String toString() {
+		return " (" + latitud + ", " + longitud + ")";
+	}
 
 }
