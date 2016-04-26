@@ -111,6 +111,7 @@ public class Direccion {
 		this.pais = pais;
 	}
 
+	// Muestra Info Basica del Domicilio usado por POI
 	public String infoBasica() {
 		return (callePrincipal + " " + this.altura);
 	}

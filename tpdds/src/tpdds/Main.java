@@ -36,15 +36,13 @@ public class Main {
 
 		Poi bombonera = new Poi("Bombonera", 2, direccionBombo, ubicacionBombo);
 
-		double distancia = casa.calcularDistanciaA(bombonera.getGeoloc());
-
 		casa.mostrarDatos();
 		bombonera.mostrarDatos();
 
-		System.out.println("La distancia entre " + casa.getNombre() + " y " + bombonera.getNombre() + " es ");
-		System.out.printf("%6.3f Kilometros \n", distancia);
+		casa.informarDistanciaA(bombonera);
 
-		System.out.println(casa.esValido());
+		casa.esValido();
+		bombonera.esValido();
 
 	}
 }
