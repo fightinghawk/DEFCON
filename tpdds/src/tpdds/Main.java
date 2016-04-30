@@ -17,7 +17,7 @@ public class Main {
 
 		Location ubicacionCasa = new Location(-34.621854, -58.402526);
 
-		Poi casa = new Poi("Mi casa", 3, direccionCasa, ubicacionCasa);
+		Poi casa = new Poi("Mi casa", 7, direccionCasa, ubicacionCasa);
 		// El tipo esta con numeros para que despues creemos una tabla de tipos,
 		// con una referencia numerica, eso despues lo ponemos
 		// creamos un case y listo, para que no carguemos de varias formas
@@ -34,7 +34,7 @@ public class Main {
 
 		Location ubicacionBombo = new Location(-34.635926, -58.363816);
 
-		Poi bombonera = new Poi("Bombonera", 2, direccionBombo, ubicacionBombo);
+		Poi bombonera = new Poi("Bombonera", 5, direccionBombo, ubicacionBombo);
 
 		casa.mostrarDatos();
 		bombonera.mostrarDatos();

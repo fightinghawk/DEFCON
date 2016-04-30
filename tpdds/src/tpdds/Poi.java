@@ -110,12 +110,38 @@ public class Poi {
 
 	// Forma de Mostrar el POI
 	public String toString() {
-		return nombre + " ubicado en " + direccion.infoBasica() + " es una " + tipo + " y su geolocalizacion es"
+		return nombre + " ubicado en " + direccion.infoBasica() + " es un " + tipoDePoi(tipo) + " y su geolocalizacion es"
 				+ geoloc;
 	}
 
 	// Muestra el POI
 	public void mostrarDatos() {
 		System.out.println(this);
+	}
+	
+	// Arma el tipo
+	public String tipoDePoi(int tipo)
+	{
+		switch(tipo)
+		{
+		 case 1:
+			 return "CGP";
+		 case 2:
+			 return "Parada de Colectivos";
+		 case 3:
+			 return "Parada de Taxis";
+		 case 4:
+			 return "Estacion de Subtes";
+		 case 5:
+			 return "Estadio de Futbol";
+		 case 6:
+			 return "Parque";
+		 case 7:
+			 return "Hogar";
+			 	 
+		 default:
+			 return "Otro tipo";
+		}
+		
 	}
 }
