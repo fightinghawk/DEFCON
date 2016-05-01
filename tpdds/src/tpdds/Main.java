@@ -1,5 +1,8 @@
 package tpdds;
 
+import java.util.ArrayList;
+
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -7,6 +10,9 @@ public class Main {
 
 		// Generacion a modo de prueba de un poi, faltan armar los contructores
 		// de todos salvo localizacion.
+		
+		ArrayList<Poi> lPois = new ArrayList<Poi>();
+		
 
 		Direccion direccionCasa = new Direccion();
 
@@ -43,6 +49,12 @@ public class Main {
 
 		casa.esValido();
 		bombonera.esValido();
+		
+		lPois.add(casa);
+		lPois.add(bombonera);
+		
+		//Es para la entrega 1 una primera prueba del esta cerca todavia no esta ni pulido es una primera idea
+		//casa.estaCerca(lPois);
 
 	}
 }

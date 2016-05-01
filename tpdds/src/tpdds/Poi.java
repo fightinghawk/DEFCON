@@ -1,5 +1,7 @@
 package tpdds;
 
+import java.util.ArrayList;
+
 public class Poi {
 
 	private String nombre;
@@ -143,5 +145,33 @@ public class Poi {
 			 return "Otro tipo";
 		}
 		
+	}
+	
+	
+	/*
+	 * Primera aproximacion al esta cerca que pide para la entrega uno, todavia falta
+	 * saber si esto es desde un poi a otro o si es desde una ubicacion X a el poi en caso
+	 * que haya uno
+	 */
+	public void estaCerca(ArrayList<Poi> lPois)
+	{
+		double miDistancia;
+		int encontrado = 0;
+				
+		for(int i=0; i< lPois.size() ; i++)
+		{
+			
+			miDistancia = calcularDistanciaA(lPois.get(i)); 
+			
+			if (miDistancia <= (5))
+			{
+				System.out.println("Encontre Algo");
+				encontrado = 1;
+			}
+		}
+		if (encontrado == 0)
+		{
+			System.out.println("No encontre nada");
+		}
 	}
 }
