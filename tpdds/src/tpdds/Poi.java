@@ -129,17 +129,11 @@ public class Poi {
 		 case 1:
 			 return "CGP";
 		 case 2:
-			 return "Parada de Colectivos";
+			 return "Parada de Colectivo";
 		 case 3:
-			 return "Parada de Taxis";
+			 return "Sucursal de Banco";
 		 case 4:
-			 return "Estacion de Subtes";
-		 case 5:
-			 return "Estadio de Futbol";
-		 case 6:
-			 return "Parque";
-		 case 7:
-			 return "Hogar";
+			 return "Local Comercial";
 			 	 
 		 default:
 			 return "Otro tipo";

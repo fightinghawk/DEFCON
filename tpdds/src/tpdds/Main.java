@@ -14,16 +14,16 @@ public class Main {
 		ArrayList<Poi> lPois = new ArrayList<Poi>();
 		
 
-		Direccion direccionCasa = new Direccion();
+		Direccion direccionCGO = new Direccion();
 
-		direccionCasa.setCallePrincipal("Av.Jujuy");
-		direccionCasa.setCalleLateralIzq("Humberto 1ro");
-		direccionCasa.setCalleLateralDer("Carlos Calvo");
-		direccionCasa.setAltura(1218);
+		direccionCGO.setCallePrincipal("Av.Jujuy");
+		direccionCGO.setCalleLateralIzq("Humberto 1ro");
+		direccionCGO.setCalleLateralDer("Carlos Calvo");
+		direccionCGO.setAltura(765);
 
-		Location ubicacionCasa = new Location(-34.621854, -58.402526);
+		Location ubicacionCGP = new Location(-34.621854, -58.402526);
 
-		Poi casa = new Poi("Mi casa", 7, direccionCasa, ubicacionCasa);
+		Poi cgp = new Poi("CGP San Cristobal", 1, direccionCGO, ubicacionCGP);
 		// El tipo esta con numeros para que despues creemos una tabla de tipos,
 		// con una referencia numerica, eso despues lo ponemos
 		// creamos un case y listo, para que no carguemos de varias formas
@@ -31,27 +31,27 @@ public class Main {
 
 		// Otro Poi prueba
 
-		Direccion direccionBombo = new Direccion();
+		Direccion direccionBanco = new Direccion();
 
-		direccionBombo.setCallePrincipal("Brandsen");
-		direccionBombo.setCalleLateralIzq("Iberlucea");
-		direccionBombo.setCalleLateralDer("Filiberto");
-		direccionBombo.setAltura(1218);
+		direccionBanco.setCallePrincipal("Brandsen");
+		direccionBanco.setCalleLateralIzq("Iberlucea");
+		direccionBanco.setCalleLateralDer("Filiberto");
+		direccionBanco.setAltura(1218);
 
-		Location ubicacionBombo = new Location(-34.635926, -58.363816);
+		Location ubicacionBanco = new Location(-34.635926, -58.363816);
 
-		Poi bombonera = new Poi("Bombonera", 5, direccionBombo, ubicacionBombo);
+		Poi banco = new Poi("Banco Nacion", 3, direccionBanco, ubicacionBanco);
 
-		casa.mostrarDatos();
-		bombonera.mostrarDatos();
+		cgp.mostrarDatos();
+		banco.mostrarDatos();
 
-		casa.informarDistanciaA(bombonera);
+		cgp.informarDistanciaA(banco);
 
-		casa.esValido();
-		bombonera.esValido();
+		cgp.esValido();
+		banco.esValido();
 		
-		lPois.add(casa);
-		lPois.add(bombonera);
+		lPois.add(cgp);
+		lPois.add(banco);
 		
 		//Es para la entrega 1 una primera prueba del esta cerca todavia no esta ni pulido es una primera idea
 		//casa.estaCerca(lPois);
