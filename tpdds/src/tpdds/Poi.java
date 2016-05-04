@@ -24,8 +24,7 @@ public class Poi {
 	}
 
 	public void setTipo(int tipoPOI) {
-
-		tipo = tipoPOI;
+		this.tipo = tipoPOI;
 	}
 
 	public String getNombre() {
