@@ -17,6 +17,8 @@ public class Poi {
 		this.direccion = direccion;
 		this.geoloc = geoloc;
 		this.estadistica = null;
+		
+		this.esValido();
 	}
 
 	public int getTipo() {
@@ -103,10 +105,10 @@ public class Poi {
 
 	// Verifica si es Valido el POI
 	public void esValido() {
-		if (nombre.equals("")) {
-			System.out.println("POI: " + nombre + " INVALIDO");
+		if (nombre.equals(""))&& (geoloc != null){
+			System.out.println("POI INVALIDO");
 		}
-		System.out.println("POI: " + nombre + " VALIDO");
+		System.out.println("POI VALIDO");
 	}
 
 	// Forma de Mostrar el POI
