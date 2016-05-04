@@ -105,7 +105,7 @@ public class Poi {
 
 	// Verifica si es Valido el POI
 	public void esValido() {
-		if (nombre.equals(""))&& (geoloc == null){
+		if ((nombre.equals("")) && (geoloc == null)){
 			System.out.println("POI INVALIDO");
 		}
 		System.out.println("POI VALIDO");

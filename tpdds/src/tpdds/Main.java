@@ -57,7 +57,7 @@ public class Main {
 		cgp.esValido();
 		banco.esValido();
 		
-		//Es para la entrega 1 una primera prueba del esta cerca todavia no esta ni pulido es una primera idea
+		//Requerimiento para la entrega 1 como para ir adelantando
 		tablero.estaCerca(lPois);
 
 	}
