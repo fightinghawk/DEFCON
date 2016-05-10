@@ -1,7 +1,6 @@
 package tpdds;
 
 import java.util.HashSet;
-import tpdds.Calculos;
 
 public class Poi implements Localizable  {
 
