@@ -5,6 +5,17 @@ import java.util.ArrayList;
 
 public class Main {
 
+	
+	public static ArrayList<Poi> buscadorPOIS(String palabraClave, ArrayList<Poi> Pois) {
+		ArrayList<Poi> coincidencias = new ArrayList<Poi>();
+		for (Poi poi : Pois) {
+			if( poi.contienePalabraClave(palabraClave)){
+				coincidencias.add(poi);
+			}
+		}
+		return coincidencias;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -29,7 +40,8 @@ public class Main {
 		direccionCGO.setAltura(765);
 		Location ubicacionCGP = new Location(-34.621536, -58.416334);
 		Poi cgp = new Poi("CGP San Cristobal", 1, direccionCGO, ubicacionCGP);
-		
+		String[] keyWordsa = {"cgp","asesoramiento","dinero"};
+		cgp.agregarPalabra(keyWordsa);
 
 		//Genero Otro Poi 
 
@@ -40,7 +52,8 @@ public class Main {
 		direccionBanco.setAltura(1218);
 		Location ubicacionBanco = new Location(-34.635926, -58.363816);
 		Poi banco = new Poi("Banco Nacion", 3, direccionBanco, ubicacionBanco);
-		
+		String[] keyWords = {"banco","plata","dinero"};
+		banco.agregarPalabra(keyWords);
 		//Agrego los pois a la coleccion
 		lPois.add(cgp);
 		lPois.add(banco);
@@ -59,6 +72,22 @@ public class Main {
 		
 		//Requerimiento para la entrega 1 como para ir adelantando
 		tablero.estaCerca(lPois);
-
+		
+		System.out.println("empiesa busqueda de: dinero");
+		
+		ArrayList<Poi> encontrados = buscadorPOIS("dinero", lPois);
+		
+		for (Poi poi : encontrados) {
+			poi.mostrarDatos();
+		}
+		
+		System.out.println("empiesa busqueda de: asesoramiento");
+		
+		ArrayList<Poi> encontradosAsesoramiento = buscadorPOIS("asesoramiento", lPois);
+		
+		for (Poi poi : encontradosAsesoramiento) {
+			poi.mostrarDatos();
+		}
 	}
+
 }

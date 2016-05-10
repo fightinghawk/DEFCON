@@ -1,6 +1,6 @@
 package tpdds;
 
-
+import java.util.HashSet;
 
 public class Poi {
 
@@ -9,6 +9,7 @@ public class Poi {
 	private Direccion direccion;
 	private Location geoloc;
 	private Estadistica estadistica;
+	private HashSet<String> palabrasClaves;
 
 	// Constructor POI
 	public Poi(String nombre, int tipoPOI, Direccion direccion, Location geoloc) {
@@ -17,7 +18,7 @@ public class Poi {
 		this.direccion = direccion;
 		this.geoloc = geoloc;
 		this.estadistica = null;
-		
+		palabrasClaves = new HashSet<String>(); 	
 		this.esValido();
 	}
 
@@ -142,6 +143,15 @@ public class Poi {
 		
 	}
 	
+	public boolean contienePalabraClave(String palabra){
+		return palabrasClaves.contains(palabra);
+	}
+	
+	public void agregarPalabra(String[] palabras){
+		for (String keyWord : palabras) {
+			palabrasClaves.add(keyWord.toLowerCase());
+		}
+	}	
 }
 	
 	
