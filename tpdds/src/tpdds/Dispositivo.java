@@ -3,7 +3,7 @@ package tpdds;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class Dispositivo 
+public class Dispositivo implements Localizable 
 {
 	
 	private Location geoloc;
@@ -39,7 +39,7 @@ public class Dispositivo
 		for(int i=0; i< lPois.size() ; i++)
 		{
 			
-			miDistancia = this.calcularDistanciaA(lPois.get(i));
+			miDistancia = Calculos.calcularDistanciaA(this,lPois.get(i));
 			
 			
 			if (miDistancia <= (0.5))
@@ -52,41 +52,6 @@ public class Dispositivo
 		{
 			System.out.println("No hay ningun Poi a menos de 500 metros de usted");
 		}
-	}
-	
-	public double calcularDistanciaA(Poi otroPoi) {
-
-		double latitud, longitud, miLatitud, miLongitud;
-		Location miLocalizacion;
-		Location otraLocalizacion = otroPoi.getGeoloc();
-
-		miLocalizacion = this.getGeoloc();
-
-		miLatitud = miLocalizacion.getLatitud();
-		miLongitud = miLocalizacion.getLongitud();
-
-		latitud = otraLocalizacion.getLatitud();
-		longitud = otraLocalizacion.getLongitud();
-		
-		double theta = miLongitud - longitud;
-		double dist = Math.sin(deg2rad(miLatitud)) * Math.sin(deg2rad(latitud))
-				+ Math.cos(deg2rad(miLatitud)) * Math.cos(deg2rad(latitud)) * Math.cos(deg2rad(theta));
-		dist = Math.acos(dist);
-		dist = rad2deg(dist);
-		dist = dist * 60 * 1.1515;
-		dist = dist * 1.609344;
-		
-		return (dist);
-	}
-	
-	// convierte grados a radianes
-	private static double deg2rad(double deg) {
-		return (deg * Math.PI / 180.0);
-	}
-
-	// convierte radianes a grados
-	private static double rad2deg(double rad) {
-		return (rad * 180 / Math.PI);
 	}
 
 	public Location getGeoloc() {
