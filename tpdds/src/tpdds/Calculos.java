@@ -1,6 +1,8 @@
 package tpdds;
 
-public class Calculos  {
+import java.text.DecimalFormat;
+
+public class Calculos {
 
 	public static double calcularDistanciaA(Localizable unLocalizable, Localizable otroLocalizable) {
 
@@ -25,6 +27,20 @@ public class Calculos  {
 		dist = dist * 1.609344;
 
 		return (dist);
+	}
+
+	public static boolean compararConCriterio(Poi unPoi, Localizable unDispositivo, double criterio) {
+		double distancia = calcularDistanciaA(unPoi, unDispositivo);
+		DecimalFormat decimales = new DecimalFormat("0.000");
+		boolean resultado = distancia < criterio;
+
+		if (resultado) {
+			System.out.println(
+					"El Poi " + unPoi.getNombre() + " esta a " + decimales.format(distancia) + " metros de aqui");
+		}
+		;
+
+		return resultado;
 	}
 
 	// convierte grados a radianes
