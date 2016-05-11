@@ -57,7 +57,7 @@ public class Main {
 		direccionParada101.setCallePrincipal("URIBURU");
 		direccionParada101.setCalleLateralIzq("PARAGUAY");
 		direccionParada101.setCalleLateralDer("PARAGUAY");
-		direccionParada101.setAltura(901);
+		direccionParada101.setAltura(2200);
 		Location ubicacionParada101 = new Location(-34.598283, -58.399035);
 		ParadaColectivo parada101 = new ParadaColectivo("Parada 101", 2, direccionParada101, ubicacionParada101);
 		String[] keyWords101 = { "colectivo", "101", "parada" };
@@ -69,7 +69,7 @@ public class Main {
 		direccionParada60.setCallePrincipal("AYACUCHO");
 		direccionParada60.setCalleLateralIzq("PARAGUAY");
 		direccionParada60.setCalleLateralDer("PARAGUAY");
-		direccionParada60.setAltura(2200);
+		direccionParada60.setAltura(901);
 		Location ubicacionParada60 = new Location(-34.598700, -58.395881);
 		ParadaColectivo parada60 = new ParadaColectivo("Parada 60", 2, direccionParada60, ubicacionParada60);
 		String[] keyWords60 = { "colectivo", "60", "parada" };
