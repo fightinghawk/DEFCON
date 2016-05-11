@@ -54,9 +54,9 @@ public class Main {
 		// Genero una Parada de Colectivo 101
 
 		Direccion direccionParada101 = new Direccion();
-		direccionParada101.setCallePrincipal("URIBURU");
-		direccionParada101.setCalleLateralIzq("PARAGUAY");
-		direccionParada101.setCalleLateralDer("PARAGUAY");
+		direccionParada101.setCallePrincipal("PARAGUAY");
+		direccionParada101.setCalleLateralIzq("URIBURU");
+		direccionParada101.setCalleLateralDer("URIBURU");
 		direccionParada101.setAltura(2200);
 		Location ubicacionParada101 = new Location(-34.598283, -58.399035);
 		ParadaColectivo parada101 = new ParadaColectivo("Parada 101", 2, direccionParada101, ubicacionParada101);
