@@ -35,7 +35,7 @@ public class Main {
 		direccionCGO.setCalleLateralDer("ALVEAR, MARCELO T. DE");
 		direccionCGO.setAltura(1020);
 		Location ubicacionCGP = new Location(-34.596621, -58.399182);
-		Poi cgp = new Poi("CGP Recoleta", 1, direccionCGO, ubicacionCGP);
+		CGP cgp = new CGP("CGP Recoleta", direccionCGO, ubicacionCGP);
 		String[] keyWordsa = { "cgp", "asesoramiento", "dinero" };
 		cgp.agregarPalabra(keyWordsa);
 
@@ -47,7 +47,7 @@ public class Main {
 		direccionBanco.setCalleLateralDer("AZCUENAGA");
 		direccionBanco.setAltura(2201);
 		Location ubicacionBanco = new Location(-34.595290, -58.398612);
-		Poi banco = new Poi("Banco Santander Rio", 3, direccionBanco, ubicacionBanco);
+		Bancos banco = new Bancos("Banco Santander Rio", direccionBanco, ubicacionBanco);
 		String[] keyWords = { "banco", "plata", "dinero" };
 		banco.agregarPalabra(keyWords);
 
@@ -59,7 +59,7 @@ public class Main {
 		direccionParada101.setCalleLateralDer("URIBURU");
 		direccionParada101.setAltura(2200);
 		Location ubicacionParada101 = new Location(-34.598283, -58.399035);
-		ParadaColectivo parada101 = new ParadaColectivo("Parada 101", 2, direccionParada101, ubicacionParada101);
+		ParadaColectivo parada101 = new ParadaColectivo("Parada 101", direccionParada101, ubicacionParada101);
 		String[] keyWords101 = { "colectivo", "101", "parada" };
 		parada101.agregarPalabra(keyWords101);
 
@@ -71,7 +71,7 @@ public class Main {
 		direccionParada60.setCalleLateralDer("PARAGUAY");
 		direccionParada60.setAltura(901);
 		Location ubicacionParada60 = new Location(-34.598700, -58.395881);
-		ParadaColectivo parada60 = new ParadaColectivo("Parada 60", 2, direccionParada60, ubicacionParada60);
+		ParadaColectivo parada60 = new ParadaColectivo("Parada 60", direccionParada60, ubicacionParada60);
 		String[] keyWords60 = { "colectivo", "60", "parada" };
 		parada60.agregarPalabra(keyWords60);
 
@@ -95,7 +95,7 @@ public class Main {
 		System.out.println("-------------------------");
 		// Informo la distancia de un poi al otro
 		System.out.println("//////FUNCION EXTRA: DESDE EL CGP HASTA EL BANCO HAY MENOS DE 160 METROS?");
-		cgp.estaCerca(banco,0.16);
+		cgp.estaCerca(banco, 0.16);
 		System.out.println("-------------------------");
 		// Requerimiento para la entrega 1 como para ir adelantando
 		System.out.println("//////POIS CERCA DE LA TERMINAL");

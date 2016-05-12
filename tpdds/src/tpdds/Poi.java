@@ -5,7 +5,7 @@ import java.util.HashSet;
 public class Poi implements Localizable {
 
 	private String nombre;
-	private int tipo;
+	private String tipo;
 	private Direccion direccion;
 	private Location geoloc;
 	private Estadistica estadistica;
@@ -13,7 +13,7 @@ public class Poi implements Localizable {
 	private double cuadras = 0.5;
 
 	// Constructor POI
-	public Poi(String nombre, int tipoPOI, Direccion direccion, Location geoloc) {
+	public Poi(String nombre, String tipoPOI, Direccion direccion, Location geoloc) {
 		this.nombre = nombre;
 		this.tipo = tipoPOI;
 		this.direccion = direccion;
@@ -23,11 +23,11 @@ public class Poi implements Localizable {
 		this.esValido();
 	}
 
-	public int getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(int tipoPOI) {
+	public void setTipo(String tipoPOI) {
 		this.tipo = tipoPOI;
 	}
 
@@ -81,9 +81,7 @@ public class Poi implements Localizable {
 	public void informarCercania(Poi unPoi, boolean estaCerca) {
 		if (estaCerca) {
 			System.out.print("El Poi " + unPoi.getNombre() + " esta cerca\n");
-		}
-		else
-		{
+		} else {
 			System.out.print("El Poi " + unPoi.getNombre() + " NO esta cerca\n");
 		}
 	}
@@ -98,7 +96,7 @@ public class Poi implements Localizable {
 
 	// Forma de Mostrar el POI
 	public String toString() {
-		return nombre + " ubicado en " + direccion.infoBasica() + " es un " + tipoDePoi(tipo)
+		return nombre + " ubicado en " + direccion.infoBasica() + " es un " + this.getTipo()
 				+ " y su geolocalizacion es" + geoloc;
 	}
 
@@ -107,25 +105,7 @@ public class Poi implements Localizable {
 		System.out.println(this);
 	}
 
-	// Arma el tipo
-	public String tipoDePoi(int tipo) {
-		switch (tipo) {
-		case 1:
-			return "CGP";
-		case 2:
-			return "Parada de Colectivo";
-		case 3:
-			return "Sucursal de Banco";
-		case 4:
-			return "Local Comercial";
-
-		default:
-			return "Otro tipo";
-		}
-
-	}
-
-	public void estaCerca(Poi unPoi,double criteriocuadras) {
+	public void estaCerca(Poi unPoi, double criteriocuadras) {
 		boolean estaCerca = Calculos.compararConCriterio(unPoi, this, criteriocuadras);
 		this.informarCercania(unPoi, estaCerca);
 	}
