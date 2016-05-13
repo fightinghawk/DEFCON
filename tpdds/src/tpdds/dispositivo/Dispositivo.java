@@ -1,6 +1,11 @@
-package tpdds;
+package tpdds.dispositivo;
 
 import java.util.ArrayList;
+
+import tpdds.pois.Poi;
+import tpdds.ubicacion.Direccion;
+import tpdds.ubicacion.Localizable;
+import tpdds.ubicacion.Location;
 
 public class Dispositivo implements Localizable {
 

@@ -1,4 +1,4 @@
-package tpdds;
+package tpdds.ubicacion;
 
 public class Direccion {
 

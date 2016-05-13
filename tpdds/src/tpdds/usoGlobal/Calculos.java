@@ -1,6 +1,10 @@
-package tpdds;
+package tpdds.usoGlobal;
 
 import java.text.DecimalFormat;
+
+import tpdds.pois.Poi;
+import tpdds.ubicacion.Localizable;
+import tpdds.ubicacion.Location;
 
 public class Calculos {
 
@@ -44,13 +48,16 @@ public class Calculos {
 	}
 
 	// convierte grados a radianes
-	private static double deg2rad(double deg) {
+	public static double deg2rad(double deg) {
 		return (deg * Math.PI / 180.0);
 	}
 
 	// convierte radianes a grados
-	private static double rad2deg(double rad) {
+	public static double rad2deg(double rad) {
 		return (rad * 180 / Math.PI);
 	}
-
+	
+	public static boolean entre(double min,double max, double test){
+		return (min<test && max>test);
+	}
 }

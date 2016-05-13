@@ -1,4 +1,12 @@
-package tpdds;
+package tpdds.pois;
+
+import java.util.Calendar;
+import java.util.Date;
+
+import tpdds.ubicacion.Direccion;
+import tpdds.ubicacion.Localizable;
+import tpdds.ubicacion.Location;
+import tpdds.usoGlobal.Calculos;
 
 public class ParadaColectivo extends Poi {
 
@@ -10,5 +18,10 @@ public class ParadaColectivo extends Poi {
 	
 	public boolean estaCerca(Localizable localizable) {
 		return Calculos.calcularDistanciaA(this, localizable)>criterioCuadras;
+	}
+
+	@Override
+	public boolean estaDisponible(Calendar dia) {
+		return true;
 	}
 }

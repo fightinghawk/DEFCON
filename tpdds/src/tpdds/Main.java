@@ -2,6 +2,16 @@ package tpdds;
 
 import java.util.ArrayList;
 
+import tpdds.dispositivo.Dispositivo;
+import tpdds.pois.Bancos;
+import tpdds.pois.CGP;
+import tpdds.pois.DiaPoi;
+import tpdds.pois.ParadaColectivo;
+import tpdds.pois.Poi;
+import tpdds.ubicacion.Comuna;
+import tpdds.ubicacion.Direccion;
+import tpdds.ubicacion.Location;
+
 public class Main {
 
 	public static ArrayList<Poi> buscadorPOIS(String palabraClave, ArrayList<Poi> Pois) {
@@ -40,6 +50,7 @@ public class Main {
 		Location ubicacionCGP = new Location(-34.596621, -58.399182);
 		CGP cgp = new CGP("CGP Recoleta", direccionCGO, ubicacionCGP);
 		String[] keyWordsa = { "cgp", "asesoramiento", "dinero" };
+		cgp.setDiasDisp(new DiaPoi(10,20,0,0,7));
 		cgp.agregarPalabra(keyWordsa);
 
 		// Genero un BANCO
@@ -52,6 +63,7 @@ public class Main {
 		Bancos banco = new Bancos("Banco Santander Rio", direccionBanco, ubicacionBanco);
 		String[] keyWords = { "banco", "plata", "dinero" };
 		banco.agregarPalabra(keyWords);
+		banco.setDiasDisp(new DiaPoi(10,20,0,0,7));
 		banco.setRadioDeCuadras(0.4f);
 
 		// Genero una Parada de Colectivo 101
@@ -124,6 +136,17 @@ public class Main {
 
 		for (Poi poi : encontradosParadas) {
 			poi.mostrarDatos();
+		}
+		
+		for (Poi poi : listaPois) {
+			// Ak es un 3 xq toma el dia del mes y no de la semana
+			if(poi.estaDisponible(3, 14, 0)){
+				System.out.println("El poi " + poi.getNombre() +" esta disponible");
+			}
+			else
+			{
+				System.out.println("El poi " + poi.getNombre() +" no esta disponible");
+			}
 		}
 		
 		

@@ -1,6 +1,17 @@
-package tpdds;
+package tpdds.pois;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
+
+import tpdds.pois.estadisticas.Estadistica;
+import tpdds.ubicacion.Direccion;
+import tpdds.ubicacion.Localizable;
+import tpdds.ubicacion.Location;
+import tpdds.usoGlobal.Calculos;
+import tpdds.usoGlobal.CalculosHorarios;
 
 public abstract class Poi implements Localizable {
 
@@ -10,6 +21,7 @@ public abstract class Poi implements Localizable {
 	private Location geoloc;
 	private Estadistica estadistica;
 	private HashSet<String> palabrasClaves;
+	private ArrayList<DiaPoi> diasDisp;
 
 	// Constructor POI
 	public Poi(String nombre, String tipoPOI, Direccion direccion, Location geoloc) {
@@ -19,9 +31,18 @@ public abstract class Poi implements Localizable {
 		this.geoloc = geoloc;
 		this.estadistica = null;
 		palabrasClaves = new HashSet<String>();
+		diasDisp = new ArrayList<>();
 		this.esValido();
 	}
-
+	
+	public void setDiasDisp(ArrayList<DiaPoi> diasDisp){
+		this.diasDisp = diasDisp;
+	}
+	
+	public void setDiasDisp(DiaPoi diaDisp){
+		this.diasDisp.add(diaDisp);
+	}
+	
 	public String getTipo() {
 		return tipo;
 	}
@@ -101,15 +122,35 @@ public abstract class Poi implements Localizable {
 	}
 
 	public abstract boolean estaCerca(Localizable localizable);
-
+	
 	public boolean contienePalabraClave(String palabra) {
-		return palabrasClaves.contains(palabra);
+			return palabrasClaves.contains(palabra);
 	}
 
 	public void agregarPalabra(String[] palabras) {
 		for (String keyWord : palabras) {
 			palabrasClaves.add(keyWord.toLowerCase());
 		}
+	}
+	
+	public boolean estaDisponible(){
+		return estaDisponible(new GregorianCalendar());
+	}
+	
+	public boolean estaDisponible(int dia, int hora, int min){
+		Calendar fecha = new GregorianCalendar(CalculosHorarios.getActualYear(),CalculosHorarios.getActualMonth(),dia,hora,min);
+		return estaDisponible(fecha);
+	}
+	
+	public boolean estaDisponible(Calendar time) {
+		for (DiaPoi diaPoi : diasDisp) {
+			if(CalculosHorarios.disponibilidadDia(diaPoi.getDia(), time)){
+				if(CalculosHorarios.disponibilidadHoraria(diaPoi.getHoraApertura(), diaPoi.getHoraClose(), diaPoi.getMinApertura(), diaPoi.getMinClose(), time)){
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 }

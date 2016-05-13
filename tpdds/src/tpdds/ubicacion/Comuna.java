@@ -1,4 +1,4 @@
-package tpdds;
+package tpdds.ubicacion;
 
 import java.util.ArrayList;
 import java.util.Arrays;

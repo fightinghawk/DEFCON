@@ -1,4 +1,9 @@
-package tpdds;
+package tpdds.pois;
+
+import tpdds.ubicacion.Comuna;
+import tpdds.ubicacion.Direccion;
+import tpdds.ubicacion.Localizable;
+import tpdds.ubicacion.Location;
 
 public class CGP extends Poi {
 	
