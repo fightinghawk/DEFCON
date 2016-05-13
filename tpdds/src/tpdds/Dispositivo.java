@@ -7,13 +7,9 @@ public class Dispositivo implements Localizable {
 	private Location geoloc;
 	private int id;
 	private Direccion direccion;
+	private String nombre;
 
 	public Dispositivo(int suid, Direccion sudireccion, Location sugeoloc) {
-		init(id, direccion, sugeoloc);
-
-	}
-
-	private void init(int suid, Direccion sudireccion, Location sugeoloc) {
 		this.direccion = sudireccion;
 		this.id = suid;
 		this.geoloc = sugeoloc;
@@ -29,8 +25,8 @@ public class Dispositivo implements Localizable {
 		int encontrado = 0;
 
 		for (Poi poi : listaPois) {
-			if (Calculos.compararConCriterio(poi, this, poi.getCuadras())) {
-
+			if (estaCercaDe(poi)) {
+				System.out.println(this.nombre + " se encuentra cerca de " + poi.getNombre());
 				encontrado += 1;
 			}
 		}
@@ -61,5 +57,18 @@ public class Dispositivo implements Localizable {
 
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
+	}
+	
+	public boolean estaCercaDe(Poi poi){
+		return poi.estaCerca(this);
+	}
+
+	@Override
+	public String getNombre() {
+		return this.nombre;
+	}
+	
+	public void setNombre(String nombre){
+		this.nombre = nombre;
 	}
 }

@@ -18,21 +18,24 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		// Genero una coleccion de Pois
-
+		Comuna.inicializarComunas();
 		ArrayList<Poi> listaPois = new ArrayList<Poi>();
 
 		// Genero un dispositivo para localizar pois
 		Direccion direTablero = new Direccion();
 		direTablero.setCallePrincipal("PARAGUAY");
+		direTablero.setBarrio("Recoleta");
 		direTablero.setAltura(2155);
 		Location ubicacionTablero = new Location(-34.598415, -58.398260);
 		Dispositivo tablero = new Dispositivo(1, direTablero, ubicacionTablero);
+		tablero.setNombre("Dispositivo de prueba");
 
 		// Genero un CGP
 		Direccion direccionCGO = new Direccion();
 		direccionCGO.setCallePrincipal("URIBURU");
 		direccionCGO.setCalleLateralIzq("SANTA FE AV.");
 		direccionCGO.setCalleLateralDer("ALVEAR, MARCELO T. DE");
+		direccionCGO.setBarrio("Recoleta");
 		direccionCGO.setAltura(1020);
 		Location ubicacionCGP = new Location(-34.596621, -58.399182);
 		CGP cgp = new CGP("CGP Recoleta", direccionCGO, ubicacionCGP);
@@ -40,7 +43,6 @@ public class Main {
 		cgp.agregarPalabra(keyWordsa);
 
 		// Genero un BANCO
-
 		Direccion direccionBanco = new Direccion();
 		direccionBanco.setCallePrincipal("SANTA FE AV.");
 		direccionBanco.setCalleLateralIzq("URIBURU");
@@ -50,6 +52,7 @@ public class Main {
 		Bancos banco = new Bancos("Banco Santander Rio", direccionBanco, ubicacionBanco);
 		String[] keyWords = { "banco", "plata", "dinero" };
 		banco.agregarPalabra(keyWords);
+		banco.setRadioDeCuadras(0.4f);
 
 		// Genero una Parada de Colectivo 101
 
@@ -93,9 +96,6 @@ public class Main {
 		System.out.println("//////DISTANCIA ENTRE POIS");
 		cgp.informarDistanciaA(banco);
 		System.out.println("-------------------------");
-		// Informo la distancia de un poi al otro
-		System.out.println("//////FUNCION EXTRA: DESDE EL CGP HASTA EL BANCO HAY MENOS DE 160 METROS?");
-		cgp.estaCerca(banco, 0.16);
 		System.out.println("-------------------------");
 		// Requerimiento para la entrega 1 como para ir adelantando
 		System.out.println("//////POIS CERCA DE LA TERMINAL");
@@ -125,6 +125,8 @@ public class Main {
 		for (Poi poi : encontradosParadas) {
 			poi.mostrarDatos();
 		}
+		
+		
 	}
 
 }

@@ -1,13 +1,14 @@
 package tpdds;
 
-public class Bancos extends Poi {
+public class LocalesComerciales extends Poi {
+	
 	
 	private float radioDeCuadras;
 	
-	public Bancos(String nombre, Direccion direccion, Location geoloc) {
-		super(nombre, "Banco", direccion, geoloc);
+	public LocalesComerciales(String nombre, String tipoPOI, Direccion direccion, Location geoloc) {
+		super(nombre, tipoPOI, direccion, geoloc);
 	}
-	
+
 	public float getRadioDeCuadras() {
 		return radioDeCuadras;
 	}
@@ -15,9 +16,13 @@ public class Bancos extends Poi {
 	public void setRadioDeCuadras(float radioDeCuadras) {
 		this.radioDeCuadras = radioDeCuadras;
 	}
-	
+
+	@Override
 	public boolean estaCerca(Localizable localizable) {
 		return Calculos.calcularDistanciaA(this, localizable)>radioDeCuadras;
 	}
+	
+	
+	
 
 }

@@ -2,7 +2,7 @@ package tpdds;
 
 import java.util.HashSet;
 
-public class Poi implements Localizable {
+public abstract class Poi implements Localizable {
 
 	private String nombre;
 	private String tipo;
@@ -10,7 +10,6 @@ public class Poi implements Localizable {
 	private Location geoloc;
 	private Estadistica estadistica;
 	private HashSet<String> palabrasClaves;
-	private double cuadras = 0.5;
 
 	// Constructor POI
 	public Poi(String nombre, String tipoPOI, Direccion direccion, Location geoloc) {
@@ -39,10 +38,14 @@ public class Poi implements Localizable {
 		this.nombre = nombre;
 	}
 
-	public String getDireccion() {
+	public String getDireccionToString() {
 		return direccion.getCallePrincipal() + " " + direccion.getAltura();
 	}
 
+	public Direccion getDireccion(){
+		return this.direccion;
+	}
+	
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
@@ -61,14 +64,6 @@ public class Poi implements Localizable {
 
 	public void setEstadistica(Estadistica estadistica) {
 		this.estadistica = estadistica;
-	}
-
-	public double getCuadras() {
-		return cuadras;
-	}
-
-	public void setCuadras(double cuadras) {
-		this.cuadras = cuadras;
 	}
 
 	// Informa la Distancia entre Pois
@@ -105,10 +100,7 @@ public class Poi implements Localizable {
 		System.out.println(this);
 	}
 
-	public void estaCerca(Poi unPoi, double criteriocuadras) {
-		boolean estaCerca = Calculos.compararConCriterio(unPoi, this, criteriocuadras);
-		this.informarCercania(unPoi, estaCerca);
-	}
+	public abstract boolean estaCerca(Localizable localizable);
 
 	public boolean contienePalabraClave(String palabra) {
 		return palabrasClaves.contains(palabra);
@@ -119,4 +111,5 @@ public class Poi implements Localizable {
 			palabrasClaves.add(keyWord.toLowerCase());
 		}
 	}
+
 }
