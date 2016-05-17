@@ -26,18 +26,34 @@ public class Dispositivo implements Localizable {
 	 * falta saber si esto es desde un poi a otro o si es desde una ubicacion X
 	 * a el poi en caso que haya uno
 	 */
-	public void estaCerca(ArrayList<Poi> listaPois) {
-		int encontrado = 0;
+	public int estaCerca(ArrayList<Poi> listaPois) {
+		int encontrados = 0;
 
 		for (Poi poi : listaPois) {
 			if (estaCercaDe(poi)) {
 				System.out.println(this.nombre + " se encuentra cerca de " + poi.getNombre());
-				encontrado += 1;
+				encontrados += 1;
 			}
 		}
-		if (encontrado == 0) {
+		if (encontrados == 0) {
 			System.out.println("No hay ningun Poi Cercano");
 		}
+		return encontrados;
+	}
+
+	public int estanDisponible(ArrayList<Poi> listaPois, int dia, int hora, int min) {
+		int disponibles = 0;
+
+		for (Poi poi : listaPois) {
+			if (poi.estaDisponible(dia, hora, min)) {
+				System.out.println("El poi " + poi.getNombre() + " esta disponible");
+				disponibles += 1;
+			} else {
+				System.out.println("El poi " + poi.getNombre() + " no esta disponible");
+			}
+		}
+
+		return disponibles;
 	}
 
 	public Location getGeoloc() {
@@ -63,8 +79,8 @@ public class Dispositivo implements Localizable {
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
-	
-	public boolean estaCercaDe(Poi poi){
+
+	public boolean estaCercaDe(Poi poi) {
 		return poi.estaCerca(this);
 	}
 
@@ -72,8 +88,8 @@ public class Dispositivo implements Localizable {
 	public String getNombre() {
 		return this.nombre;
 	}
-	
-	public void setNombre(String nombre){
+
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 }

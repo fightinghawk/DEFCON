@@ -88,9 +88,11 @@ public abstract class Poi implements Localizable {
 	}
 
 	// Informa la Distancia entre Pois
-	public void informarDistanciaA(Poi otroPoi) {
+	public double informarDistanciaA(Poi otroPoi) {
+		double distancia = Calculos.calcularDistanciaA(this, otroPoi);
 		System.out.print("La distancia entre " + this.getNombre() + " y " + otroPoi.getNombre() + " es ");
-		System.out.printf("%6.3f Kilometros \n", Calculos.calcularDistanciaA(this, otroPoi));
+		System.out.printf("%6.3f Kilometros \n", distancia);
+		return distancia;
 	}
 
 	// Informa Cercania
