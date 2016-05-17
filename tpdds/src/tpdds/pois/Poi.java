@@ -121,7 +121,13 @@ public abstract class Poi implements Localizable {
 	public abstract boolean estaCerca(Localizable localizable);
 	
 	public boolean contienePalabraClave(String palabra) {
-			return palabrasClaves.contains(palabra);
+		boolean encontrado = false;
+		encontrado = (nombre.contains(palabra) ||
+				getDireccionToString().contains(palabra) ||
+				palabrasClaves.contains(palabra)
+		);
+			
+		return encontrado;
 	}
 
 	public void agregarPalabra(String[] palabras) {
