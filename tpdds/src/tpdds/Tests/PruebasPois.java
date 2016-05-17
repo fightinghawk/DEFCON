@@ -1,7 +1,10 @@
-package tpdds;
+package tpdds.Tests;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 import tpdds.dispositivo.Dispositivo;
 import tpdds.pois.Bancos;
@@ -13,25 +16,15 @@ import tpdds.ubicacion.Comuna;
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Location;
 
-public class Main {
+public class PruebasPois {
 
-	public static ArrayList<Poi> buscadorPOIS(String palabraClave, ArrayList<Poi> Pois) {
-		ArrayList<Poi> coincidencias = new ArrayList<Poi>();
-		for (Poi poi : Pois) {
-			if (poi.contienePalabraClave(palabraClave)) {
-				coincidencias.add(poi);
-			}
-		}
-		return coincidencias;
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		// Genero una coleccion de Pois
+	ArrayList<Poi> listaPois;
+	
+	@Before
+	public void creacionPOI(){
 		Comuna.inicializarComunas();
-		ArrayList<Poi> listaPois = new ArrayList<Poi>();
-
+		listaPois = new ArrayList<Poi>();
+		
 		// Genero un dispositivo para localizar pois
 		Direccion direTablero = new Direccion();
 		direTablero.setCallePrincipal("PARAGUAY");
@@ -96,52 +89,33 @@ public class Main {
 		listaPois.add(banco);
 		listaPois.add(parada101);
 		listaPois.add(parada60);
-
-		
-		// Informo la distancia de un poi al otro
-		System.out.println("//////DISTANCIA ENTRE POIS");
-		cgp.informarDistanciaA(banco);
-		// Requerimiento para la entrega 1 como para ir adelantando
-		System.out.println("//////POIS CERCA DE LA TERMINAL");
-		tablero.estaCerca(listaPois);
-		System.out.println("-------------------------");
-		System.out.println("//////PRUEBAS DE BUSQUEDAS");
-		System.out.println("empiesa busqueda de: dinero");
-
-		ArrayList<Poi> encontrados = buscadorPOIS("dinero", listaPois);
-
-		for (Poi poi : encontrados) {
-			poi.mostrarDatos();
-		}
-
-		System.out.println("empiesa busqueda de: asesoramiento");
-
-		ArrayList<Poi> encontradosAsesoramiento = buscadorPOIS("asesoramiento", listaPois);
-
-		for (Poi poi : encontradosAsesoramiento) {
-			poi.mostrarDatos();
-		}
-
-		System.out.println("empiesa busqueda de: parada");
-
-		ArrayList<Poi> encontradosParadas = buscadorPOIS("parada", listaPois);
-
-		for (Poi poi : encontradosParadas) {
-			poi.mostrarDatos();
-		}
-		
+	}
+	
+	
+	//Testea si todos los pois son validos
+	@Test
+	public void poiValido(){
 		for (Poi poi : listaPois) {
-			// Ak es un 3 xq toma el dia del mes y no de la semana
-			if(poi.estaDisponible(5, 14, 0)){
-				System.out.println("El poi " + poi.getNombre() +" esta disponible");
-			}
-			else
-			{
-				System.out.println("El poi " + poi.getNombre() +" no esta disponible");
-			}
+			Assert.assertTrue(poi.esValido());
 		}
-		
+	}
+	
+	//Calculador de distancia
+	@Test
+	public void distanciaCGPBanco(){
 		
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

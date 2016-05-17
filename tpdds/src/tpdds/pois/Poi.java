@@ -103,11 +103,8 @@ public abstract class Poi implements Localizable {
 	}
 
 	// Verifica si es Valido el POI
-	public void esValido() {
-		if ((nombre.equals("")) && (geoloc == null)) {
-			System.out.println("POI INVALIDO");
-		}
-		System.out.println("POI VALIDO");
+	public boolean esValido() {
+		return !((nombre.equals("")) || (geoloc == null));
 	}
 
 	// Forma de Mostrar el POI
