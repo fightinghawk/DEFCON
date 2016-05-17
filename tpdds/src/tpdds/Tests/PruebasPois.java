@@ -124,9 +124,10 @@ public class PruebasPois {
 	}
 	
 	//TEST DISPONIBILIDAD - QUE POIS ESTAN ABIERTO EL 2 DE MAYO
+	//TIENEN QUE ESTAR LOS 4 POIS DISPONIBLES PORQUE ES LUNES
 	@Test
 	public void EstanDisponibles(){
-		Assert.assertEquals(tablero.estanDisponible(listaPois, 3, 14, 0),2);
+		Assert.assertEquals(tablero.estanDisponible(listaPois, 2, 14, 0),4);
 	}
 	
 	
