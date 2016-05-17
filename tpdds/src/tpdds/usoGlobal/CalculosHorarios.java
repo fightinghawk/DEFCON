@@ -37,6 +37,6 @@ public class CalculosHorarios {
 	}
 
 	public static boolean disponibilidadDia(int diasDisp, Calendar time){	
-		return diasDisp == Calendar.DAY_OF_WEEK;
+		return diasDisp == time.get(Calendar.DAY_OF_WEEK);
 	}
 }

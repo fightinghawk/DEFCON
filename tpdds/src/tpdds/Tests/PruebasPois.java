@@ -44,7 +44,8 @@ public class PruebasPois {
 		Location ubicacionCGP = new Location(-34.596621, -58.399182);
 		CGP cgp = new CGP("CGP Recoleta", direccionCGO, ubicacionCGP);
 		String[] keyWordsa = { "cgp", "asesoramiento", "dinero" };
-		cgp.setDiasDisp(new DiaPoi(10,20,0,0,7));
+		///DOMINGO=1...LUNES=2...SABADO=7
+		cgp.setDiasDisp(new DiaPoi(10,20,0,0,2));
 		cgp.agregarPalabra(keyWordsa);
 
 		// Genero un BANCO
@@ -57,7 +58,8 @@ public class PruebasPois {
 		Bancos banco = new Bancos("Banco Santander Rio", direccionBanco, ubicacionBanco);
 		String[] keyWords = { "banco", "plata", "dinero" };
 		banco.agregarPalabra(keyWords);
-		banco.setDiasDisp(new DiaPoi(10,20,0,0,7));
+		///DOMINGO=1...LUNES=2...SABADO=7
+		banco.setDiasDisp(new DiaPoi(10,20,0,0,2));
 		banco.setRadioDeCuadras(0.4f);
 
 		// Genero una Parada de Colectivo 101

@@ -12,23 +12,23 @@ import tpdds.usoGlobal.CalculosHorarios;
 
 public class Bancos extends Poi {
 	
-	private float radioDeCuadras;
+	private double radioDeCuadras;
 
 	
 	public Bancos(String nombre, Direccion direccion, Location geoloc) {
 		super(nombre, "Banco", direccion, geoloc);
 	}
 	
-	public float getRadioDeCuadras() {
+	public double getRadioDeCuadras() {
 		return radioDeCuadras;
 	}
 
-	public void setRadioDeCuadras(float radioDeCuadras) {
+	public void setRadioDeCuadras(double radioDeCuadras) {
 		this.radioDeCuadras = radioDeCuadras;
 	}
 	
 	public boolean estaCerca(Localizable localizable) {
-		return Calculos.calcularDistanciaA(this, localizable)>radioDeCuadras;
+		return Calculos.calcularDistanciaA(this, localizable)<radioDeCuadras;
 	}
 
 }
