@@ -64,7 +64,7 @@ public class Main {
 		Bancos banco = new Bancos("Banco Santander Rio", direccionBanco, ubicacionBanco);
 		String[] keyWords = { "banco", "plata", "dinero" };
 		banco.agregarPalabra(keyWords);
-		banco.setDiasDisp(new DiaPoi(10,20,0,0,7));
+		banco.setDiasDisp(new DiaPoi(10,15,0,0,5));
 		banco.setRadioDeCuadras(0.4f);
 
 		// Genero una Parada de Colectivo 101
@@ -114,7 +114,7 @@ public class Main {
 			poi.mostrarDatos();
 		}
 
-		System.out.println("empiesa busqueda de: asesoramiento");
+		System.out.println("empieza busqueda de: asesoramiento");
 
 		ArrayList<Poi> encontradosAsesoramiento = buscadorPOIS("asesoramiento", listaPois);
 
@@ -122,7 +122,7 @@ public class Main {
 			poi.mostrarDatos();
 		}
 
-		System.out.println("empiesa busqueda de: parada");
+		System.out.println("empieza busqueda de: parada");
 
 		ArrayList<Poi> encontradosParadas = buscadorPOIS("parada", listaPois);
 
