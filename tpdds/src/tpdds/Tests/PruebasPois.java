@@ -114,12 +114,14 @@ public class PruebasPois {
 	//Calculador de distancia desde CGP a Banco
 	@Test
 	public void distanciaCGPBanco(){
+		System.out.println("//////////////DISTANCIA ENTRE POIS");
 		Assert.assertTrue(cgp.informarDistanciaA(banco) == 0.15691995201716);
 	}
 	
 	//Cercanía de Pois desde la Terminal
 	@Test
 	public void TerminalEstaCerca(){
+		System.out.println("//////////////POIS CERCA DE TERMINAL");
 		Assert.assertEquals(tablero.estaCerca(listaPois),3);
 	}
 	
@@ -127,6 +129,7 @@ public class PruebasPois {
 	//TIENEN QUE ESTAR LOS 4 POIS DISPONIBLES PORQUE ES LUNES
 	@Test
 	public void EstanDisponibles(){
+		System.out.println("//////////////POIS DISPONIBLES");
 		Assert.assertEquals(tablero.estanDisponible(listaPois, 2, 14, 0),4);
 	}
 	
@@ -134,16 +137,19 @@ public class PruebasPois {
 	//Test de Búsquedas
 	@Test
 	public void Busco60(){
+		System.out.println("//////////////BUSQUEDA POR 60");
 	encontradosParadas = BuscadorPoi.buscar("60", listaPois);
 	Assert.assertEquals(encontradosParadas.size(),1);
 	}
 	@Test
 	public void BuscoTransporte(){
+		System.out.println("//////////////BUSQUEDA POR RUBO TRANSPORTE");
 	encontradosTransporte = BuscadorPoi.buscar("transporte", listaPois);
 	Assert.assertEquals(encontradosTransporte.size(),2);
 	}
 	@Test
 	public void BuscoAsesoramiento(){
+		System.out.println("//////////////BUSQUEDA POR CLAVE ASESORAMIENTO");
 	encontradosAsesoramiento = BuscadorPoi.buscar("asesoramiento", listaPois);
 	Assert.assertEquals(encontradosAsesoramiento.size(),1);
 	}
