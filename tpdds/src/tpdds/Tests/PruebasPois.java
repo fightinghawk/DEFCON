@@ -67,8 +67,12 @@ public class PruebasPois {
 		banco = new Bancos("Banco Santander Rio", direccionBanco, ubicacionBanco);
 		String[] keyWords = { "banco", "plata", "dinero" };
 		banco.agregarPalabra(keyWords);
-		///DOMINGO=1...LUNES=2...SABADO=7
+		///BANCO ABIERTO DE LUNES A VIERNES
 		banco.setDiasDisp(new DiaPoi(10,15,0,0,2));
+		banco.setDiasDisp(new DiaPoi(10,15,0,0,3));
+		banco.setDiasDisp(new DiaPoi(10,15,0,0,4));
+		banco.setDiasDisp(new DiaPoi(10,15,0,0,5));
+		banco.setDiasDisp(new DiaPoi(10,15,0,0,6));
 		banco.setRadioDeCuadras(0.4f);
 
 		// Genero una Parada de Colectivo 101
