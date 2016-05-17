@@ -59,7 +59,7 @@ public class PruebasPois {
 		String[] keyWords = { "banco", "plata", "dinero" };
 		banco.agregarPalabra(keyWords);
 		///DOMINGO=1...LUNES=2...SABADO=7
-		banco.setDiasDisp(new DiaPoi(10,20,0,0,2));
+		banco.setDiasDisp(new DiaPoi(10,15,0,0,2));
 		banco.setRadioDeCuadras(0.4f);
 
 		// Genero una Parada de Colectivo 101

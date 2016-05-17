@@ -51,7 +51,8 @@ public class Main {
 		Location ubicacionCGP = new Location(-34.596621, -58.399182);
 		CGP cgp = new CGP("CGP Recoleta", direccionCGO, ubicacionCGP);
 		String[] keyWordsa = { "cgp", "asesoramiento", "dinero" };
-		cgp.setDiasDisp(new DiaPoi(10,20,0,0,7));
+		///DOMINGO=1...LUNES=2...SABADO=7
+		cgp.setDiasDisp(new DiaPoi(10,20,0,0,2));
 		cgp.agregarPalabra(keyWordsa);
 
 		// Genero un BANCO
@@ -64,7 +65,8 @@ public class Main {
 		Bancos banco = new Bancos("Banco Santander Rio", direccionBanco, ubicacionBanco);
 		String[] keyWords = { "banco", "plata", "dinero" };
 		banco.agregarPalabra(keyWords);
-		banco.setDiasDisp(new DiaPoi(10,15,0,0,5));
+		///DOMINGO=1...LUNES=2...SABADO=7
+		banco.setDiasDisp(new DiaPoi(10,15,0,0,2));
 		banco.setRadioDeCuadras(0.4f);
 
 		// Genero una Parada de Colectivo 101
@@ -106,7 +108,7 @@ public class Main {
 		tablero.estaCerca(listaPois);
 		System.out.println("-------------------------");
 		System.out.println("//////PRUEBAS DE BUSQUEDAS");
-		System.out.println("empiesa busqueda de: dinero");
+		System.out.println("empieza busqueda de: dinero");
 
 		ArrayList<Poi> encontrados = buscadorPOIS("dinero", listaPois);
 
@@ -131,8 +133,8 @@ public class Main {
 		}
 		
 		for (Poi poi : listaPois) {
-			// Ak es un 3 xq toma el dia del mes y no de la semana
-			if(poi.estaDisponible(5, 14, 0)){
+			// QUE POIS ESTAN ABIERTO EL 2 DE MAYO
+			if(poi.estaDisponible(2, 14, 0)){
 				System.out.println("El poi " + poi.getNombre() +" esta disponible");
 			}
 			else
