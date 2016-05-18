@@ -54,9 +54,47 @@ public class PruebasPois {
 		cgp = new CGP("CGP Recoleta", direccionCGO, ubicacionCGP);
 		String[] keyWordsa = { "cgp", "asesoramiento", "dinero" };
 		///DOMINGO=1...LUNES=2...SABADO=7
-		cgp.setDiasDisp(new DiaPoi(10,20,0,0,2));
+		cgp.setDiasDisp(new DiaPoi(8,19,0,0,2));
+		cgp.setDiasDisp(new DiaPoi(8,19,0,0,3));
+		cgp.setDiasDisp(new DiaPoi(8,19,0,0,4));
+		cgp.setDiasDisp(new DiaPoi(8,19,0,0,5));
+		cgp.setDiasDisp(new DiaPoi(8,19,0,0,6));
 		cgp.agregarPalabra(keyWordsa);
-
+		
+		Direccion direccionCG1 = new Direccion();
+		direccionCG1.setCallePrincipal("DIAZ, CNEL. AV");
+		direccionCG1.setCalleLateralIzq("BERUTI");
+		direccionCG1.setCalleLateralDer("JUNCAL");
+		direccionCG1.setBarrio("Recoleta");
+		direccionCG1.setAltura(2110);
+		Location ubicacionCGP1 = new Location(-34.587158, -58.409308);
+		CGP cgp14 = new CGP("CGP Palermo", direccionCG1, ubicacionCGP1);
+		String[] keyWordsa14 = { "cgp", "asesoramiento", "dinero", "rentas", "casamientos"};
+		///DOMINGO=1...LUNES=2...SABADO=7
+		cgp14.setDiasDisp(new DiaPoi(8,19,0,0,2));
+		cgp14.setDiasDisp(new DiaPoi(8,19,0,0,3));
+		cgp14.setDiasDisp(new DiaPoi(8,19,0,0,4));
+		cgp14.setDiasDisp(new DiaPoi(8,19,0,0,5));
+		cgp14.setDiasDisp(new DiaPoi(8,19,0,0,6));
+		cgp14.agregarPalabra(keyWordsa14);
+		
+		Direccion direccionCG2 = new Direccion();
+		direccionCG2.setCallePrincipal("CABILDO AV.");
+		direccionCG2.setCalleLateralIzq("IBERA");
+		direccionCG2.setCalleLateralDer("QUESADA");
+		direccionCG2.setBarrio("Núnez");
+		direccionCG2.setAltura(3067);
+		Location ubicacionCGP2 = new Location(-34.553653, -58.463612);
+		CGP cgp13 = new CGP("CGP Núñez", direccionCG2, ubicacionCGP2);
+		String[] keyWordsa13 = { "cgp", "asesoramiento", "habilitaciones", "partidas"};
+		///DOMINGO=1...LUNES=2...SABADO=7
+		cgp13.setDiasDisp(new DiaPoi(8,19,0,0,2));
+		cgp13.setDiasDisp(new DiaPoi(8,19,0,0,3));
+		cgp13.setDiasDisp(new DiaPoi(8,19,0,0,4));
+		cgp13.setDiasDisp(new DiaPoi(8,19,0,0,5));
+		cgp13.setDiasDisp(new DiaPoi(8,19,0,0,6));
+		cgp13.agregarPalabra(keyWordsa13);
+		
 		// Genero un BANCO
 		Direccion direccionBanco = new Direccion();
 		direccionBanco.setCallePrincipal("SANTA FE AV.");
@@ -101,6 +139,8 @@ public class PruebasPois {
 
 		// Agrego los pois a la coleccion
 		listaPois.add(cgp);
+		listaPois.add(cgp14);
+		listaPois.add(cgp13);
 		listaPois.add(banco);
 		listaPois.add(parada101);
 		listaPois.add(parada60);
