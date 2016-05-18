@@ -10,6 +10,7 @@ import tpdds.dispositivo.Dispositivo;
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;
 import tpdds.pois.DiaPoi;
+import tpdds.pois.LocalesComerciales;
 import tpdds.pois.ParadaColectivo;
 import tpdds.pois.Poi;
 import tpdds.ubicacion.Comuna;
@@ -24,6 +25,8 @@ public class PruebasPois {
 	ArrayList<Poi> encontradosTransporte;
 	ArrayList<Poi> encontradosAsesoramiento;
 	CGP cgp;
+	CGP cgp14;
+	CGP cgp13;
 	Bancos banco;
 	ParadaColectivo parada101;
 	ParadaColectivo parada60;
@@ -68,7 +71,7 @@ public class PruebasPois {
 		direccionCG1.setBarrio("Palermo");
 		direccionCG1.setAltura(2110);
 		Location ubicacionCGP1 = new Location(-34.587158, -58.409308);
-		CGP cgp14 = new CGP("CGP Palermo", direccionCG1, ubicacionCGP1);
+		cgp14 = new CGP("CGP Palermo", direccionCG1, ubicacionCGP1);
 		String[] keyWordsa14 = { "cgp", "dinero", "rentas", "casamientos"};
 		///DOMINGO=1...LUNES=2...SABADO=7
 		//cgp14.setDiasDisp(new DiaPoi(8,19,0,0,2));
@@ -85,7 +88,7 @@ public class PruebasPois {
 		direccionCG2.setBarrio("Núnez");
 		direccionCG2.setAltura(3067);
 		Location ubicacionCGP2 = new Location(-34.553653, -58.463612);
-		CGP cgp13 = new CGP("CGP Núñez", direccionCG2, ubicacionCGP2);
+		cgp13 = new CGP("CGP Núñez", direccionCG2, ubicacionCGP2);
 		String[] keyWordsa13 = { "cgp", "asesoramiento", "habilitaciones", "partidas"};
 		///DOMINGO=1...LUNES=2...SABADO=7
 		cgp13.setDiasDisp(new DiaPoi(8,19,0,0,2));
@@ -112,6 +115,37 @@ public class PruebasPois {
 		banco.setDiasDisp(new DiaPoi(10,15,0,0,5));
 		banco.setDiasDisp(new DiaPoi(10,15,0,0,6));
 		banco.setRadioDeCuadras(0.4f);
+		
+		//Genero un local comercial
+		Direccion dirLocal1 = new Direccion();
+		dirLocal1.setCallePrincipal("LA PLATA");
+		dirLocal1.setCalleLateralIzq("INCLAN");
+		dirLocal1.setCalleLateralDer("LAS CASAS");
+		dirLocal1.setAltura(1650);
+		Location ubicLocal1 = new Location(-34.634733, -58.423749);
+		LocalesComerciales local1 = new LocalesComerciales("Carrefour", "Supermercado", dirLocal1, ubicLocal1);
+		
+		
+		Direccion dirLocal2 = new Direccion();
+		dirLocal2.setCallePrincipal("JUNIN");
+		dirLocal2.setCalleLateralIzq("TUCUMAN");
+		dirLocal2.setCalleLateralDer("VIAMONTE");
+		dirLocal2.setAltura(611);
+		Location ubicLocal2 = new Location(-34.602008, -58.396915);
+		LocalesComerciales local2 = new LocalesComerciales("Carnicería Tomasito", "Carnicería", dirLocal2, ubicLocal2);
+		local2.setDiasDisp(new DiaPoi(9, 13, 0, 0, 1));
+		local2.setDiasDisp(new DiaPoi(9, 13, 0, 0, 2));
+		local2.setDiasDisp(new DiaPoi(17, 21, 0, 0, 2));
+		local2.setDiasDisp(new DiaPoi(9, 13, 0, 0, 3));
+		local2.setDiasDisp(new DiaPoi(17, 21, 0, 0, 3));
+		local2.setDiasDisp(new DiaPoi(9, 13, 0, 0, 4));
+		local2.setDiasDisp(new DiaPoi(17, 21, 0, 0, 4));
+		local2.setDiasDisp(new DiaPoi(9, 13, 0, 0, 5));
+		local2.setDiasDisp(new DiaPoi(17, 21, 0, 0, 5));
+		local2.setDiasDisp(new DiaPoi(9, 13, 0, 0, 6));
+		local2.setDiasDisp(new DiaPoi(17, 21, 0, 0, 6));
+		local2.setDiasDisp(new DiaPoi(9, 13, 0, 0, 7));
+		local2.setDiasDisp(new DiaPoi(17, 21, 0, 0, 7));
 
 		// Genero una Parada de Colectivo 101
 
@@ -142,6 +176,7 @@ public class PruebasPois {
 		listaPois.add(cgp14);
 		listaPois.add(cgp13);
 		listaPois.add(banco);
+		listaPois.add(local2);
 		listaPois.add(parada101);
 		listaPois.add(parada60);
 	}
@@ -160,6 +195,8 @@ public class PruebasPois {
 	public void distanciaCGPBanco(){
 		System.out.println("//////////////DISTANCIA ENTRE POIS");
 		Assert.assertTrue(cgp.informarDistanciaA(banco) == 0.15691995201716);
+		Assert.assertTrue(cgp14.informarDistanciaA(banco) == 0.15691995201716);
+		Assert.assertTrue(cgp13.informarDistanciaA(banco) == 0.15691995201716);
 	}
 	
 	//Cercanía de Pois desde la Terminal
