@@ -20,7 +20,7 @@ public class Comuna {
 	
 	public static int obtenerNroComunaDelBarrio(String barrio){
 		for (Comuna comuna : comunas) {
-			comuna.barrios.contains(barrio.toLowerCase());
+			if(comuna.barrios.contains(barrio.toLowerCase()))
 			return comuna.numeroComuna;
 		}	
 		return -1;

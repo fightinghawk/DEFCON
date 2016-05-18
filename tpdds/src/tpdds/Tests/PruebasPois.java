@@ -65,13 +65,13 @@ public class PruebasPois {
 		direccionCG1.setCallePrincipal("DIAZ, CNEL. AV");
 		direccionCG1.setCalleLateralIzq("BERUTI");
 		direccionCG1.setCalleLateralDer("JUNCAL");
-		direccionCG1.setBarrio("Recoleta");
+		direccionCG1.setBarrio("Palermo");
 		direccionCG1.setAltura(2110);
 		Location ubicacionCGP1 = new Location(-34.587158, -58.409308);
 		CGP cgp14 = new CGP("CGP Palermo", direccionCG1, ubicacionCGP1);
-		String[] keyWordsa14 = { "cgp", "asesoramiento", "dinero", "rentas", "casamientos"};
+		String[] keyWordsa14 = { "cgp", "dinero", "rentas", "casamientos"};
 		///DOMINGO=1...LUNES=2...SABADO=7
-		cgp14.setDiasDisp(new DiaPoi(8,19,0,0,2));
+		//cgp14.setDiasDisp(new DiaPoi(8,19,0,0,2));
 		cgp14.setDiasDisp(new DiaPoi(8,19,0,0,3));
 		cgp14.setDiasDisp(new DiaPoi(8,19,0,0,4));
 		cgp14.setDiasDisp(new DiaPoi(8,19,0,0,5));
@@ -174,7 +174,7 @@ public class PruebasPois {
 	@Test
 	public void EstanDisponibles(){
 		System.out.println("//////////////POIS DISPONIBLES");
-		Assert.assertEquals(tablero.estanDisponible(listaPois, 2, 14, 0),4);
+		Assert.assertEquals(tablero.estanDisponible(listaPois, 2, 14, 0),5);
 	}
 	
 	
@@ -195,7 +195,7 @@ public class PruebasPois {
 	public void BuscoAsesoramiento(){
 		System.out.println("//////////////BUSQUEDA POR CLAVE ASESORAMIENTO");
 	encontradosAsesoramiento = BuscadorPoi.buscar("asesoramiento", listaPois);
-	Assert.assertEquals(encontradosAsesoramiento.size(),1);
+	Assert.assertEquals(encontradosAsesoramiento.size(),2);
 	}
 	
 	
