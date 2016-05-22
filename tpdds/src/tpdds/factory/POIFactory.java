@@ -1,4 +1,4 @@
-package factory;
+package tpdds.factory;
 
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;

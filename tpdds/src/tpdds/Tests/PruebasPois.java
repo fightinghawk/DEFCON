@@ -6,9 +6,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import factory.POIFactory;
-import factory.horarioFactory;
 import tpdds.dispositivo.Dispositivo;
+import tpdds.factory.POIFactory;
+import tpdds.factory.horarioFactory;
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;
 import tpdds.pois.DiaPoi;
