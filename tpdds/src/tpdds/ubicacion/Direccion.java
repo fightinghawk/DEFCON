@@ -116,4 +116,59 @@ public class Direccion {
 		return (callePrincipal + " " + this.altura);
 	}
 
+	//Constructores
+	
+	/*
+	 * Lugar ubicado en dirección sin código postal
+	 */
+	public Direccion(String callePrincipal, int altura, 
+			String calleLateralIzquierda, String calleLateralDerecha, 
+			String barrio)
+	{
+	this.callePrincipal = callePrincipal;
+	this.altura = altura;
+	this.calleLateralIzq = calleLateralIzquierda;
+	this.calleLateralDer = calleLateralDerecha;
+	this.barrio = barrio;
+	}
+	
+	/*
+	 * Lugar ubicado en dirección con código postal
+	 */
+	public Direccion(String callePrincipal, int altura, 
+					String calleLateralIzquierda, String calleLateralDerecha, 
+					int codigoPostal,
+					String barrio)
+	{
+		this.callePrincipal = callePrincipal;
+		this.altura = altura;
+		this.calleLateralIzq = calleLateralIzquierda;
+		this.calleLateralDer = calleLateralDerecha;
+		this.codPostal = codigoPostal;
+		this.barrio = barrio;
+	}
+	
+	/*
+	 * Lugar ubicado en propiedad horizontal
+	 */
+	public Direccion(String callePrincipal, int altura, 
+			String calleLateralIzquierda, String calleLateralDerecha, 
+			int piso,
+			char departamento,
+			int codigoPostal,
+			String barrio)
+	{
+	this.callePrincipal = callePrincipal;
+	this.altura = altura;
+	this.calleLateralIzq = calleLateralIzquierda;
+	this.calleLateralDer = calleLateralDerecha;
+	this.piso = piso;
+	this.dpto = departamento;
+	this.codPostal = codigoPostal;
+	this.barrio = barrio;
+	}
+	//FIN Constructores
+	//TODO más contructores
+	
+	
 }

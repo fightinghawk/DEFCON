@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import factory.POIFactory;
+import factory.horarioFactory;
 import tpdds.dispositivo.Dispositivo;
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;
@@ -38,6 +40,7 @@ public class PruebasPois {
 		listaPois = new ArrayList<Poi>();
 		
 		// Genero un dispositivo para localizar pois
+		/*
 		Direccion direTablero = new Direccion();
 		direTablero.setCallePrincipal("PARAGUAY");
 		direTablero.setBarrio("Recoleta");
@@ -45,8 +48,15 @@ public class PruebasPois {
 		Location ubicacionTablero = new Location(-34.598415, -58.398260);
 		tablero = new Dispositivo(1, direTablero, ubicacionTablero);
 		tablero.setNombre("Dispositivo de prueba");
-
+		*/
+		Direccion direTablero = new Direccion("PARAGUAY", 2155, null, null, "RECOLETA");
+		Location ubicacionTablero = new Location(-34.598415, -58.398260);
+		tablero = new Dispositivo(1, direTablero, ubicacionTablero);
+		tablero.setNombre("Dispositivo de prueba");
+		
+		
 		// Genero un CGP
+		/*
 		Direccion direccionCGO = new Direccion();
 		direccionCGO.setCallePrincipal("URIBURU");
 		direccionCGO.setCalleLateralIzq("SANTA FE AV.");
@@ -63,7 +73,18 @@ public class PruebasPois {
 		cgp.setDiasDisp(new DiaPoi(8,19,0,0,5));
 		cgp.setDiasDisp(new DiaPoi(8,19,0,0,6));
 		cgp.agregarPalabra(keyWordsa);
+		*/
 		
+		//INICIO CGP Comuna 2
+		String[] keyWordsa = { "cgp", "asesoramiento", "dinero" };
+		cgp = POIFactory.crearCGP("CGP Recoleta", 
+							"URIBURU", 1020, "SANTA FE AV.", "ALVEAR, MARCELO T. DE", 
+							"RECOLETA", 
+							-34.596621, -58.399182, 
+							keyWordsa);
+		//FIN CGP Comuna 2
+		
+		/*
 		Direccion direccionCG1 = new Direccion();
 		direccionCG1.setCallePrincipal("DIAZ, CNEL. AV");
 		direccionCG1.setCalleLateralIzq("BERUTI");
@@ -80,7 +101,9 @@ public class PruebasPois {
 		cgp14.setDiasDisp(new DiaPoi(8,19,0,0,5));
 		cgp14.setDiasDisp(new DiaPoi(8,19,0,0,6));
 		cgp14.agregarPalabra(keyWordsa14);
+		*/
 		
+		/*
 		Direccion direccionCG2 = new Direccion();
 		direccionCG2.setCallePrincipal("CABILDO AV.");
 		direccionCG2.setCalleLateralIzq("IBERA");
@@ -97,8 +120,10 @@ public class PruebasPois {
 		cgp13.setDiasDisp(new DiaPoi(8,19,0,0,5));
 		cgp13.setDiasDisp(new DiaPoi(8,19,0,0,6));
 		cgp13.agregarPalabra(keyWordsa13);
+		*/
 		
 		// Genero un BANCO
+		/*
 		Direccion direccionBanco = new Direccion();
 		direccionBanco.setCallePrincipal("SANTA FE AV.");
 		direccionBanco.setCalleLateralIzq("URIBURU");
@@ -115,8 +140,20 @@ public class PruebasPois {
 		banco.setDiasDisp(new DiaPoi(10,15,0,0,5));
 		banco.setDiasDisp(new DiaPoi(10,15,0,0,6));
 		banco.setRadioDeCuadras(0.4f);
+		*/
+		
+		//INICIO Banco1
+		String[] keyWords = { "banco", "plata", "dinero" };
+		banco = POIFactory.crearBanco("SANTANDER RIO", 
+								"SANTA FE AV.", 2201, 
+								"URIBURU", "AZCUENAGA", 
+								"Recoleta", 
+								-34.595290, -58.398612, 
+								keyWords);
+		
 		
 		//Genero un local comercial
+		/*
 		Direccion dirLocal1 = new Direccion();
 		dirLocal1.setCallePrincipal("LA PLATA");
 		dirLocal1.setCalleLateralIzq("INCLAN");
@@ -124,8 +161,8 @@ public class PruebasPois {
 		dirLocal1.setAltura(1650);
 		Location ubicLocal1 = new Location(-34.634733, -58.423749);
 		LocalesComerciales local1 = new LocalesComerciales("Carrefour", "Supermercado", dirLocal1, ubicLocal1);
-		
-		
+		*/
+		/*
 		Direccion dirLocal2 = new Direccion();
 		dirLocal2.setCallePrincipal("JUNIN");
 		dirLocal2.setCalleLateralIzq("TUCUMAN");
@@ -146,9 +183,10 @@ public class PruebasPois {
 		local2.setDiasDisp(new DiaPoi(17, 21, 0, 0, 6));
 		local2.setDiasDisp(new DiaPoi(9, 13, 0, 0, 7));
 		local2.setDiasDisp(new DiaPoi(17, 21, 0, 0, 7));
-
+		*/
+		
 		// Genero una Parada de Colectivo 101
-
+		/*
 		Direccion direccionParada101 = new Direccion();
 		direccionParada101.setCallePrincipal("PARAGUAY");
 		direccionParada101.setCalleLateralIzq("URIBURU");
@@ -158,9 +196,18 @@ public class PruebasPois {
 		parada101 = new ParadaColectivo("Parada 101", direccionParada101, ubicacionParada101);
 		String[] keyWords101 = { "transporte", "101", "parada" };
 		parada101.agregarPalabra(keyWords101);
+		*/
+		
+		String[] keyWords101 = { "transporte", "101", "parada" };
+		parada101 = POIFactory.crearParadaColectivo("Parada 101", 
+										"URIBURU", 985, 
+										"PARAGUAY", "ALVEAR, MARCELO T. DE", 
+										"", 
+										-34.597410, -58.398852, 
+										keyWords101);
 
 		// Genero una Parada de Colectivo 60
-
+		/*
 		Direccion direccionParada60 = new Direccion();
 		direccionParada60.setCallePrincipal("AYACUCHO");
 		direccionParada60.setCalleLateralIzq("PARAGUAY");
@@ -170,13 +217,22 @@ public class PruebasPois {
 		parada60 = new ParadaColectivo("Parada 60", direccionParada60, ubicacionParada60);
 		String[] keyWords60 = { "transporte", "60", "parada" };
 		parada60.agregarPalabra(keyWords60);
-
+		*/
+		
+		String[] keyWords60 = { "transporte", "60", "parada" };
+		parada60 = POIFactory.crearParadaColectivo("Parada 60", 
+										"AYACUCHO", 789, 
+										"CORDOBA", "VIAMONTE", 
+										"Balvanera", 
+										-34.599834, -58.395714, 
+										keyWords60);
+		
 		// Agrego los pois a la coleccion
 		listaPois.add(cgp);
 		listaPois.add(cgp14);
 		listaPois.add(cgp13);
 		listaPois.add(banco);
-		listaPois.add(local2);
+		//listaPois.add(local2);
 		listaPois.add(parada101);
 		listaPois.add(parada60);
 	}
@@ -195,8 +251,10 @@ public class PruebasPois {
 	public void distanciaCGPBanco(){
 		System.out.println("//////////////DISTANCIA ENTRE POIS");
 		Assert.assertTrue(cgp.informarDistanciaA(banco) == 0.15691995201716);
+		/*
 		Assert.assertTrue(cgp14.informarDistanciaA(banco) == 0.15691995201716);
 		Assert.assertTrue(cgp13.informarDistanciaA(banco) == 0.15691995201716);
+		*/
 	}
 	
 	//Cercanía de Pois desde la Terminal
@@ -224,7 +282,7 @@ public class PruebasPois {
 	}
 	@Test
 	public void BuscoTransporte(){
-		System.out.println("//////////////BUSQUEDA POR RUBO TRANSPORTE");
+		System.out.println("//////////////BUSQUEDA POR RUBRO TRANSPORTE");
 	encontradosTransporte = BuscadorPoi.buscar("transporte", listaPois);
 	Assert.assertEquals(encontradosTransporte.size(),2);
 	}
