@@ -11,9 +11,7 @@ public class Direccion {
 	private char dpto;
 	private int unidad;
 	private String barrio;
-	private String provincia;
 	private String localidad;
-	private String pais;
 
 	public String getCallePrincipal() {
 		return callePrincipal;
@@ -87,28 +85,12 @@ public class Direccion {
 		this.barrio = barrio;
 	}
 
-	public String getProvincia() {
-		return provincia;
-	}
-
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
-	}
-
 	public String getLocalidad() {
 		return localidad;
 	}
 
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
-	}
-
-	public String getPais() {
-		return pais;
-	}
-
-	public void setPais(String pais) {
-		this.pais = pais;
 	}
 
 	// Muestra Info Basica del Domicilio usado por POI
@@ -119,7 +101,7 @@ public class Direccion {
 	//Constructores
 	
 	/*
-	 * Lugar ubicado en direcci髇 sin c骴igo postal
+	 * Lugar ubicado en direcci贸n sin c贸digo postal
 	 */
 	public Direccion(String callePrincipal, int altura, 
 			String calleLateralIzquierda, String calleLateralDerecha, 
@@ -133,7 +115,7 @@ public class Direccion {
 	}
 	
 	/*
-	 * Lugar ubicado en direcci髇 con c骴igo postal
+	 * Lugar ubicado en direcci贸n con c贸digo postal
 	 */
 	public Direccion(String callePrincipal, int altura, 
 					String calleLateralIzquierda, String calleLateralDerecha, 
@@ -168,7 +150,7 @@ public class Direccion {
 	this.barrio = barrio;
 	}
 	//FIN Constructores
-	//TODO m醩 contructores
+	//TODO m谩s contructores
 	
 	
 }
