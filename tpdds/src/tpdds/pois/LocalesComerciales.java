@@ -10,7 +10,7 @@ import tpdds.ubicacion.Location;
 import tpdds.usoGlobal.Calculos;
 import tpdds.usoGlobal.CalculosHorarios;
 
-public class LocalesComerciales extends Poi {
+public class LocalesComerciales extends Poi  {
 	
 	private double radioDeCuadras;
 	

@@ -1,6 +1,8 @@
 package tpdds.pois;
 
-public class DiaPoi {
+import java.io.Serializable;
+
+public class DiaPoi implements Serializable {
 	private int horaApertura;
 	private int horaClose;
 	private int minApertura = 0;

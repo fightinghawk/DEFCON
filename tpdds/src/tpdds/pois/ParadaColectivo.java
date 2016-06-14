@@ -8,7 +8,7 @@ import tpdds.ubicacion.Localizable;
 import tpdds.ubicacion.Location;
 import tpdds.usoGlobal.Calculos;
 
-public class ParadaColectivo extends Poi {
+public class ParadaColectivo extends Poi  {
 
 	private double criterioCuadras = 0.1;
 

@@ -1,6 +1,8 @@
 package tpdds.ubicacion;
 
-public class Direccion {
+import java.io.Serializable;
+
+public class Direccion implements Serializable {
 
 	private String callePrincipal;
 	private String calleLateralIzq;

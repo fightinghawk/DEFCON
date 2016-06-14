@@ -5,7 +5,7 @@ import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Localizable;
 import tpdds.ubicacion.Location;
 
-public class CGP extends Poi {
+public class CGP extends Poi  {
 	
 	public CGP(String nombre, Direccion direccion, Location geoloc) {
 		super(nombre, "CGP", direccion, geoloc);

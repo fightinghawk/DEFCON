@@ -1,5 +1,6 @@
 package tpdds.pois;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -13,7 +14,7 @@ import tpdds.ubicacion.Location;
 import tpdds.usoGlobal.Calculos;
 import tpdds.usoGlobal.CalculosHorarios;
 
-public abstract class Poi implements Localizable {
+public abstract class Poi implements Localizable, Serializable {
 
 	private String nombre;
 	private String tipo;

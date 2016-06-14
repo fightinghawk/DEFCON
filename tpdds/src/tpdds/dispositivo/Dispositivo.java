@@ -1,5 +1,6 @@
 package tpdds.dispositivo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import tpdds.pois.Poi;
@@ -7,7 +8,7 @@ import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Localizable;
 import tpdds.ubicacion.Location;
 
-public class Dispositivo implements Localizable {
+public class Dispositivo implements Localizable, Serializable {
 
 	private Location geoloc;
 	private int id;
