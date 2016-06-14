@@ -102,6 +102,12 @@ public class PruebasPois {
 		cgp14.setDiasDisp(new DiaPoi(8,19,0,0,6));
 		cgp14.agregarPalabra(keyWordsa14);
 		*/
+		String[] keyWordsa14 = { "cgp", "dinero", "rentas", "casamientos"};
+		cgp14 = POIFactory.crearCGP("CGP Palermo", 
+							"DIAZ, CNEL. AV", 2110, "BERUTI", "JUNCAL", 
+							"PALERMO", 
+							-34.587158, -58.409308, 
+							keyWordsa14);
 		
 		/*
 		Direccion direccionCG2 = new Direccion();
@@ -121,6 +127,12 @@ public class PruebasPois {
 		cgp13.setDiasDisp(new DiaPoi(8,19,0,0,6));
 		cgp13.agregarPalabra(keyWordsa13);
 		*/
+		String[] keyWordsa13 = { "cgp", "asesoramiento", "habilitaciones", "partidas"};
+		cgp13 = POIFactory.crearCGP("CGP Núñez", 
+							"CABILDO AV.", 3067, "IBERA", "QUESADA", 
+							"Núnez", 
+							-34.553653, -58.463612, 
+							keyWordsa13);
 		
 		// Genero un BANCO
 		/*
@@ -200,10 +212,10 @@ public class PruebasPois {
 		
 		String[] keyWords101 = { "transporte", "101", "parada" };
 		parada101 = POIFactory.crearParadaColectivo("Parada 101", 
-										"URIBURU", 985, 
-										"PARAGUAY", "ALVEAR, MARCELO T. DE", 
-										"", 
-										-34.597410, -58.398852, 
+										"PARAGUAY", 2200, 
+										"URIBURU", "URIBURU", 
+										"Balvanera", 
+										-34.598283, -58.399035, 
 										keyWords101);
 
 		// Genero una Parada de Colectivo 60
@@ -221,10 +233,10 @@ public class PruebasPois {
 		
 		String[] keyWords60 = { "transporte", "60", "parada" };
 		parada60 = POIFactory.crearParadaColectivo("Parada 60", 
-										"AYACUCHO", 789, 
-										"CORDOBA", "VIAMONTE", 
+										"AYACUCHO", 901, 
+										"PARAGUAY", "PARAGUAY", 
 										"Balvanera", 
-										-34.599834, -58.395714, 
+										-34.598700, -58.395881, 
 										keyWords60);
 		
 		// Agrego los pois a la coleccion
