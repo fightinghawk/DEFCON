@@ -289,7 +289,7 @@ public class PruebasPois {
 	@Test
 	public void TerminalEstaCerca(){
 		System.out.println("//////////////POIS CERCA DE TERMINAL");
-		Assert.assertEquals(tablero.estaCerca(listaPois),3);
+		Assert.assertEquals(tablero.estaCerca(listaPois),2);
 	}
 	
 	//TEST DISPONIBILIDAD - QUE POIS ESTAN ABIERTO EL 2 DE MAYO
@@ -297,7 +297,7 @@ public class PruebasPois {
 	@Test
 	public void EstanDisponibles(){
 		System.out.println("//////////////POIS DISPONIBLES");
-		Assert.assertEquals(tablero.estanDisponible(listaPois, 2, 14, 0),5);
+		Assert.assertEquals(tablero.estanDisponible(listaPois, 2, 14, 0),6);
 	}
 	
 	
