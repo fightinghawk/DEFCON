@@ -1,7 +1,10 @@
 package tpdds.Archivos;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
@@ -24,17 +27,9 @@ public class archivos {
 		CGP cgp13;
 		Bancos banco;
 		ParadaColectivo parada101;
-		ParadaColectivo parada60;
 		Dispositivo tablero;
-		
-		String arch = "example.dat";
-		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(arch));
-		ObjectOutputStream oos = new ObjectOutputStream(bos);
-		
-		Direccion direTablero = new Direccion("PARAGUAY", 2155, null, null, "RECOLETA");
-		Location ubicacionTablero = new Location(-34.598415, -58.398260);
-		tablero = new Dispositivo(1, direTablero, ubicacionTablero);
-		tablero.setNombre("Dispositivo de prueba");
+		tablero = archivos.obtenerTablero();
+
 		
 		String[] keyWordsa = { "cgp", "asesoramiento", "dinero" };
 		cgp = POIFactory.crearCGP("CGP Recoleta", 
@@ -68,6 +63,15 @@ public class archivos {
 										"Balvanera", 
 										-34.598283, -58.399035, 
 										keyWords101);
+		
+		listaPois = new ArrayList<Poi>();
+		tablero.agregarPOI(cgp, listaPois);
+		tablero.agregarPOI(cgp14, listaPois);
+		tablero.agregarPOI(cgp13, listaPois);
+		tablero.agregarPOI(banco, listaPois);
+		tablero.agregarPOI(parada101, listaPois);
+		
+		ParadaColectivo parada60;
 		String[] keyWords60 = { "transporte", "60", "parada" };
 		parada60 = POIFactory.crearParadaColectivo("Parada 60", 
 										"AYACUCHO", 901, 
@@ -76,20 +80,49 @@ public class archivos {
 										-34.598700, -58.395881, 
 										keyWords60);
 		
-		listaPois = new ArrayList<Poi>();
-		listaPois.add(cgp);
-		listaPois.add(cgp14);
-		listaPois.add(cgp13);
-		listaPois.add(banco);
-		//listaPois.add(local2);
-		listaPois.add(parada101);
-		listaPois.add(parada60);
+		tablero.agregarPOI(parada60, listaPois);
+		tablero.agregarPOI(parada60, listaPois);
+		tablero.eliminarPOI("parada 60", listaPois);
+		archivos.grabarArchivo(listaPois);
+	}
+	
+	public static void grabarArchivo(ArrayList<Poi> listaPois) throws Exception
+	{
+		String arch = "example1.dat";
+		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(arch));
+		ObjectOutputStream oos = new ObjectOutputStream(bos);
 		
-		oos.writeObject(tablero);
 		oos.writeObject(listaPois);
 		
 		oos.close();
 		bos.close();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public static ArrayList<Poi> leerArchivo(String archivo) throws Exception
+	{
+		String arch = archivo;
+		ArrayList<Poi> listaPois;
+		BufferedInputStream bis = new BufferedInputStream(new FileInputStream(arch));
+		ObjectInputStream ois = new ObjectInputStream(bis);
+		
+		listaPois = (ArrayList<Poi>)ois.readObject();
 
+		ois.close();
+		bis.close();
+		
+		return listaPois;
+	}
+
+	public static Dispositivo obtenerTablero()
+	{
+		Dispositivo tablero;
+		
+		Direccion direTablero = new Direccion("PARAGUAY", 2155, null, null, "RECOLETA");
+		Location ubicacionTablero = new Location(-34.598415, -58.398260);
+		tablero = new Dispositivo(1, direTablero, ubicacionTablero);
+		tablero.setNombre("Dispositivo de prueba");
+		
+		return tablero;
+	}
 }

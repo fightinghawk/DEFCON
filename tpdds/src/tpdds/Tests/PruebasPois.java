@@ -14,6 +14,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import tpdds.Archivos.archivos;
 import tpdds.dispositivo.Dispositivo;
 import tpdds.factory.POIFactory;
 import tpdds.factory.horarioFactory;
@@ -41,18 +42,9 @@ public class PruebasPois {
 	public void creacionPOI() throws Exception{
 		Comuna.inicializarComunas();
 		
-		String arch = "example.dat";
-		BufferedInputStream bis = new BufferedInputStream(new FileInputStream(arch));
-		ObjectInputStream ois = new ObjectInputStream(bis);
-		
-		tablero = (Dispositivo)ois.readObject();
-		listaPois = (ArrayList<Poi>)ois.readObject();
-		
-		ois.close();
-		bis.close();
-		
-		
-		
+		tablero = archivos.obtenerTablero();
+		listaPois = archivos.leerArchivo("example1.dat");
+				
 	/*	listaPois = new ArrayList<Poi>();
 		
 		// Genero un dispositivo para localizar pois
@@ -289,7 +281,7 @@ public class PruebasPois {
 	@Test
 	public void TerminalEstaCerca(){
 		System.out.println("//////////////POIS CERCA DE TERMINAL");
-		Assert.assertEquals(tablero.estaCerca(listaPois),3);
+		Assert.assertEquals(tablero.estaCerca(listaPois),2);
 	}
 	
 	//TEST DISPONIBILIDAD - QUE POIS ESTAN ABIERTO EL 2 DE MAYO
@@ -297,7 +289,7 @@ public class PruebasPois {
 	@Test
 	public void EstanDisponibles(){
 		System.out.println("//////////////POIS DISPONIBLES");
-		Assert.assertEquals(tablero.estanDisponible(listaPois, 2, 14, 0),5);
+		Assert.assertEquals(tablero.estanDisponible(listaPois, 2, 14, 0),6);
 	}
 	
 	
@@ -319,6 +311,11 @@ public class PruebasPois {
 		System.out.println("//////////////BUSQUEDA POR CLAVE ASESORAMIENTO");
 	encontradosAsesoramiento = BuscadorPoi.buscar("asesoramiento", listaPois);
 	Assert.assertEquals(encontradosAsesoramiento.size(),2);
+	}
+	@Test
+	public void agregarColectivo60() throws Exception{
+	System.out.println("//////////////AGREGAR/QUITAR POI");
+	Assert.assertEquals(listaPois.size(),6);
 	}
 	
 	

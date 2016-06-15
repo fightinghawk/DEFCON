@@ -93,4 +93,21 @@ public class Dispositivo implements Localizable, Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	public ArrayList<Poi> agregarPOI(Poi poi, ArrayList<Poi> listaPois) {
+		listaPois.add(poi);
+		return listaPois;
+	}
+
+	public ArrayList<Poi> eliminarPOI(String nombrePOI, ArrayList<Poi> listaPois) {
+    	for (Poi poi : listaPois)
+    	{
+    		if(nombrePOI.toUpperCase().equals(poi.getNombre().toUpperCase()))
+    		{
+    			listaPois.remove(poi);
+    		}
+    		
+    	}
+    	return listaPois;
+    }
 }
