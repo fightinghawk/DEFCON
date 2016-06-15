@@ -100,10 +100,10 @@ public class Dispositivo implements Localizable, Serializable {
 	}
 	
 	public int buscarPOI(String nombrePOI, ArrayList<Poi> listaPois) {
-    	int posicion = -1
-    	for (Poi poi : listaPois){
-    		if(nombrePOI.toUpperCase().equals(poi.getNombre().toUpperCase())){
-    			posicion = poi
+    		int posicion = -1
+    		for (Poi poi : listaPois){
+    			if(nombrePOI.toUpperCase().equals(poi.getNombre().toUpperCase())){
+    				posicion = poi
     		}
     	}
 	return posicion
