@@ -111,7 +111,7 @@ public class Dispositivo implements Localizable, Serializable {
     	
 	public ArrayList<Poi> eliminarPOI(String nombrePOI, ArrayList<Poi> listaPois) {
     		int posicionPOI = this.buscarPOI(nombrePOI,listaPois)
-    		if(posicionPOI>0){
+    		if(posicionPOI>=0){
     			listaPois.remove(posicionPOI)
     		}
     	return listaPois;
