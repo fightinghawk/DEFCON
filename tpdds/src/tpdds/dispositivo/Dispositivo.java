@@ -98,16 +98,22 @@ public class Dispositivo implements Localizable, Serializable {
 		listaPois.add(poi);
 		return listaPois;
 	}
-
-	public ArrayList<Poi> eliminarPOI(String nombrePOI, ArrayList<Poi> listaPois) {
-    	for (Poi poi : listaPois)
-    	{
-    		if(nombrePOI.toUpperCase().equals(poi.getNombre().toUpperCase()))
-    		{
-    			listaPois.remove(poi);
+	
+	public int buscarPOI(String nombrePOI, ArrayList<Poi> listaPois) {
+    	int posicion = -1
+    	for (Poi poi : listaPois){
+    		if(nombrePOI.toUpperCase().equals(poi.getNombre().toUpperCase())){
+    			posicion = poi
     		}
-    		
     	}
+	return posicion
+    	}
+    	
+	public ArrayList<Poi> eliminarPOI(String nombrePOI, ArrayList<Poi> listaPois) {
+    		int posicionPOI = buscarPOI(nombrePOI,listaPois)
+    		if(posicionPOI>0){
+    			listaPois.remove(posicionPOI)
+    		}
     	return listaPois;
     }
 }
