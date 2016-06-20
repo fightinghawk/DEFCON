@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tpdds.interfez.mainScene">
+   <children>
+      <TextArea fx:id="Titulo" editable="false" layoutX="232.0" layoutY="8.0" prefHeight="45.0" prefWidth="289.0" scaleShape="false" text="Disenio de Sistemas - POIS - GRUPO 6" AnchorPane.bottomAnchor="522.0" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="232.0" AnchorPane.topAnchor="8.0">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </TextArea>
+      <Button fx:id="Buscar" layoutX="46.0" layoutY="122.0" mnemonicParsing="false" onMouseClicked="#buscarBoton" prefHeight="131.0" prefWidth="262.0" text="BUSCAR POI" AnchorPane.topAnchor="122.0" />
+      <Button fx:id="Insertar" layoutX="46.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#insertarBoton" prefHeight="131.0" prefWidth="262.0" text="INSERTAR POI" AnchorPane.topAnchor="355.0" />
+      <Button fx:id="Modificar" layoutX="443.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#modificarBoton" prefHeight="131.0" prefWidth="262.0" text="MODIFICAR POI" AnchorPane.leftAnchor="443.0" AnchorPane.topAnchor="355.0" />
+      <Button fx:id="Registrar" layoutX="443.0" layoutY="122.0" mnemonicParsing="false" onMouseClicked="#registrarseBoton" prefHeight="131.0" prefWidth="262.0" text="REGISTRARSE" AnchorPane.leftAnchor="443.0" AnchorPane.topAnchor="122.0" />
+   </children>
+   <effect>
+      <DropShadow color="#171515" />
+   </effect>
+</AnchorPane>

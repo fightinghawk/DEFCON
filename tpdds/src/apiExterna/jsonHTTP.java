@@ -23,7 +23,6 @@ public class jsonHTTP implements apiExterna {
 		});
 
 		return listaJson;
-
 	}
 
 	public void mostrarLista(@SuppressWarnings("rawtypes") List lista) {
