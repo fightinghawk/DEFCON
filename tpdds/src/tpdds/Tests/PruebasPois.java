@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.stream.FileImageInputStream;
 
@@ -14,6 +15,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import apiExterna.BancoExterna;
+import apiExterna.jsonHTTP;
 import tpdds.Archivos.archivos;
 import tpdds.dispositivo.Dispositivo;
 import tpdds.factory.POIFactory;
@@ -35,6 +38,8 @@ public class PruebasPois {
 	ArrayList<Poi> encontradosParadas;
 	ArrayList<Poi> encontradosTransporte;
 	ArrayList<Poi> encontradosAsesoramiento;
+	List<BancoExterna> bancoexternalista;
+	jsonHTTP apiExterna;
 	Dispositivo tablero;
 	
 	@SuppressWarnings("unchecked")
@@ -317,7 +322,15 @@ public class PruebasPois {
 	System.out.println("//////////////AGREGAR/QUITAR POI");
 	Assert.assertEquals(listaPois.size(),6);
 	}
-	
+	@Test
+	public void ListaBancosExternos() throws Exception {
+		System.out.println("//////////////CANTIDAD BANCOS POR API EXTERNA");
+		apiExterna = new jsonHTTP();
+		bancoexternalista = apiExterna.obtenerDatos(
+				"http://private-96b476-ddsutn.apiary-mock.com/banks?banco=banco&servicio=servicio", BancoExterna.class);
+		apiExterna.mostrarLista(bancoexternalista);
+		Assert.assertEquals(bancoexternalista.size(), 2);
+	}
 	
 	
 	
