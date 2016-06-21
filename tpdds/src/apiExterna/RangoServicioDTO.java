@@ -1,7 +1,5 @@
 package apiExterna;
 
-import java.util.ArrayList;
-
 public class RangoServicioDTO {
 
   private int horarioDesde;
@@ -10,12 +8,12 @@ public class RangoServicioDTO {
   private int minutosHasta;
   private int nroDiaSemana;
 
-  public rangoServicioDTO(int suHorarioDesde, int suHorarioHasta, int suMinutosDesde, int suMinutosHasta, int suNroDiaSemana){
+  public RangoServicioDTO(int suHorarioDesde, int suHorarioHasta, int suMinutosDesde, int suMinutosHasta, int suNroDiaSemana){
     this.horarioDesde = suHorarioDesde;
     this.horarioHasta = suHorarioHasta;
     this.minutosDesde = suMinutosDesde;
     this.minutosHasta = suMinutosHasta;
-    this nroDiaSemana = suNroDiaSemana;
+    this.nroDiaSemana = suNroDiaSemana;
   }
   
   public int getHorarioDesde(){

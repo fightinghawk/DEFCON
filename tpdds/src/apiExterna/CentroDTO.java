@@ -1,7 +1,9 @@
 package apiExterna;
 
 import java.util.ArrayList;
-import apiExterna.ServiciosDTO;
+import java.util.HashSet;
+
+import apiExterna.ServicioDTO;
 
 public class CentroDTO {
   
@@ -10,9 +12,9 @@ public class CentroDTO {
   private String nombreDirector;
   private String domicilio;
   private String telefono;
-  private ArrayList<ServiciosDTO> listaServicios;
+  private ArrayList<ServicioDTO> listaServicios;
   
-  public CentroDTO(int numComuna, HasSet<String> zonas, String nomDir, String domicilio, String tel, ArrayList<ServiciosDTO> listaServicios){
+  public CentroDTO(int numComuna, HashSet<String> zonas, String nomDir, String domicilio, String tel, ArrayList<ServicioDTO> listaServicios){
     this.numeroComuna = numComuna;
     this.nombreDirector = nomDir;
     this.domicilio = domicilio;
@@ -31,7 +33,7 @@ public class CentroDTO {
   public HashSet<String> getZonas(){
     return this.zonas;
   }
-  public void setZonas(HashSet<String> <onas){
+  public void setZonas(HashSet<String> zonas){
     this.zonas = zonas;
   }
   
@@ -56,9 +58,10 @@ public class CentroDTO {
     this.telefono = telefono;
   }
   
-  public ArrayList<ServiciosDTO> getServiciosDTO(){
+  public ArrayList<ServicioDTO> getServiciosDTO(){
     return this.listaServicios;
   }
-  public void setServiciosDTO(ArrayList<ServiciosDTO> listaServicios){
+  public void setServiciosDTO(ArrayList<ServicioDTO> listaServicios){
     this.listaServicios = listaServicios;
   }
+}

@@ -1,8 +1,9 @@
 package apiExterna;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
-public abstract class ObtenerDTO implements CentroDTO{
+public abstract class ObtenerDTO {
   
   public ArrayList<CentroDTO> listaCentroDTO;
   
@@ -12,10 +13,10 @@ public abstract class ObtenerDTO implements CentroDTO{
   }
 		
   public ArrayList<CentroDTO> obtenerCentros(String parametro){
-  	CentroDTO centroDTOEncontrado = null;
+  	ArrayList<CentroDTO> centroDTOEncontrado = new ArrayList<CentroDTO>();
         	for (CentroDTO centroDTO : this.listaCentroDTO){
         		if((this.buscarPorCalle(parametro))||(this.buscarPorZona(parametro))){
-            			centroDTOEncontrado = centroDTO;
+            			centroDTOEncontrado.add(centroDTO);
           		}
         	}
       	return centroDTOEncontrado;
@@ -28,19 +29,21 @@ public abstract class ObtenerDTO implements CentroDTO{
         		encontrado = true;
       		}
     	}
-    	return econtrado;
+    	return encontrado;
   }
   
   public boolean buscarPorZona(String zona){
-  	boolean encontrado = false;
-	for (CentroDTO centroDTO : this.listaCentroDTO){
-		ArraList<String> listaZonasCentroDTO = CentroDTO.getZonas();
-			for (int pos=0 : listaZonasCentroDTO){
-    				if(listaZonaCentroDTO.get(pos).toUpperCase.equals(zona)){
-    					 encontrado = true;
-    				}
-    		 	}
-    		}
-    	return encontrado;
+	  boolean encontrado = false;
+	  for (CentroDTO centroDTO : this.listaCentroDTO){
+		  HashSet<String> listaZonasCentroDTO = centroDTO.getZonas();
+
+		  if(listaZonasCentroDTO.contains(zona.toUpperCase()))
+				  {
+			  encontrado = true;
+				  }
+
+	  }
+	  return encontrado;
   }
+}
     

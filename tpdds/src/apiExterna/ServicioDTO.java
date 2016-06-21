@@ -6,11 +6,11 @@ import apiExterna.RangoServicioDTO;
 public class ServicioDTO {
 
   private String nombreServicio;
-  private ArrayList<RangoServiciosDTO> servicios;
+  private ArrayList<RangoServicioDTO> servicios;
 
   public ServicioDTO(String suNombreServicio){
     this.nombreServicio = suNombreServicio;
-    servicios = new ArraList<>();
+    servicios = new ArrayList<>();
   }
   
   public String getNombreServicio(){
@@ -21,7 +21,7 @@ public class ServicioDTO {
    this.nombreServicio = nombreServicio;
   }
   
-  public ArraList<RangoServiciosDTO> getRangoServicios(){
+  public ArrayList<RangoServicioDTO> getRangoServicios(){
     return this.servicios;
   }
   
