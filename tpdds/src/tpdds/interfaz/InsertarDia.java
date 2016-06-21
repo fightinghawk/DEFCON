@@ -1,4 +1,4 @@
-package tpdds.interfez;
+package tpdds.interfaz;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,7 +43,7 @@ public class InsertarDia {
 			nrodia = nrodiap;
 			String dia = diasPos.get(nrodia);
 			loader = new FXMLLoader();
-			loader.setLocation(interfaz.class.getResource("insertSceneDiaz.fxml"));
+			loader.setLocation(Main.class.getResource("insertSceneDiaz.fxml"));
 			rootLayout = loader.load();
 			//Seteo el titulo, osea el dia
 			Label titulo = (Label) (rootLayout.lookup("#Dia"));

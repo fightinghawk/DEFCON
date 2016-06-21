@@ -1,4 +1,4 @@
-package tpdds.interfez;
+package tpdds.interfaz;
 
 
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class InsertSceneGnr {
 			nuevaStage.setResizable(false);
 			nuevaStage.setTitle("Insertar POI");
 			loader = new FXMLLoader();
-			loader.setLocation(interfaz.class.getResource("insertSceneGnr.fxml"));
+			loader.setLocation(Main.class.getResource("insertSceneGnr.fxml"));
 			rootLayout = loader.load();
 			Scene scene = new Scene(rootLayout);
 			nuevaStage.setScene(scene);
