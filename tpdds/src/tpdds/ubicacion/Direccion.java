@@ -2,6 +2,8 @@ package tpdds.ubicacion;
 
 import java.io.Serializable;
 
+import tpdds.usoGlobal.Consola;
+
 public class Direccion implements Serializable {
 
 	private String callePrincipal;
@@ -151,6 +153,39 @@ public class Direccion implements Serializable {
 	this.codPostal = codigoPostal;
 	this.barrio = barrio;
 	}
+	
+	/*Un constructor vació.*/
+	public Direccion()
+	{
+		
+	}
+	
+	public void DireccionConsola()
+	{
+		System.out.println("Calle Principal:");
+		this.setCallePrincipal(Consola.input.nextLine().toString());
+		System.out.println("Altura:");
+		this.setAltura(Consola.input.nextInt());
+		System.out.println("Calle Lateral Derecha:");
+		this.setCalleLateralDer(Consola.input.nextLine());
+		System.out.println("Calle Lateral Izquierda:");
+		this.setCalleLateralIzq(Consola.input.nextLine());
+		System.out.println("Piso:");
+		this.setPiso(Consola.input.nextInt());
+		System.out.println("Departamento:");
+		this.setDpto(Consola.input.nextLine().charAt(0));
+		System.out.println("Unidad:");
+		this.setUnidad(Consola.input.nextInt());
+		System.out.println("Codigo Postal:");
+		this.setCodPostal(Consola.input.nextInt());
+		System.out.println("Barrio:");
+		this.setBarrio(Consola.input.nextLine());
+		System.out.println("Localidad:");
+		this.setLocalidad(Consola.input.nextLine());
+	}
+	
+	
+	
 	//FIN Constructores
 	//TODO mÃ¡s contructores
 	

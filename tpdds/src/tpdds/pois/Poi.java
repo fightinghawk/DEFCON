@@ -36,6 +36,10 @@ public abstract class Poi implements Localizable, Serializable {
 		this.esValido();
 	}
 	
+	public void setPalabrasClaves(HashSet<String> palabrasClaves) {
+		this.palabrasClaves = palabrasClaves;
+	}
+
 	public void setDiasDisp(ArrayList<DiaPoi> diasDisp){
 		this.diasDisp = diasDisp;
 	}
@@ -138,6 +142,8 @@ public abstract class Poi implements Localizable, Serializable {
 			palabrasClaves.add(keyWord.toLowerCase());
 		}
 	}
+	
+	
 	
 	public boolean estaDisponible(){
 		return estaDisponible(new GregorianCalendar());
