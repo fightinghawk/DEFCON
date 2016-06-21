@@ -1,11 +1,12 @@
 package apiExterna;
 
 import java.util.ArrayList;
+import apiExterna.RangoServicioDTO;
 
 public class ServicioDTO {
 
   private String nombreServicio;
-  private ArrayList<RangoServiciosDto> servicios;
+  private ArrayList<RangoServiciosDTO> servicios;
 
   public ServicioDTO(String suNombreServicio){
     this.nombreServicio = suNombreServicio;
