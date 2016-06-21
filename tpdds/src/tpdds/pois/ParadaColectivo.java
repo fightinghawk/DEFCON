@@ -14,6 +14,7 @@ public class ParadaColectivo extends Poi  {
 
 	public ParadaColectivo(String nombre, Direccion direccion, Location geoloc) {
 		super(nombre, "Parada de Colectivo", direccion, geoloc);
+		super.idTipo = 3;
 	}
 	
 	public boolean estaCerca(Localizable localizable) {

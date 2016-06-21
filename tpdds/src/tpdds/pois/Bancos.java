@@ -13,10 +13,11 @@ import tpdds.usoGlobal.CalculosHorarios;
 public class Bancos extends Poi {
 	
 	private double radioDeCuadras;
-
+	
 	
 	public Bancos(String nombre, Direccion direccion, Location geoloc) {
 		super(nombre, "Banco", direccion, geoloc);
+		super.idTipo = 1;
 	}
 	
 	public double getRadioDeCuadras() {

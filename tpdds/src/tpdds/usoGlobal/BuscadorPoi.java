@@ -9,9 +9,8 @@ public class BuscadorPoi {
 		ArrayList<Poi> coincidencias = new ArrayList<Poi>();
 		for (Poi poi : Pois) {
 			if (poi.contienePalabraClave(palabraClave)) {
-				poi.mostrarDatos();
+				//poi.mostrarDatos();
 				coincidencias.add(poi);
-
 			}
 		}
 		return coincidencias;

@@ -16,13 +16,29 @@ import tpdds.usoGlobal.CalculosHorarios;
 
 public abstract class Poi implements Localizable, Serializable {
 
+
+	private static final long serialVersionUID = -8490474319097004375L;
 	private String nombre;
 	private String tipo;
+	protected int idTipo;
+	private int iddb;
+	public int getIddb() {
+		return iddb;
+	}
+
 	private Direccion direccion;
 	private Location geoloc;
 	private Estadistica estadistica;
 	private HashSet<String> palabrasClaves;
 	private ArrayList<DiaPoi> diasDisp;
+
+	public HashSet<String> getPalabrasClaves() {
+		return palabrasClaves;
+	}
+
+	public ArrayList<DiaPoi> getDiasDisp() {
+		return diasDisp;
+	}
 
 	// Constructor POI
 	public Poi(String nombre, String tipoPOI, Direccion direccion, Location geoloc) {
@@ -31,6 +47,7 @@ public abstract class Poi implements Localizable, Serializable {
 		this.direccion = direccion;
 		this.geoloc = geoloc;
 		this.estadistica = null;
+		this.iddb = -1;
 		palabrasClaves = new HashSet<String>();
 		diasDisp = new ArrayList<>();
 		this.esValido();
@@ -129,11 +146,11 @@ public abstract class Poi implements Localizable, Serializable {
 	
 	public boolean contienePalabraClave(String palabra) {
 		boolean encontrado = false;
-		encontrado = (nombre.contains(palabra) ||
-				getDireccionToString().contains(palabra) ||
+		palabra = palabra.toLowerCase();
+		encontrado = (nombre.toLowerCase().contains(palabra) ||
+				getDireccionToString().toLowerCase().contains(palabra) ||
 				palabrasClaves.contains(palabra)
 		);
-			
 		return encontrado;
 	}
 
@@ -163,6 +180,14 @@ public abstract class Poi implements Localizable, Serializable {
 			}
 		}
 		return false;
+	}
+
+	public int getIdTipo() {
+		return idTipo;
+	}
+
+	public void setIdTipo(int idTipo) {
+		this.idTipo = idTipo;
 	}
 
 }
