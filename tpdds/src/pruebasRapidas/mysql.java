@@ -8,7 +8,7 @@ import tpdds.pois.ParadaColectivo;
 import tpdds.pois.Poi;
 
 public class mysql {
-
+/*
 	public static void main(String[] args) {
 
 		CGP cgp14;
@@ -69,4 +69,5 @@ public class mysql {
 			ex.printStackTrace();
 		}
 	}
+*/
 }
