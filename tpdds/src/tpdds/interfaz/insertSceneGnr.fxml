@@ -12,7 +12,7 @@
 <AnchorPane fx:id="InsertScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="Seguir" layoutX="290.0" layoutY="465.0" mnemonicParsing="false" onMouseClicked="#continuar" prefHeight="60.0" prefWidth="186.0" text="CONTINUAR" />
-      <SplitMenuButton fx:id="Tipo" layoutX="15.0" layoutY="333.0" mnemonicParsing="false" text="Tipo">
+      <SplitMenuButton fx:id="Tipo" alignment="CENTER" layoutX="297.0" layoutY="410.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="171.0" text="Tipo" AnchorPane.bottomAnchor="133.0">
         <items>
             <MenuItem fx:id="Banco" mnemonicParsing="false" onAction="#cambiaTipo" text="Bancos" />
           <MenuItem fx:id="CGP" mnemonicParsing="false" onAction="#cambiaTipo" text="CGP" />
@@ -20,6 +20,19 @@
             <MenuItem fx:id="CGP1" mnemonicParsing="false" onAction="#cambiaTipo" text="Comercios" />
         </items>
       </SplitMenuButton>
+      <Group fx:id="datos">
+         <children>
+            <TextField fx:id="barrio" layoutX="535.0" layoutY="69.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
+            <TextField fx:id="keyWord" layoutX="149.0" layoutY="201.0" onKeyTyped="#insert" prefHeight="110.0" prefWidth="586.0" />
+            <TextField fx:id="altura" layoutX="535.0" layoutY="112.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
+            <TextField fx:id="calle" layoutX="149.0" layoutY="112.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
+            <TextField fx:id="latitud" layoutX="257.0" layoutY="333.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="155.0" />
+            <TextField fx:id="derecha" layoutX="535.0" layoutY="152.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
+            <TextField fx:id="izquierda" layoutX="149.0" layoutY="152.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
+            <TextField fx:id="Longitud" layoutX="565.0" layoutY="333.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="171.0" />
+            <TextField fx:id="nombre" layoutX="149.0" layoutY="69.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
+         </children>
+      </Group>
       <Group fx:id="descripcion">
          <children>
             <TextField editable="false" layoutX="14.0" layoutY="201.0" prefHeight="31.0" prefWidth="128.0" text="Palabras Claves" AnchorPane.leftAnchor="14.0" />
@@ -36,19 +49,6 @@
             <TextField editable="false" layoutX="399.0" layoutY="152.0" prefHeight="31.0" prefWidth="128.0" text="C.L.Derecha" AnchorPane.leftAnchor="399.0" />
             <TextField editable="false" layoutX="399.0" layoutY="69.0" prefHeight="31.0" prefWidth="128.0" text="Barrio" AnchorPane.leftAnchor="399.0" />
             <TextField editable="false" layoutX="121.0" layoutY="333.0" prefHeight="31.0" prefWidth="128.0" text="Latitud" />
-         </children>
-      </Group>
-      <Group fx:id="datos">
-         <children>
-            <TextField fx:id="barrio" layoutX="535.0" layoutY="69.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
-            <TextField fx:id="keyWord" layoutX="149.0" layoutY="201.0" onKeyTyped="#insert" prefHeight="110.0" prefWidth="586.0" />
-            <TextField fx:id="altura" layoutX="535.0" layoutY="112.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
-            <TextField fx:id="calle" layoutX="149.0" layoutY="112.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
-            <TextField fx:id="latitud" layoutX="257.0" layoutY="333.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="155.0" />
-            <TextField fx:id="derecha" layoutX="535.0" layoutY="152.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
-            <TextField fx:id="izquierda" layoutX="149.0" layoutY="152.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
-            <TextField fx:id="Longitud" layoutX="565.0" layoutY="333.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="171.0" />
-            <TextField fx:id="nombre" layoutX="149.0" layoutY="69.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
          </children>
       </Group>
       <AnchorPane fx:id="error" layoutX="114.0" layoutY="150.0" prefHeight="275.0" prefWidth="538.0" visible="false">
