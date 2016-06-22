@@ -3,7 +3,6 @@ package tpdds.interfaz;
 import java.util.ArrayList;
 
 import javafx.application.Application;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tpdds.Archivos.archivos;
 import tpdds.database.Generales;

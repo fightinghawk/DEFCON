@@ -79,7 +79,10 @@ public class InsertSceneGnr implements Initializable{
 		TextField textField = (TextField) evento.getSource();
 		String idTF = textField.getId();
 		String str = textField.getText().concat(evento.getCharacter());
-		if(idTF.equals("nombre") || idTF.equals("calle") || idTF.equals("barrio") || idTF.equals("derecha") || idTF.equals("izquierda") ){
+		if(idTF.equals("calle")){
+			
+		}
+		else if(idTF.equals("nombre") || idTF.equals("barrio") || idTF.equals("derecha") || idTF.equals("izquierda") ){
 			if(str.matches(".*\\d+.*")){
 				textField.setStyle("-fx-text-fill: red");
 				palabraOK.put(idTF, false);

@@ -44,12 +44,13 @@ public class modifPoiSceneFields implements Initializable {
 	private Poi poi;
 	private FXMLLoader loader;
 	private AnchorPane rootLayout;
-
+	private Stage stg;
 	
 	//IDCAMPO - SI ESTA OK O NO
 	public void modfSceneRender(Stage nuevaStage, Poi poi){
 		this.poi = poi;
 		try{
+			stg = nuevaStage;
 			// Carga archivo FXML q tiene la interfaz
 			loader = new FXMLLoader(getClass().getResource("modifSceneCampos.fxml"));
 			
@@ -98,7 +99,9 @@ public class modifPoiSceneFields implements Initializable {
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
+		stg.close();
 		new modfiPoiSceneBuscar().modfiPoiBuscar();
+		
 		return;
 	}
 
