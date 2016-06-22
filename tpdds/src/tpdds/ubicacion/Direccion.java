@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import tpdds.usoGlobal.Consola;
 
-public class Direccion implements Serializable {
+public class Direccion {
 
 	private static final long serialVersionUID = 6238724508819895578L;
 	private String callePrincipal;

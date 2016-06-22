@@ -28,7 +28,7 @@ public class Generales{
 	public static ArrayList<Poi> cargarPois() throws SQLException, ClassNotFoundException {
 		String pedido = "SELECT pois.id,pois.nombre,pois.tipo,direcciones.principal,direcciones.izquierda,direcciones.derecha,direcciones.barrio,direcciones.altura,geoLoc.latitud,geoLoc.longitud,pois.strtipo"
 						+ " FROM pois LEFT JOIN (direcciones,geoLoc)"
-						+ " ON (pois.direccion = direcciones.id AND pois.geopos = pois.geopos)";
+						+ " ON (pois.direccion = direcciones.id AND pois.geopos = geoLoc.id)";
 		PreparedStatement pedidoSQL = conexion.prepareStatement(pedido);
 		ResultSet resultadosPoi = pedidoSQL.executeQuery();
 		ArrayList<Poi> pois = new ArrayList<>();

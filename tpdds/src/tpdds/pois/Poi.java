@@ -14,10 +14,9 @@ import tpdds.ubicacion.Location;
 import tpdds.usoGlobal.Calculos;
 import tpdds.usoGlobal.CalculosHorarios;
 
-public abstract class Poi implements Localizable, Serializable {
+public abstract class Poi implements Localizable {
 
 
-	private static final long serialVersionUID = -8490474319097004375L;
 	private String nombre;
 	private String tipo;
 	protected int idTipo;

@@ -13,7 +13,7 @@ import tpdds.ubicacion.Location;
 
 import tpdds.usoGlobal.Consola;
 
-public class Dispositivo implements Localizable, Serializable {
+public class Dispositivo implements Localizable{
 
 	private Location geoloc;
 	private int id;

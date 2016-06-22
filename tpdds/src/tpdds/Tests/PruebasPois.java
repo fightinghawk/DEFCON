@@ -18,6 +18,7 @@ import org.junit.Test;
 import apiExterna.BancoExterna;
 import apiExterna.jsonHTTP;
 import tpdds.Archivos.archivos;
+import tpdds.database.Generales;
 import tpdds.dispositivo.Dispositivo;
 import tpdds.factory.POIFactory;
 import tpdds.factory.horarioFactory;
@@ -34,21 +35,26 @@ import tpdds.usoGlobal.BuscadorPoi;
 
 public class PruebasPois {
 
-	ArrayList<Poi> listaPois;
+	static boolean listo = false;
+	static ArrayList<Poi> listaPois;
 	ArrayList<Poi> encontradosParadas;
 	ArrayList<Poi> encontradosTransporte;
 	ArrayList<Poi> encontradosAsesoramiento;
 	List<BancoExterna> bancoexternalista;
 	jsonHTTP apiExterna;
-	Dispositivo tablero;
+	static Dispositivo tablero;
 	
 	@SuppressWarnings("unchecked")
 	@Before
 	public void creacionPOI() throws Exception{
+		if(listo){
+			return;
+		}
 		Comuna.inicializarComunas();
-		
+		Generales.initDatabase();
 		tablero = archivos.obtenerTablero();
-		listaPois = archivos.leerArchivo("example1.dat");
+		listaPois = Generales.cargarPois();
+		listo=true;
 	}
 	
 	

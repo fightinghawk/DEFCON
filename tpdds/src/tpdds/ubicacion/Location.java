@@ -2,7 +2,7 @@ package tpdds.ubicacion;
 
 import java.io.Serializable;
 
-public class Location implements Serializable {
+public class Location{
 
 	private double longitud;
 	private double latitud;
