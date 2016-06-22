@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import apiExterna.BancoExterna;
+import apiExterna.jsonBancos;
 import apiExterna.jsonHTTP;
 import tpdds.Archivos.archivos;
 import tpdds.database.Generales;
@@ -41,7 +42,7 @@ public class PruebasPois {
 	ArrayList<Poi> encontradosTransporte;
 	ArrayList<Poi> encontradosAsesoramiento;
 	List<BancoExterna> bancoexternalista;
-	jsonHTTP apiExterna;
+	jsonBancos apiBancos;
 	static Dispositivo tablero;
 	
 	@SuppressWarnings("unchecked")
@@ -109,13 +110,13 @@ public class PruebasPois {
 	@Test
 	public void ListaBancosExternos() throws Exception {
 		System.out.println("//////////////CANTIDAD BANCOS POR API EXTERNA");
-		apiExterna = new jsonHTTP();
-		bancoexternalista = apiExterna.obtenerDatos(
-				"http://private-96b476-ddsutn.apiary-mock.com/banks?banco=banco&servicio=servicio", BancoExterna.class);
-		apiExterna.mostrarLista(bancoexternalista);
+		apiBancos = new jsonBancos();
+		bancoexternalista = apiBancos.FiltrarBancos("http://private-96b476-ddsutn.apiary-mock.com","banks","bancos","servicio");
+		apiBancos.mostrarLista(bancoexternalista);
 		Assert.assertEquals(bancoexternalista.size(), 2);
 	}
 	
+
 	
 	
 	
