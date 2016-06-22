@@ -19,8 +19,8 @@ public class ParadaColectivo extends Poi  {
 		super.idTipo = 3;
 	}
 	
-	public ParadaColectivo(String nombre, Direccion direccion, Location geoloc,HashSet<String> keywords,ArrayList<DiaPoi> dias) {
-		super(nombre, "Parada de Colectivo", direccion, geoloc,keywords,dias);
+	public ParadaColectivo(String nombre, Direccion direccion, Location geoloc,HashSet<String> keywords,ArrayList<DiaPoi> dias,int iddb) {
+		super(nombre, "Parada de Colectivo", direccion, geoloc,keywords,dias,iddb);
 		super.idTipo = 3;
 	}
 	

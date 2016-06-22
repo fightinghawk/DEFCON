@@ -1,37 +1,70 @@
 package tpdds.interfaz;
-
-
-import java.util.ArrayList;
+import java.net.URL;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.Effect;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import tpdds.pois.Bancos;
+import tpdds.pois.CGP;
+import tpdds.pois.LocalesComerciales;
+import tpdds.pois.ParadaColectivo;
+import tpdds.pois.Poi;
+import tpdds.ubicacion.Direccion;
+import tpdds.ubicacion.Location;
 
-public class InsertSceneGnr {
+public class InsertSceneGnr implements Initializable{
 	
-
-	static FXMLLoader loader;
-	static AnchorPane rootLayout;
-	static HashMap<String, Boolean> palabraOK = new HashMap<>();
+	@FXML
+	TextField nombre;
+	@FXML
+	TextField calle;
+	@FXML
+	TextField izquierda;
+	@FXML
+	TextField barrio;
+	@FXML
+	TextField altura;
+	@FXML
+	TextField derecha;
+	@FXML
+	TextField keyWord;
+	@FXML
+	TextField latitud;
+	@FXML
+	TextField Longitud;
+	@FXML
+	SplitMenuButton Tipo;
+	
+	static Poi nuevo;
+	FXMLLoader loader;
+	AnchorPane rootLayout;
+	HashMap<String, Boolean> palabraOK = new HashMap<>();
 	static Stage nuevaStage;
 	//IDCAMPO - SI ESTA OK O NO
-	public static void insertSceneRender(){
+	public void insertSceneRender(){
 		try{
 			nuevaStage = new Stage();
+			nuevaStage.initModality(Modality.WINDOW_MODAL);
+			nuevaStage.initOwner(Main.primaryStage);
 			nuevaStage.setResizable(false);
 			nuevaStage.setTitle("Insertar POI");
 			loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("insertSceneGnr.fxml"));
+			loader.setLocation(getClass().getResource("insertSceneGnr.fxml"));
+			loader.setController(this);
 			rootLayout = loader.load();
 			Scene scene = new Scene(rootLayout);
 			nuevaStage.setScene(scene);
@@ -84,7 +117,7 @@ public class InsertSceneGnr {
 				break;
 			}
 		}
-		ok = true;//para test
+		//ok = true;//para test
 		if(!ok){
 			AnchorPane errorPane = (AnchorPane) rootLayout.lookup("#error");
 			TextArea textError = (TextArea) errorPane.lookup("#texterror");
@@ -92,14 +125,46 @@ public class InsertSceneGnr {
 			errorPane.setVisible(true);
 		}
 		else{
+			Direccion direc  = new Direccion(calle.getText(), Integer.parseInt(altura.getText()), izquierda.getText(), derecha.getText(), barrio.getText());
+			Location geo = new Location(Double.parseDouble(latitud.getText()), Double.parseDouble(Longitud.getText()));
+			String keys = keyWord.getText();
+
+			switch (Tipo.getText().toLowerCase()) {
+			case "cgp":
+				nuevo = new CGP(nombre.getText(), direc, geo);
+				break;
+			case "colectivo":
+				nuevo = new ParadaColectivo(nombre.getText(), direc, geo);
+				break;
+			case "bancos":
+				nuevo = new Bancos(nombre.getText(), direc, geo);
+				break;
+			case "comercios":
+				nuevo = new LocalesComerciales(nombre.getText(),"Local", direc, geo);
+				break;
+			}
+			nuevo.agregarPalabra(keys.split(","));
 			InsertarDia.insertDiaRender(nuevaStage, 0);
 		}
 		
 	}		
 	
 	@FXML
+	public void cambiaTipo(ActionEvent event){
+		MenuItem menu = (MenuItem) event.getSource();
+		String tipoStr = menu.getText();
+		Tipo.setText(tipoStr);
+	}
+	
+	@FXML
 	public void okboton(MouseEvent botonApretado){
 		AnchorPane errorPane = (AnchorPane) rootLayout.lookup("#error");
 		errorPane.setVisible(false);
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
 	}	
 }

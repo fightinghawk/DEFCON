@@ -20,11 +20,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import tpdds.database.Generales;
 import tpdds.pois.Poi;
 import tpdds.usoGlobal.BuscadorPoi;
 import tpdds.usoGlobal.Calculos;
 
-public class buscarPoiScene implements Initializable {
+public class modfiPoiSceneBuscar implements Initializable {
 	
 	@FXML
 	TextField campoDeBusqueda;
@@ -39,19 +40,19 @@ public class buscarPoiScene implements Initializable {
 	@FXML
 	TableColumn<ObsPoi, Double> distancia;
 	
-	Stage nuevaStage;
+	static Stage nuevaStage;
 	FXMLLoader loader;
 	AnchorPane rootLayout;
 	HashMap<String, Boolean> palabraOK = new HashMap<>();
 
 	//IDCAMPO - SI ESTA OK O NO
-	public void buscarSceneRender(){
+	public void modfiPoiBuscar(){
 		try{
 			//Carga archivo FXML  q tiene la interfaz
 			loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("buscarScene.fxml"));
+			loader.setLocation(Main.class.getResource("modifSceneBuscar.fxml"));
 			rootLayout = loader.load();
-			//
+
 			//Creo Scene y la configuro
 			Scene scene = new Scene(rootLayout);
 			//Stage a abrirse
@@ -86,12 +87,59 @@ public class buscarPoiScene implements Initializable {
 		tablaMostrada.setItems(resultadosTabla);
 	}
 
+	@FXML
+	private void modifOn(MouseEvent event){
+		int id;
+		try{
+		 id = tablaMostrada.getSelectionModel().getSelectedItem().getId();
+		}
+		catch(Exception ex){
+			id = -1;
+			return;
+		}
+		for(Poi poi : Main.pois){
+			 if (poi.getIddb() == id){
+				 new modifPoiSceneFields().modfSceneRender(nuevaStage, poi);
+				 return;
+			 }
+		 }
+	}
+	
+	@FXML
+	private void borrar(MouseEvent event){
+		int id;
+		try{
+		 id = tablaMostrada.getSelectionModel().getSelectedItem().getId();
+		}
+		catch(Exception ex){
+			id = -1;
+			return;
+		}
+		for(Poi poi : Main.pois){
+			 if (poi.getIddb() == id){
+				 Main.pois.remove(poi);
+				 try{
+				 Generales.borrarPoi(poi);
+				 }catch(Exception ex){
+					 ex.printStackTrace();
+				 }
+				 this.actualizarLista();
+				 return;
+			 }
+		 }
+	}
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 		calle.setCellValueFactory(new PropertyValueFactory<>("calle"));
 		altura.setCellValueFactory(new PropertyValueFactory<>("altura"));
 		distancia.setCellValueFactory(new PropertyValueFactory<>("distancia"));
+		this.actualizarLista();
+	}
+	
+	private void actualizarLista(){
 		ArrayList<Poi> resultados = Main.pois;
 		ObservableList<ObsPoi> resultadosTabla =  FXCollections.observableArrayList();;
 		for (Poi poi : resultados) {

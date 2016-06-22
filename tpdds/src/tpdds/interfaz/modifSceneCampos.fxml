@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="635.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Group>
+         <children>
+            <Label alignment="CENTER" layoutY="59.0" prefHeight="38.0" prefWidth="175.0" text="Nombre" textAlignment="CENTER" />
+            <Label alignment="CENTER" layoutY="121.0" prefHeight="38.0" prefWidth="175.0" text="Calle Principal" textAlignment="CENTER" />
+            <Label alignment="CENTER" layoutY="175.0" prefHeight="38.0" prefWidth="175.0" text="Calle Izquierda" textAlignment="CENTER" />
+            <Label alignment="CENTER" layoutX="357.0" layoutY="121.0" prefHeight="38.0" prefWidth="175.0" text="Altura" textAlignment="CENTER" />
+            <Label alignment="CENTER" layoutX="357.0" layoutY="59.0" prefHeight="38.0" prefWidth="175.0" text="Barrio" textAlignment="CENTER" />
+            <Label alignment="CENTER" layoutY="234.0" prefHeight="38.0" prefWidth="175.0" text="Latitud" textAlignment="CENTER" />
+            <Label alignment="CENTER" layoutX="357.0" layoutY="234.0" prefHeight="38.0" prefWidth="175.0" text="Longitud" textAlignment="CENTER" />
+            <Label alignment="CENTER" layoutX="357.0" layoutY="175.0" prefHeight="38.0" prefWidth="175.0" text="Calle Derecha" textAlignment="CENTER" />
+            <Group layoutX="-180.0" layoutY="-63.0">
+               <children>
+                  <TextField fx:id="barrio" layoutX="713.0" layoutY="126.0" />
+                  <TextField fx:id="cIzquierda" layoutX="362.0" layoutY="238.0" />
+                  <TextField fx:id="cDerecha" layoutX="713.0" layoutY="242.0" />
+                  <TextField fx:id="altura" layoutX="713.0" layoutY="188.0" />
+                  <TextField fx:id="cPrincipal" layoutX="362.0" layoutY="184.0" />
+                  <TextField fx:id="longitud" layoutX="713.0" layoutY="301.0" />
+                  <TextField fx:id="latitud" layoutX="362.0" layoutY="297.0" />
+                  <TextField fx:id="nombre" layoutX="362.0" layoutY="126.0" />
+               </children>
+            </Group>
+         </children>
+      </Group>
+      <SplitMenuButton fx:id="tipo" layoutX="317.0" layoutY="287.0" mnemonicParsing="false" text="SplitMenuButton">
+        <items>
+            <MenuItem mnemonicParsing="false" onAction="#chgtipo" text="Banco" />
+          <MenuItem mnemonicParsing="false" onAction="#chgtipo" text="CGP" />
+          <MenuItem mnemonicParsing="false" onAction="#chgtipo" text="Colectivo" />
+            <MenuItem mnemonicParsing="false" onAction="#chgtipo" text="Comercio" />
+        </items>
+      </SplitMenuButton>
+      <Button layoutX="270.0" layoutY="411.0" mnemonicParsing="false" onMouseClicked="#aceptar" prefHeight="137.0" prefWidth="256.0" text="ACEPTAR" />
+   </children>
+</AnchorPane>

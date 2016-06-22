@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tpdds.Archivos.archivos;
+import tpdds.database.Generales;
 import tpdds.dispositivo.Dispositivo;
 import tpdds.interfaz.mainScene;
 import tpdds.pois.Poi;
@@ -21,9 +22,9 @@ public class Main extends Application {
 	public void start(Stage primaryStag) {
 		try{
 			Comuna.inicializarComunas();
-			
+			Generales.initDatabase();
 			tablero = archivos.obtenerTablero();
-			pois = archivos.leerArchivo("example1.dat");
+			pois = Generales.cargarPois();
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}

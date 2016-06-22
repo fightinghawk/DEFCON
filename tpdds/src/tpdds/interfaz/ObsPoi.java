@@ -6,9 +6,11 @@ public class ObsPoi {
 	private String calle;
 	private int altura;
 	private double distancia;
+	private int id;
 	
-	public ObsPoi(String nombre, String calle, int altura, double distancia) {
+	public ObsPoi(String nombre, String calle, int altura, double distancia,int id) {
 		super();
+		this.setId(id);
 		this.nombre = nombre;
 		this.calle = calle;
 		this.altura = altura;
@@ -38,6 +40,14 @@ public class ObsPoi {
 	}
 	public void setDistancia(int distancia) {
 		this.distancia = distancia;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

@@ -25,7 +25,7 @@ public class mainScene {
 	
 	@FXML
 	public void insertarBoton(MouseEvent botonApretado){
-		InsertSceneGnr.insertSceneRender();
+		new InsertSceneGnr().insertSceneRender();
 	}
 	
 	@FXML
@@ -40,6 +40,6 @@ public class mainScene {
 	
 	@FXML
 	public void modificarBoton(MouseEvent botonApretado){
-		
+		new modfiPoiSceneBuscar().modfiPoiBuscar();
 	}	
 }

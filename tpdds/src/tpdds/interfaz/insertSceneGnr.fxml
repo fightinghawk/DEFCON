@@ -9,14 +9,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="InsertScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tpdds.interfaz.InsertSceneGnr">
+<AnchorPane fx:id="InsertScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="Seguir" layoutX="290.0" layoutY="465.0" mnemonicParsing="false" onMouseClicked="#continuar" prefHeight="60.0" prefWidth="186.0" text="CONTINUAR" />
       <SplitMenuButton fx:id="Tipo" layoutX="15.0" layoutY="333.0" mnemonicParsing="false" text="Tipo">
         <items>
-          <MenuItem fx:id="Colectivo" mnemonicParsing="false" text="Parada de Colectivo" />
-          <MenuItem fx:id="CGP" mnemonicParsing="false" text="CGP" />
-            <MenuItem fx:id="Banco" mnemonicParsing="false" text="Bancos" />
+            <MenuItem fx:id="Banco" mnemonicParsing="false" onAction="#cambiaTipo" text="Bancos" />
+          <MenuItem fx:id="CGP" mnemonicParsing="false" onAction="#cambiaTipo" text="CGP" />
+          <MenuItem fx:id="Colectivo" mnemonicParsing="false" onAction="#cambiaTipo" text="Colectivo" />
+            <MenuItem fx:id="CGP1" mnemonicParsing="false" onAction="#cambiaTipo" text="Comercios" />
         </items>
       </SplitMenuButton>
       <Group fx:id="descripcion">

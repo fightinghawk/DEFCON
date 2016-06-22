@@ -17,6 +17,7 @@ public class Direccion {
 	private int unidad;
 	private String barrio;
 	private String localidad;
+	private int iddb;
 
 	public String getCallePrincipal() {
 		return callePrincipal;
@@ -183,6 +184,14 @@ public class Direccion {
 		this.setBarrio(Consola.input.nextLine());
 		System.out.println("Localidad:");
 		this.setLocalidad(Consola.input.nextLine());
+	}
+
+	public int getIddb() {
+		return iddb;
+	}
+
+	public void setIddb(int iddb) {
+		this.iddb = iddb;
 	}
 	
 	

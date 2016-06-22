@@ -26,9 +26,11 @@ public class Generales{
 	}	
 	
 	public static ArrayList<Poi> cargarPois() throws SQLException, ClassNotFoundException {
-		String pedido = "SELECT pois.id,pois.nombre,pois.tipo,direcciones.principal,direcciones.izquierda,direcciones.derecha,direcciones.barrio,direcciones.altura,geoLoc.latitud,geoLoc.longitud,pois.strtipo"
+		String pedido = new String("SELECT pois.id,pois.nombre,pois.tipo,direcciones.principal,direcciones.izquierda,"
+						+ " direcciones.derecha,direcciones.barrio,direcciones.altura,geoLoc.latitud,"
+						+ "	geoLoc.longitud,pois.strtipo, direcciones.id , geoLoc.id"
 						+ " FROM pois LEFT JOIN (direcciones,geoLoc)"
-						+ " ON (pois.direccion = direcciones.id AND pois.geopos = geoLoc.id)";
+						+ " ON (pois.direccion = direcciones.id AND pois.geopos = geoLoc.id)");
 		PreparedStatement pedidoSQL = conexion.prepareStatement(pedido);
 		ResultSet resultadosPoi = pedidoSQL.executeQuery();
 		ArrayList<Poi> pois = new ArrayList<>();
@@ -44,11 +46,15 @@ public class Generales{
 			String barrio = resultadosPoi.getString(7);
 			String strtipo = resultadosPoi.getString(11);
 			int altura = resultadosPoi.getInt(8);
+			int iddirec = resultadosPoi.getInt(12);
 			Direccion direc = new Direccion(calle, altura, izquierda, derecha, barrio);
+			direc.setIddb(iddirec);
 			//Datos geolocalizacion
 			float latitud = resultadosPoi.getFloat(9);
 			float longitud = resultadosPoi.getFloat(10);
+			int idgeo = resultadosPoi.getInt(13);
 			Location loc = new Location(latitud, longitud);
+			loc.setIddb(idgeo);
 			//Key Words
 			String pedidoKeyWords = "SELECT keywords.clave FROM keywords WHERE (poid = ?)";
 			PreparedStatement pedidoKeyWordsSQL = conexion.prepareStatement(pedidoKeyWords);
@@ -56,7 +62,7 @@ public class Generales{
 			ResultSet keyWords = pedidoKeyWordsSQL.executeQuery();
 			HashSet<String> palabrasclaves = new HashSet<>();
 			while(keyWords.next()){
-				palabrasclaves.add(keyWords.getString(1));
+				palabrasclaves.add(keyWords.getString(1).toLowerCase());
 			}
 			//Dias
 			String pedidoDias = "SELECT dias.horainicio,dias.horafin,dias.minutoinicio,dias.minutofin,dias.dia "
@@ -70,16 +76,16 @@ public class Generales{
 			}
 			switch (tipo) {
 			case 1:
-				pois.add(new Bancos(nombre,direc,loc,palabrasclaves,diasAbieros));
+				pois.add(new Bancos(nombre,direc,loc,palabrasclaves,diasAbieros,id));
 				break;
 			case 2:
-				pois.add(new CGP(nombre,direc,loc,palabrasclaves,diasAbieros));
+				pois.add(new CGP(nombre,direc,loc,palabrasclaves,diasAbieros,id));
 				break;
 			case 3:
-				pois.add(new ParadaColectivo(nombre,direc,loc,palabrasclaves,diasAbieros));
+				pois.add(new ParadaColectivo(nombre,direc,loc,palabrasclaves,diasAbieros,id));
 				break;
 			case 4:
-				pois.add(new LocalesComerciales(nombre,strtipo,direc,loc,palabrasclaves,diasAbieros));
+				pois.add(new LocalesComerciales(nombre,strtipo,direc,loc,palabrasclaves,diasAbieros,id));
 				break;
 			}
 		}
@@ -142,9 +148,43 @@ public class Generales{
 		}
 	}
 
+	public static void modificarDireccion(Direccion direc) throws SQLException, ClassNotFoundException{
+		//principal,izquierda,derecha,barrio,altura
+		PreparedStatement modif = conexion.prepareStatement("UPDATE direcciones"
+				+ " SET principal = ? , izquierda = ? , derecha = ? , barrio = ? , altura = ?"
+				+ " WHERE id = ?");
+		modif.setString(1, direc.getCallePrincipal());
+		modif.setString(2, direc.getCalleLateralIzq());
+		modif.setString(3, direc.getCalleLateralDer());
+		modif.setString(4, direc.getBarrio());
+		modif.setInt(5, direc.getAltura());
+		modif.setInt(6, direc.getIddb());
+		modif.executeUpdate();	
+	}
+	
+	public static void modificarGeoLoc(Location geo) throws SQLException, ClassNotFoundException{
+		PreparedStatement modif = conexion.prepareStatement("UPDATE geoLoc"
+				+ " SET latitud = ? , longitud = ?"
+				+ " WHERE id = ?");
+		modif.setDouble(1, geo.getLatitud());
+		modif.setDouble(2, geo.getLongitud());
+		modif.setInt(3, geo.getIddb());
+		modif.executeUpdate();
+	}
+	
+	public static void modificarPOI(Poi poi)throws SQLException, ClassNotFoundException{
+		PreparedStatement modif = conexion.prepareStatement("UPDATE pois"
+				+ " SET nombre = ?"
+				+ " WHERE id = ?");
+		modif.setString(1, poi.getNombre());
+		modif.setInt(2, poi.getIddb());
+		modif.executeUpdate();
+		Generales.modificarDireccion(poi.getDireccion());
+		Generales.modificarGeoLoc(poi.getGeoloc());
+	}
 	public static void borrarPoi(Poi poi) throws SQLException, ClassNotFoundException {
 		PreparedStatement borrado = conexion.prepareStatement("DELETE FROM pois WHERE id = ?");
 		borrado.setInt(1, poi.getIddb());
-		borrado.executeQuery();
+		borrado.executeUpdate();
 	}
 }

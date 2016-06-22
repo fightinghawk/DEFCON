@@ -15,8 +15,8 @@ public class CGP extends Poi  {
 		super.idTipo = 2;
 	}
 	
-	public CGP(String nombre, Direccion direccion, Location geoloc,HashSet<String> keywords,ArrayList<DiaPoi> dias) {
-		super(nombre, "CGP", direccion, geoloc,keywords,dias);
+	public CGP(String nombre, Direccion direccion, Location geoloc,HashSet<String> keywords,ArrayList<DiaPoi> dias,int iddb) {
+		super(nombre, "CGP", direccion, geoloc,keywords,dias,iddb);
 		super.idTipo = 2;
 	}
 

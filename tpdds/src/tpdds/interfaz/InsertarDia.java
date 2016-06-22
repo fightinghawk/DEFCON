@@ -14,6 +14,7 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import tpdds.database.Generales;
 import tpdds.pois.DiaPoi;
 
 public class InsertarDia {
@@ -82,6 +83,13 @@ public class InsertarDia {
 	
 	@FXML
 	public void finBoton(){
+		try{
+		Generales.almacenarPOI(InsertSceneGnr.nuevo);
+		Main.pois.add(InsertSceneGnr.nuevo);
+		}
+		catch(Exception ex){
+			
+		}
 		second.close();
 	}
 	

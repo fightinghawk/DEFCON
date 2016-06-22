@@ -6,6 +6,7 @@ public class Location{
 
 	private double longitud;
 	private double latitud;
+	private int iddb;
 
 	// Constructor Latitud y longitud se colocan en grados
 	public Location(double latitud, double longitud) {
@@ -32,6 +33,14 @@ public class Location{
 	// devuelve un string para poder contrar la latitud y la longitd juntas
 	public String toString() {
 		return " (" + latitud + ", " + longitud + ")";
+	}
+
+	public int getIddb() {
+		return iddb;
+	}
+
+	public void setIddb(int iddb) {
+		this.iddb = iddb;
 	}
 
 }

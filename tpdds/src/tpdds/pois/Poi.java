@@ -53,7 +53,7 @@ public abstract class Poi implements Localizable {
 	}
 	
 	// Constructor POI
-	public Poi(String nombre, String tipoPOI, Direccion direccion, Location geoloc,HashSet<String> keywords,ArrayList<DiaPoi> dias) {
+	public Poi(String nombre, String tipoPOI, Direccion direccion, Location geoloc,HashSet<String> keywords,ArrayList<DiaPoi> dias,int iddb) {
 		this.nombre = nombre;
 		this.tipo = tipoPOI;
 		this.direccion = direccion;
@@ -62,6 +62,7 @@ public abstract class Poi implements Localizable {
 		this.iddb = -1;
 		palabrasClaves = keywords;
 		diasDisp = dias;
+		this.iddb = iddb;
 		this.esValido();
 	}
 	
