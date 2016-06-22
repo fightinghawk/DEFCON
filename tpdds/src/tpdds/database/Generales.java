@@ -3,11 +3,17 @@ package tpdds.database;
 import java.sql.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import tpdds.factory.POIFactory;
 import tpdds.pois.Bancos;
+import tpdds.pois.CGP;
 import tpdds.pois.DiaPoi;
+import tpdds.pois.LocalesComerciales;
+import tpdds.pois.ParadaColectivo;
 import tpdds.pois.Poi;
+import tpdds.ubicacion.Direccion;
+import tpdds.ubicacion.Location;
 
 
 public class Generales{
@@ -20,7 +26,7 @@ public class Generales{
 	}	
 	
 	public static ArrayList<Poi> cargarPois() throws SQLException, ClassNotFoundException {
-		String pedido = "SELECT pois.id,pois.nombre,pois.tipo,direcciones.principal,direcciones.izquierda,direcciones.derecha,direcciones.barrio,direcciones.altura,geoLoc.latitud,geoLoc.longitud"
+		String pedido = "SELECT pois.id,pois.nombre,pois.tipo,direcciones.principal,direcciones.izquierda,direcciones.derecha,direcciones.barrio,direcciones.altura,geoLoc.latitud,geoLoc.longitud,pois.strtipo"
 						+ " FROM pois LEFT JOIN (direcciones,geoLoc)"
 						+ " ON (pois.direccion = direcciones.id AND pois.geopos = pois.geopos)";
 		PreparedStatement pedidoSQL = conexion.prepareStatement(pedido);
@@ -36,16 +42,19 @@ public class Generales{
 			String izquierda = resultadosPoi.getString(5);
 			String derecha = resultadosPoi.getString(6);
 			String barrio = resultadosPoi.getString(7);
+			String strtipo = resultadosPoi.getString(11);
 			int altura = resultadosPoi.getInt(8);
+			Direccion direc = new Direccion(calle, altura, izquierda, derecha, barrio);
 			//Datos geolocalizacion
 			float latitud = resultadosPoi.getFloat(9);
 			float longitud = resultadosPoi.getFloat(10);
+			Location loc = new Location(latitud, longitud);
 			//Key Words
 			String pedidoKeyWords = "SELECT keywords.clave FROM keywords WHERE (poid = ?)";
 			PreparedStatement pedidoKeyWordsSQL = conexion.prepareStatement(pedidoKeyWords);
 			pedidoKeyWordsSQL.setInt(1, id);
 			ResultSet keyWords = pedidoKeyWordsSQL.executeQuery();
-			ArrayList<String> palabrasclaves = new ArrayList<>();
+			HashSet<String> palabrasclaves = new HashSet<>();
 			while(keyWords.next()){
 				palabrasclaves.add(keyWords.getString(1));
 			}
@@ -61,16 +70,16 @@ public class Generales{
 			}
 			switch (tipo) {
 			case 1:
-				pois.add(POIFactory.crearBanco(nombre, calle, altura, izquierda, derecha, barrio, latitud, longitud, (String[]) palabrasclaves.toArray()));
+				pois.add(new Bancos(nombre,direc,loc,palabrasclaves,diasAbieros));
 				break;
 			case 2:
-				pois.add(POIFactory.crearCGP(nombre, calle, altura, izquierda, derecha, barrio, latitud, longitud, (String[]) palabrasclaves.toArray()));
+				pois.add(new CGP(nombre,direc,loc,palabrasclaves,diasAbieros));
 				break;
 			case 3:
-				pois.add(POIFactory.crearParadaColectivo(nombre, calle, altura, izquierda, derecha, barrio, latitud, longitud, (String[]) palabrasclaves.toArray()));
+				pois.add(new ParadaColectivo(nombre,direc,loc,palabrasclaves,diasAbieros));
 				break;
 			case 4:
-				//pois.add(POIFactory.crearparadacolectivo(nombre, calle, altura, izquierda, derecha, barrio, latitud, longitud, (String[]) palabrasclaves.toArray()));
+				pois.add(new LocalesComerciales(nombre,strtipo,direc,loc,palabrasclaves,diasAbieros));
 				break;
 			}
 		}
@@ -81,7 +90,7 @@ public class Generales{
 		PreparedStatement insertarDireccion = conexion.prepareStatement("INSERT INTO direcciones (principal,izquierda,derecha,barrio,altura) "
 				+ " VALUES (?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
 		PreparedStatement insertarGeoLoc = conexion.prepareStatement("INSERT INTO geoLoc (latitud,longitud) VALUES (?,?)",Statement.RETURN_GENERATED_KEYS);
-		PreparedStatement insertarPOI = conexion.prepareStatement("INSERT INTO pois (nombre,tipo,direccion,geopos) VALUES (?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+		PreparedStatement insertarPOI = conexion.prepareStatement("INSERT INTO pois (nombre,tipo,direccion,geopos,strtipo) VALUES (?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
 		PreparedStatement insertarKeyWord = conexion.prepareStatement("INSERT INTO keywords (poid,clave) VALUES (?,?)");
 		PreparedStatement insertarDia = conexion.prepareStatement("INSERT INTO dias (poid,horainicio,horafin,minutoinicio,minutofin,dia) VALUES(?,?,?,?,?,?)");
 
@@ -105,9 +114,10 @@ public class Generales{
 		int idGeoLoc = temp.getInt(1);//Obtengo clave autogenerada
 		//InsertoPoi
 		insertarPOI.setString(1, poiA.getNombre());
-		insertarPOI.setInt(2, 1);
+		insertarPOI.setInt(2, poiA.getIdTipo());
 		insertarPOI.setInt(3, idDirec);
 		insertarPOI.setInt(4, idGeoLoc);
+		insertarPOI.setString(5, poiA.getTipo());
 		insertarPOI.executeUpdate();
 		temp = insertarPOI.getGeneratedKeys();
 		temp.next();

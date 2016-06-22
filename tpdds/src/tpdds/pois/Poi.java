@@ -53,6 +53,19 @@ public abstract class Poi implements Localizable, Serializable {
 		this.esValido();
 	}
 	
+	// Constructor POI
+	public Poi(String nombre, String tipoPOI, Direccion direccion, Location geoloc,HashSet<String> keywords,ArrayList<DiaPoi> dias) {
+		this.nombre = nombre;
+		this.tipo = tipoPOI;
+		this.direccion = direccion;
+		this.geoloc = geoloc;
+		this.estadistica = null;
+		this.iddb = -1;
+		palabrasClaves = keywords;
+		diasDisp = dias;
+		this.esValido();
+	}
+	
 	public void setPalabrasClaves(HashSet<String> palabrasClaves) {
 		this.palabrasClaves = palabrasClaves;
 	}
