@@ -48,9 +48,19 @@
 			<version>2.7.4</version>
 		</dependency>
 		<dependency>
-	  	  <groupId>mysql</groupId>
-	    	<artifactId>mysql-connector-java</artifactId>
-	    	<version>5.1.38</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.38</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.5.0-b01</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.5.5</version>
 		</dependency>
 	</dependencies>
 </project>
