@@ -46,6 +46,7 @@ public class buscarPoiScene implements Initializable {
 	FXMLLoader loader;
 	AnchorPane rootLayout;
 	HashMap<String, Boolean> palabraOK = new HashMap<>();
+	ArrayList<BancoExterna> bancos;
 
 	//IDCAMPO - SI ESTA OK O NO
 	public void buscarSceneRender(){
@@ -54,7 +55,6 @@ public class buscarPoiScene implements Initializable {
 			loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("buscarScene.fxml"));
 			rootLayout = loader.load();
-			//
 			//Creo Scene y la configuro
 			Scene scene = new Scene(rootLayout);
 			//Stage a abrirse
@@ -83,27 +83,24 @@ public class buscarPoiScene implements Initializable {
 		//String buscado = pre.concat(evento.getCharacter());
 		ArrayList<Poi> resultados = BuscadorPoi.buscar(buscado, Main.pois);
 		ObservableList<ObsPoi> resultadosTabla =  FXCollections.observableArrayList();
-		ArrayList<BancoExterna> bancos = null;
-		try{
-		bancos = new ArrayList<>(new jsonBancos().FiltrarBancos("http://private-96b476-ddsutn.apiary-mock.com","banks","bancos",buscado));
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
 		for (Poi poi : resultados) {
 			resultadosTabla.add(new ObsPoi(poi.getNombre(), poi.getDireccion().getCallePrincipal(), poi.getDireccion().getAltura(),Calculos.calcularDistanciaA(poi, Main.tablero),poi.getIddb()));
 		}
+		//Negrada
 		if(bancos!=null){
 			//BancoExterna ext = bancos.get(0);
 			for (Object bank : bancos){
-				if(!bank.toString().contains(buscado))
-				return;
+				if(!bank.toString().contains(buscado)){
+					
+				}
+				else{
 				String[] temp = bank.toString().split("=");
 				String[] temp2 = temp[1].split(",");
 				String[] temp3 = temp[4].split(",");
 				resultadosTabla.add(new ObsPoi(temp2[0],temp3[0],0,0,-1));
+				}
 			}	
 		}
-		
 		tablaMostrada.setItems(resultadosTabla);
 	}
 
@@ -118,22 +115,22 @@ public class buscarPoiScene implements Initializable {
 		for (Poi poi : resultados) {
 			resultadosTabla.add(new ObsPoi(poi.getNombre(), poi.getDireccion().getCallePrincipal(), poi.getDireccion().getAltura(),Calculos.calcularDistanciaA(poi, Main.tablero),poi.getIddb()));
 		}
-		/*ArrayList<BancoExterna> bancos = null;
+		//Busco en Json, asi lo hago una sola vez y no por busqueda
+		bancos = null;
 		try{
-		bancos = new ArrayList<>(new jsonBancos().FiltrarBancos("http://private-96b476-ddsutn.apiary-mock.com","banks","bancos","servicio"));
+			bancos = new ArrayList<>(new jsonBancos().FiltrarBancos("http://private-96b476-ddsutn.apiary-mock.com","banks","bancos",""));
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
+		// mas Negrada
 		if(bancos!=null){
-			//BancoExterna ext = bancos.get(0);
 			for (Object bank : bancos){
 				String[] temp = bank.toString().split("=");
 				String[] temp2 = temp[1].split(",");
 				String[] temp3 = temp[4].split(",");
 				resultadosTabla.add(new ObsPoi(temp2[0],temp3[0],0,0,-1));
 			}	
-		}*/
-		
+		}
 		tablaMostrada.setItems(resultadosTabla);
 	}
 }
