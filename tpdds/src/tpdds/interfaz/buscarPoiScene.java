@@ -95,6 +95,8 @@ public class buscarPoiScene implements Initializable {
 		if(bancos!=null){
 			//BancoExterna ext = bancos.get(0);
 			for (Object bank : bancos){
+				if(!bank.toString().contains(buscado))
+				return;
 				String[] temp = bank.toString().split("=");
 				String[] temp2 = temp[1].split(",");
 				String[] temp3 = temp[4].split(",");
@@ -116,7 +118,7 @@ public class buscarPoiScene implements Initializable {
 		for (Poi poi : resultados) {
 			resultadosTabla.add(new ObsPoi(poi.getNombre(), poi.getDireccion().getCallePrincipal(), poi.getDireccion().getAltura(),Calculos.calcularDistanciaA(poi, Main.tablero),poi.getIddb()));
 		}
-		ArrayList<BancoExterna> bancos = null;
+		/*ArrayList<BancoExterna> bancos = null;
 		try{
 		bancos = new ArrayList<>(new jsonBancos().FiltrarBancos("http://private-96b476-ddsutn.apiary-mock.com","banks","bancos","servicio"));
 		}catch(Exception ex){
@@ -130,7 +132,7 @@ public class buscarPoiScene implements Initializable {
 				String[] temp3 = temp[4].split(",");
 				resultadosTabla.add(new ObsPoi(temp2[0],temp3[0],0,0,-1));
 			}	
-		}
+		}*/
 		
 		tablaMostrada.setItems(resultadosTabla);
 	}

@@ -22,7 +22,7 @@ public class Generales{
 	
 	public static void initDatabase() throws SQLException, ClassNotFoundException{
 		Class.forName("com.mysql.jdbc.Driver");
-		conexion = DriverManager.getConnection("jdbc:mysql://sql5.freemysqlhosting.net:3306/sql5124816", "sql5124816", "JEMggS6Mzz");
+		conexion = DriverManager.getConnection("jdbc:mysql://mysql3.gear.host:3306/dds2016", "dds2016", "dds2016.");
 	}	
 	
 	public static ArrayList<Poi> cargarPois() throws SQLException, ClassNotFoundException {
