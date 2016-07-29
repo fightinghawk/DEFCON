@@ -1,6 +1,7 @@
 package tpdds.interfaz;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,11 +24,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import tpdds.database.Generales;
 import tpdds.pois.Poi;
 import tpdds.usoGlobal.BuscadorPoi;
 import tpdds.usoGlobal.Calculos;
 
 public class buscarPoiScene implements Initializable {
+	
+	long time_start, time_end, time;
+	Integer resultados_final;
 	
 	@FXML
 	TextField campoDeBusqueda;
@@ -41,7 +46,6 @@ public class buscarPoiScene implements Initializable {
 	TableColumn<ObsPoi, Integer> altura;
 	@FXML
 	TableColumn<ObsPoi, Double> distancia;
-	
 	Stage nuevaStage;
 	FXMLLoader loader;
 	AnchorPane rootLayout;
@@ -71,8 +75,9 @@ public class buscarPoiScene implements Initializable {
 	}
 	
 	@FXML
-	private void buscar(KeyEvent evento){
+	private void buscar(KeyEvent evento) throws ClassNotFoundException, SQLException{
 		tablaMostrada.getItems().clear();
+		time_start = System.currentTimeMillis();
 		String buscado;
 		if(!evento.getCharacter().equals("\b")){
 			buscado = campoDeBusqueda.getText().concat(evento.getCharacter());
@@ -101,7 +106,11 @@ public class buscarPoiScene implements Initializable {
 				}
 			}	
 		}
+		time_end = System.currentTimeMillis();
+		time = time_end - time_start;
 		tablaMostrada.setItems(resultadosTabla);
+		resultados_final = resultadosTabla.size();
+		Generales.registrarBusqueda(Main.tablero, buscado, resultados_final , time);
 	}
 
 	@Override

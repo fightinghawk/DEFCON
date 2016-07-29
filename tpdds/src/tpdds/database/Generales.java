@@ -3,8 +3,11 @@ package tpdds.database;
 import java.sql.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 
+import tpdds.dispositivo.Dispositivo;
 import tpdds.factory.POIFactory;
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;
@@ -186,5 +189,23 @@ public class Generales{
 		PreparedStatement borrado = conexion.prepareStatement("DELETE FROM pois WHERE id = ?");
 		borrado.setInt(1, poi.getIddb());
 		borrado.executeUpdate();
+	}
+	
+	public static void registrarBusqueda(Dispositivo tablero,String busqueda,Integer resultados,long time) throws SQLException, ClassNotFoundException{
+		//Fecha Actual Java
+	    Calendar actual = new GregorianCalendar();
+
+		PreparedStatement search = conexion.prepareStatement("INSERT INTO busquedas (id_terminal,dia,mes,anio,frase,resultados,time)"
+		+ " values (?,?,?,?,?,?,?)");
+		
+		search.setInt(1, tablero.getId());
+		search.setInt(2, actual.get(Calendar.DATE));
+		search.setInt(3, actual.get(Calendar.MONTH)+1);
+		search.setInt(4, actual.get(Calendar.YEAR));
+		search.setString(5, busqueda);
+		search.setInt(6, resultados);
+		search.setFloat(7, time);
+		search.executeUpdate();
+		
 	}
 }
