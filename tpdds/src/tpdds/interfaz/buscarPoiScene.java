@@ -31,7 +31,8 @@ import tpdds.usoGlobal.Calculos;
 
 public class buscarPoiScene implements Initializable {
 	
-	long time_start, time_end, time;
+	long time_start, time_end;
+	double time;
 	Integer resultados_final;
 	
 	@FXML
@@ -107,7 +108,7 @@ public class buscarPoiScene implements Initializable {
 			}	
 		}
 		time_end = System.currentTimeMillis();
-		time = time_end - time_start;
+		time = (time_end - time_start)/1e6;
 		tablaMostrada.setItems(resultadosTabla);
 		resultados_final = resultadosTabla.size();
 		Generales.registrarBusqueda(Main.tablero, buscado, resultados_final , time);

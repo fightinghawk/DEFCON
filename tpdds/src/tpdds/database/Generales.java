@@ -191,7 +191,7 @@ public class Generales{
 		borrado.executeUpdate();
 	}
 	
-	public static void registrarBusqueda(Dispositivo tablero,String busqueda,Integer resultados,long time) throws SQLException, ClassNotFoundException{
+	public static void registrarBusqueda(Dispositivo tablero,String busqueda,Integer resultados,double time) throws SQLException, ClassNotFoundException{
 		//Fecha Actual Java
 	    Calendar actual = new GregorianCalendar();
 
@@ -204,7 +204,7 @@ public class Generales{
 		search.setInt(4, actual.get(Calendar.YEAR));
 		search.setString(5, busqueda);
 		search.setInt(6, resultados);
-		search.setFloat(7, time);
+		search.setDouble(7, time);
 		search.executeUpdate();
 		
 	}
