@@ -44,6 +44,7 @@ public class PruebasPois {
 	List<BancoExterna> bancoexternalista;
 	jsonBancos apiBancos;
 	static Dispositivo tablero;
+	Integer resultado;
 	
 	@SuppressWarnings("unchecked")
 	@Before
@@ -116,7 +117,21 @@ public class PruebasPois {
 		Assert.assertEquals(bancoexternalista.size(), 2);
 	}
 	
-
+	@Test
+	public void ReportesFecha() throws Exception {
+		System.out.println("//////////////REPORTES BUSQUEDAS FILTRADO POR ANIO O COMPLETO SI ES NULL");
+		tpdds.database.Generales.obtenerReporteFecha(null);
+	}
+	@Test
+	public void ReportesFrase() throws Exception {
+		System.out.println("//////////////REPORTES BUSQUEDAS FILTRADO BUSQUEDA Y ANIO");
+		tpdds.database.Generales.obtenerReporteFrase("disenio", 2016);
+	}
+	@Test
+	public void ReportesTerminales() throws Exception {
+		System.out.println("//////////////REPORTES POR TERMINAL");
+		tpdds.database.Generales.obtenerReporteTerminales();
+	}
 	
 	
 	

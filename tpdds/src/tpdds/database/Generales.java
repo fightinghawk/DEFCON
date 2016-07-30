@@ -208,4 +208,59 @@ public class Generales{
 		search.executeUpdate();
 		
 	}
+	
+	public static void obtenerReporteFecha(Integer anio) throws SQLException, ClassNotFoundException{
+		ResultSet listaReporteFecha;
+		PreparedStatement searchr;
+		if(anio != null)
+		{
+		 searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (anio=?) GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
+		searchr.setInt(1, anio);
+		}
+		else
+		{
+			searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
+		}
+		listaReporteFecha = searchr.executeQuery();
+        while ( listaReporteFecha.next() ) {
+        	   System.out.print("FECHA: "+listaReporteFecha.getObject("dia")+"/"+listaReporteFecha.getObject("mes")+"/"+listaReporteFecha.getObject("anio")+" ");
+        	   System.out.println("Totales: "+listaReporteFecha.getObject("totales"));
+        }
+	}
+	
+	public static void obtenerReporteFrase(String buscada,Integer anio) throws SQLException, ClassNotFoundException{
+		ResultSet listaReporteFrase;
+		PreparedStatement searchrf;
+		searchrf = conexion.prepareStatement("SELECT sum(resultados) AS Totales FROM busquedas  where (frase = ? AND anio = ?) GROUP BY frase,mes,anio ORDER BY mes ASC");
+		searchrf.setString(1, buscada);
+		searchrf.setInt(2, anio);
+		listaReporteFrase = searchrf.executeQuery();
+        while ( listaReporteFrase.next() ) {
+        	   System.out.println(listaReporteFrase.getObject("totales"));
+        }
+	}
+	
+	public static void registrarTerminal(Dispositivo tablero) throws SQLException, ClassNotFoundException{
+		
+	    Calendar actual = new GregorianCalendar();
+
+		PreparedStatement search = conexion.prepareStatement("INSERT INTO terminales (nombre)"
+		+ " values (?)");
+		
+		search.setString(1, tablero.getNombre());
+
+		search.executeUpdate();
+		
+	}
+	
+	public static void obtenerReporteTerminales() throws SQLException, ClassNotFoundException{
+		PreparedStatement searcht;
+		ResultSet listaReporteTerminal;
+		searcht = conexion.prepareStatement("SELECT nombre, sum(resultados) AS Totales FROM busquedas, terminales WHERE terminales.id = busquedas.id_terminal  GROUP BY busquedas.id_terminal ORDER BY terminales.id ASC");
+		listaReporteTerminal = searcht.executeQuery();
+        while ( listaReporteTerminal.next() ) {
+        	   System.out.print("Terminal: "+listaReporteTerminal.getObject("nombre"));
+        	   System.out.println(" Totales: "+listaReporteTerminal.getObject("totales"));
+        }
+	}
 }
