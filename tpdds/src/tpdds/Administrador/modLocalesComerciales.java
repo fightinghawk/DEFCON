@@ -38,7 +38,7 @@ public class modLocalesComerciales extends Proceso  {
 				String nombreSucursal = linea.split(";")[0];
 				String[] keyWord = linea.split(";")[1].split(" ");
 				
-				Dispositivo.buscarPOI(nombreSucursal, listaPois)
+				//Dispositivo.buscarPOI(nombreSucursal, listaPois)
 			}
 			
 		} catch (IOException e) {
