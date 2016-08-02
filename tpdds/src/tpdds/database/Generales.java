@@ -210,11 +210,9 @@ public class Generales{
 		
 	}
 	
-	public static ArrayList<ObsResultadoFecha> obtenerReporteFecha(Integer dia,Integer mes,Integer anio) throws SQLException, ClassNotFoundException{
+	public static ResultSet obtenerReporteFecha(Integer dia,Integer mes,Integer anio) throws SQLException, ClassNotFoundException{
 		ResultSet listaReporteFecha;
 		PreparedStatement searchr;
-		ArrayList<ObsResultadoFecha>  resultados = new ArrayList<ObsResultadoFecha>();
-		ObsResultadoFecha resultado;
 		if(anio != 0 && mes != 0 && dia !=0)
 		{
 		 searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (dia=? AND mes=? AND anio=?) GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
@@ -232,11 +230,7 @@ public class Generales{
 			searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
 		}
 		listaReporteFecha = searchr.executeQuery();
-        while ( listaReporteFecha.next() ) {
-        	resultado = new ObsResultadoFecha(""+listaReporteFecha.getObject("dia")+"/"+listaReporteFecha.getObject("mes")+"/"+listaReporteFecha.getObject("anio"),listaReporteFecha.getObject("totales"));
-        	resultados.add(resultado);
-        }
-        return resultados;
+		return listaReporteFecha;
 	}
 	
 	public static void obtenerReporteFrase(String buscada,Integer anio) throws SQLException, ClassNotFoundException{
