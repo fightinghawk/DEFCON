@@ -8,7 +8,6 @@ import java.util.HashSet;
 
 import tpdds.database.Generales;
 import tpdds.dispositivo.Dispositivo;
-import tpdds.pois.DiaPoi;
 import tpdds.pois.LocalesComerciales;
 import tpdds.pois.Poi;
 import tpdds.ubicacion.Direccion;
