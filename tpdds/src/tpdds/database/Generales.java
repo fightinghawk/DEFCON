@@ -217,8 +217,10 @@ public class Generales{
 		ObsResultadoFecha resultado;
 		if(anio != 0 && mes != 0 && dia !=0)
 		{
-		 searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (anio=?) GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
-		searchr.setInt(1, anio);
+		 searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (dia=? AND mes=? AND anio=?) GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
+		searchr.setInt(1, dia);
+		searchr.setInt(2, mes);
+		searchr.setInt(3, anio);
 		}
 		if(anio != 0)
 		{
