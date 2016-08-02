@@ -11,8 +11,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -30,6 +32,10 @@ public class ReportePorFecha implements Initializable {
 	TextField anioBuscado;
 	@FXML
 	TableView<ObsResultadoFecha> resultado;
+	@FXML
+	TableColumn<ObsResultadoFecha, String> fecha;
+	@FXML
+	TableColumn<ObsResultadoFecha, Object> cantidad;
 	
 	
 	Stage nuevaStage;
@@ -56,12 +62,14 @@ public class ReportePorFecha implements Initializable {
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		fecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+		cantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
 		
 	}
 
 	@FXML
 	public void buscarFecha(MouseEvent evento){
+		resultado.getItems().clear();
 		try{
 		ObservableList<ObsResultadoFecha> aMostrar = FXCollections.observableArrayList();
 		ResultSet resultados = Generales.obtenerReporteFecha(Integer.parseInt(diaBuscado.getText()), Integer.parseInt(mesBuscado.getText()), Integer.parseInt(anioBuscado.getText()));

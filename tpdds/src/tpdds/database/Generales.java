@@ -215,23 +215,33 @@ public class Generales{
 		PreparedStatement searchr;
 		if(anio != 0 && mes != 0 && dia !=0)
 		{
-		 searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (dia=? AND mes=? AND anio=?) GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
+		 searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (dia=? AND mes=? AND anio=?) GROUP BY dia,mes,anio");
 		searchr.setInt(1, dia);
 		searchr.setInt(2, mes);
 		searchr.setInt(3, anio);
 		}
 		else
 		{
-		if(anio != 0)
-		{
-		 searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (anio=?) GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
-		searchr.setInt(1, anio);
-		}
-		else
-		{
-			searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
-		}
-		}
+			if(anio != 0 && mes != 0 && dia ==0)
+			{
+			 searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (mes=? AND anio=?) GROUP BY dia,mes,anio ORDER BY dia ASC");
+			searchr.setInt(1, mes);
+			searchr.setInt(2, anio);
+			}
+			else
+			{
+				if(anio != 0)
+				{
+				 searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (anio=?) GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
+				searchr.setInt(1, anio);
+				}
+				else
+				{
+					searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
+				}
+				}
+			}
+
 		listaReporteFecha = searchr.executeQuery();
 
 		return listaReporteFecha;
