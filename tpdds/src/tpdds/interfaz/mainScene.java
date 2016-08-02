@@ -39,6 +39,11 @@ public class mainScene {
 	}	
 	
 	@FXML
+	public void loginBoton(MouseEvent botonApretado){
+		new preLoginScene().loginSceneRender();
+	}	
+	
+	@FXML
 	public void modificarBoton(MouseEvent botonApretado){
 		new modfiPoiSceneBuscar().modfiPoiBuscar();
 	}	

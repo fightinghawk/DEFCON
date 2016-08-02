@@ -2,7 +2,7 @@ package tpdds.Administrador;
 
 import java.util.ArrayList;
 
-public class Administrador{
+public class Administrador implements Usuario{
 	
 	private String nombreUsuario;
 	private String contrasenia;
@@ -34,5 +34,11 @@ public class Administrador{
 				proceso.ejecutarme();
 			}
 		}
+	}
+
+	@Override
+	public String getTipo() {
+		// TODO Auto-generated method stub
+		return "Administrador";
 	}
 }
