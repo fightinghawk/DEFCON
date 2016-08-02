@@ -1,5 +1,7 @@
 package tpdds.Administrador;
 
+import java.io.FileNotFoundException;
+
 public abstract class Proceso {
 	
 	private String nombreProceso;
@@ -16,9 +18,7 @@ public abstract class Proceso {
 		this.fechaFin = fechaFin;
 	}
 
-	public void ejecutarme() {
-		
-	}
+	public abstract void ejecutarme();
 
 	public String getNombreProceso() {
 		return nombreProceso;
