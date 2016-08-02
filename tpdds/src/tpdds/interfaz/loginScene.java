@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -60,5 +61,14 @@ public class loginScene implements Initializable {
 		tipousuario.setText(tipo);
 		
 	}
+	
+	@FXML
+	public void verreportefecha(MouseEvent evento){
+		new ReportePorFecha().ReportePorFechaSceneRender();
+	}
 
+	@FXML
+	public void verreporteterminal(){
+		
+	}
 }

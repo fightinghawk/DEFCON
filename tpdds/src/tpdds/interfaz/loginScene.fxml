@@ -6,11 +6,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="639.0" prefWidth="836.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="639.0" prefWidth="836.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="verReporte" layoutX="115.0" layoutY="174.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="272.0" text="VER REPORTES" />
-      <Button layoutX="434.0" layoutY="174.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="272.0" text="OTRO" />
+      <Button fx:id="verReporte" layoutX="115.0" layoutY="174.0" mnemonicParsing="false" onMouseClicked="#verreportefecha" prefHeight="76.0" prefWidth="272.0" text="VER REPORTES POR FECHA" />
+      <Button layoutX="434.0" layoutY="174.0" mnemonicParsing="false" onMouseClicked="#verreporteterminal" prefHeight="76.0" prefWidth="272.0" text="VER REPORTES POR TERMINAL" />
       <Button layoutX="434.0" layoutY="320.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="272.0" text="OTRO" />
       <Button layoutX="115.0" layoutY="320.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="272.0" text="OTRO" />
       <Text layoutX="115.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:" wrappingWidth="59.6708984375" />

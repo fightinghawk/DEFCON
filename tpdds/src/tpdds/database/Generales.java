@@ -9,6 +9,7 @@ import java.util.HashSet;
 
 import tpdds.dispositivo.Dispositivo;
 import tpdds.factory.POIFactory;
+import tpdds.interfaz.ObsResultadoFecha;
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;
 import tpdds.pois.DiaPoi;
@@ -226,6 +227,19 @@ public class Generales{
         	   System.out.print("FECHA: "+listaReporteFecha.getObject("dia")+"/"+listaReporteFecha.getObject("mes")+"/"+listaReporteFecha.getObject("anio")+" ");
         	   System.out.println("Totales: "+listaReporteFecha.getObject("totales"));
         }
+	}
+	
+	public static ObsResultadoFecha obtenerReporteFecha(int dia, int mes, int anio) throws SQLException, ClassNotFoundException {
+		PreparedStatement search = conexion.prepareStatement("SELECT COUNT * FROM busquedas WHERE (dia = ? AND mes = ? AND anio = ?)");
+		search.setInt(1, dia);
+		search.setInt(2, mes);
+		search.setInt(3, anio);
+		ResultSet resultado = search.executeQuery();
+		if(resultado.next()){
+			return new ObsResultadoFecha(""+dia+"/"+mes+"/"+anio, resultado.getInt(1));
+		}else{
+		return null;
+		}
 	}
 	
 	public static void obtenerReporteFrase(String buscada,Integer anio) throws SQLException, ClassNotFoundException{
