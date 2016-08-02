@@ -220,6 +220,8 @@ public class Generales{
 		searchr.setInt(2, mes);
 		searchr.setInt(3, anio);
 		}
+		else
+		{
 		if(anio != 0)
 		{
 		 searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (anio=?) GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
@@ -229,7 +231,9 @@ public class Generales{
 		{
 			searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
 		}
+		}
 		listaReporteFecha = searchr.executeQuery();
+
 		return listaReporteFecha;
 	}
 	
