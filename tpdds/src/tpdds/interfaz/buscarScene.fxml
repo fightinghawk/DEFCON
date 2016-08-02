@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tpdds.interfaz.buscarPoiScene">
    <children>
-      <TextField fx:id="campoDeBusqueda" layoutX="148.0" layoutY="14.0" onKeyTyped="#buscar" prefHeight="31.0" prefWidth="556.0" promptText="Inserte busqueda aqui" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="148.0" />
+      <TextField fx:id="campoDeBusqueda" layoutX="148.0" layoutY="14.0" prefHeight="31.0" prefWidth="556.0" promptText="Inserte busqueda aqui" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="148.0" />
       <Label fx:id="resultado" alignment="CENTER" layoutX="315.0" layoutY="65.0" prefHeight="21.0" prefWidth="202.0" text="Resultados" textAlignment="CENTER" wrapText="true" />
       <TableView fx:id="tablaMostrada" layoutY="95.0" prefHeight="555.0" prefWidth="852.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
         <columns>
@@ -23,5 +23,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Button layoutX="749.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#buscar" text="Buscar" />
    </children>
 </AnchorPane>

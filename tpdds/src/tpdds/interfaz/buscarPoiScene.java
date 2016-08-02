@@ -76,16 +76,18 @@ public class buscarPoiScene implements Initializable {
 	}
 	
 	@FXML
-	private void buscar(KeyEvent evento) throws ClassNotFoundException, SQLException{
+	private void buscar(MouseEvent event) throws ClassNotFoundException, SQLException{
+		
 		tablaMostrada.getItems().clear();
 		time_start = System.currentTimeMillis();
 		String buscado;
-		if(!evento.getCharacter().equals("\b")){
+		/*if(!campoDeBusqueda.getText()){
 			buscado = campoDeBusqueda.getText().concat(evento.getCharacter());
 		}
 		else{
 			buscado = campoDeBusqueda.getText();
-		}
+		}*/
+		buscado = campoDeBusqueda.getText();
 		//String buscado = pre.concat(evento.getCharacter());
 		ArrayList<Poi> resultados = BuscadorPoi.buscar(buscado, Main.pois);
 		ObservableList<ObsPoi> resultadosTabla =  FXCollections.observableArrayList();
@@ -111,7 +113,9 @@ public class buscarPoiScene implements Initializable {
 		time = (time_end - time_start)/1e6;
 		tablaMostrada.setItems(resultadosTabla);
 		resultados_final = resultadosTabla.size();
-		Generales.registrarBusqueda(Main.tablero, buscado, resultados_final , time);
+		if(!buscado.isEmpty()){
+			Generales.registrarBusqueda(Main.tablero, buscado, resultados_final , time);
+		}	
 	}
 
 	@Override
