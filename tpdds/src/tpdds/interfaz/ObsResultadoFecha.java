@@ -3,19 +3,19 @@ package tpdds.interfaz;
 public class ObsResultadoFecha {
 
 	private String fecha;
-	private Integer cantidad;
+	private Object cantidad;
 	
-	public ObsResultadoFecha(String fecha, Integer cantidad) {
+	public ObsResultadoFecha(String fecha, Object object) {
 		super();
 		this.fecha = fecha;
-		this.cantidad = cantidad;
+		this.cantidad = object;
 	}
 
 	public String getFecha() {
 		return fecha;
 	}
 
-	public Integer getCantidad() {
+	public Object getCantidad() {
 		return cantidad;
 	}
 	

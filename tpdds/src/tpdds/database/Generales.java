@@ -210,10 +210,17 @@ public class Generales{
 		
 	}
 	
-	public static void obtenerReporteFecha(Integer anio) throws SQLException, ClassNotFoundException{
+	public static ArrayList<ObsResultadoFecha> obtenerReporteFecha(Integer dia,Integer mes,Integer anio) throws SQLException, ClassNotFoundException{
 		ResultSet listaReporteFecha;
 		PreparedStatement searchr;
-		if(anio != null)
+		ArrayList<ObsResultadoFecha>  resultados = new ArrayList<ObsResultadoFecha>();
+		ObsResultadoFecha resultado;
+		if(anio != 0 && mes != 0 && dia !=0)
+		{
+		 searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (anio=?) GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
+		searchr.setInt(1, anio);
+		}
+		if(anio != 0)
 		{
 		 searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (anio=?) GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
 		searchr.setInt(1, anio);
@@ -224,22 +231,10 @@ public class Generales{
 		}
 		listaReporteFecha = searchr.executeQuery();
         while ( listaReporteFecha.next() ) {
-        	   System.out.print("FECHA: "+listaReporteFecha.getObject("dia")+"/"+listaReporteFecha.getObject("mes")+"/"+listaReporteFecha.getObject("anio")+" ");
-        	   System.out.println("Totales: "+listaReporteFecha.getObject("totales"));
+        	resultado = new ObsResultadoFecha(""+listaReporteFecha.getObject("dia")+"/"+listaReporteFecha.getObject("mes")+"/"+listaReporteFecha.getObject("anio"),listaReporteFecha.getObject("totales"));
+        	resultados.add(resultado);
         }
-	}
-	
-	public static ObsResultadoFecha obtenerReporteFecha(int dia, int mes, int anio) throws SQLException, ClassNotFoundException {
-		PreparedStatement search = conexion.prepareStatement("SELECT COUNT * FROM busquedas WHERE (dia = ? AND mes = ? AND anio = ?)");
-		search.setInt(1, dia);
-		search.setInt(2, mes);
-		search.setInt(3, anio);
-		ResultSet resultado = search.executeQuery();
-		if(resultado.next()){
-			return new ObsResultadoFecha(""+dia+"/"+mes+"/"+anio, resultado.getInt(1));
-		}else{
-		return null;
-		}
+        return resultados;
 	}
 	
 	public static void obtenerReporteFrase(String buscada,Integer anio) throws SQLException, ClassNotFoundException{
