@@ -1,6 +1,7 @@
 package tpdds.interfaz;
 
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -63,11 +64,11 @@ public class ReportePorFecha implements Initializable {
 	public void buscarFecha(MouseEvent evento){
 		try{
 		ObservableList<ObsResultadoFecha> aMostrar = FXCollections.observableArrayList();
-		ArrayList<ObsResultadoFecha> resultados = Generales.obtenerReporteFecha(Integer.parseInt(diaBuscado.getText()), Integer.parseInt(mesBuscado.getText()), Integer.parseInt(anioBuscado.getText()));
-		for (ObsResultadoFecha resultado : resultados) 
-		{
-			aMostrar.add(resultado);
-		}
+		ResultSet resultados = Generales.obtenerReporteFecha(Integer.parseInt(diaBuscado.getText()), Integer.parseInt(mesBuscado.getText()), Integer.parseInt(anioBuscado.getText()));
+	    while ( resultados.next() ) {
+	        	aMostrar.add(new ObsResultadoFecha(""+resultados.getObject("dia")+"/"+resultados.getObject("mes")+"/"+resultados.getObject("anio"),resultados.getObject("totales")));
+	        	
+	    }
 		
 		resultado.setItems(aMostrar);
 		}catch(Exception ex){
