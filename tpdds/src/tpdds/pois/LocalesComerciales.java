@@ -1,16 +1,13 @@
 package tpdds.pois;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+
 import java.util.HashSet;
 
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Localizable;
 import tpdds.ubicacion.Location;
 import tpdds.usoGlobal.Calculos;
-import tpdds.usoGlobal.CalculosHorarios;
 
 public class LocalesComerciales extends Poi  {
 	

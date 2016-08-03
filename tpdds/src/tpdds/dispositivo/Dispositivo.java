@@ -104,7 +104,7 @@ public class Dispositivo implements Localizable{
 		return listaPois;
 	}
 	
-	public Poi buscarPOI(String nombrePOI, ArrayList<Poi> listaPois) {
+	public static Poi buscarPOI(String nombrePOI, ArrayList<Poi> listaPois) {
 			Poi poiEncontrado = null;
     		for (Poi poi : listaPois){
     			if(nombrePOI.toUpperCase().equals(poi.getNombre().toUpperCase())){
@@ -115,7 +115,7 @@ public class Dispositivo implements Localizable{
     	}
     	
 	public ArrayList<Poi> eliminarPOI(String nombrePOI, ArrayList<Poi> listaPois) {
-    		Poi poiEncontrado = this.buscarPOI(nombrePOI,listaPois);
+    		Poi poiEncontrado = buscarPOI(nombrePOI,listaPois);
     		listaPois.remove(poiEncontrado);
     		
     	return listaPois;
@@ -128,7 +128,7 @@ public class Dispositivo implements Localizable{
 	 */
 	public ArrayList<Poi> modificarPOI(String nombrePOI, ArrayList<Poi> listaPois)
 	{
-		Poi poi = this.buscarPOI(nombrePOI, listaPois);
+		Poi poi = buscarPOI(nombrePOI, listaPois);
 		if(poi != null)
 		{
 			int opcion = 0;
