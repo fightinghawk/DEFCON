@@ -52,7 +52,7 @@ public class UsuarioComun implements Usuario{
 	@Override
 	public String getTipo() {
 		// TODO Auto-generated method stub
-		return "Administrador";
+		return "Usuario Comun";
 	}
 
 	public Proceso getProcesoSeleccionado() {
