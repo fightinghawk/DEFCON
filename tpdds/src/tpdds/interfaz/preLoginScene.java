@@ -14,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tpdds.Administrador.Administrador;
+import tpdds.Administrador.UsuarioComun;
 
 public class preLoginScene implements Initializable {
 
@@ -64,6 +65,12 @@ public class preLoginScene implements Initializable {
 			new loginScene(new Administrador("admin", "123456")).loginSceneRender();
 			nuevaStage.close();
 		}
+		
+		if(usuario.equalsIgnoreCase("amichel") && passWord.equalsIgnoreCase("123")){
+			new loginSceneUComun(new UsuarioComun("andres", "michel","amichel","123","asd@asd.com")).loginSceneRender();
+			nuevaStage.close();
+		}
+		
 	}
 	
 	

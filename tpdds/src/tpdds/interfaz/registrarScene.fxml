@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="639.0" prefWidth="836.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="304.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+      <TextArea id="nombreusuario" layoutX="384.0" layoutY="169.0" prefHeight="33.0" prefWidth="208.0" />
+      <Text layoutX="303.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido" />
+      <TextArea id="apellidousuario" layoutX="384.0" layoutY="236.0" prefHeight="33.0" prefWidth="208.0" />
+      <Text layoutX="245.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de Usuario" />
+      <TextArea id="usuario" layoutX="384.0" layoutY="302.0" prefHeight="33.0" prefWidth="208.0" />
+      <Text layoutX="314.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+      <TextArea id="emailusuario" layoutX="384.0" layoutY="420.0" prefHeight="33.0" prefWidth="208.0" />
+      <Button id="registrarsedb" layoutX="478.0" layoutY="481.0" mnemonicParsing="false" text="Registrarse" />
+      <Text layoutX="284.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+      <TextArea id="passwordusuario" layoutX="384.0" layoutY="364.0" prefHeight="33.0" prefWidth="208.0" />
+   </children>
+</AnchorPane>

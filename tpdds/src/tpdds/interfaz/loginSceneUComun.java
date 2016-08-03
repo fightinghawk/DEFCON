@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import tpdds.Administrador.Administrador;
 import tpdds.Administrador.Usuario;
 
-public class loginScene implements Initializable {
+public class loginSceneUComun implements Initializable {
 
 	@FXML
 	Button verReporte;
@@ -32,7 +32,7 @@ public class loginScene implements Initializable {
 	String user;
 	String tipo;
 	
-	public loginScene(Usuario user){
+	public loginSceneUComun(Usuario user){
 		this.user = user.getNombreUsuario();
 		this.tipo = user.getTipo();	
 	}
@@ -45,7 +45,7 @@ public class loginScene implements Initializable {
 			nuevaStage.setResizable(false);
 			nuevaStage.setTitle("Insertar POI");
 			loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("loginScene.fxml"));
+			loader.setLocation(getClass().getResource("loginSceneUComun.fxml"));
 			loader.setController(this);
 			rootLayout = loader.load();
 			Scene scene = new Scene(rootLayout);
