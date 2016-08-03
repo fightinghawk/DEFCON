@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 import tpdds.pois.Poi;
 import tpdds.database.Generales;
@@ -19,7 +21,7 @@ public class ActualizacionLocalesComerciales extends Proceso implements ComandoE
 
 	public ActualizacionLocalesComerciales(String nombreProceso, String usuario, String resultado, int fechaInicio,
 			int fechaFin, String ubicacionArchivo) {
-		super(nombreProceso, usuario, resultado, fechaInicio, fechaFin);
+		super(nombreProceso);
 		this.setUbicacionArchivo(ubicacionArchivo);
 	}
 
@@ -27,6 +29,7 @@ public class ActualizacionLocalesComerciales extends Proceso implements ComandoE
 	@Override
 	public void ejecutarme() throws IOException, ClassNotFoundException, SQLException {
 		listaPois.addAll(Generales.cargarPois());
+		int control = 0;
 		String lineaArchivo;
 		FileReader fr = new FileReader(this.getUbicacionArchivo());
 		String nombreSucursal;
@@ -34,6 +37,7 @@ public class ActualizacionLocalesComerciales extends Proceso implements ComandoE
 		HashSet<String> palabrasClave = null;
 		bufferedReader = new BufferedReader(fr);
 		while((lineaArchivo = bufferedReader.readLine())!=null){
+			control = 1;
 			nombreSucursal = lineaArchivo.split(";")[0];
 			keyWords = (lineaArchivo.split(";")[1].split(" "));
 			palabrasClave.addAll(this.deListaAHashSet(keyWords));
@@ -45,6 +49,13 @@ public class ActualizacionLocalesComerciales extends Proceso implements ComandoE
 				localNuevo.setPalabrasClaves(palabrasClave);
 			}
 		}
+		if(control==1){
+			this.setResultado("OK");
+		}else{
+			this.setResultado("ERROR, NO SE EJECUTO CORRECTAMENTE");
+			}
+		Calendar fecha = GregorianCalendar.getInstance();
+		this.setFechaFin(fecha);
 	}
 
 	public String getUbicacionArchivo() {

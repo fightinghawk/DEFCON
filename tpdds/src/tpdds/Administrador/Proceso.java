@@ -1,18 +1,21 @@
 package tpdds.Administrador;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public abstract class Proceso implements ComandoEjecutar{	
 	private String nombreProceso;
 	private String usuario;
 	private String resultado;
-	private int fechaInicio;
-	private int fechaFin;
+	private Calendar fechaInicio;
+	private Calendar fechaFin;
 	
-	public Proceso(String nombreProceso, String usuario, String resultado, int fechaInicio, int fechaFin){
+	public Proceso(String nombreProceso){
 		this.nombreProceso = nombreProceso;
-		this.usuario = usuario;
-		this.resultado = resultado;
-		this.fechaInicio = fechaInicio;
-		this.fechaFin = fechaFin;
+		this.usuario = null;
+		this.resultado = null;
+		this.fechaInicio = null;
+		this.fechaFin = null;
 	}
 
 	public String getNombreProceso() {
@@ -38,19 +41,19 @@ public abstract class Proceso implements ComandoEjecutar{
 		this.resultado = resultado;
 	}
 	
-	public int getFechaInicio() {
+	public Calendar getFechaInicio() {
 		return fechaInicio;
 	}
 	
-	public void setFechaInicio(int fecha){
+	public void setFechaInicio(Calendar fecha){
 		this.fechaInicio = fecha;
 	}
 	
-	public int getFechaFin() {
+	public Calendar getFechaFin() {
 		return fechaFin;
 	}
 	
-	public void setFechaFin(int fecha){
+	public void setFechaFin(Calendar fecha){
 		this.fechaFin = fecha;
 	}
 }

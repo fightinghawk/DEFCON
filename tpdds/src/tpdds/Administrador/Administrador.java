@@ -2,6 +2,8 @@ package tpdds.Administrador;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Administrador implements Usuario{
 	
@@ -51,7 +53,10 @@ public class Administrador implements Usuario{
 	}
 
 	public void ejecutarProceso() throws IOException, ClassNotFoundException, SQLException{
+		Calendar fecha = GregorianCalendar.getInstance();
 		this.getProcesoSeleccionado().ejecutarme();
+		this.getProcesoSeleccionado().setFechaInicio(fecha);
+		this.getProcesoSeleccionado().setUsuario(this.getNombreUsuario());
 	}
 
 	@Override
