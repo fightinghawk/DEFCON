@@ -1,5 +1,4 @@
-package tpdds.Administrador;
-
+/*package tpdds.Administrador;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -69,4 +68,4 @@ public class modLocalesComerciales extends Proceso  {
 		return hs;
 	}
 	
-}
+}*/

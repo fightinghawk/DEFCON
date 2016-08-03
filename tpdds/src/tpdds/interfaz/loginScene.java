@@ -69,6 +69,16 @@ public class loginScene implements Initializable {
 
 	@FXML
 	public void verreporteterminal(){
+		new ReportePorTerminal().ReportePorTerminalRender();
+	}
+	
+	@FXML
+	public void verreportetotal(){
+		new ReporteTotal().ReportePorTerminalRender();
+	}
+	
+	@FXML
+	public void ejecutarprocesos(){
 		
 	}
 }

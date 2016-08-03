@@ -10,8 +10,8 @@
    <children>
       <Button fx:id="verReporte" layoutX="115.0" layoutY="174.0" mnemonicParsing="false" onMouseClicked="#verreportefecha" prefHeight="76.0" prefWidth="272.0" text="VER REPORTES POR FECHA" />
       <Button layoutX="434.0" layoutY="174.0" mnemonicParsing="false" onMouseClicked="#verreporteterminal" prefHeight="76.0" prefWidth="272.0" text="VER REPORTES POR TERMINAL" />
-      <Button layoutX="434.0" layoutY="320.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="272.0" text="OTRO" />
-      <Button layoutX="115.0" layoutY="320.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="272.0" text="OTRO" />
+      <Button layoutX="434.0" layoutY="320.0" mnemonicParsing="false" onMouseClicked="#ejecutarprocesos" prefHeight="76.0" prefWidth="272.0" text="LANZAR PROCESOS" />
+      <Button layoutX="115.0" layoutY="320.0" mnemonicParsing="false" onMouseClicked="#verreportetotal" prefHeight="76.0" prefWidth="272.0" text="VER REPORTES TOTALES" />
       <Text layoutX="115.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:" wrappingWidth="59.6708984375" />
       <Text layoutX="434.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" wrappingWidth="52.6708984375" />
       <Text fx:id="nombreusuario" layoutX="206.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de usuario" wrappingWidth="186.6708984375" />
