@@ -247,16 +247,16 @@ public class Generales{
 		return listaReporteFecha;
 	}
 	
-	public static void obtenerReporteFrase(String buscada,Integer anio) throws SQLException, ClassNotFoundException{
-		ResultSet listaReporteFrase;
+	public static ResultSet obtenerReporteBusquedayTerminal(String buscada,Integer terminal) throws SQLException, ClassNotFoundException{
+		ResultSet listaReporte;
 		PreparedStatement searchrf;
-		searchrf = conexion.prepareStatement("SELECT sum(resultados) AS Totales FROM busquedas  where (frase = ? AND anio = ?) GROUP BY frase,mes,anio ORDER BY mes ASC");
+	    Calendar actual = new GregorianCalendar();
+		searchrf = conexion.prepareStatement("SELECT sum(resultados) AS Totales FROM busquedas  where (frase = ? AND id_terminal=? AND anio = ?) GROUP BY frase,id_terminal,mes,anio ORDER BY mes ASC");
 		searchrf.setString(1, buscada);
-		searchrf.setInt(2, anio);
-		listaReporteFrase = searchrf.executeQuery();
-        while ( listaReporteFrase.next() ) {
-        	   System.out.println(listaReporteFrase.getObject("totales"));
-        }
+		searchrf.setInt(2, terminal);
+		searchrf.setInt(3, actual.get(Calendar.YEAR));
+		listaReporte = searchrf.executeQuery();
+		return listaReporte;
 	}
 	
 	public static void registrarTerminal(Dispositivo tablero) throws SQLException, ClassNotFoundException{
@@ -272,14 +272,11 @@ public class Generales{
 		
 	}
 	
-	public static void obtenerReporteTerminales() throws SQLException, ClassNotFoundException{
+	public static ResultSet obtenerReporteTerminales() throws SQLException, ClassNotFoundException{
 		PreparedStatement searcht;
 		ResultSet listaReporteTerminal;
 		searcht = conexion.prepareStatement("SELECT nombre, sum(resultados) AS Totales FROM busquedas, terminales WHERE terminales.id = busquedas.id_terminal  GROUP BY busquedas.id_terminal ORDER BY terminales.id ASC");
 		listaReporteTerminal = searcht.executeQuery();
-        while ( listaReporteTerminal.next() ) {
-        	   System.out.print("Terminal: "+listaReporteTerminal.getObject("nombre"));
-        	   System.out.println(" Totales: "+listaReporteTerminal.getObject("totales"));
-        }
+		return listaReporteTerminal;
 	}
 }

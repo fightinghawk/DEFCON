@@ -1,8 +1,11 @@
 package tpdds.interfaz;
 
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,10 +13,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import tpdds.database.Generales;
 
 public class ReportePorTerminal implements Initializable {
 
@@ -24,7 +29,7 @@ public class ReportePorTerminal implements Initializable {
 	@FXML
 	TableView<ObsResultadoTerminal> resultadoTL;
 	@FXML
-	TableColumn<ObsResultadoTerminal,Integer> CRP;
+	TableColumn<ObsResultadoTerminal,Integer> cantidad;
 	
 	Stage nuevaStage;
 	FXMLLoader loader;
@@ -36,7 +41,7 @@ public class ReportePorTerminal implements Initializable {
 			nuevaStage.initModality(Modality.WINDOW_MODAL);
 			nuevaStage.initOwner(Main.primaryStage);
 			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Reporte por terminal");
+			nuevaStage.setTitle("Reporte por Búsqueda y Terminal");
 			loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("reportePorTerminaScene.fxml"));
 			loader.setController(this);
@@ -51,12 +56,27 @@ public class ReportePorTerminal implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		cantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
 		
 	}
 	
 	@FXML
 	public void buscar(MouseEvent evento){
 		
+		resultadoTL.getItems().clear();
+		try{
+		ObservableList<ObsResultadoTerminal> aMostrar = FXCollections.observableArrayList();
+		ResultSet resultados = Generales.obtenerReporteBusquedayTerminal(frase.getText(), Integer.parseInt(terminal.getText()));
+	    while ( resultados.next() ) {
+	        	aMostrar.add(new ObsResultadoTerminal(resultados.getObject("totales")));
+	        	
+	    }
+		
+		resultadoTL.setItems(aMostrar);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		
 	}
+
 }

@@ -1,11 +1,13 @@
 package tpdds.Administrador;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class Administrador implements Usuario{
 	
 	private String nombreUsuario;
 	private String contrasenia;
+	private Proceso procesoSeleccionado;
 	
 	public Administrador(String usuario, String contrasenia){
 		this.nombreUsuario = usuario;
@@ -48,17 +50,21 @@ public class Administrador implements Usuario{
 		
 	}
 
-	public void ejecutarProceso(String nombreProceso, ArrayList<Proceso> listaProcesos){
-		for (Proceso proceso : listaProcesos){
-			if(nombreProceso.toUpperCase().equals(proceso.getNombreProceso().toUpperCase())){
-				proceso.ejecutarme();
-			}
-		}
+	public void ejecutarProceso() throws IOException, ClassNotFoundException, SQLException{
+		this.getProcesoSeleccionado().ejecutarme();
 	}
 
 	@Override
 	public String getTipo() {
 		// TODO Auto-generated method stub
 		return "Administrador";
+	}
+
+	public Proceso getProcesoSeleccionado() {
+		return procesoSeleccionado;
+	}
+
+	public void setProcesoSeleccionado(Proceso procesoSeleccionado) {
+		this.procesoSeleccionado = procesoSeleccionado;
 	}
 }

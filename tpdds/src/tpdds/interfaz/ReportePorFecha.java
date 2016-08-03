@@ -48,7 +48,7 @@ public class ReportePorFecha implements Initializable {
 			nuevaStage.initModality(Modality.WINDOW_MODAL);
 			nuevaStage.initOwner(Main.primaryStage);
 			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Reporte por fecha");
+			nuevaStage.setTitle("Reporte por Fecha");
 			loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("reportesPorFechaScene.fxml"));
 			loader.setController(this);

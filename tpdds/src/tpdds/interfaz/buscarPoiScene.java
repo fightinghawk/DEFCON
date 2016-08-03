@@ -30,6 +30,7 @@ import tpdds.usoGlobal.Calculos;
 
 public class buscarPoiScene implements Initializable {
 	
+	private static final double SEGUNDOS_PARAMETRIZADOS = 1;
 	long time_start, time_end;
 	double time;
 	Integer resultados_final;
@@ -94,22 +95,29 @@ public class buscarPoiScene implements Initializable {
 			resultadosTabla.add(new ObsPoi(poi.getNombre(), poi.getDireccion().getCallePrincipal(), poi.getDireccion().getAltura(),Calculos.calcularDistanciaA(poi, Main.tablero),poi.getIddb()));
 		}
 		//Negrada
+		bancos = null;
+		try{
+			bancos = new ArrayList<>(new jsonBancos().FiltrarBancos("http://private-96b476-ddsutn.apiary-mock.com","banks","bancos",buscado));
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		// mas Negrada
 		if(bancos!=null){
-			//BancoExterna ext = bancos.get(0);
 			for (Object bank : bancos){
-				if(!bank.toString().contains(buscado)){
-					
-				}
-				else{
 				String[] temp = bank.toString().split("=");
 				String[] temp2 = temp[1].split(",");
 				String[] temp3 = temp[4].split(",");
 				resultadosTabla.add(new ObsPoi(temp2[0],temp3[0],0,0,-1));
-				}
 			}	
 		}
 		time_end = System.currentTimeMillis();
 		time = (time_end - time_start)/1e6;
+		
+		if(time > SEGUNDOS_PARAMETRIZADOS/1e3)
+		{
+			frameworkEmails.Email.enviar("testingdds@fighthawk.com", "testuser", "jvillalba@fighthawk.com", "BUSQUEDA DEMORADA", "PROBLEMAS DE PERFOMANCE AL BUSCAR LA PALABRA: " + buscado);
+		}
+		
 		tablaMostrada.setItems(resultadosTabla);
 		resultados_final = resultadosTabla.size();
 		if(!buscado.isEmpty()){
@@ -127,22 +135,6 @@ public class buscarPoiScene implements Initializable {
 		ObservableList<ObsPoi> resultadosTabla =  FXCollections.observableArrayList();;
 		for (Poi poi : resultados) {
 			resultadosTabla.add(new ObsPoi(poi.getNombre(), poi.getDireccion().getCallePrincipal(), poi.getDireccion().getAltura(),Calculos.calcularDistanciaA(poi, Main.tablero),poi.getIddb()));
-		}
-		//Busco en Json, asi lo hago una sola vez y no por busqueda
-		bancos = null;
-		try{
-			bancos = new ArrayList<>(new jsonBancos().FiltrarBancos("http://private-96b476-ddsutn.apiary-mock.com","banks","bancos",""));
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-		// mas Negrada
-		if(bancos!=null){
-			for (Object bank : bancos){
-				String[] temp = bank.toString().split("=");
-				String[] temp2 = temp[1].split(",");
-				String[] temp3 = temp[4].split(",");
-				resultadosTabla.add(new ObsPoi(temp2[0],temp3[0],0,0,-1));
-			}	
 		}
 		tablaMostrada.setItems(resultadosTabla);
 	}

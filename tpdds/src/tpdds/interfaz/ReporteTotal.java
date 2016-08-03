@@ -1,17 +1,22 @@
 package tpdds.interfaz;
 
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import tpdds.database.Generales;
 
 public class ReporteTotal implements Initializable {
 
@@ -19,9 +24,9 @@ public class ReporteTotal implements Initializable {
 	@FXML
 	TableView<ObsResultadoTotal> resultadosTL;
 	@FXML
-	TableColumn<ObsResultadoTotal, String> users;
+	TableColumn<ObsResultadoTotal, String> terminal;
 	@FXML
-	TableColumn<ObsResultadoTotal,Integer> resultados;
+	TableColumn<ObsResultadoTotal,Object> totales;
 	
 	Stage nuevaStage;
 	FXMLLoader loader;
@@ -33,7 +38,7 @@ public class ReporteTotal implements Initializable {
 			nuevaStage.initModality(Modality.WINDOW_MODAL);
 			nuevaStage.initOwner(Main.primaryStage);
 			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Reporte Total");
+			nuevaStage.setTitle("Reporte por TERMINALES");
 			loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("reporteTotal.fxml"));
 			loader.setController(this);
@@ -49,7 +54,21 @@ public class ReporteTotal implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		terminal.setCellValueFactory(new PropertyValueFactory<>("terminal"));
+		totales.setCellValueFactory(new PropertyValueFactory<>("totales"));
+		resultadosTL.getItems().clear();
+		try{
+		ObservableList<ObsResultadoTotal> aMostrar = FXCollections.observableArrayList();
+		ResultSet resultados = Generales.obtenerReporteTerminales();
+	    while ( resultados.next() ) {
+	        	aMostrar.add(new ObsResultadoTotal(resultados.getObject("nombre"),resultados.getObject("totales")));
+	        	
+	    }
+		
+		resultadosTL.setItems(aMostrar);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
 		
 	}
 
