@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="672.0" prefWidth="811.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <MenuButton layoutX="53.0" layoutY="174.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="308.0" text="MenuButton">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </MenuButton>
+      <Button layoutX="53.0" layoutY="473.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="308.0" text="Lanzar" />
+      <Text layoutX="53.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elija el proceso que quiera ejecutar:" wrappingWidth="260.6708984375" />
+      <TableView fx:id="procesosrun" layoutX="415.0" layoutY="138.0" prefHeight="432.0" prefWidth="370.0">
+        <columns>
+          <TableColumn fx:id="proceso" editable="false" prefWidth="75.0" text="Proceso" />
+          <TableColumn fx:id="estado" editable="false" prefWidth="75.0" text="Estado" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Text layoutX="144.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lanzar Proceso" textAlignment="CENTER" wrappingWidth="541.6708984375">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
