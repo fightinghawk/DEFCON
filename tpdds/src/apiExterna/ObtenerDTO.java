@@ -12,13 +12,14 @@ public abstract class ObtenerDTO {
 	return this.listaCentroDTO;
   }
 		
-  public ArrayList<CentroDTO> obtenerCentros(String parametro){
+  public ArrayList<CentroDTO> obtenerCentros(String parametro) throws InterruptedException{
   	ArrayList<CentroDTO> centroDTOEncontrado = new ArrayList<CentroDTO>();
         	for (CentroDTO centroDTO : this.listaCentroDTO){
         		if((this.buscarPorCalle(parametro))||(this.buscarPorZona(parametro))){
             			centroDTOEncontrado.add(centroDTO);
           		}
         	}
+        	Thread.sleep(10000);
       	return centroDTOEncontrado;
   }
   

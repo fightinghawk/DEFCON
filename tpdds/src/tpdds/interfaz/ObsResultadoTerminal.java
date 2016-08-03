@@ -2,13 +2,13 @@ package tpdds.interfaz;
 
 public class ObsResultadoTerminal {
 
-	int cantidad;
+	Object cantidad;
 
-	public int getCantidad() {
+	public Object getCantidad() {
 		return cantidad;
 	}
 
-	public ObsResultadoTerminal(int cantidad) {
+	public ObsResultadoTerminal(Object cantidad) {
 		super();
 		this.cantidad = cantidad;
 	}

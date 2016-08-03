@@ -2,24 +2,24 @@ package tpdds.interfaz;
 
 public class ObsResultadoTotal {
 
-	String terminal;
-	int cantidad;
+	Object terminal;
+	Object totales;
 	
 	
-	public String getTerminal() {
+	public Object getTerminal() {
 		return terminal;
 	}
 
 
-	public int getCantidad() {
-		return cantidad;
+	public Object getTotales() {
+		return totales;
 	}
 
 
-	public ObsResultadoTotal(String terminal, int cantidad) {
+	public ObsResultadoTotal(Object object, Object object2) {
 		super();
-		this.terminal = terminal;
-		this.cantidad = cantidad;
+		this.terminal = object;
+		this.totales = object2;
 	}
 	
 	

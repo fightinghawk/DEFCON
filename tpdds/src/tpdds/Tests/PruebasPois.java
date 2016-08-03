@@ -116,17 +116,6 @@ public class PruebasPois {
 		apiBancos.mostrarLista(bancoexternalista);
 		Assert.assertEquals(bancoexternalista.size(), 2);
 	}
-	@Test
-	public void ReportesFrase() throws Exception {
-		System.out.println("//////////////REPORTES BUSQUEDAS FILTRADO BUSQUEDA Y ANIO");
-		tpdds.database.Generales.obtenerReporteFrase("dinero", 2016);
-	}
-	@Test
-	public void ReportesTerminales() throws Exception {
-		System.out.println("//////////////REPORTES POR TERMINAL");
-		tpdds.database.Generales.obtenerReporteTerminales();
-	}
-	
 	
 	
 	
