@@ -28,6 +28,26 @@ public class Administrador implements Usuario{
 		return contrasenia;
 	}
 	
+	public void otorgarPermisos(String usuario, String permiso)
+	{
+		if (this.existeUsuario(usuario))
+		{
+			this.habilitar(permiso);
+		}
+		
+	}
+	
+	private void habilitar(String permiso) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private boolean existeUsuario(String usuario) {
+		return false;
+		// TODO Auto-generated method stub
+		
+	}
+
 	public void ejecutarProceso(String nombreProceso, ArrayList<Proceso> listaProcesos){
 		for (Proceso proceso : listaProcesos){
 			if(nombreProceso.toUpperCase().equals(proceso.getNombreProceso().toUpperCase())){
