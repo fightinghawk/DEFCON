@@ -18,6 +18,16 @@ import tpdds.Administrador.Usuario;
 
 public class RegistrarseScene implements Initializable{
 	
+	
+	@FXML
+	Button verReporte;
+	
+	@FXML
+	Text nombreusuario;
+	@FXML
+	Text tipousuario;
+	
+	
 	Stage nuevaStage;
 	FXMLLoader loader;
 	AnchorPane rootLayout;
@@ -48,6 +58,9 @@ public class RegistrarseScene implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+		
+		nombreusuario.setText(user);
+		tipousuario.setText(tipo);
 		
 	}
 
