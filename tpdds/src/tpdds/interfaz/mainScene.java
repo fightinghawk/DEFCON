@@ -35,6 +35,7 @@ public class mainScene {
 	
 	@FXML
 	public void registrarseBoton(MouseEvent botonApretado){
+		new RegistrarseScene().RegistrarseSceneRender();
 
 	}	
 	
@@ -47,4 +48,6 @@ public class mainScene {
 	public void modificarBoton(MouseEvent botonApretado){
 		new modfiPoiSceneBuscar().modfiPoiBuscar();
 	}	
+	
+	
 }
