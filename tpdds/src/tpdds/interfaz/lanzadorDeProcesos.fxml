@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="672.0" prefWidth="811.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="672.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tpdds.interfaz.LanzadorDeProcesos">
    <children>
-      <MenuButton layoutX="53.0" layoutY="174.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="308.0" text="MenuButton">
+      <MenuButton layoutX="53.0" layoutY="174.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="308.0" text="Menu">
         <items>
           <MenuItem mnemonicParsing="false" text="Action 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
       </MenuButton>
-      <Button layoutX="53.0" layoutY="473.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="308.0" text="Lanzar" />
+      <Button layoutX="53.0" layoutY="473.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="308.0" text="Ejecutar" />
       <Text layoutX="53.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elija el proceso que quiera ejecutar:" wrappingWidth="260.6708984375" />
       <TableView fx:id="procesosrun" layoutX="415.0" layoutY="138.0" prefHeight="432.0" prefWidth="370.0">
         <columns>
