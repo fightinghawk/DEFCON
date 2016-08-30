@@ -80,6 +80,6 @@ public class loginScene implements Initializable {
 	
 	@FXML
 	public void ejecutarprocesos(){
-		
+		new LanzadorDeProcesos().lanzadorRender();
 	}
 }

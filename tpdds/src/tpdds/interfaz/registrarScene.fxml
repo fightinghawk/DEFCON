@@ -16,7 +16,7 @@
       <TextArea id="usuario" layoutX="384.0" layoutY="302.0" prefHeight="33.0" prefWidth="208.0" />
       <Text layoutX="314.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
       <TextArea id="emailusuario" layoutX="384.0" layoutY="420.0" prefHeight="33.0" prefWidth="208.0" />
-      <Button id="registrarsedb" layoutX="478.0" layoutY="481.0" mnemonicParsing="false" text="Registrarse" />
+      <Button id="registrarsedb" layoutX="478.0" layoutY="481.0" mnemonicParsing="false" onMouseClicked="#finalizar" text="Registrarse" />
       <Text layoutX="284.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
       <TextArea id="passwordusuario" layoutX="384.0" layoutY="364.0" prefHeight="33.0" prefWidth="208.0" />
    </children>

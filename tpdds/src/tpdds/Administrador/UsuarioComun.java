@@ -23,8 +23,6 @@ public class UsuarioComun implements Usuario{
 		
 	}
 	
-
-	
 	public void otorgarPermisos(String usuario, String permiso)
 	{
 		if (this.existeUsuario(usuario))

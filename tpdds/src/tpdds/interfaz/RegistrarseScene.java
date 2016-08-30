@@ -83,6 +83,12 @@ public class RegistrarseScene implements Initializable {
 		
 	}
 	
+	@FXML
+	public void finalizar(MouseEvent evento)
+	{
+		nuevaStage.close();
+	}
+	
 	
 	
 }
