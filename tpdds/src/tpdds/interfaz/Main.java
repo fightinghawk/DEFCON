@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import tpdds.Administrador.ListaUsuarios;
 import tpdds.Archivos.archivos;
 import tpdds.database.Generales;
 import tpdds.dispositivo.Dispositivo;
@@ -15,6 +16,7 @@ public class Main extends Application {
 	public static Stage primaryStage;
 	public static Dispositivo tablero;
 	public static ArrayList<Poi> pois;
+	public static ListaUsuarios todoslosusuarios;
 	
 	@Override
 	public void start(Stage primaryStag) {

@@ -9,15 +9,15 @@
 <AnchorPane prefHeight="639.0" prefWidth="836.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="304.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
-      <TextArea id="nombreusuario" layoutX="384.0" layoutY="169.0" prefHeight="33.0" prefWidth="208.0" />
       <Text layoutX="303.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido" />
-      <TextArea id="apellidousuario" layoutX="384.0" layoutY="236.0" prefHeight="33.0" prefWidth="208.0" />
-      <Text layoutX="245.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de Usuario" />
-      <TextArea id="usuario" layoutX="384.0" layoutY="302.0" prefHeight="33.0" prefWidth="208.0" />
+      <Text layoutX="286.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID de Usuario" />
       <Text layoutX="314.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-      <TextArea id="emailusuario" layoutX="384.0" layoutY="420.0" prefHeight="33.0" prefWidth="208.0" />
-      <Button id="registrarsedb" layoutX="478.0" layoutY="481.0" mnemonicParsing="false" onMouseClicked="#finalizar" text="Registrarse" />
-      <Text layoutX="284.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-      <TextArea id="passwordusuario" layoutX="384.0" layoutY="364.0" prefHeight="33.0" prefWidth="208.0" />
+      <Button fx:id="registrarsedb" layoutX="424.0" layoutY="516.0" mnemonicParsing="false" onMouseClicked="#finalizar" text="Registrarse" />
+      <Text layoutX="300.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+      <TextField fx:id="nombreusuario" layoutX="384.0" layoutY="172.0" promptText="Nombre" />
+      <TextField fx:id="apellidousuario" layoutX="384.0" layoutY="239.0" promptText="Apellido" />
+      <TextField fx:id="idusuario" layoutX="384.0" layoutY="305.0" promptText="Id usuario" />
+      <TextField fx:id="passwordusuario" layoutX="384.0" layoutY="367.0" promptText="Password" />
+      <TextField fx:id="correousuario" layoutX="384.0" layoutY="423.0" promptText="Email" />
    </children>
 </AnchorPane>

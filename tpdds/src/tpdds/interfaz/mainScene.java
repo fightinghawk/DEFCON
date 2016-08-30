@@ -49,5 +49,11 @@ public class mainScene {
 		new modfiPoiSceneBuscar().modfiPoiBuscar();
 	}	
 	
+	@FXML
+	public void mostrarultimo(MouseEvent botonApretado){
+		System.out.println("hola como te va");
+	}	
+	
+	
 	
 }

@@ -19,6 +19,7 @@
       <Button fx:id="Modificar" layoutX="443.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#modificarBoton" prefHeight="131.0" prefWidth="262.0" text="MODIFICAR POI" AnchorPane.leftAnchor="443.0" AnchorPane.topAnchor="355.0" />
       <Button fx:id="Registrar" layoutX="443.0" layoutY="122.0" mnemonicParsing="false" onMouseClicked="#registrarseBoton" prefHeight="45.0" prefWidth="262.0" text="REGISTRARSE" AnchorPane.leftAnchor="443.0" AnchorPane.topAnchor="122.0" />
       <Button fx:id="login" layoutX="443.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#loginBoton" prefHeight="45.0" prefWidth="262.0" text="LOGIN" />
+      <Button fx:id="ultimo" layoutX="347.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#mostrarultimo" text="Ultimo" />
    </children>
    <effect>
       <DropShadow color="#171515" />

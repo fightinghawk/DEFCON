@@ -1,6 +1,7 @@
 package tpdds.interfaz;
 
 import java.net.URL;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -11,12 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import tpdds.Administrador.Administrador;
-import tpdds.Administrador.Usuario;
-import tpdds.Administrador.UsuarioComun;
+import tpdds.Administrador.*;
 
 public class RegistrarseScene implements Initializable {
 	
@@ -27,7 +25,7 @@ public class RegistrarseScene implements Initializable {
 	@FXML
 	TextField usuarioid;
 	@FXML
-	TextField emailusuario;
+	TextField correousuario;
 	@FXML
 	TextField passwordusuario;
 	@FXML
@@ -37,7 +35,7 @@ public class RegistrarseScene implements Initializable {
 	Stage nuevaStage;
 	FXMLLoader loader;
 	AnchorPane rootLayout;
-	
+	UsuarioComun usuarionuevo;
 
 	
 	public RegistrarseScene(){
@@ -68,24 +66,27 @@ public class RegistrarseScene implements Initializable {
 		
 	}
 	
-	public void registrarsedb(MouseEvent evento)
-	{
+
+	
+	@FXML
+	public void registrarsedb(MouseEvent evento){
 		
 		String nombre = nombreusuario.getText();
 		String apellido = apellidousuario.getText();
 		String user = usuarioid.getText();
-		String email = emailusuario.getText();
-		String password = passwordusuario.getText();
+		String email = correousuario.getText();
+		String password = passwordusuario.getText();	
+		usuarionuevo  = new UsuarioComun(nombre, apellido, user, email, password);	
 		
-		UsuarioComun usuarionuevo  = new UsuarioComun(nombre, apellido, user, email, password);
-				
-		nuevaStage.close();
+		
+		
 		
 	}
 	
 	@FXML
 	public void finalizar(MouseEvent evento)
 	{
+		
 		nuevaStage.close();
 	}
 	
