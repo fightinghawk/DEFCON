@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import tpdds.Administrador.UsuarioComun;
 
 public class mainScene {
 	
@@ -51,7 +52,8 @@ public class mainScene {
 	
 	@FXML
 	public void mostrarultimo(MouseEvent botonApretado){
-		System.out.println("hola como te va");
+		//System.out.println(Main.usuarioNuevo.getNombreUsuario());
+		System.out.println(Main.usuarios.size());
 	}	
 	
 	

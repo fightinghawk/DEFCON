@@ -1,10 +1,11 @@
 package tpdds.Administrador;
 
-import java.util.Collection;
+import java.util.ArrayList;
+
 
 public class ListaUsuarios {
 	
-	Collection<UsuarioComun> usuarios;
+	ArrayList<UsuarioComun> usuarios;
 	
 	public void agregarusuario(UsuarioComun usuario)
 	{
@@ -14,6 +15,11 @@ public class ListaUsuarios {
 	public void eliminarusuario(UsuarioComun usuario)
 	{
 		usuarios.remove(usuarios);
+	}
+	
+	public int mostrarusuarios()
+	{
+		return usuarios.size();
 	}
 
 }

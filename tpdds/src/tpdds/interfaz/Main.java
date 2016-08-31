@@ -3,7 +3,8 @@ import java.util.ArrayList;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import tpdds.Administrador.ListaUsuarios;
+
+import tpdds.Administrador.UsuarioComun;
 import tpdds.Archivos.archivos;
 import tpdds.database.Generales;
 import tpdds.dispositivo.Dispositivo;
@@ -16,7 +17,9 @@ public class Main extends Application {
 	public static Stage primaryStage;
 	public static Dispositivo tablero;
 	public static ArrayList<Poi> pois;
-	public static ListaUsuarios todoslosusuarios;
+	public static ArrayList<UsuarioComun> usuarios;
+	public static UsuarioComun usuarioNuevo;
+
 	
 	@Override
 	public void start(Stage primaryStag) {
@@ -36,6 +39,7 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) {
+		usuarios = new ArrayList<UsuarioComun>();
 		launch(args);
 	}
 

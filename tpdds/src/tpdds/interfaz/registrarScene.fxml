@@ -11,13 +11,13 @@
       <Text layoutX="304.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
       <Text layoutX="303.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido" />
       <Text layoutX="286.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID de Usuario" />
-      <Text layoutX="314.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-      <Button fx:id="registrarsedb" layoutX="424.0" layoutY="516.0" mnemonicParsing="false" onMouseClicked="#finalizar" text="Registrarse" />
       <Text layoutX="300.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+      <Text layoutX="314.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
       <TextField fx:id="nombreusuario" layoutX="384.0" layoutY="172.0" promptText="Nombre" />
       <TextField fx:id="apellidousuario" layoutX="384.0" layoutY="239.0" promptText="Apellido" />
-      <TextField fx:id="idusuario" layoutX="384.0" layoutY="305.0" promptText="Id usuario" />
+      <TextField fx:id="idusuario" layoutX="384.0" layoutY="305.0" promptText="Id" />
       <TextField fx:id="passwordusuario" layoutX="384.0" layoutY="367.0" promptText="Password" />
       <TextField fx:id="correousuario" layoutX="384.0" layoutY="423.0" promptText="Email" />
+      <Button fx:id="registrarsedb" layoutX="424.0" layoutY="516.0" mnemonicParsing="false" onMouseClicked="#finalizar" text="Registrarse" />
    </children>
 </AnchorPane>

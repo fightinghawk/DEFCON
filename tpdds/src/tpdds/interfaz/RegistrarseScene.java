@@ -1,7 +1,6 @@
 package tpdds.interfaz;
 
 import java.net.URL;
-import java.util.Collection;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -23,7 +22,7 @@ public class RegistrarseScene implements Initializable {
 	@FXML
 	TextField apellidousuario;
 	@FXML
-	TextField usuarioid;
+	TextField idusuario;
 	@FXML
 	TextField correousuario;
 	@FXML
@@ -71,22 +70,18 @@ public class RegistrarseScene implements Initializable {
 	@FXML
 	public void registrarsedb(MouseEvent evento){
 		
-		String nombre = nombreusuario.getText();
-		String apellido = apellidousuario.getText();
-		String user = usuarioid.getText();
-		String email = correousuario.getText();
-		String password = passwordusuario.getText();	
-		usuarionuevo  = new UsuarioComun(nombre, apellido, user, email, password);	
+
 		
 		
-		
+
 		
 	}
 	
 	@FXML
 	public void finalizar(MouseEvent evento)
 	{
-		
+		Main.usuarioNuevo = new UsuarioComun(nombreusuario.getText(), apellidousuario.getText(), idusuario.getText(), passwordusuario.getText(), correousuario.getText());
+		Main.usuarios.add(usuarionuevo);
 		nuevaStage.close();
 	}
 	
