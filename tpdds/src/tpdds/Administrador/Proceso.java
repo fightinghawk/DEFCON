@@ -1,5 +1,6 @@
 package tpdds.Administrador;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public abstract class Proceso implements ComandoEjecutar{	
@@ -55,4 +56,6 @@ public abstract class Proceso implements ComandoEjecutar{
 	public void setFechaFin(Calendar fecha){
 		this.fechaFin = fecha;
 	}
+	
 }
+

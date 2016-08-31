@@ -3,6 +3,8 @@ package tpdds.interfaz;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,27 +15,20 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import tpdds.Administrador.ActualizacionLocalesComerciales;
-import tpdds.Administrador.BajaDePois;
-import tpdds.Administrador.Administrador;
 import tpdds.Administrador.Proceso;
-import tpdds.Administrador.Usuario;
 
 public class LanzadorDeProcesos implements Initializable {
 	
 	@FXML
-	TableView<ObsPoi> procesosrun;
+	TableView<Proceso> procesosrun;
 	@FXML
-	TableColumn<ObsPoi, String> proceso;
+	TableColumn<Proceso, String> proceso;
 	@FXML
-	TableColumn<ObsPoi, String> estado;
+	TableColumn<Proceso, String> estado;
 	
 	Stage nuevaStage;
 	FXMLLoader loader;
 	AnchorPane rootLayout;
-	private ActualizacionLocalesComerciales procesoAct;
-	private BajaDePois procesoBaja;
-	private String ubicacionArchivo;
 	
 	public void lanzadorRender(){
 		try{
@@ -62,10 +57,9 @@ public class LanzadorDeProcesos implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ubicacionArchivo = "/tpdds/src/comercioTest.txt";
-		procesoAct = new ActualizacionLocalesComerciales("Actualizar Locales Comerciales", "user", null, 0, 0, ubicacionArchivo);
-		procesoBaja = new BajaDePois("Baja de Poi", "user", null, 0, 0);
-		
+		ObservableList<Proceso> resultadosTabla =  FXCollections.observableArrayList();
+		resultadosTabla.addAll(Main.listaProcesos);
+		procesosrun.setItems(resultadosTabla);
 	}
 
 	

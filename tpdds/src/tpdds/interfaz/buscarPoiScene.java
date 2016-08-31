@@ -3,7 +3,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import apiExterna.BancoExterna;
@@ -18,7 +17,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -132,7 +130,7 @@ public class buscarPoiScene implements Initializable {
 		altura.setCellValueFactory(new PropertyValueFactory<>("altura"));
 		distancia.setCellValueFactory(new PropertyValueFactory<>("distancia"));
 		ArrayList<Poi> resultados = Main.pois;
-		ObservableList<ObsPoi> resultadosTabla =  FXCollections.observableArrayList();;
+		ObservableList<ObsPoi> resultadosTabla =  FXCollections.observableArrayList();
 		for (Poi poi : resultados) {
 			resultadosTabla.add(new ObsPoi(poi.getNombre(), poi.getDireccion().getCallePrincipal(), poi.getDireccion().getAltura(),Calculos.calcularDistanciaA(poi, Main.tablero),poi.getIddb()));
 		}
