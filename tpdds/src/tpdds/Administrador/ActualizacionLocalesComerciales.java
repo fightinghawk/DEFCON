@@ -25,7 +25,6 @@ public class ActualizacionLocalesComerciales extends Proceso implements ComandoE
 		this.setUbicacionArchivo(ubicacionArchivo);
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	public void ejecutarme() throws IOException, ClassNotFoundException, SQLException {
 		listaPois.addAll(Generales.cargarPois());
@@ -74,4 +73,5 @@ public class ActualizacionLocalesComerciales extends Proceso implements ComandoE
 		}
 		return hs;
 	}
+	
 }

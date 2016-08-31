@@ -2,6 +2,7 @@ package tpdds.Administrador;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -10,6 +11,7 @@ public class Administrador implements Usuario{
 	private String nombreUsuario;
 	private String contrasenia;
 	private Proceso procesoSeleccionado;
+	private static ArrayList<Proceso> listaProcesos;
 	
 	public Administrador(String usuario, String contrasenia){
 		this.nombreUsuario = usuario;
@@ -71,5 +73,15 @@ public class Administrador implements Usuario{
 
 	public void setProcesoSeleccionado(Proceso procesoSeleccionado) {
 		this.procesoSeleccionado = procesoSeleccionado;
+	}
+	
+	public static ArrayList<Proceso> crearProcesos(){
+		String ubicacionArchivo;
+		ubicacionArchivo = "/tpdds/src/comercioTest.txt";
+		ActualizacionLocalesComerciales procesoActualizacion = new ActualizacionLocalesComerciales("Actualizacion Locales Comerciales", "user", "En Espera", 0, 0, ubicacionArchivo);
+		BajaDePois procesoBajaPoi = new BajaDePois("Baja de Pois", "user", "En Espera", 0, 0);
+		listaProcesos.add(procesoActualizacion);
+		listaProcesos.add(procesoBajaPoi);
+		return listaProcesos;
 	}
 }
