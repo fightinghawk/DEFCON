@@ -62,12 +62,13 @@ public class preLoginScene implements Initializable {
 		String usuario = user.getText();
 		String passWord = password.getText();
 		
-		
+		try{
 		if (usuario.equalsIgnoreCase(Main.usuarioNuevo.getUsuarioid()) && passWord.equalsIgnoreCase(Main.usuarioNuevo.getUsuarioid()))
 		{
 			new loginSceneUComun(Main.usuarioNuevo).loginSceneRender();
 			nuevaStage.close();
-		}	  
+		}	 }
+		catch(Exception ex){
 		
 		/*for(int i=0;i<= (Main.usuarios.size());i++) {
 			
@@ -88,6 +89,7 @@ public class preLoginScene implements Initializable {
 		if(usuario.equalsIgnoreCase("amichel") && passWord.equalsIgnoreCase("123")){
 			new loginSceneUComun(new UsuarioComun("andres", "michel","amichel","123","asd@asd.com")).loginSceneRender();
 			nuevaStage.close();
+		}
 		}
 		
 		
