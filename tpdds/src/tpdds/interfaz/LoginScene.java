@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import tpdds.Administrador.Administrador;
 import tpdds.Administrador.Usuario;
 
-public class loginSceneUComun implements Initializable {
+public class LoginScene implements Initializable {
 
 	@FXML
 	Button verReporte;
@@ -32,7 +32,7 @@ public class loginSceneUComun implements Initializable {
 	String user;
 	String tipo;
 	
-	public loginSceneUComun(Usuario user){
+	public LoginScene(Usuario user){
 		this.user = user.getNombreUsuario();
 		this.tipo = user.getTipo();	
 	}
@@ -45,7 +45,7 @@ public class loginSceneUComun implements Initializable {
 			nuevaStage.setResizable(false);
 			nuevaStage.setTitle("Insertar POI");
 			loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("loginSceneUComun.fxml"));
+			loader.setLocation(getClass().getResource("loginScene.fxml"));
 			loader.setController(this);
 			rootLayout = loader.load();
 			Scene scene = new Scene(rootLayout);
@@ -80,6 +80,27 @@ public class loginSceneUComun implements Initializable {
 	
 	@FXML
 	public void ejecutarprocesos(){
-		
+		new LanzadorDeProcesos().lanzadorRender();
+	}
+	
+	@FXML
+	public void modificarPOI(MouseEvent evento){
+		new modfiPoiSceneBuscar().modfiPoiBuscar();
+	}
+	
+	@FXML
+	public void insertarPOI(MouseEvent evento){
+		new InsertSceneGnr().insertSceneRender();
+	}
+	
+	@FXML
+	public void buscarPOI(MouseEvent evento){
+		new BuscarPoiScene().buscarSceneRender();
+	}
+	
+	@FXML
+	public void salir(MouseEvent evento){
+		new PreLoginScene().loginSceneRender();
+		this.nuevaStage.close();
 	}
 }

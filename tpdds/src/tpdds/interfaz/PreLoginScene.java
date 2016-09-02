@@ -17,7 +17,7 @@ import tpdds.Administrador.Administrador;
 import tpdds.Administrador.UsuarioComun;
 
 
-public class preLoginScene implements Initializable {
+public class PreLoginScene implements Initializable {
 
 	@FXML
 	TextField user;
@@ -37,7 +37,7 @@ public class preLoginScene implements Initializable {
 			nuevaStage.initModality(Modality.WINDOW_MODAL);
 			nuevaStage.initOwner(Main.primaryStage);
 			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Insertar POI");
+			nuevaStage.setTitle("PreLogin");
 			loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("preLoginScene.fxml"));
 			loader.setController(this);
@@ -61,38 +61,21 @@ public class preLoginScene implements Initializable {
 	public void submitBoton(MouseEvent evento){
 		String usuario = user.getText();
 		String passWord = password.getText();
-		
-		try{
-		if (usuario.equalsIgnoreCase(Main.usuarioNuevo.getUsuarioid()) && passWord.equalsIgnoreCase(Main.usuarioNuevo.getUsuarioid()))
-		{
-			new loginSceneUComun(Main.usuarioNuevo).loginSceneRender();
-			nuevaStage.close();
-		}	 }
-		catch(Exception ex){
-		
-		/*for(int i=0;i<= (Main.usuarios.size());i++) {
-			
-			UsuarioComun usuarioTemporal = Main.usuarios.get(i);
-			
-			if (usuario.equalsIgnoreCase(usuarioTemporal.getUsuarioid()) && passWord.equalsIgnoreCase(usuarioTemporal.getUsuarioid()))
-				{
-					new loginSceneUComun(usuarioTemporal).loginSceneRender();
-					nuevaStage.close();
-				}	  
-		}*/
-		
 		if(usuario.equalsIgnoreCase("admin") && passWord.equalsIgnoreCase("123456")){
-			new loginScene(new Administrador("admin", "123456")).loginSceneRender();
+			new LoginScene(new Administrador("admin", "123456")).loginSceneRender();
 			nuevaStage.close();
-		}
-		
-		if(usuario.equalsIgnoreCase("amichel") && passWord.equalsIgnoreCase("123")){
-			new loginSceneUComun(new UsuarioComun("andres", "michel","amichel","123","asd@asd.com")).loginSceneRender();
-			nuevaStage.close();
-		}
-		}
-		
-		
+			this.cerrar();
+		}	
+	}
+	
+	@FXML
+	public void finalizarRegistro(MouseEvent eventoRegistro){
+		new LoginScene(new Administrador("admin", "123456")).loginSceneRender();
+		this.cerrar();
+	}
+	
+	private void cerrar(){
+		this.nuevaStage.close();
 	}
 	
 	

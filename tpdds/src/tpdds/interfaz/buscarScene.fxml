@@ -8,11 +8,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="650.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tpdds.interfaz.buscarPoiScene">
+<AnchorPane prefHeight="650.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tpdds.interfaz.BuscarPoiScene">
    <children>
-      <TextField fx:id="campoDeBusqueda" layoutX="148.0" layoutY="14.0" prefHeight="31.0" prefWidth="556.0" promptText="Inserte busqueda aqui" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="148.0" />
-      <Label fx:id="resultado" alignment="CENTER" layoutX="315.0" layoutY="65.0" prefHeight="21.0" prefWidth="202.0" text="Resultados" textAlignment="CENTER" wrapText="true" />
-      <TableView fx:id="tablaMostrada" layoutY="95.0" prefHeight="555.0" prefWidth="852.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
+      <TableView fx:id="tablaMostrada" layoutY="311.0" prefHeight="339.0" prefWidth="852.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="311.0">
         <columns>
           <TableColumn fx:id="nombre" editable="false" prefWidth="75.0" text="Nombre" />
           <TableColumn fx:id="calle" editable="false" prefWidth="75.0" text="Direccion" />
@@ -23,6 +21,26 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="749.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#buscar" text="Buscar" />
+      <TableView layoutY="111.0" prefHeight="200.0" prefWidth="427.0">
+        <columns>
+          <TableColumn prefWidth="141.0" text="Tipo de Criterio" />
+          <TableColumn prefWidth="284.0" text="Contenido" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Text layoutX="14.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BUSQUEDA DE POI:" wrappingWidth="231.5478515625">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
+      <ChoiceBox layoutX="445.0" layoutY="111.0" prefWidth="150.0" />
+      <Text layoutX="445.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CRITERIOS DE BUSQUEDA:" wrappingWidth="282.5478515625">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
+      <Button layoutX="445.0" layoutY="243.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="150.0" text="Buscar" />
    </children>
 </AnchorPane>

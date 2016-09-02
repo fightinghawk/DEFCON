@@ -26,7 +26,7 @@ import tpdds.pois.Poi;
 import tpdds.usoGlobal.BuscadorPoi;
 import tpdds.usoGlobal.Calculos;
 
-public class buscarPoiScene implements Initializable {
+public class BuscarPoiScene implements Initializable {
 	
 	private static final double SEGUNDOS_PARAMETRIZADOS = 1;
 	long time_start, time_end;

@@ -15,7 +15,6 @@ import tpdds.Administrador.Proceso;
 import tpdds.Archivos.archivos;
 import tpdds.database.Generales;
 import tpdds.dispositivo.Dispositivo;
-import tpdds.interfaz.mainScene;
 import tpdds.pois.Poi;
 import tpdds.ubicacion.Comuna;
 
@@ -47,7 +46,7 @@ public class Main extends Application {
 		primaryStage = primaryStag;
 		primaryStage.setResizable(false);
 		primaryStage.setTitle("Pois dds");
-		mainScene.mainSceneRender();
+		new PreLoginScene().loginSceneRender();
 	}
 	
 
