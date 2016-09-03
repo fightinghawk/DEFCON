@@ -2,22 +2,43 @@ package tpdds.ubicacion;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import tpdds.usoGlobal.Consola;
 
+@Entity(name="direcciones")
+@Table(name="direcciones")
 public class Direccion {
-
-	private static final long serialVersionUID = 6238724508819895578L;
-	private String callePrincipal;
-	private String calleLateralIzq;
-	private String calleLateralDer;
-	private int altura;
-	private int codPostal;
-	private int piso;
-	private char dpto;
-	private int unidad;
-	private String barrio;
-	private String localidad;
+	@Id
+	@GeneratedValue
+	@Column(name = "direcciones_id")
 	private int iddb;
+	@Column(name = "principal")
+	private String callePrincipal;
+	@Column(name = "izquierda")
+	private String calleLateralIzq;
+	@Column(name = "derecha")
+	private String calleLateralDer;
+	@Column(name = "altura")
+	private int altura;
+	@Column(name = "codpostal")
+	private int codPostal;
+	@Column(name = "piso")
+	private int piso;
+	@Column(name = "dpto")
+	private char dpto;
+	@Column(name = "unidad")
+	private int unidad;
+	@Column(name = "barrio")
+	private String barrio;
+	@Column(name = "localidad")
+	private String localidad;
+
 
 	public String getCallePrincipal() {
 		return callePrincipal;

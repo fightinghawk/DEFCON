@@ -2,11 +2,24 @@ package tpdds.ubicacion;
 
 import java.io.Serializable;
 
-public class Location{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	private double longitud;
-	private double latitud;
+@Entity(name="geoPos")
+@Table(name="geoPos")
+public class Location{
+	@Id
+	@GeneratedValue
+	@Column(name="geopos_id")
 	private int iddb;
+	@Column(name="longitud")
+	private double longitud;
+	@Column(name="latitud")
+	private double latitud;
+
 
 	// Constructor Latitud y longitud se colocan en grados
 	public Location(double latitud, double longitud) {

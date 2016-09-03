@@ -7,6 +7,17 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import tpdds.pois.estadisticas.Estadistica;
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Localizable;
@@ -14,20 +25,29 @@ import tpdds.ubicacion.Location;
 import tpdds.usoGlobal.Calculos;
 import tpdds.usoGlobal.CalculosHorarios;
 
+
+@Entity
+@Table (name="pois")
 public abstract class Poi implements Localizable {
 
-
-	private String nombre;
-	private String tipo;
-	protected int idTipo;
+	@Id
+	@GeneratedValue
+	@Column(name="pois_id")
 	private int iddb;
-	public int getIddb() {
-		return iddb;
-	}
-
+	@Column(name="nombre")
+	private String nombre;
+	@Column(name="strtipo")
+	private String tipo;
+	@Column(name="tipo")
+	protected int idTipo;
+	@OneToOne
+	@JoinColumn(name="direcciones_id")
 	private Direccion direccion;
+	@OneToOne
+	@JoinColumn(name="geoPos_id")
 	private Location geoloc;
-	private Estadistica estadistica;
+	@OneToMany
+	@JoinTable(name="keyWords")
 	private HashSet<String> palabrasClaves;
 	private ArrayList<DiaPoi> diasDisp;
 
@@ -38,14 +58,16 @@ public abstract class Poi implements Localizable {
 	public ArrayList<DiaPoi> getDiasDisp() {
 		return diasDisp;
 	}
-
+	
+	public int getIddb() {
+		return iddb;
+	}
 	// Constructor POI
 	public Poi(String nombre, String tipoPOI, Direccion direccion, Location geoloc) {
 		this.nombre = nombre;
 		this.tipo = tipoPOI;
 		this.direccion = direccion;
 		this.geoloc = geoloc;
-		this.estadistica = null;
 		this.iddb = -1;
 		palabrasClaves = new HashSet<String>();
 		diasDisp = new ArrayList<>();
@@ -58,7 +80,6 @@ public abstract class Poi implements Localizable {
 		this.tipo = tipoPOI;
 		this.direccion = direccion;
 		this.geoloc = geoloc;
-		this.estadistica = null;
 		this.iddb = -1;
 		palabrasClaves = keywords;
 		diasDisp = dias;
@@ -112,14 +133,6 @@ public abstract class Poi implements Localizable {
 
 	public void setGeoloc(Location geoloc) {
 		this.geoloc = geoloc;
-	}
-
-	public Estadistica getEstadistica() {
-		return estadistica;
-	}
-
-	public void setEstadistica(Estadistica estadistica) {
-		this.estadistica = estadistica;
 	}
 
 	// Informa la Distancia entre Pois
