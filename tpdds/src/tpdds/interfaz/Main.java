@@ -10,12 +10,11 @@ import tpdds.Administrador.UsuarioComun;
 
 import tpdds.Administrador.Administrador;
 import tpdds.Administrador.ListaUsuarios;
-import tpdds.Administrador.Proceso;
-
 import tpdds.Archivos.archivos;
 import tpdds.database.Generales;
 import tpdds.dispositivo.Dispositivo;
 import tpdds.pois.Poi;
+import tpdds.proceso.Proceso;
 import tpdds.ubicacion.Comuna;
 
 public class Main extends Application {
@@ -38,7 +37,7 @@ public class Main extends Application {
 			Generales.initDatabase();
 			tablero = archivos.obtenerTablero();
 			pois = Generales.cargarPois();
-			//listaProcesos = Administrador.crearProcesos();
+			listaProcesos = Administrador.crearProcesos();
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}

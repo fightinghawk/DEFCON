@@ -3,6 +3,8 @@ package tpdds.Administrador;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import tpdds.proceso.Proceso;
+
 public class UsuarioComun implements Usuario{
 
 	private String nombreUsuario;

@@ -15,9 +15,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import tpdds.Administrador.Proceso;
+import tpdds.proceso.Proceso;
 
 public class LanzadorDeProcesos implements Initializable {
+	
+	private static final double SEGUNDOS_PARAMETRIZADOS = 1;
+	long time_start, time_end;
 	
 	@FXML
 	TableView<Proceso> procesosrun;
@@ -53,13 +56,15 @@ public class LanzadorDeProcesos implements Initializable {
 	@FXML
 	
 	public void lanzarProceso(MouseEvent botonApretado){
+		procesosrun.getItems().clear();
+		time_start = System.currentTimeMillis();
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-	/*	ObservableList<Proceso> resultadosTabla =  FXCollections.observableArrayList();
+		ObservableList<Proceso> resultadosTabla =  FXCollections.observableArrayList();
 		resultadosTabla.addAll(Main.listaProcesos);
-		procesosrun.setItems(resultadosTabla);*/
+		procesosrun.setItems(resultadosTabla);
 	}
 
 	

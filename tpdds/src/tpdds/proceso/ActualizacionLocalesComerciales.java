@@ -1,4 +1,4 @@
-package tpdds.Administrador;
+package tpdds.proceso;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -18,6 +18,7 @@ public class ActualizacionLocalesComerciales extends Proceso implements ComandoE
 	private String ubicacionArchivo;
 	private ArrayList<Poi> listaPois;
 	private BufferedReader bufferedReader;
+	private HashSet<String> palabrasClave;
 
 	public ActualizacionLocalesComerciales(String nombreProceso, String usuario, String resultado, int fechaInicio,
 			int fechaFin, String ubicacionArchivo) {
@@ -33,7 +34,7 @@ public class ActualizacionLocalesComerciales extends Proceso implements ComandoE
 		FileReader fr = new FileReader(this.getUbicacionArchivo());
 		String nombreSucursal;
 		String[] keyWords;
-		HashSet<String> palabrasClave = null;
+		palabrasClave = new HashSet<String>();
 		bufferedReader = new BufferedReader(fr);
 		while((lineaArchivo = bufferedReader.readLine())!=null){
 			control = 1;

@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import tpdds.proceso.ActualizacionLocalesComerciales;
+import tpdds.proceso.BajaDePois;
+import tpdds.proceso.Proceso;
+
 public class Administrador implements Usuario{
 	
 	private String nombreUsuario;

@@ -1,4 +1,4 @@
-package tpdds.Administrador;
+package tpdds.proceso;
 
 import java.io.IOException;
 import java.sql.SQLException;
