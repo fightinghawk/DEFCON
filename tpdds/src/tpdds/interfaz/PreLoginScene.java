@@ -14,7 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tpdds.Administrador.Administrador;
-import tpdds.Administrador.UsuarioComun;
+import tpdds.Usuarios.UsuarioComun;
 
 
 public class PreLoginScene implements Initializable {

@@ -19,7 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import tpdds.Administrador.Usuario;
+import tpdds.Usuarios.Usuario;
 import tpdds.database.Generales;
 
 public class ReportePorFecha implements Initializable {

@@ -1,17 +1,29 @@
-package tpdds.Administrador;
+package tpdds.Usuarios;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
+import javax.persistence.Column;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 import tpdds.proceso.Proceso;
 
 public class UsuarioComun implements Usuario{
 
+	@Column(name="user_nombre")
 	private String nombreUsuario;
+	@Column(name="user_password")
 	private String usuariopassword;
+	@Column(name="user_id")
 	private String usuarioid;
+	@Column(name="user_apellido")
 	private String apellidoUsuario;
+	@Column(name="user_mail")
 	private String emailUsuario;
+	@ManyToOne
+	private TipoUsuario tipoUsuario;
+	@Transient
 	private Proceso procesoSeleccionado; 
 	
 	
@@ -21,8 +33,6 @@ public class UsuarioComun implements Usuario{
 		this.usuarioid = userid;
 		this.usuariopassword = password;
 		this.emailUsuario = email;
-	
-		
 	}
 	
 	public void otorgarPermisos(String usuario, String permiso)

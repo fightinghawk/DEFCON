@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import tpdds.Usuarios.Usuario;
 import tpdds.proceso.ActualizacionLocalesComerciales;
 import tpdds.proceso.BajaDePois;
 import tpdds.proceso.Proceso;

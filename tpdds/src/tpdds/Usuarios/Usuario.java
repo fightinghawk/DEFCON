@@ -1,4 +1,4 @@
-package tpdds.Administrador;
+package tpdds.Usuarios;
 
 public interface Usuario {
 
