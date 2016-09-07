@@ -94,11 +94,25 @@ public class PreLoginScene implements Initializable {
 	public void submitBoton(MouseEvent evento){
 		String usuario = user.getText();
 		String passWord = password.getText();
-		if(usuario.equalsIgnoreCase("admin") && passWord.equalsIgnoreCase("123456")){
-			new LoginScene(new Administrador("admin", "123456")).loginSceneRender();
-			nuevaStage.close();
-			this.cerrar();
-		}	
+		SessionFactory cargarUsuario = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		Session cargar = cargarUsuario.openSession();
+		cargar.beginTransaction();
+		try{
+			UsuarioComun user = cargar.get(UsuarioComun.class, usuario);
+			if(passWord != null && user.getUsuariopassword().equals(passWord)){
+				System.out.println("Password correcta");
+				new LoginScene(user).loginSceneRender();
+				this.cerrar();
+			}else{
+				System.out.println("Error de password");
+				erroresNotificacion.setText("Error de password o usuario");
+				user = null;
+			};
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}finally{
+			cargar.close();
+		}
 	}
 	
 	@FXML
@@ -122,6 +136,7 @@ public class PreLoginScene implements Initializable {
 		try{
 			aGuardar.save(usuario);
 			aGuardar.getTransaction().commit();
+			new LoginScene(usuario).loginSceneRender();
 			this.cerrar();
 		}catch(Exception ex){
 			ex.printStackTrace();

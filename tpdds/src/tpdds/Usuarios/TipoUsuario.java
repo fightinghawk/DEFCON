@@ -13,6 +13,10 @@ import javax.persistence.Transient;
 @Table(name="tipodeusuario")
 public class TipoUsuario {
 
+	public TipoUsuario() {
+		super();
+	}
+
 	@Id
 	@Column(name="tipodeusuario")
 	private String tipo;

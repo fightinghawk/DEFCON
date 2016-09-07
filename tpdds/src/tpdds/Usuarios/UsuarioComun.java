@@ -35,6 +35,9 @@ public class UsuarioComun implements Usuario{
 	@Transient
 	private Proceso procesoSeleccionado; 
 	
+	public UsuarioComun(){
+		super();
+	}
 	
 	public UsuarioComun(String nombre, String apellido, String userid, String password, String email){
 		this.nombreUsuario = nombre;

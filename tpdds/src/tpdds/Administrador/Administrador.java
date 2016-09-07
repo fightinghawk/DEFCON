@@ -89,4 +89,10 @@ public class Administrador implements Usuario{
 		listaProcesos.add(procesoBajaPoi);
 		return listaProcesos;
 	}
+
+	@Override
+	public String getUsuariopassword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
