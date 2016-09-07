@@ -2,6 +2,8 @@ package tpdds.Administrador;
 
 import java.util.ArrayList;
 
+import tpdds.Usuarios.UsuarioComun;
+
 
 public class ListaUsuarios {
 	

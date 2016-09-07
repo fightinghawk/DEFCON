@@ -4,13 +4,10 @@ import java.util.ArrayList;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-
-
-import tpdds.Administrador.UsuarioComun;
-
 import tpdds.Administrador.Administrador;
 import tpdds.Administrador.ListaUsuarios;
 import tpdds.Archivos.archivos;
+import tpdds.Usuarios.UsuarioComun;
 import tpdds.database.Generales;
 import tpdds.dispositivo.Dispositivo;
 import tpdds.pois.Poi;

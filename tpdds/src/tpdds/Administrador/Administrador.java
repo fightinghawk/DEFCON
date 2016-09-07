@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import tpdds.Usuarios.Usuario;
 import tpdds.proceso.ActualizacionLocalesComerciales;
 import tpdds.proceso.BajaDePois;
 import tpdds.proceso.Proceso;
@@ -87,5 +88,11 @@ public class Administrador implements Usuario{
 		listaProcesos.add(procesoActualizacion);
 		listaProcesos.add(procesoBajaPoi);
 		return listaProcesos;
+	}
+
+	@Override
+	public String getUsuariopassword() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

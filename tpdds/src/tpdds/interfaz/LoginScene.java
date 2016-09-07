@@ -14,7 +14,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tpdds.Administrador.Administrador;
-import tpdds.Administrador.Usuario;
+import tpdds.Usuarios.Usuario;
 
 public class LoginScene implements Initializable {
 

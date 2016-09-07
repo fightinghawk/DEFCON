@@ -1,19 +1,43 @@
-package tpdds.Administrador;
+package tpdds.Usuarios;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import tpdds.proceso.Proceso;
 
+@Entity
+@Table(name="usuarios")
 public class UsuarioComun implements Usuario{
 
+	@Column(name="user_nombre")
 	private String nombreUsuario;
+	@Column(name="user_password")
 	private String usuariopassword;
+	@Id
+	@Column(name="user_id")
 	private String usuarioid;
+	@Column(name="user_apellido")
 	private String apellidoUsuario;
+	@Column(name="user_mail")
 	private String emailUsuario;
+	@OneToOne
+	@JoinColumn(name = "usua_tipodeusuario")
+	private TipoUsuario tipoUsuario;
+	@Transient
 	private Proceso procesoSeleccionado; 
 	
+	public UsuarioComun(){
+		super();
+	}
 	
 	public UsuarioComun(String nombre, String apellido, String userid, String password, String email){
 		this.nombreUsuario = nombre;
@@ -21,8 +45,6 @@ public class UsuarioComun implements Usuario{
 		this.usuarioid = userid;
 		this.usuariopassword = password;
 		this.emailUsuario = email;
-	
-		
 	}
 	
 	public void otorgarPermisos(String usuario, String permiso)
@@ -33,7 +55,13 @@ public class UsuarioComun implements Usuario{
 		}
 		
 	}
-	
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
 	private void habilitar(String permiso) {
 		// TODO Auto-generated method stub
 		
