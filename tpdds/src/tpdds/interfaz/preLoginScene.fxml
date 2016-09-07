@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="633.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -21,7 +20,7 @@
          <children>
             <Button fx:id="registrarsedb" layoutX="20.0" layoutY="389.0" mnemonicParsing="false" onMouseClicked="#finalizarRegistro" text="Registrarse" />
             <TextField fx:id="correousuario" layoutX="147.0" layoutY="311.0" promptText="Email" />
-            <TextField fx:id="idusuario" layoutX="147.0" layoutY="176.0" promptText="Id" />
+            <TextField fx:id="idusuario" layoutX="147.0" layoutY="176.0" onKeyReleased="#ingresoDatos" promptText="Id" />
             <TextField fx:id="apellidousuario" layoutX="147.0" layoutY="111.0" promptText="Apellido" />
             <TextField fx:id="nombreusuario" layoutX="147.0" layoutY="38.0" promptText="Nombre" />
             <Text layoutX="20.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="74.80712890625" />
@@ -32,5 +31,6 @@
             <PasswordField fx:id="passwordusuario" layoutX="147.0" layoutY="243.0" promptText="Password" />
          </children>
       </Pane>
+      <TextArea fx:id="erroresNotificacion" layoutX="42.0" layoutY="337.0" prefHeight="164.0" prefWidth="281.0" />
    </children>
 </AnchorPane>

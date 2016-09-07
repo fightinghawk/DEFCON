@@ -29,6 +29,7 @@
         <!-- Names the annotated entity class -->
         <mapping class="tpdds.Usuarios.UsuarioComun"/>
         <mapping class="tpdds.Usuarios.TipoUsuario"/>
+        <mapping class= "tpdds.Usuarios.Usuario"/>
     </session-factory>
 
 </hibernate-configuration>
