@@ -19,7 +19,6 @@ import tpdds.proceso.Proceso;
 
 public class LanzadorDeProcesos implements Initializable {
 	
-	private static final double SEGUNDOS_PARAMETRIZADOS = 1;
 	long time_start, time_end;
 	
 	@FXML
@@ -56,8 +55,7 @@ public class LanzadorDeProcesos implements Initializable {
 	@FXML
 	
 	public void lanzarProceso(MouseEvent botonApretado){
-		procesosrun.getItems().clear();
-		time_start = System.currentTimeMillis();
+		System.out.println("Funciona!");
 	}
 	
 	@Override
