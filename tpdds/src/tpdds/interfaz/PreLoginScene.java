@@ -3,6 +3,10 @@ package tpdds.interfaz;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tpdds.Administrador.Administrador;
+import tpdds.Usuarios.TipoUsuario;
 import tpdds.Usuarios.UsuarioComun;
 
 
@@ -70,7 +75,16 @@ public class PreLoginScene implements Initializable {
 	
 	@FXML
 	public void finalizarRegistro(MouseEvent eventoRegistro){
-		new LoginScene(new Administrador("admin", "123456")).loginSceneRender();
+		UsuarioComun eze = new UsuarioComun("Ezequiel", "Castro", "Ezec96", "123456", "ezec09@hotmail.com");
+		TipoUsuario tipo = new TipoUsuario("userComun", "Usuario con permisos para buscar");
+		eze.setTipoUsuario(tipo);
+		SessionFactory guardarUsuario = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		Session aGuardar = guardarUsuario.openSession();
+		aGuardar.beginTransaction();
+		aGuardar.saveOrUpdate(tipo);
+		aGuardar.save(eze);
+		aGuardar.getTransaction().commit();
+		aGuardar.close();
 		this.cerrar();
 	}
 	

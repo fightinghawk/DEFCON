@@ -10,12 +10,12 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/hibernatetest?useSSL=false</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/tpdds?useSSL=false</property>
         <property name="connection.username">root</property>
         <property name="connection.password"/>
 
 		<!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">validate</property>
+        <property name="hbm2ddl.auto">none</property>
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>
@@ -27,10 +27,8 @@
         <property name="show_sql">true</property>
         
         <!-- Names the annotated entity class -->
-        <mapping class="tpdds.hibernate.Algo"/>
-        <mapping class="tpdds.hibernate.Precio"/>
-        
-        
+        <mapping class="tpdds.Usuarios.UsuarioComun"/>
+        <mapping class="tpdds.Usuarios.TipoUsuario"/>
     </session-factory>
 
 </hibernate-configuration>
