@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
@@ -15,6 +16,7 @@ import com.sun.javafx.geom.BaseBounds;
 import com.sun.javafx.geom.transform.BaseTransform;
 import com.sun.javafx.scene.BoundsAccessor;
 
+import HIBERNATE.HibernateSessionFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -94,8 +96,7 @@ public class PreLoginScene implements Initializable {
 	public void submitBoton(MouseEvent evento){
 		String usuario = user.getText();
 		String passWord = password.getText();
-		SessionFactory cargarUsuario = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-		Session cargar = cargarUsuario.openSession();
+		Session cargar = HibernateSessionFactory.getSession();
 		cargar.beginTransaction();
 		try{
 			UsuarioComun user = cargar.get(UsuarioComun.class, usuario);
@@ -130,8 +131,7 @@ public class PreLoginScene implements Initializable {
 				new UsuarioComun(nombreusuario.getText(), apellidousuario.getText(), 
 				idusuario.getText(), passwordusuario.getText(), correousuario.getText());
 		usuario.setTipoUsuario(new TipoUsuario("userComun", "asd"));
-		SessionFactory guardarUsuario = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-		Session aGuardar = guardarUsuario.openSession();
+		Session aGuardar = HibernateSessionFactory.getSession();
 		aGuardar.beginTransaction();
 		try{
 			aGuardar.save(usuario);
