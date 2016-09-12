@@ -16,7 +16,7 @@ public class HibernateSessionFactory {
 		if (sessionFactory == null || !session.isOpen())
 		{
 
-			sessionFactory = new Configuration().configure().buildSessionFactory();
+			sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 			session = sessionFactory.openSession();
 		}
 		
