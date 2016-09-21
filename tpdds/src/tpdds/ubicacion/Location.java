@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity(name="geoPos")
+@Entity
 @Table(name="geoPos")
 public class Location{
 	@Id

@@ -7,12 +7,10 @@ import org.hibernate.Session;
 import HIBERNATE.HibernateSessionFactory;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import tpdds.Administrador.Administrador;
-import tpdds.Administrador.ListaUsuarios;
 import tpdds.Archivos.archivos;
 import tpdds.Usuarios.Permisos;
 import tpdds.Usuarios.TipoUsuario;
-import tpdds.Usuarios.UsuarioComun;
+import tpdds.Usuarios.User;
 import tpdds.database.Generales;
 import tpdds.dispositivo.Dispositivo;
 import tpdds.pois.Poi;
@@ -24,11 +22,8 @@ public class Main extends Application {
 	public static Stage primaryStage;
 	public static Dispositivo tablero;
 	public static ArrayList<Poi> pois;
-
-	public static ArrayList<UsuarioComun> usuarios;
-	public static UsuarioComun usuarioNuevo;
-
-	public static ListaUsuarios todoslosusuarios;
+	public static ArrayList<User> usuarios;
+	public static User usuarioNuevo;
 	public static ArrayList<Proceso> listaProcesos;
 
 	
@@ -39,21 +34,9 @@ public class Main extends Application {
 			Generales.initDatabase();
 			tablero = archivos.obtenerTablero();
 			pois = Generales.cargarPois();
-			listaProcesos = Administrador.crearProcesos();
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
-		Permisos perm = new Permisos("buscarPoi", "Permite buscar un poi");
-		TipoUsuario admin = new TipoUsuario("Admin", "Tiene todo habilitado");
-		admin.permisosUsuarios.add(perm);
-		perm.tiposUsuarios.add(admin);
-		Session aGuardar = HibernateSessionFactory.getSession();
-		aGuardar.beginTransaction();
-		//aGuardar.save(perm);
-		aGuardar.save(admin);
-		aGuardar.getTransaction().commit();
-		aGuardar.close();
-		
 		InsertarDia.initDias();
 		primaryStage = primaryStag;
 		primaryStage.setResizable(false);
@@ -64,7 +47,7 @@ public class Main extends Application {
 
 	
 	public static void main(String[] args) {
-		usuarios = new ArrayList<UsuarioComun>();
+		usuarios = new ArrayList<User>();
 		launch(args);
 	}
 

@@ -13,14 +13,32 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import tpdds.Administrador.Administrador;
-import tpdds.Usuarios.Usuario;
+import tpdds.Usuarios.User;
 
 public class LoginScene implements Initializable {
 
 	@FXML
-	Button verReporte;
-	
+	Button VerReporteFecha;
+	@FXML
+	Button VerReportesTerminal;
+	@FXML
+	Button LanzarProcesos;
+	@FXML
+	Button VerReporteTotales;
+	@FXML
+	Button ModificarPoi;
+	@FXML
+	Button InsertarPoi;
+	@FXML
+	Button BuscarPoi;
+	@FXML
+	Button CrearTipoUsuario;
+	@FXML
+	Button ModificarTipoUsuario;
+	@FXML
+	Button ModificarUsuario;
+	@FXML
+	Button verReporte;	
 	@FXML
 	Text nombreusuario;
 	@FXML
@@ -29,12 +47,11 @@ public class LoginScene implements Initializable {
 	Stage nuevaStage;
 	FXMLLoader loader;
 	AnchorPane rootLayout;
-	String user;
+	User user;
 	String tipo;
 	
-	public LoginScene(Usuario user){
-		this.user = user.getNombreUsuario();
-		this.tipo = user.getTipo();	
+	public LoginScene(User user){
+		this.user = user;
 	}
 	
 	public void loginSceneRender(){
@@ -58,9 +75,18 @@ public class LoginScene implements Initializable {
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		nombreusuario.setText(user);
-		tipousuario.setText(tipo);
-		
+		VerReporteFecha.setDisable(!user.hasPermiso("VerReporteFecha"));
+		VerReportesTerminal.setDisable(!user.hasPermiso("VerReportesTerminal"));
+		LanzarProcesos.setDisable(!user.hasPermiso("LanzarProcesos"));
+		VerReporteTotales.setDisable(!user.hasPermiso("VerReporteTotales"));
+		ModificarPoi.setDisable(!user.hasPermiso("ModificarPoi"));
+		InsertarPoi.setDisable(!user.hasPermiso("InsertarPoi"));
+		BuscarPoi.setDisable(!user.hasPermiso("BuscarPoi"));
+		CrearTipoUsuario.setDisable(!user.hasPermiso("CrearTipoUsuario"));
+		ModificarTipoUsuario.setDisable(!user.hasPermiso("ModificarTipoUsuario"));
+		ModificarUsuario.setDisable(!user.hasPermiso("ModificarUsuario"));
+		nombreusuario.setText(user.getUsuarioid());
+		tipousuario.setText(user.getTipo());
 	}
 	
 	@FXML

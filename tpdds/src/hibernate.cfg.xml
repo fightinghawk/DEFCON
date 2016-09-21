@@ -16,13 +16,17 @@
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
+
+        <!-- que loguear -->
+        <property name="log4j.logger.org.hibernate">warning</property>
+        
+        
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
         
         <!-- Names the annotated entity class -->
-        <mapping class="tpdds.Usuarios.UsuarioComun"/>
+        <mapping class="tpdds.Usuarios.User"/>
         <mapping class="tpdds.Usuarios.TipoUsuario"/>
-        <mapping class= "tpdds.Usuarios.Usuario"/>
         <mapping class= "tpdds.Usuarios.Permisos"/>
     </session-factory>
 

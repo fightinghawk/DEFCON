@@ -31,10 +31,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import tpdds.Administrador.Administrador;
 import tpdds.Usuarios.TipoUsuario;
-import tpdds.Usuarios.Usuario;
-import tpdds.Usuarios.UsuarioComun;
+import tpdds.Usuarios.User;
 
 
 public class PreLoginScene implements Initializable {
@@ -67,7 +65,7 @@ public class PreLoginScene implements Initializable {
 	
 	public void loginSceneRender(){
 		try{
-			registroValido = false;
+			registroValido = true;
 			nuevaStage = new Stage();
 			nuevaStage.initModality(Modality.WINDOW_MODAL);
 			nuevaStage.initOwner(Main.primaryStage);
@@ -99,7 +97,7 @@ public class PreLoginScene implements Initializable {
 		Session cargar = HibernateSessionFactory.getSession();
 		cargar.beginTransaction();
 		try{
-			UsuarioComun user = cargar.get(UsuarioComun.class, usuario);
+			User user = cargar.get(User.class, usuario);
 			if(passWord != null && user.getUsuariopassword().equals(passWord)){
 				System.out.println("Password correcta");
 				new LoginScene(user).loginSceneRender();
@@ -127,10 +125,10 @@ public class PreLoginScene implements Initializable {
 			}
 			return;
 		}
-		UsuarioComun usuario = 
-				new UsuarioComun(nombreusuario.getText(), apellidousuario.getText(), 
+		User usuario = 
+				new User(nombreusuario.getText(), apellidousuario.getText(), 
 				idusuario.getText(), passwordusuario.getText(), correousuario.getText());
-		usuario.setTipoUsuario(new TipoUsuario("userComun", "asd"));
+		usuario.setTipoUsuario(new TipoUsuario("userComun", "Usuario con los permisos basicos.", "Usuario Comun"));
 		Session aGuardar = HibernateSessionFactory.getSession();
 		aGuardar.beginTransaction();
 		try{
@@ -150,14 +148,14 @@ public class PreLoginScene implements Initializable {
 	
 	@FXML
 	public void ingresoDatos(KeyEvent ingresaAlgo){
-		TextField campoDeTexto = (TextField) ingresaAlgo.getSource();
+		/*TextField campoDeTexto = (TextField) ingresaAlgo.getSource();
 		String aComprobar = campoDeTexto.getText().concat(ingresaAlgo.getCharacter());
 		aComprobar = aComprobar.substring(0, aComprobar.length()-1);
 		SessionFactory fact = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 		Session factSesion = fact.openSession();
 		factSesion.beginTransaction();
 		try{
-			Criteria criteria = factSesion.createCriteria(Usuario.class);
+			Criteria criteria = factSesion.createCriteria(User.class);
 			criteria.add(Restrictions.eq("usuarioid",aComprobar));
 			criteria.setProjection(Projections.rowCount());
 			long count = (Long) criteria.uniqueResult();
@@ -178,7 +176,7 @@ public class PreLoginScene implements Initializable {
 			factSesion.getTransaction().rollback();
 		}finally {
 			factSesion.close();
-		}
+		}*/
 	}
 	
 	public boolean camposLlenos(){

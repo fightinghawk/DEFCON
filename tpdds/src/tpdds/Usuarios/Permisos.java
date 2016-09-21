@@ -19,22 +19,19 @@ public class Permisos {
 	
 	@Id
 	@Column(name="per_permisos")
-	String permiso;
+	private String permiso;
 	@Column(name="per_descripciom")
-	String descripcion;
-	@ManyToMany
-	@JoinTable(
-			name="tipodeusuario_has_permisos",
-	        joinColumns=@JoinColumn(name="tipodeusuario_tipodeusuario"),
-            inverseJoinColumns=@JoinColumn(name="permisos_per_permisos"))
-	public Collection<TipoUsuario> tiposUsuarios;
-	
+	private String descripcion;
 	
 	public Permisos(String permiso, String descripcion) {
 		super();
 		this.permiso = permiso;
 		this.descripcion = descripcion;
-		this.tiposUsuarios = new ArrayList<>();
+		//this.tiposUsuarios = new ArrayList<>();
+	}
+	
+	public Permisos(){
+		super();
 	}
 	
 	public String getPermiso() {
@@ -49,6 +46,7 @@ public class Permisos {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
 	
 	
 }

@@ -16,7 +16,7 @@ import tpdds.proceso.Proceso;
 
 @Entity
 @Table(name="usuarios")
-public class UsuarioComun implements Usuario{
+public class User{
 
 	@Column(name="user_nombre")
 	private String nombreUsuario;
@@ -35,18 +35,16 @@ public class UsuarioComun implements Usuario{
 	@Transient
 	private Proceso procesoSeleccionado; 
 	
-	public UsuarioComun(){
+	public User(){
 		super();
 	}
-	
-	public UsuarioComun(String nombre, String apellido, String userid, String password, String email){
+	public User(String nombre, String apellido, String userid, String password, String email){
 		this.nombreUsuario = nombre;
 		this.apellidoUsuario = apellido;
 		this.usuarioid = userid;
 		this.usuariopassword = password;
 		this.emailUsuario = email;
 	}
-	
 	public void otorgarPermisos(String usuario, String permiso)
 	{
 		if (this.existeUsuario(usuario))
@@ -58,7 +56,6 @@ public class UsuarioComun implements Usuario{
 	public TipoUsuario getTipoUsuario() {
 		return tipoUsuario;
 	}
-
 	public void setTipoUsuario(TipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
@@ -66,88 +63,58 @@ public class UsuarioComun implements Usuario{
 		// TODO Auto-generated method stub
 		
 	}
-
 	private boolean existeUsuario(String usuario) {
 		return false;
 		// TODO Auto-generated method stub
 		
 	}
-
 	public void ejecutarProceso() throws IOException, ClassNotFoundException, SQLException{
 		this.getProcesoSeleccionado().ejecutarme();
 	}
-
-	@Override
-	public String getTipo() {
-		// TODO Auto-generated method stub
-		return "Usuario Comun";
-	}
-
 	public Proceso getProcesoSeleccionado() {
 		return procesoSeleccionado;
 	}
-
 	public void setProcesoSeleccionado(Proceso procesoSeleccionado) {
 		this.procesoSeleccionado = procesoSeleccionado;
 	}
-
-
-
 	public String getNombreUsuario() {
 		return nombreUsuario;
 	}
-
-
-
 	public void setNombreUsuario(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
-
-
-
 	public String getUsuariopassword() {
 		return usuariopassword;
 	}
-
-
-
 	public void setUsuariopassword(String usuariopassword) {
 		this.usuariopassword = usuariopassword;
 	}
-
-
-
 	public String getUsuarioid() {
 		return usuarioid;
 	}
-
-
-
 	public void setUsuarioid(String usuarioid) {
 		this.usuarioid = usuarioid;
 	}
-
-
-
 	public String getApellidoUsuario() {
 		return apellidoUsuario;
 	}
-
-
-
 	public void setApellidoUsuario(String apellidoUsuario) {
 		this.apellidoUsuario = apellidoUsuario;
 	}
-
-
-
 	public String getEmailUsuario() {
 		return emailUsuario;
 	}
-
-
-
 	public void setEmailUsuario(String emailUsuario) {
 		this.emailUsuario = emailUsuario;
+	}
+	public boolean hasPermiso(String permiso){
+		for (Permisos permisoAComparar : this.tipoUsuario.getPermisosUsuarios()) {
+			if(permisoAComparar.getPermiso().equalsIgnoreCase(permiso))
+				return true;
+		}
+		return false;
+	}
+	public String getTipo(){
+		return this.tipoUsuario.getaMostrar();
 	}
 }

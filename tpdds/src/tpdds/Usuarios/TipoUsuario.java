@@ -28,19 +28,20 @@ public class TipoUsuario {
 	private String tipo;
 	@Column(name="tipo_descripcion")
 	private String descripcion;
+	@Column(name="tipo_mostrar")
+	private String aMostrar;
 	@ManyToMany
-	@JoinTable(
-			name="tipodeusuario_has_permisos",
-	        joinColumns=@JoinColumn(name="tipodeusuario_tipodeusuario"),
-            inverseJoinColumns=@JoinColumn(name="permisos_per_permisos")
-    )
-	public Collection<Permisos> permisosUsuarios;
+	@JoinTable(name="tipodeusuario_has_permisos",
+			inverseJoinColumns=@JoinColumn(name="permisos_per_permisos", referencedColumnName="per_permisos"),
+			joinColumns=@JoinColumn(name="tipodeusuario_tipodeusuario", referencedColumnName="tipodeusuario"))
+	private Collection<Permisos> permisosUsuarios;
 	
-	public TipoUsuario(String tipo, String descripcion) {
+	public TipoUsuario(String tipo, String descripcion,String aMostrar) {
 		super();
 		this.tipo = tipo;
 		this.descripcion = descripcion;
 		this.permisosUsuarios = new ArrayList<>();
+		this.aMostrar = aMostrar;
 	}
 
 	public String getTipo() {
@@ -49,6 +50,9 @@ public class TipoUsuario {
 
 	public String getDescripcion() {
 		return descripcion;
+	}
+	public String getaMostrar() {
+		return aMostrar;
 	}
 
 	public Collection<Permisos> getPermisosUsuarios() {
