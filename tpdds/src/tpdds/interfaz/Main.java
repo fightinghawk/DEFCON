@@ -37,12 +37,11 @@ public class Main extends Application {
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
-		InsertarDia.initDias();
 		primaryStage = primaryStag;
 		primaryStage.setResizable(false);
 		primaryStage.setTitle("Pois dds");
 		new PreLoginScene().loginSceneRender();
-	}
+			}
 	
 
 	

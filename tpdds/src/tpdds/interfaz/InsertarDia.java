@@ -1,9 +1,12 @@
 package tpdds.interfaz;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
@@ -15,18 +18,33 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tpdds.database.Generales;
 import tpdds.pois.DiaPoi;
+import tpdds.pois.Poi;
 
-public class InsertarDia {
+public class InsertarDia implements Initializable {
 
+	@FXML
+	Button Siguiente;
+	@FXML
+	Button Anterior;
+	@FXML
+	Button fin;
+	ArrayList<DiaPoi> diasCargados;
+	ArrayList<String> diasPos;
+	FXMLLoader loader;
+	AnchorPane rootLayout;
+	HashMap<String, Boolean> palabraOK = new HashMap<>();
+	int nrodia;
+	Stage second;
+	Poi poiNuevo;
+	public InsertarDia(Poi poi){
+		this.initDias();
+		this.poiNuevo = poi;
+	}
 	
-	static ArrayList<DiaPoi> diasCargados = new ArrayList<>();
-	static ArrayList<String> diasPos = new ArrayList<>();
-	static FXMLLoader loader;
-	static AnchorPane rootLayout;
-	static HashMap<String, Boolean> palabraOK = new HashMap<>();
-	static int nrodia;
-	static Stage second;
-	public static void initDias(){
+	
+	
+	public void initDias(){
+			diasPos = new ArrayList<>();
 			diasPos.add(0, "Lunes");
 			diasPos.add(1, "Martes");
 			diasPos.add(2, "Miercoles");
@@ -37,31 +55,19 @@ public class InsertarDia {
 	}
 	
 	
-	public static void insertDiaRender(Stage escenario,int nrodiap){
+	public void insertDiaRender(Stage escenario,int nrodiap){
 		try{
 			second = escenario;
 			nrodia = nrodiap;
 			String dia = diasPos.get(nrodia);
 			loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("insertSceneDiaz.fxml"));
+			loader.setController(this);
 			rootLayout = loader.load();
 			//Seteo el titulo, osea el dia
 			Label titulo = (Label) (rootLayout.lookup("#Dia"));
 			titulo.setText(dia);
 			//Veo q botones poner
-			if(nrodia == 0){
-				rootLayout.lookup("#Anterior").setVisible(false);
-				rootLayout.lookup("#Siguiente").setVisible(true);
-				rootLayout.lookup("#fin").setVisible(false);
-			}else if(nrodia==6){
-				rootLayout.lookup("#Siguiente").setVisible(false);
-				rootLayout.lookup("#Anterior").setVisible(true);
-				rootLayout.lookup("#fin").setVisible(true);
-			}else{
-				rootLayout.lookup("#Siguiente").setVisible(true);
-				rootLayout.lookup("#Anterior").setVisible(true);
-				rootLayout.lookup("#fin").setVisible(false);
-			}
 			Scene scene = new Scene(rootLayout);
 			escenario.setScene(scene);
 			escenario.show();
@@ -83,8 +89,8 @@ public class InsertarDia {
 	@FXML
 	public void finBoton(){
 		try{
-		Generales.almacenarPOI(InsertSceneGnr.nuevo);
-		Main.pois.add(InsertSceneGnr.nuevo);
+			//Ak almacenar poi
+		Main.pois.add(poiNuevo);
 		}
 		catch(Exception ex){
 			
@@ -111,6 +117,25 @@ public class InsertarDia {
 		if (valor > 2399) {
 			evento.consume();
 		}
+	}
+
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		if(nrodia == 0){
+			Anterior.setVisible(false);
+			Siguiente.setVisible(true);
+			fin.setVisible(false);
+		}else if(nrodia==6){
+			Siguiente.setVisible(false);
+			Anterior.setVisible(true);
+			fin.setVisible(true);
+		}else{
+			Siguiente.setVisible(true);
+			Anterior.setVisible(true);
+			fin.setVisible(false);
+		}
+		
 	}
 	
 	

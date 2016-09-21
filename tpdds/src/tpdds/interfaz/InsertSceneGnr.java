@@ -49,11 +49,11 @@ public class InsertSceneGnr implements Initializable{
 	@FXML
 	SplitMenuButton Tipo;
 	
-	static Poi nuevo;
+	Poi nuevo;
 	FXMLLoader loader;
 	AnchorPane rootLayout;
 	HashMap<String, Boolean> palabraOK = new HashMap<>();
-	static Stage nuevaStage;
+	Stage nuevaStage;
 	//IDCAMPO - SI ESTA OK O NO
 	public void insertSceneRender(){
 		try{
@@ -120,7 +120,7 @@ public class InsertSceneGnr implements Initializable{
 				break;
 			}
 		}
-		//ok = true;//para test
+		ok = true;//para test
 		if(!ok){
 			AnchorPane errorPane = (AnchorPane) rootLayout.lookup("#error");
 			TextArea textError = (TextArea) errorPane.lookup("#texterror");
@@ -147,7 +147,7 @@ public class InsertSceneGnr implements Initializable{
 				break;
 			}
 			nuevo.agregarPalabra(keys.split(","));
-			InsertarDia.insertDiaRender(nuevaStage, 0);
+			new InsertarDia(nuevo).insertDiaRender(nuevaStage, 0);
 		}
 		
 	}		

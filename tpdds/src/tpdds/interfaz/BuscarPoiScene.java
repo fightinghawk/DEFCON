@@ -130,6 +130,9 @@ public class BuscarPoiScene implements Initializable {
 		altura.setCellValueFactory(new PropertyValueFactory<>("altura"));
 		distancia.setCellValueFactory(new PropertyValueFactory<>("distancia"));
 		ArrayList<Poi> resultados = Main.pois;
+		if(resultados == null){
+			resultados = new ArrayList<>();
+		}
 		ObservableList<ObsPoi> resultadosTabla =  FXCollections.observableArrayList();
 		for (Poi poi : resultados) {
 			resultadosTabla.add(new ObsPoi(poi.getNombre(), poi.getDireccion().getCallePrincipal(), poi.getDireccion().getAltura(),Calculos.calcularDistanciaA(poi, Main.tablero),poi.getIddb()));
