@@ -125,13 +125,14 @@ public class modfiPoiSceneBuscar implements Initializable {
 		}
 		for(Poi poi : Main.pois){
 			 if (poi.getIddb() == id){
-				 Main.pois.remove(poi);
 				 try{
 				 Generales.borrarPoi(poi);
+				 Main.pois.remove(poi);
 				 }catch(Exception ex){
 					 ex.printStackTrace();
+				 }finally{
+					 this.actualizarLista();
 				 }
-				 this.actualizarLista();
 				 return;
 			 }
 		 }
