@@ -3,6 +3,9 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import org.hibernate.Session;
+
+import HIBERNATE.HibernateSessionFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +20,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tpdds.database.Generales;
 import tpdds.pois.Poi;
+import tpdds.ubicacion.Direccion;
+import tpdds.ubicacion.Location;
 
 public class modifPoiSceneFields implements Initializable {
 
@@ -65,11 +70,11 @@ public class modifPoiSceneFields implements Initializable {
 			barrio.setText(poi.getDireccion().getBarrio());
 			latitud.setText("" + poi.getGeoloc().getLatitud());
 			longitud.setText("" + poi.getGeoloc().getLongitud());
-			tipo.setText(tipo.getItems().get(poi.getIdTipo()-1).getText());
 			// Creo Scene y la configuro
 			Scene scene = new Scene(rootLayout);
 			//Stage a abrirse
 			nuevaStage.setScene(scene);
+			tipo.setText(poi.getTipo());
 			nuevaStage.show();
 		}catch(Exception ex){
 			ex.printStackTrace();
@@ -85,16 +90,24 @@ public class modifPoiSceneFields implements Initializable {
 	
 	@FXML
 	public void aceptar(MouseEvent evento){
+		Session aGuardar = HibernateSessionFactory.getSession();
+		aGuardar.beginTransaction();
 		poi.setNombre(nombre.getText());
-		poi.getDireccion().setCallePrincipal(cPrincipal.getText());
-		poi.getDireccion().setCalleLateralDer(cDerecha.getText());
-		poi.getDireccion().setCalleLateralIzq(cIzquierda.getText());
-		poi.getDireccion().setAltura(Integer.parseInt(altura.getText()));
-		poi.getDireccion().setBarrio(barrio.getText());
-		poi.getGeoloc().setLatitud(Double.parseDouble(latitud.getText()));
-		poi.getGeoloc().setLongitud(Double.parseDouble(longitud.getText()));
+		poi.setTipo(tipo.getText());
+		Direccion direccion  = new Direccion(cPrincipal.getText(), Integer.parseInt(altura.getText()), cIzquierda.getText(), cDerecha.getText(), barrio.getText());
+		direccion.setPoi(poi);
+		direccion.setIddb(poi.getDireccion().getIddb());
+		aGuardar.saveOrUpdate(direccion);
+		Location geoloc = new Location(Double.parseDouble(latitud.getText()), Double.parseDouble(longitud.getText()));
+		geoloc.setPoi(poi);
+		geoloc.setIddb(poi.getGeoloc().getIddb());
+		aGuardar.saveOrUpdate(geoloc);
+		poi.setDireccion(direccion);
+		poi.setGeoloc(geoloc);
 		try{
-		Generales.modificarPOI(poi);
+		aGuardar.saveOrUpdate(poi);
+		aGuardar.getTransaction().commit();
+		aGuardar.close();
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}

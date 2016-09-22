@@ -11,8 +11,7 @@ import tpdds.ubicacion.Location;
 public class CGP extends Poi  {
 	
 	public CGP(String nombre, Direccion direccion, Location geoloc) {
-		super(nombre, "CGP", direccion, geoloc);
-		super.idTipo = 2;
+		super(nombre,2, "CGP", direccion, geoloc);
 	}
 	
 	public CGP(String nombre, Direccion direccion, Location geoloc,HashSet<String> keywords,ArrayList<DiaPoi> dias,int iddb) {

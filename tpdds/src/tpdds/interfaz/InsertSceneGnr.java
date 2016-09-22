@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import org.hibernate.Session;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +27,7 @@ import tpdds.pois.ParadaColectivo;
 import tpdds.pois.Poi;
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Location;
+import HIBERNATE.HibernateSessionFactory;
 
 public class InsertSceneGnr implements Initializable{
 	
@@ -128,25 +131,33 @@ public class InsertSceneGnr implements Initializable{
 			errorPane.setVisible(true);
 		}
 		else{
-			Direccion direc  = new Direccion(calle.getText(), Integer.parseInt(altura.getText()), izquierda.getText(), derecha.getText(), barrio.getText());
+			String tipoStr = Tipo.getText();
+			Session aGuardar = HibernateSessionFactory.getSession();
+			aGuardar.beginTransaction();
+			Direccion direc  = new Direccion(calle.getText(), Integer.parseInt(altura.getText()), izquierda.getText(), derecha.getText(), barrio.getText());	
 			Location geo = new Location(Double.parseDouble(latitud.getText()), Double.parseDouble(Longitud.getText()));
 			String keys = keyWord.getText();
-
+			aGuardar.save(direc);
+			aGuardar.save(geo);
 			switch (Tipo.getText().toLowerCase()) {
 			case "cgp":
-				nuevo = new CGP(nombre.getText(), direc, geo);
+				nuevo =new Poi(nombre.getText(),tipoStr, direc, geo);
 				break;
 			case "colectivo":
-				nuevo = new ParadaColectivo(nombre.getText(), direc, geo);
+				nuevo = new Poi(nombre.getText(),tipoStr, direc, geo);
 				break;
 			case "bancos":
-				nuevo = new Bancos(nombre.getText(), direc, geo);
+				nuevo = new Poi(nombre.getText(),tipoStr, direc, geo);
 				break;
 			case "comercios":
-				nuevo = new LocalesComerciales(nombre.getText(),"Local", direc, geo);
+				nuevo = new Poi(nombre.getText(),tipoStr, direc, geo);
 				break;
 			}
+			aGuardar.save(nuevo);
+			direc.setPoi(nuevo);
+			geo.setPoi(nuevo);
 			nuevo.agregarPalabra(keys.split(","));
+			aGuardar.beginTransaction().commit();
 			new InsertarDia(nuevo).insertDiaRender(nuevaStage, 0);
 		}
 		

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import org.hibernate.Session;
+
+import HIBERNATE.HibernateSessionFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -36,9 +39,9 @@ public class InsertarDia implements Initializable {
 	int nrodia;
 	Stage second;
 	Poi poiNuevo;
-	public InsertarDia(Poi poi){
+	public InsertarDia(Poi nuevo){
 		this.initDias();
-		this.poiNuevo = poi;
+		this.poiNuevo = nuevo;
 	}
 	
 	
@@ -89,8 +92,10 @@ public class InsertarDia implements Initializable {
 	@FXML
 	public void finBoton(){
 		try{
-			//Ak almacenar poi
+			Session aGuardar = HibernateSessionFactory.getSession();
+			
 		Main.pois.add(poiNuevo);
+		aGuardar.close();
 		}
 		catch(Exception ex){
 			

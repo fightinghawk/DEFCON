@@ -3,14 +3,19 @@ package tpdds.pois;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 
+
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -18,6 +23,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.Session;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+import HIBERNATE.HibernateSessionFactory;
 import tpdds.pois.estadisticas.Estadistica;
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Localizable;
@@ -28,34 +38,36 @@ import tpdds.usoGlobal.CalculosHorarios;
 
 @Entity
 @Table (name="pois")
-public abstract class Poi implements Localizable {
+public class Poi implements Localizable {
+	
+	protected Poi(){}
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="pois_id")
 	private int iddb;
 	@Column(name="nombre")
 	private String nombre;
 	@Column(name="strtipo")
 	private String tipo;
-	@Column(name="tipo")
-	protected int idTipo;
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="direcciones_id")
 	private Direccion direccion;
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="geoPos_id")
 	private Location geoloc;
-	@OneToMany
-	@JoinTable(name="keyWords")
-	private HashSet<String> palabrasClaves;
-	private ArrayList<DiaPoi> diasDisp;
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name="keyWords_id")
+	private Collection<keyWords> palabrasClaves = new HashSet<keyWords>();
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name="diasPoi_id")
+	private Collection<DiaPoi> diasDisp = new ArrayList<DiaPoi>();
 
-	public HashSet<String> getPalabrasClaves() {
+	public Collection<keyWords> getPalabrasClaves() {
 		return palabrasClaves;
 	}
 
-	public ArrayList<DiaPoi> getDiasDisp() {
+	public Collection<DiaPoi> getDiasDisp() {
 		return diasDisp;
 	}
 	
@@ -63,19 +75,19 @@ public abstract class Poi implements Localizable {
 		return iddb;
 	}
 	// Constructor POI
-	public Poi(String nombre, String tipoPOI, Direccion direccion, Location geoloc) {
+	public Poi(String nombre,String tipoPOI, Direccion direccion, Location geoloc) {
 		this.nombre = nombre;
 		this.tipo = tipoPOI;
 		this.direccion = direccion;
 		this.geoloc = geoloc;
 		this.iddb = -1;
-		palabrasClaves = new HashSet<String>();
+		palabrasClaves = new HashSet<keyWords>();
 		diasDisp = new ArrayList<>();
 		this.esValido();
 	}
 	
 	// Constructor POI
-	public Poi(String nombre, String tipoPOI, Direccion direccion, Location geoloc,HashSet<String> keywords,ArrayList<DiaPoi> dias,int iddb) {
+	public Poi(String nombre, String tipoPOI, Direccion direccion, Location geoloc,HashSet<keyWords> keywords,ArrayList<DiaPoi> dias,int iddb) {
 		this.nombre = nombre;
 		this.tipo = tipoPOI;
 		this.direccion = direccion;
@@ -87,7 +99,7 @@ public abstract class Poi implements Localizable {
 		this.esValido();
 	}
 	
-	public void setPalabrasClaves(HashSet<String> palabrasClaves) {
+	public void setPalabrasClaves(HashSet<keyWords> palabrasClaves) {
 		this.palabrasClaves = palabrasClaves;
 	}
 
@@ -168,21 +180,40 @@ public abstract class Poi implements Localizable {
 		System.out.println(this);
 	}
 
-	public abstract boolean estaCerca(Localizable localizable);
+	public boolean estaCerca(Localizable localizable) {
+		return false;
+	}
 	
 	public boolean contienePalabraClave(String palabra) {
 		boolean encontrado = false;
 		palabra = palabra.toLowerCase();
 		encontrado = (nombre.toLowerCase().contains(palabra) ||
 				getDireccionToString().toLowerCase().contains(palabra) ||
-				palabrasClaves.contains(palabra)
+				this.PalabrasClaves(palabra)
 		);
 		return encontrado;
 	}
 
+	private boolean PalabrasClaves(String palabra) {
+		boolean encontrado = false;
+		palabra = palabra.toLowerCase();
+		for(keyWords keywords : palabrasClaves)
+		{
+			if(keywords.getClave().toLowerCase().equals(palabra))
+			{
+				encontrado=true;
+			}
+		}
+		return encontrado;
+	}
+
 	public void agregarPalabra(String[] palabras) {
+		keyWords keywords;
+		Session aGuardar = HibernateSessionFactory.getSession();
+		aGuardar.beginTransaction();
 		for (String keyWord : palabras) {
-			palabrasClaves.add(keyWord.toLowerCase());
+			keywords = new keyWords(keyWord,this);
+			aGuardar.save(keywords);
 		}
 	}
 	
@@ -206,14 +237,6 @@ public abstract class Poi implements Localizable {
 			}
 		}
 		return false;
-	}
-
-	public int getIdTipo() {
-		return idTipo;
-	}
-
-	public void setIdTipo(int idTipo) {
-		this.idTipo = idTipo;
 	}
 
 }

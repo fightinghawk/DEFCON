@@ -18,8 +18,7 @@ public class Bancos extends Poi {
 	
 	
 	public Bancos(String nombre, Direccion direccion, Location geoloc) {
-		super(nombre, "Banco", direccion, geoloc);
-		super.idTipo = 1;
+		super(nombre,1, "Banco", direccion, geoloc);
 	}
 	public Bancos(String nombre, Direccion direccion, Location geoloc,HashSet<String> keywords,ArrayList<DiaPoi> dias,int iddb) {
 		super(nombre, "Banco", direccion, geoloc,keywords,dias,iddb);

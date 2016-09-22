@@ -2,8 +2,16 @@ package tpdds.interfaz;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+
+import HIBERNATE.HibernateSessionFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,7 +33,6 @@ import tpdds.usoGlobal.BuscadorPoi;
 import tpdds.usoGlobal.Calculos;
 
 public class modfiPoiSceneBuscar implements Initializable {
-	
 	@FXML
 	TextField campoDeBusqueda;
 	@FXML
@@ -38,6 +45,8 @@ public class modfiPoiSceneBuscar implements Initializable {
 	TableColumn<ObsPoi, Integer> altura;
 	@FXML
 	TableColumn<ObsPoi, Double> distancia;
+	
+	List<Poi> resultados;
 	
 	static Stage nuevaStage;
 	FXMLLoader loader;
@@ -137,9 +146,9 @@ public class modfiPoiSceneBuscar implements Initializable {
 		distancia.setCellValueFactory(new PropertyValueFactory<>("distancia"));
 		this.actualizarLista();
 	}
-	
+
 	private void actualizarLista(){
-		ArrayList<Poi> resultados = Main.pois;
+		resultados = Main.pois;
 		ObservableList<ObsPoi> resultadosTabla =  FXCollections.observableArrayList();;
 		for (Poi poi : resultados) {
 			resultadosTabla.add(new ObsPoi(poi.getNombre(), poi.getDireccion().getCallePrincipal(), poi.getDireccion().getAltura(),Calculos.calcularDistanciaA(poi, Main.tablero),poi.getIddb()));

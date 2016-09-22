@@ -14,8 +14,7 @@ public class LocalesComerciales extends Poi  {
 	private double radioDeCuadras;
 	
 	public LocalesComerciales(String nombre, String tipoPOI, Direccion direccion, Location geoloc) {
-		super(nombre, tipoPOI, direccion, geoloc);
-		super.idTipo = 4;
+		super(nombre,4, tipoPOI, direccion, geoloc);
 	}
 	
 	public LocalesComerciales(String nombre, String tipoPOI, Direccion direccion, Location geoloc,HashSet<String> keywords,ArrayList<DiaPoi> dias,int iddb){

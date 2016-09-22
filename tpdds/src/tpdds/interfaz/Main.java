@@ -1,6 +1,7 @@
 package tpdds.interfaz;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Session;
 
@@ -21,10 +22,10 @@ public class Main extends Application {
     
 	public static Stage primaryStage;
 	public static Dispositivo tablero;
-	public static ArrayList<Poi> pois;
 	public static ArrayList<User> usuarios;
 	public static User usuarioNuevo;
 	public static ArrayList<Proceso> listaProcesos;
+	public static List<Poi> pois;
 
 	
 	@Override
