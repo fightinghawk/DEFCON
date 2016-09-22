@@ -43,18 +43,6 @@ public class Direccion {
 	private String barrio;
 	@Column(name = "localidad")
 	private String localidad;
-	@OneToOne
-	@JoinColumn(name="pois_id")
-	private Poi poi;
-	
-	public void getPoi(Poi poi) {
-		this.poi = poi;
-	}
-	
-	public void setPoi(Poi poi) {
-		this.poi = poi;
-	}
-
 
 	public String getCallePrincipal() {
 		return callePrincipal;

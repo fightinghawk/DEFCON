@@ -28,18 +28,6 @@ public class Location{
 	private double longitud;
 	@Column(name="latitud")
 	private double latitud;
-	@OneToOne
-	@JoinColumn(name="pois_id")
-	private Poi poi;
-	
-	public void getPoi(Poi poi) {
-		this.poi = poi;
-	}
-	
-	public void setPoi(Poi poi) {
-		this.poi = poi;
-	}
-
 
 	// Constructor Latitud y longitud se colocan en grados
 	public Location(double latitud, double longitud) {

@@ -59,7 +59,7 @@ public class Poi implements Localizable {
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name="keyWords_id")
 	private Collection<keyWords> palabrasClaves = new HashSet<keyWords>();
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany
 	@JoinColumn(name="diasPoi_id")
 	private Collection<DiaPoi> diasDisp = new ArrayList<DiaPoi>();
 
