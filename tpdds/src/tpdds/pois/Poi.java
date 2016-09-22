@@ -193,7 +193,7 @@ public class Poi implements Localizable {
 	private boolean PalabrasClaves(String palabra) {
 		boolean encontrado = false;
 		palabra = palabra.toLowerCase();
-		for(keyWords keywords : palabrasClaves)
+		for(keyWords keywords : this.palabrasClaves)
 		{
 			if(keywords.getClave().toLowerCase().equals(palabra))
 			{

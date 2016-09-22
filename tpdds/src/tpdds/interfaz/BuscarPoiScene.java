@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import java.util.List;
+
 import apiExterna.BancoExterna;
 import apiExterna.jsonBancos;
 import javafx.collections.FXCollections;
@@ -50,6 +52,8 @@ public class BuscarPoiScene implements Initializable {
 	AnchorPane rootLayout;
 	HashMap<String, Boolean> palabraOK = new HashMap<>();
 	ArrayList<BancoExterna> bancos;
+	
+	List<Poi> resultados;
 
 	//IDCAMPO - SI ESTA OK O NO
 	public void buscarSceneRender(){
@@ -129,7 +133,7 @@ public class BuscarPoiScene implements Initializable {
 		calle.setCellValueFactory(new PropertyValueFactory<>("calle"));
 		altura.setCellValueFactory(new PropertyValueFactory<>("altura"));
 		distancia.setCellValueFactory(new PropertyValueFactory<>("distancia"));
-		ArrayList<Poi> resultados = Main.pois;
+		resultados = Main.pois;
 		if(resultados == null){
 			resultados = new ArrayList<>();
 		}
