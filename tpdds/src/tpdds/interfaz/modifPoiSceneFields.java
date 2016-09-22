@@ -95,11 +95,9 @@ public class modifPoiSceneFields implements Initializable {
 		poi.setNombre(nombre.getText());
 		poi.setTipo(tipo.getText());
 		Direccion direccion  = new Direccion(cPrincipal.getText(), Integer.parseInt(altura.getText()), cIzquierda.getText(), cDerecha.getText(), barrio.getText());
-		direccion.setPoi(poi);
 		direccion.setIddb(poi.getDireccion().getIddb());
 		aGuardar.saveOrUpdate(direccion);
 		Location geoloc = new Location(Double.parseDouble(latitud.getText()), Double.parseDouble(longitud.getText()));
-		geoloc.setPoi(poi);
 		geoloc.setIddb(poi.getGeoloc().getIddb());
 		aGuardar.saveOrUpdate(geoloc);
 		poi.setDireccion(direccion);
@@ -110,6 +108,7 @@ public class modifPoiSceneFields implements Initializable {
 		aGuardar.close();
 		}catch(Exception ex){
 			ex.printStackTrace();
+			aGuardar.getTransaction().rollback();
 		}
 		stg.close();
 		new modfiPoiSceneBuscar().modfiPoiBuscar();

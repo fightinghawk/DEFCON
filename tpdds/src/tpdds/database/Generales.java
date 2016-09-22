@@ -52,6 +52,8 @@ public class Generales{
 		Session session = HibernateSessionFactory.getSession();
 		session.beginTransaction();
 		session.delete(poi);
+		session.delete(poi.getDireccion());
+		session.delete(poi.getGeoloc());
         session.getTransaction().commit();
         session.close();
 	}

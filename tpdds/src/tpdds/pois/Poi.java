@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
@@ -24,8 +24,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.Session;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import HIBERNATE.HibernateSessionFactory;
 import tpdds.pois.estadisticas.Estadistica;
@@ -56,11 +54,9 @@ public class Poi implements Localizable {
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="geoPos_id")
 	private Location geoloc;
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name="keyWords_id")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="poi",cascade= CascadeType.ALL)
 	private Collection<keyWords> palabrasClaves = new HashSet<keyWords>();
-	@OneToMany
-	@JoinColumn(name="diasPoi_id")
+	@OneToMany(mappedBy="poi",cascade= CascadeType.ALL)
 	private Collection<DiaPoi> diasDisp = new ArrayList<DiaPoi>();
 
 	public Collection<keyWords> getPalabrasClaves() {

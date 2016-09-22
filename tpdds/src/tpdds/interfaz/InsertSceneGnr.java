@@ -154,8 +154,6 @@ public class InsertSceneGnr implements Initializable{
 				break;
 			}
 			aGuardar.save(nuevo);
-			direc.setPoi(nuevo);
-			geo.setPoi(nuevo);
 			nuevo.agregarPalabra(keys.split(","));
 			aGuardar.beginTransaction().commit();
 			new InsertarDia(nuevo).insertDiaRender(nuevaStage, 0);
