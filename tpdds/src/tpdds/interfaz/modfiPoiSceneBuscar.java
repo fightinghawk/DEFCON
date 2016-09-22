@@ -126,7 +126,10 @@ public class modfiPoiSceneBuscar implements Initializable {
 		for(Poi poi : Main.pois){
 			 if (poi.getIddb() == id){
 				 try{
-				 Generales.borrarPoi(poi);
+				Poi PoiABorrar = new Poi(poi.getNombre(),poi.getTipo(),poi.getDireccion(),poi.getGeoloc());
+				PoiABorrar.setIddb(poi.getIddb());
+				PoiABorrar.setPalabrasClaves(poi.getPalabrasClaves());
+				 Generales.borrarPoi(PoiABorrar);
 				 Main.pois.remove(poi);
 				 }catch(Exception ex){
 					 ex.printStackTrace();

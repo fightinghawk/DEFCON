@@ -1,6 +1,7 @@
 package tpdds.pois;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 
 import tpdds.ubicacion.Comuna;
@@ -10,13 +11,10 @@ import tpdds.ubicacion.Location;
 
 public class CGP extends Poi  {
 	
-	public CGP(String nombre, Direccion direccion, Location geoloc) {
-		super(nombre,2, "CGP", direccion, geoloc);
-	}
-	
-	public CGP(String nombre, Direccion direccion, Location geoloc,HashSet<String> keywords,ArrayList<DiaPoi> dias,int iddb) {
-		super(nombre, "CGP", direccion, geoloc,keywords,dias,iddb);
-		super.idTipo = 2;
+	public CGP(Integer clave,String nombre,String srtTipo, Direccion direccion, Location geoloc,Collection<keyWords> collection) {
+		super(nombre,srtTipo, direccion, geoloc);
+		super.setIddb(clave);
+		super.setPalabrasClaves(collection);
 	}
 
 	@Override

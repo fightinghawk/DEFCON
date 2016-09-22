@@ -38,7 +38,7 @@ import tpdds.usoGlobal.CalculosHorarios;
 @Table (name="pois")
 public class Poi implements Localizable {
 	
-	protected Poi(){}
+	public Poi(){}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,6 +48,8 @@ public class Poi implements Localizable {
 	private String nombre;
 	@Column(name="strtipo")
 	private String tipo;
+	@Column(name="crtCuadras")
+	private double radioDeCuadras;
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="direcciones_id")
 	private Direccion direccion;
@@ -69,6 +71,10 @@ public class Poi implements Localizable {
 	
 	public int getIddb() {
 		return iddb;
+	}
+	
+	public int setIddb(Integer clave) {
+		return this.iddb=clave;
 	}
 	// Constructor POI
 	public Poi(String nombre,String tipoPOI, Direccion direccion, Location geoloc) {
@@ -95,8 +101,8 @@ public class Poi implements Localizable {
 		this.esValido();
 	}
 	
-	public void setPalabrasClaves(HashSet<keyWords> palabrasClaves) {
-		this.palabrasClaves = palabrasClaves;
+	public void setPalabrasClaves(Collection<keyWords> collection) {
+		this.palabrasClaves = collection;
 	}
 
 	public void setDiasDisp(ArrayList<DiaPoi> diasDisp){
@@ -176,8 +182,16 @@ public class Poi implements Localizable {
 		System.out.println(this);
 	}
 
+	public double getRadioDeCuadras() {
+		return radioDeCuadras;
+	}
+
+	public void setRadioDeCuadras(double radioDeCuadras) {
+		this.radioDeCuadras = radioDeCuadras;
+	}
+	
 	public boolean estaCerca(Localizable localizable) {
-		return false;
+		return Calculos.calcularDistanciaA(this, localizable)<radioDeCuadras;
 	}
 	
 	public boolean contienePalabraClave(String palabra) {

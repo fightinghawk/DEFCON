@@ -25,7 +25,7 @@ public class Main extends Application {
 	public static ArrayList<User> usuarios;
 	public static User usuarioNuevo;
 	public static ArrayList<Proceso> listaProcesos;
-	public static List<Poi> pois;
+	public static ArrayList<Poi> pois;
 
 	
 	@Override

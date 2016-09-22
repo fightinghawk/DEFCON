@@ -2,6 +2,7 @@ package tpdds.pois;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -12,19 +13,10 @@ import tpdds.usoGlobal.Calculos;
 
 public class ParadaColectivo extends Poi  {
 
-	private double criterioCuadras = 0.1;
-
-	public ParadaColectivo(String nombre, Direccion direccion, Location geoloc) {
-		super(nombre,3, "Parada de Colectivo", direccion, geoloc);
-	}
-	
-	public ParadaColectivo(String nombre, Direccion direccion, Location geoloc,HashSet<String> keywords,ArrayList<DiaPoi> dias,int iddb) {
-		super(nombre, "Parada de Colectivo", direccion, geoloc,keywords,dias,iddb);
-		super.idTipo = 3;
-	}
-	
-	public boolean estaCerca(Localizable localizable) {
-		return Calculos.calcularDistanciaA(this, localizable)<criterioCuadras;
+	public ParadaColectivo(Integer clave,String nombre,String srtTipo, Direccion direccion, Location geoloc,Collection<keyWords> collection) {
+		super(nombre,srtTipo, direccion, geoloc);
+		super.setIddb(clave);
+		super.setPalabrasClaves(collection);
 	}
 
 	@Override

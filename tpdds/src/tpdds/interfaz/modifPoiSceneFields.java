@@ -19,6 +19,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tpdds.database.Generales;
+import tpdds.pois.Bancos;
+import tpdds.pois.CGP;
+import tpdds.pois.LocalesComerciales;
+import tpdds.pois.ParadaColectivo;
 import tpdds.pois.Poi;
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Location;
@@ -92,18 +96,58 @@ public class modifPoiSceneFields implements Initializable {
 	public void aceptar(MouseEvent evento){
 		Session aGuardar = HibernateSessionFactory.getSession();
 		aGuardar.beginTransaction();
-		poi.setNombre(nombre.getText());
-		poi.setTipo(tipo.getText());
+		String tipoStr = tipo.getText();
+		Poi PoiAEditar = new Poi();
 		Direccion direccion  = new Direccion(cPrincipal.getText(), Integer.parseInt(altura.getText()), cIzquierda.getText(), cDerecha.getText(), barrio.getText());
 		direccion.setIddb(poi.getDireccion().getIddb());
 		aGuardar.saveOrUpdate(direccion);
 		Location geoloc = new Location(Double.parseDouble(latitud.getText()), Double.parseDouble(longitud.getText()));
 		geoloc.setIddb(poi.getGeoloc().getIddb());
 		aGuardar.saveOrUpdate(geoloc);
+		PoiAEditar = new Poi(nombre.getText(),tipoStr,direccion,geoloc);
+		PoiAEditar.setIddb(poi.getIddb());
+		PoiAEditar.setPalabrasClaves(poi.getPalabrasClaves());
+		
+		
+		
+		if(poi.getTipo().equals(tipoStr))
+		{
 		poi.setDireccion(direccion);
 		poi.setGeoloc(geoloc);
+		poi.setPalabrasClaves(poi.getPalabrasClaves());
+		}
+		else
+		{
+			Main.pois.remove(poi);
+			switch (poi.getTipo().toLowerCase()) {
+
+			case "cgp":
+				CGP nuevocgp =new CGP(poi.getIddb(),nombre.getText(),tipoStr,direccion,geoloc,poi.getPalabrasClaves());
+				Main.pois.add(nuevocgp);
+				break;
+			case "colectivo":
+				ParadaColectivo nuevaparada = new ParadaColectivo(poi.getIddb(),nombre.getText(),tipoStr,direccion,geoloc,poi.getPalabrasClaves());
+				Main.pois.add(nuevaparada);
+				break;
+			case "bancos":
+				Bancos nuevobancos = new Bancos(poi.getIddb(),nombre.getText(),tipoStr,direccion,geoloc,poi.getPalabrasClaves());
+				Main.pois.add(nuevobancos);
+				break;
+			case "comercios":
+				LocalesComerciales nuevolocal = new LocalesComerciales(poi.getIddb(),nombre.getText(),tipoStr,direccion,geoloc,poi.getPalabrasClaves());
+				Main.pois.add(nuevolocal);
+				break;
+			}
+			
+		}
+		
+		
+		
+		
+		
+		
 		try{
-		aGuardar.saveOrUpdate(poi);
+		aGuardar.saveOrUpdate(PoiAEditar);
 		aGuardar.getTransaction().commit();
 		aGuardar.close();
 		}catch(Exception ex){

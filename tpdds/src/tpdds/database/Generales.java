@@ -36,16 +36,38 @@ public class Generales{
 		conexion = DriverManager.getConnection("jdbc:mysql://mysql3.gear.host:3306/dds2016", "dds2016", "dds2016.");
 	}	
 	
-	public static List<Poi> cargarPois(){
+	public static  ArrayList<Poi> cargarPois(){
 		Session session = HibernateSessionFactory.getSession();
 		session.beginTransaction();
 		String sql = "SELECT * FROM POIS";
 		SQLQuery query = session.createSQLQuery(sql);
         query.addEntity(Poi.class);
         List<Poi> POIS = query.list();
+        ArrayList<Poi> poisRev = new  ArrayList<Poi>();
+        for(Poi poi: POIS)
+        {
+			switch (poi.getTipo().toLowerCase()) {
+			case "cgp":
+				CGP nuevocgp =new CGP(poi.getIddb(),poi.getNombre(),poi.getTipo(), poi.getDireccion(), poi.getGeoloc(),poi.getPalabrasClaves());
+				poisRev.add(nuevocgp);
+				break;
+			case "colectivo":
+				ParadaColectivo nuevaparada = new ParadaColectivo(poi.getIddb(),poi.getNombre(),poi.getTipo(), poi.getDireccion(), poi.getGeoloc(),poi.getPalabrasClaves());
+				poisRev.add(nuevaparada);
+				break;
+			case "bancos":
+				Bancos nuevobancos = new Bancos(poi.getIddb(),poi.getNombre(),poi.getTipo(), poi.getDireccion(), poi.getGeoloc(),poi.getPalabrasClaves());
+				poisRev.add(nuevobancos);
+				break;
+			case "comercios":
+				LocalesComerciales nuevolocal = new LocalesComerciales(poi.getIddb(),poi.getNombre(),poi.getTipo(), poi.getDireccion(), poi.getGeoloc(),poi.getPalabrasClaves());
+				poisRev.add(nuevolocal);
+				break;
+			}
+        }
         session.getTransaction().commit();
         session.close();
-		return POIS;
+		return poisRev;
 	}
 	
 	public static void borrarPoi(Poi poi){
