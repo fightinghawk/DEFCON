@@ -29,10 +29,11 @@
         <mapping class="tpdds.Usuarios.TipoUsuario"/>
         <mapping class= "tpdds.Usuarios.Permisos"/>
         <mapping class= "tpdds.pois.Poi"/>
-        <mapping class= "tpdds.pois.keyWords"/>
-        <mapping class= "tpdds.pois.DiaPoi"/>
+        <mapping class= "tpdds.pois.componentes.KeyWords"/>
+        <mapping class= "tpdds.pois.componentes.DiaPoi"/>
         <mapping class= "tpdds.ubicacion.Direccion"/>
         <mapping class= "tpdds.ubicacion.Location"/>
+        <mapping class= "tpdds.pois.componentes.Servicios"/>
     </session-factory>
 
 </hibernate-configuration>

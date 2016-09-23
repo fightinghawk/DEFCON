@@ -48,19 +48,19 @@ public class Generales{
         {
 			switch (poi.getTipo().toLowerCase()) {
 			case "cgp":
-				CGP nuevocgp =new CGP(poi.getIddb(),poi.getNombre(),poi.getTipo(), poi.getDireccion(), poi.getGeoloc(),poi.getPalabrasClaves());
+				CGP nuevocgp = new CGP(poi);
 				poisRev.add(nuevocgp);
 				break;
 			case "colectivo":
-				ParadaColectivo nuevaparada = new ParadaColectivo(poi.getIddb(),poi.getNombre(),poi.getTipo(), poi.getDireccion(), poi.getGeoloc(),poi.getPalabrasClaves());
+				ParadaColectivo nuevaparada = new ParadaColectivo(poi);
 				poisRev.add(nuevaparada);
 				break;
 			case "bancos":
-				Bancos nuevobancos = new Bancos(poi.getIddb(),poi.getNombre(),poi.getTipo(), poi.getDireccion(), poi.getGeoloc(),poi.getPalabrasClaves());
+				Bancos nuevobancos = new Bancos(poi);
 				poisRev.add(nuevobancos);
 				break;
 			case "comercios":
-				LocalesComerciales nuevolocal = new LocalesComerciales(poi.getIddb(),poi.getNombre(),poi.getTipo(), poi.getDireccion(), poi.getGeoloc(),poi.getPalabrasClaves());
+				LocalesComerciales nuevolocal = new LocalesComerciales(poi);
 				poisRev.add(nuevolocal);
 				break;
 			}

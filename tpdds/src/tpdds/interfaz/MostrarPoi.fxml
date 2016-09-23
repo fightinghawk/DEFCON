@@ -1,8 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane prefHeight="572.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="291.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INFORMACION" />
+      <Pane layoutX="34.0" layoutY="82.0" prefHeight="327.0" prefWidth="224.0">
+         <children>
+            <Text layoutX="22.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" wrappingWidth="179.6708984375" />
+            <Text layoutX="22.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" wrappingWidth="179.6708984375" />
+            <Text layoutX="22.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calle Principal" wrappingWidth="179.6708984375" />
+            <Text layoutX="22.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rubro" wrappingWidth="179.6708984375" />
+            <Text layoutX="22.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Altura" wrappingWidth="179.6708984375" />
+            <Text layoutX="22.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Servicios" wrappingWidth="179.6708984375" />
+            <Text layoutX="22.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comuna" wrappingWidth="179.6708984375" />
+            <Text layoutX="22.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Parada" wrappingWidth="179.6708984375" />
+            <Text layoutX="22.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calle Derecha" wrappingWidth="179.6708984375" />
+            <Text layoutX="22.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calle Izquierda" wrappingWidth="179.6708984375" />
+         </children>
+      </Pane>
+      <Pane layoutX="410.0" layoutY="82.0" prefHeight="472.0" prefWidth="224.0">
+         <children>
+            <Text fx:id="nombre" layoutX="22.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" wrappingWidth="179.6708984375" />
+            <Text fx:id="tipo" layoutX="22.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" wrappingWidth="179.6708984375" />
+            <Text fx:id="callePrincipal" layoutX="22.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calle Principal" wrappingWidth="179.6708984375" />
+            <Text fx:id="rubro" layoutX="22.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rubro" wrappingWidth="179.6708984375" />
+            <Text fx:id="altura" layoutX="22.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Altura" wrappingWidth="179.6708984375" />
+            <Text fx:id="comuna" layoutX="22.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comuna" wrappingWidth="179.6708984375" />
+            <Text fx:id="numerodoParada" layoutX="22.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Parada" wrappingWidth="179.6708984375" />
+            <Text fx:id="calleDerecho" layoutX="22.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calle Derecha" wrappingWidth="179.6708984375" />
+            <Text fx:id="calleIzquierda" layoutX="22.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calle Izquierda" wrappingWidth="179.6708984375" />
+            <TextArea fx:id="servicios" editable="false" layoutX="12.0" layoutY="292.0" prefHeight="165.0" prefWidth="200.0" wrapText="true" />
+         </children>
+      </Pane>
+      <Button layoutX="34.0" layoutY="481.0" mnemonicParsing="false" onMouseClicked="#cerrar" prefHeight="31.0" prefWidth="224.0" text="CERRAR" />
+   </children>
 </AnchorPane>
-

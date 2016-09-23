@@ -94,6 +94,21 @@ public class BuscarPoiScene implements Initializable {
 	}
 	
 	@FXML
+	private void tablaPrecionada(MouseEvent evento){
+		if(evento.getClickCount()==2 && tablaMostrada.getSelectionModel().getSelectedItem()!=null){
+			ObsPoi pepe = tablaMostrada.getSelectionModel().getSelectedItem();
+			//Me canse de pensar nombres
+			Poi pepee = null;
+			for (Poi poi : Main.pois) {
+				if(poi.getIddb()==pepe.getId()){
+				pepee = poi;	
+				}
+			}
+			new MostrarPoi(pepee).mostraPoiRender();
+		}
+	}
+	
+	@FXML
 	private void buscar(MouseEvent event){
 		ArrayList<Poi> resultados;
 		if(filtro !=null){

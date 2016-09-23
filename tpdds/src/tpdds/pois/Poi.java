@@ -72,6 +72,31 @@ public class Poi implements Localizable {
 
 	public Poi(){super();}
 	
+	
+	
+	public Poi(int iddb, String nombre, String tipo, double radioDeCuadras, int parada, String rubro,
+			Direccion direccion, Location geoloc, Collection<KeyWords> palabrasClaves, Collection<DiaPoi> diasDisp,
+			Collection<Servicios> servicios) {
+		super();
+		this.iddb = iddb;
+		this.nombre = nombre;
+		this.tipo = tipo;
+		this.radioDeCuadras = radioDeCuadras;
+		this.parada = parada;
+		this.rubro = rubro;
+		this.direccion = direccion;
+		this.geoloc = geoloc;
+		this.palabrasClaves = palabrasClaves;
+		this.diasDisp = diasDisp;
+		this.servicios = servicios;
+	}
+	public Poi(Poi datos){
+		this(datos.getIddb(),datos.getNombre(),datos.getTipo(),
+				datos.getRadioDeCuadras(),datos.getParada(),datos.getRubro(),
+				datos.getDireccion(),datos.getGeoloc(),datos.getPalabrasClaves(),
+				datos.getDiasDisp(),datos.getServicios());
+	}
+	
 	// Constructor POI
 	public Poi(String nombre,String tipoPOI, Direccion direccion, Location geoloc) {
 		this.nombre = nombre;
@@ -109,6 +134,30 @@ public class Poi implements Localizable {
 		return iddb;
 	}
 	
+	public int getParada() {
+		return parada;
+	}
+
+	public void setParada(int parada) {
+		this.parada = parada;
+	}
+
+	public String getRubro() {
+		return rubro;
+	}
+
+	public void setRubro(String rubro) {
+		this.rubro = rubro;
+	}
+
+	public Collection<Servicios> getServicios() {
+		return servicios;
+	}
+
+	public void setServicios(Collection<Servicios> servicios) {
+		this.servicios = servicios;
+	}
+
 	public int setIddb(Integer clave) {
 		return this.iddb=clave;
 	}
