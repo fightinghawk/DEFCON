@@ -73,16 +73,16 @@ public class MostrarPoi implements Initializable{
 		this.calleDerecho.setText(poi.getDireccion().getCalleLateralDer());
 		this.altura.setText(poi.getDireccion().getAltura()+"");
 		this.comuna.setText(poi.getDireccion().getBarrio());
-		this.numerodoParada.setText(poi.getParada()+"");
+		this.numerodoParada.setText((poi.getParada()!=-1?poi.getParada()+"":"No posee"));
 		this.rubro.setText(poi.getRubro());
 		this.callePrincipal.setText(poi.getDireccion().getCallePrincipal());	
 		String strServs = "";
-//		if(!poi.getServicios().isEmpty()){
-//			for (Servicios serv : poi.getServicios()) {
-//				strServs.concat(" || "+serv.getNombreServicio());
-//			}
-//		}
-//		this.servicios.setText(strServs);
+		if(poi.getServicios() != null){
+			for (Servicios serv : poi.getServicios()) {
+				strServs.concat(" || "+serv.getNombreServicio());
+			}
+		}
+		this.servicios.setText(strServs);
 	}
 	
 	@FXML

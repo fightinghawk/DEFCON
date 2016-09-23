@@ -23,6 +23,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.Session;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.pois.componentes.DiaPoi;
@@ -61,10 +63,12 @@ public class Poi implements Localizable {
 	@JoinColumn(name="geoPos_id")
 	private Location geoloc;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="poi",cascade= CascadeType.ALL)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private Collection<KeyWords> palabrasClaves = new HashSet<KeyWords>();
 	@OneToMany(mappedBy="poi",cascade= CascadeType.ALL)
 	private Collection<DiaPoi> diasDisp = new ArrayList<DiaPoi>();
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@Fetch(value = FetchMode.SUBSELECT)
 	@JoinTable(name="servicios_has_pois",
 	inverseJoinColumns=@JoinColumn(name="servicios_serv_id", referencedColumnName="serv_id"),
 	joinColumns=@JoinColumn(name="pois_pois_id", referencedColumnName="pois_id"))
