@@ -94,8 +94,7 @@ public class BuscarPoiScene implements Initializable {
 	}
 	
 	@FXML
-	private void buscar(MouseEvent event) throws ClassNotFoundException, SQLException{
-		
+	private void buscar(MouseEvent event){
 		ArrayList<Poi> resultados;
 		if(filtro !=null){
 			resultados = filtro.aplicarBuscador(Main.pois);
@@ -171,6 +170,13 @@ public class BuscarPoiScene implements Initializable {
 		}
 		tablaMostrada.setItems(resultadosTabla);
 		criterio.getItems().addAll("Nombre", "KeyWord");
+	}
+	
+	@FXML
+	public void reiniciarCriterios(MouseEvent evento){
+		filtro = null;
+		tablaBuscadores.getItems().clear();
+		this.buscar(null);
 	}
 	
 	private ObsBuscador chooseBuscador(String nombre,String contenido){

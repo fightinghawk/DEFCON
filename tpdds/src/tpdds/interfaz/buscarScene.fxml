@@ -41,9 +41,10 @@
             <Font size="23.0" />
          </font>
       </Text>
-      <Button fx:id="buscar" layoutX="625.0" layoutY="191.0" mnemonicParsing="false" onMouseClicked="#buscar" prefHeight="101.0" prefWidth="176.0" text="Buscar" />
+      <Button fx:id="buscar" layoutX="625.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#buscar" prefHeight="52.0" prefWidth="176.0" text="BUSCAR" />
       <TextField fx:id="contenidoCriterio" layoutX="625.0" layoutY="111.0" prefHeight="31.0" prefWidth="176.0" />
       <Button fx:id="agregarCriterio" layoutX="625.0" layoutY="152.0" mnemonicParsing="false" onMouseClicked="#agregarCriterio" prefHeight="31.0" prefWidth="176.0" text="Agregar Criterio" />
       <TextArea layoutX="445.0" layoutY="152.0" prefHeight="140.0" prefWidth="176.0" />
+      <Button layoutX="625.0" layoutY="196.0" mnemonicParsing="false" onMouseClicked="#reiniciarCriterios" prefHeight="31.0" prefWidth="176.0" text="Reiniciar Criterios" />
    </children>
 </AnchorPane>
