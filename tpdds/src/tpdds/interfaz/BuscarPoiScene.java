@@ -53,7 +53,7 @@ public class BuscarPoiScene implements Initializable {
 	HashMap<String, Boolean> palabraOK = new HashMap<>();
 	ArrayList<BancoExterna> bancos;
 	
-	List<Poi> resultados;
+	ArrayList<Poi> resultados;
 
 	//IDCAMPO - SI ESTA OK O NO
 	public void buscarSceneRender(){
