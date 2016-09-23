@@ -21,10 +21,10 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TableView layoutY="111.0" prefHeight="200.0" prefWidth="427.0">
+      <TableView fx:id="tablaBuscadores" layoutY="111.0" prefHeight="200.0" prefWidth="427.0">
         <columns>
-          <TableColumn prefWidth="141.0" text="Tipo de Criterio" />
-          <TableColumn prefWidth="284.0" text="Contenido" />
+          <TableColumn fx:id="tipo" editable="false" prefWidth="141.0" text="Tipo de Criterio" />
+          <TableColumn fx:id="content" editable="false" prefWidth="284.0" text="Contenido" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -42,7 +42,7 @@
          </font>
       </Text>
       <Button fx:id="buscar" layoutX="625.0" layoutY="191.0" mnemonicParsing="false" onMouseClicked="#buscar" prefHeight="101.0" prefWidth="176.0" text="Buscar" />
-      <TextField layoutX="625.0" layoutY="111.0" prefHeight="31.0" prefWidth="176.0" />
+      <TextField fx:id="contenidoCriterio" layoutX="625.0" layoutY="111.0" prefHeight="31.0" prefWidth="176.0" />
       <Button fx:id="agregarCriterio" layoutX="625.0" layoutY="152.0" mnemonicParsing="false" onMouseClicked="#agregarCriterio" prefHeight="31.0" prefWidth="176.0" text="Agregar Criterio" />
       <TextArea layoutX="445.0" layoutY="152.0" prefHeight="140.0" prefWidth="176.0" />
    </children>
