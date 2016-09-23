@@ -1,4 +1,4 @@
-package apiExterna;
+package tpdds.apiExterna;
 
 import tpdds.pois.*;
 

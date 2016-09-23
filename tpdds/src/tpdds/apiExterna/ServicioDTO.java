@@ -1,7 +1,8 @@
-package apiExterna;
+package tpdds.apiExterna;
 
 import java.util.ArrayList;
-import apiExterna.RangoServicioDTO;
+
+import tpdds.apiExterna.RangoServicioDTO;
 
 public class ServicioDTO {
 

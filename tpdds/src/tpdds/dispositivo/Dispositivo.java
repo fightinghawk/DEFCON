@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import tpdds.pois.DiaPoi;
 import tpdds.pois.Poi;
+import tpdds.pois.componentes.DiaPoi;
 import tpdds.pois.estadisticas.Estadistica;
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Localizable;
@@ -174,7 +174,7 @@ public class Dispositivo implements Localizable{
 							palabras.add(p);
 						
 					} while (!p.toLowerCase().equals("x"));
-					poi.setPalabrasClaves(palabras);
+					//poi.setPalabrasClaves(palabras);
 				case 7:
 					//TODO: la parte de los diasPOI.
 					break;

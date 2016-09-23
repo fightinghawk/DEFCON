@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import HIBERNATE.HibernateSessionFactory;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import tpdds.Archivos.archivos;
@@ -14,6 +13,7 @@ import tpdds.Usuarios.TipoUsuario;
 import tpdds.Usuarios.User;
 import tpdds.database.Generales;
 import tpdds.dispositivo.Dispositivo;
+import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.pois.Poi;
 import tpdds.proceso.Proceso;
 import tpdds.ubicacion.Comuna;

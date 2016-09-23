@@ -1,4 +1,4 @@
-package frameworkEmails;
+package tpdds.frameworkEmails;
 
 import java.util.Date;
 

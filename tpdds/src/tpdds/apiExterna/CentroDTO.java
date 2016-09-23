@@ -1,9 +1,9 @@
-package apiExterna;
+package tpdds.apiExterna;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import apiExterna.ServicioDTO;
+import tpdds.apiExterna.ServicioDTO;
 
 public class CentroDTO {
   

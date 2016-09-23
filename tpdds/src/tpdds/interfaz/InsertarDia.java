@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import org.hibernate.Session;
 
-import HIBERNATE.HibernateSessionFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,8 +19,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tpdds.database.Generales;
-import tpdds.pois.DiaPoi;
+import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.pois.Poi;
+import tpdds.pois.componentes.DiaPoi;
 
 public class InsertarDia implements Initializable {
 

@@ -11,7 +11,6 @@ import javax.persistence.NamedQuery;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import HIBERNATE.HibernateSessionFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,6 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tpdds.database.Generales;
+import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.pois.Poi;
 import tpdds.usoGlobal.BuscadorPoi;
 import tpdds.usoGlobal.Calculos;

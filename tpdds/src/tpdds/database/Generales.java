@@ -12,17 +12,17 @@ import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 
-import HIBERNATE.HibernateSessionFactory;
 import tpdds.dispositivo.Dispositivo;
 import tpdds.factory.POIFactory;
+import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.interfaz.ObsResultadoFecha;
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;
-import tpdds.pois.DiaPoi;
 import tpdds.pois.LocalesComerciales;
 import tpdds.pois.ParadaColectivo;
 import tpdds.pois.Poi;
-import tpdds.pois.keyWords;
+import tpdds.pois.componentes.DiaPoi;
+import tpdds.pois.componentes.KeyWords;
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Location;
 

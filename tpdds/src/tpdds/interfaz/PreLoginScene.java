@@ -16,7 +16,6 @@ import com.sun.javafx.geom.BaseBounds;
 import com.sun.javafx.geom.transform.BaseTransform;
 import com.sun.javafx.scene.BoundsAccessor;
 
-import HIBERNATE.HibernateSessionFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -33,6 +32,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tpdds.Usuarios.TipoUsuario;
 import tpdds.Usuarios.User;
+import tpdds.hibernate.HibernateSessionFactory;
 
 
 public class PreLoginScene implements Initializable {

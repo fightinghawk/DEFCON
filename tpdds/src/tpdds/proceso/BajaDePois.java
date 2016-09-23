@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import apiExterna.ServicioREST;
+import tpdds.apiExterna.ServicioREST;
 import tpdds.pois.Poi;
 
 public class BajaDePois extends Proceso {

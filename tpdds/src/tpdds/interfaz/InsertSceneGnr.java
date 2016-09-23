@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;
 import tpdds.pois.LocalesComerciales;
@@ -27,7 +28,6 @@ import tpdds.pois.ParadaColectivo;
 import tpdds.pois.Poi;
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Location;
-import HIBERNATE.HibernateSessionFactory;
 
 public class InsertSceneGnr implements Initializable{
 	

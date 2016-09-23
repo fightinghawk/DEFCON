@@ -1,4 +1,4 @@
-package tpdds.pois;
+package tpdds.pois.componentes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,11 +9,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import tpdds.pois.Poi;
+
 @Entity
 @Table (name="keywords")
-public class keyWords {
+public class KeyWords {
 	
-	protected keyWords(){}
+	protected KeyWords(){}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +29,7 @@ public class keyWords {
 	@JoinColumn(name="pois_id")
 	private Poi poi;
 	
-	keyWords(String clave, Poi Poi)
+	public KeyWords(String clave, Poi Poi)
 	{
 		this.clave = clave;
 		this.poi = Poi;

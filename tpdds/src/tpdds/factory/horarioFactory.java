@@ -2,7 +2,7 @@ package tpdds.factory;
 
 import java.util.ArrayList;
 
-import tpdds.pois.DiaPoi;
+import tpdds.pois.componentes.DiaPoi;
 
 public class horarioFactory {
 	/*Los días están numerados:

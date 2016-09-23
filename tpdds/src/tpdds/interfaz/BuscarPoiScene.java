@@ -7,8 +7,6 @@ import java.util.ResourceBundle;
 
 import java.util.List;
 
-import apiExterna.BancoExterna;
-import apiExterna.jsonBancos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,6 +22,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import tpdds.apiExterna.BancoExterna;
+import tpdds.apiExterna.jsonBancos;
 import tpdds.buscadores.Buscador;
 import tpdds.buscadores.KeySearch;
 import tpdds.buscadores.NameSeach;

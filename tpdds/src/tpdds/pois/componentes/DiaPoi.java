@@ -1,4 +1,4 @@
-package tpdds.pois;
+package tpdds.pois.componentes;
 
 import java.io.Serializable;
 
@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import tpdds.pois.Poi;
 
 @Entity
 @Table (name="diaspoi")

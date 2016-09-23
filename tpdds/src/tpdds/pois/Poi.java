@@ -1,32 +1,33 @@
 package tpdds.pois;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.Session;
 
-import HIBERNATE.HibernateSessionFactory;
-import tpdds.pois.estadisticas.Estadistica;
+import tpdds.hibernate.HibernateSessionFactory;
+import tpdds.pois.componentes.DiaPoi;
+import tpdds.pois.componentes.KeyWords;
+import tpdds.pois.componentes.Servicios;
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Localizable;
 import tpdds.ubicacion.Location;
@@ -35,11 +36,10 @@ import tpdds.usoGlobal.CalculosHorarios;
 
 
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 @Table (name="pois")
 public class Poi implements Localizable {
 	
-	public Poi(){}
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="pois_id")
@@ -50,6 +50,10 @@ public class Poi implements Localizable {
 	private String tipo;
 	@Column(name="crtCuadras")
 	private double radioDeCuadras;
+	@Column(name="numero_parada")
+	private int parada;
+	@Column(name="rubro")
+	private String rubro;	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="direcciones_id")
 	private Direccion direccion;
@@ -57,11 +61,43 @@ public class Poi implements Localizable {
 	@JoinColumn(name="geoPos_id")
 	private Location geoloc;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="poi",cascade= CascadeType.ALL)
-	private Collection<keyWords> palabrasClaves = new HashSet<keyWords>();
+	private Collection<KeyWords> palabrasClaves = new HashSet<KeyWords>();
 	@OneToMany(mappedBy="poi",cascade= CascadeType.ALL)
 	private Collection<DiaPoi> diasDisp = new ArrayList<DiaPoi>();
+	@ManyToMany
+	@JoinTable(name="servicios_has_pois",
+	inverseJoinColumns=@JoinColumn(name="servicios_serv_id", referencedColumnName="serv_id"),
+	joinColumns=@JoinColumn(name="pois_pois_id", referencedColumnName="pois_id"))
+	private Collection<Servicios> servicios;
 
-	public Collection<keyWords> getPalabrasClaves() {
+	public Poi(){super();}
+	
+	// Constructor POI
+	public Poi(String nombre,String tipoPOI, Direccion direccion, Location geoloc) {
+		this.nombre = nombre;
+		this.tipo = tipoPOI;
+		this.direccion = direccion;
+		this.geoloc = geoloc;
+		this.iddb = -1;
+		palabrasClaves = new HashSet<KeyWords>();
+		diasDisp = new ArrayList<>();
+		this.esValido();
+	}
+	
+	// Constructor POI
+	public Poi(String nombre, String tipoPOI, Direccion direccion, Location geoloc,HashSet<KeyWords> keywords,ArrayList<DiaPoi> dias,int iddb) {
+		this.nombre = nombre;
+		this.tipo = tipoPOI;
+		this.direccion = direccion;
+		this.geoloc = geoloc;
+		this.iddb = -1;
+		palabrasClaves = keywords;
+		diasDisp = dias;
+		this.iddb = iddb;
+		this.esValido();
+	}
+	
+	public Collection<KeyWords> getPalabrasClaves() {
 		return palabrasClaves;
 	}
 
@@ -76,32 +112,8 @@ public class Poi implements Localizable {
 	public int setIddb(Integer clave) {
 		return this.iddb=clave;
 	}
-	// Constructor POI
-	public Poi(String nombre,String tipoPOI, Direccion direccion, Location geoloc) {
-		this.nombre = nombre;
-		this.tipo = tipoPOI;
-		this.direccion = direccion;
-		this.geoloc = geoloc;
-		this.iddb = -1;
-		palabrasClaves = new HashSet<keyWords>();
-		diasDisp = new ArrayList<>();
-		this.esValido();
-	}
 	
-	// Constructor POI
-	public Poi(String nombre, String tipoPOI, Direccion direccion, Location geoloc,HashSet<keyWords> keywords,ArrayList<DiaPoi> dias,int iddb) {
-		this.nombre = nombre;
-		this.tipo = tipoPOI;
-		this.direccion = direccion;
-		this.geoloc = geoloc;
-		this.iddb = -1;
-		palabrasClaves = keywords;
-		diasDisp = dias;
-		this.iddb = iddb;
-		this.esValido();
-	}
-	
-	public void setPalabrasClaves(Collection<keyWords> collection) {
+	public void setPalabrasClaves(Collection<KeyWords> collection) {
 		this.palabrasClaves = collection;
 	}
 
@@ -207,7 +219,7 @@ public class Poi implements Localizable {
 	private boolean PalabrasClaves(String palabra) {
 		boolean encontrado = false;
 		palabra = palabra.toLowerCase();
-		for(keyWords keywords : this.palabrasClaves)
+		for(KeyWords keywords : this.palabrasClaves)
 		{
 			if(keywords.getClave().toLowerCase().equals(palabra))
 			{
@@ -218,16 +230,14 @@ public class Poi implements Localizable {
 	}
 
 	public void agregarPalabra(String[] palabras) {
-		keyWords keywords;
+		KeyWords keywords;
 		Session aGuardar = HibernateSessionFactory.getSession();
 		aGuardar.beginTransaction();
 		for (String keyWord : palabras) {
-			keywords = new keyWords(keyWord,this);
+			keywords = new KeyWords(keyWord,this);
 			aGuardar.save(keywords);
 		}
 	}
-	
-	
 	
 	public boolean estaDisponible(){
 		return estaDisponible(new GregorianCalendar());
