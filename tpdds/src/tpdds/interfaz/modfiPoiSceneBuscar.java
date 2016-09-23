@@ -46,7 +46,7 @@ public class modfiPoiSceneBuscar implements Initializable {
 	@FXML
 	TableColumn<ObsPoi, Double> distancia;
 	
-	List<Poi> resultados;
+	ArrayList<Poi> resultados;
 	
 	static Stage nuevaStage;
 	FXMLLoader loader;
