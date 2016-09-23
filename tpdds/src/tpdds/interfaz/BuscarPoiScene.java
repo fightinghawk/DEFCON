@@ -24,6 +24,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import tpdds.buscadores.Buscador;
+import tpdds.buscadores.KeySearch;
+import tpdds.buscadores.NameSeach;
 import tpdds.database.Generales;
 import tpdds.pois.Poi;
 import tpdds.usoGlobal.BuscadorPoi;
@@ -35,6 +38,7 @@ public class BuscarPoiScene implements Initializable {
 	long time_start, time_end;
 	double time;
 	Integer resultados_final;
+	private Buscador filtro;
 	
 	@FXML
 	ChoiceBox<String> criterio;
@@ -64,7 +68,6 @@ public class BuscarPoiScene implements Initializable {
 	AnchorPane rootLayout;
 	HashMap<String, Boolean> palabraOK = new HashMap<>();
 	ArrayList<BancoExterna> bancos;
-	
 	ArrayList<Poi> resultados;
 
 	//IDCAMPO - SI ESTA OK O NO
@@ -92,6 +95,18 @@ public class BuscarPoiScene implements Initializable {
 	
 	@FXML
 	private void buscar(MouseEvent event) throws ClassNotFoundException, SQLException{
+		
+		ArrayList<Poi> resultados;
+		if(filtro !=null){
+			resultados = filtro.aplicarBuscador(Main.pois);
+		}else{
+			resultados = Main.pois;
+		}	
+		ObservableList<ObsPoi> resultadosTabla =  FXCollections.observableArrayList();
+		for (Poi poi : resultados) {
+			resultadosTabla.add(new ObsPoi(poi.getNombre(), poi.getDireccion().getCallePrincipal(), poi.getDireccion().getAltura(),Calculos.calcularDistanciaA(poi, Main.tablero),poi.getIddb()));
+		}
+		tablaMostrada.setItems(resultadosTabla);
 		
 //		tablaMostrada.getItems().clear();
 //		time_start = System.currentTimeMillis();
@@ -161,16 +176,13 @@ public class BuscarPoiScene implements Initializable {
 	private ObsBuscador chooseBuscador(String nombre,String contenido){
 		switch (nombre) {
 		case "Nombre":
+			filtro = new NameSeach(filtro, contenido);
 			return new ObsBuscador(nombre, contenido);
 		case "KeyWord":
+			filtro = new KeySearch(filtro, contenido);
 			return new ObsBuscador(nombre, contenido);
 		default:
 			return null;
 		}
-		
-		
-		
-		
-		
 	}
 }

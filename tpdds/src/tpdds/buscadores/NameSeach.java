@@ -10,7 +10,7 @@ public class NameSeach extends Buscador {
 	public NameSeach(Buscador busc,String nombre_buscado){this.addedBuscador = busc; this.nombre_buscado = nombre_buscado;}
 	@Override
 	public boolean cumpleCriterio(Poi poi) {
-		return nombre_buscado.contains(poi.getNombre());
+		return nombre_buscado.contains(poi.getNombre()) || poi.getNombre().contains(nombre_buscado);
 	}
 	
 	
