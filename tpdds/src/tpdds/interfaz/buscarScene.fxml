@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="650.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tpdds.interfaz.BuscarPoiScene">
+<AnchorPane prefHeight="650.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TableView fx:id="tablaMostrada" layoutY="311.0" prefHeight="339.0" prefWidth="852.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="311.0">
         <columns>
@@ -35,12 +35,15 @@
             <Font size="23.0" />
          </font>
       </Text>
-      <ChoiceBox layoutX="445.0" layoutY="111.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="criterio" layoutX="445.0" layoutY="111.0" prefHeight="31.0" prefWidth="176.0" />
       <Text layoutX="445.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CRITERIOS DE BUSQUEDA:" wrappingWidth="282.5478515625">
          <font>
             <Font size="23.0" />
          </font>
       </Text>
-      <Button layoutX="445.0" layoutY="243.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="150.0" text="Buscar" />
+      <Button fx:id="buscar" layoutX="625.0" layoutY="191.0" mnemonicParsing="false" onMouseClicked="#buscar" prefHeight="101.0" prefWidth="176.0" text="Buscar" />
+      <TextField layoutX="625.0" layoutY="111.0" prefHeight="31.0" prefWidth="176.0" />
+      <Button fx:id="agregarCriterio" layoutX="625.0" layoutY="152.0" mnemonicParsing="false" onMouseClicked="#agregarCriterio" prefHeight="31.0" prefWidth="176.0" text="Agregar Criterio" />
+      <TextArea layoutX="445.0" layoutY="152.0" prefHeight="140.0" prefWidth="176.0" />
    </children>
 </AnchorPane>

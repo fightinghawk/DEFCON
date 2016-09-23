@@ -83,14 +83,6 @@ public class BuscarPoiScene implements Initializable {
 		tablaMostrada.getItems().clear();
 		time_start = System.currentTimeMillis();
 		String buscado;
-		/*if(!campoDeBusqueda.getText()){
-			buscado = campoDeBusqueda.getText().concat(evento.getCharacter());
-		}
-		else{
-			buscado = campoDeBusqueda.getText();
-		}*/
-		buscado = campoDeBusqueda.getText();
-		//String buscado = pre.concat(evento.getCharacter());
 		ArrayList<Poi> resultados = BuscadorPoi.buscar(buscado, Main.pois);
 		ObservableList<ObsPoi> resultadosTabla =  FXCollections.observableArrayList();
 		for (Poi poi : resultados) {
@@ -126,6 +118,12 @@ public class BuscarPoiScene implements Initializable {
 			Generales.registrarBusqueda(Main.tablero, buscado, resultados_final , time);
 		}	
 	}
+	
+	@FXML
+	public void agregarCriterio(){
+		
+	}
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
