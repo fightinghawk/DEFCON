@@ -112,6 +112,13 @@ public class InsertSceneGnr implements Initializable{
 	
 	@FXML
 	private void guardarServicio(MouseEvent evento){
+		if(!nombreServ.getText().isEmpty()&&!descServ.getText().isEmpty()){
+			servicios.add(new Servicios(nombreServ.getText(), descServ.getText()));
+		}
+	}
+	
+	@FXML
+	private void insertarPoi(MouseEvent evento){
 		
 	}
 	
