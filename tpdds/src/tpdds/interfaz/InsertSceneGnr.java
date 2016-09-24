@@ -131,6 +131,7 @@ public class InsertSceneGnr implements Initializable{
 		tipoPoi = Tipo.getSelectionModel().getSelectedItem();
 		Direccion direccion  = new Direccion(calle.getText(), Integer.parseInt(altura.getText()), izquierda.getText(), derecha.getText(), barrio.getText());
 		Location geo = new Location(Double.parseDouble(latitud.getText()), Double.parseDouble(Longitud.getText()));
+		poi = new Poi(nombre.getText(),tipoPoi,(RadioCuadras),direccion,geo,(KeyWords),diasAbiertos,servicios);
 		switch (tipoPoi.toLowerCase()) {
 		case "cgp":
 			nuevo = new CGP(poi);
