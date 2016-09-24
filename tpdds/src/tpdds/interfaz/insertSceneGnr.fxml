@@ -9,57 +9,58 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="InsertScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="InsertScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="Seguir" layoutX="290.0" layoutY="465.0" mnemonicParsing="false" onMouseClicked="#continuar" prefHeight="60.0" prefWidth="186.0" text="CONTINUAR" />
-      <SplitMenuButton fx:id="Tipo" alignment="CENTER" layoutX="297.0" layoutY="410.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="171.0" text="Tipo" AnchorPane.bottomAnchor="133.0">
-        <items>
-            <MenuItem fx:id="Banco" mnemonicParsing="false" onAction="#cambiaTipo" text="Bancos" />
-          <MenuItem fx:id="CGP" mnemonicParsing="false" onAction="#cambiaTipo" text="CGP" />
-          <MenuItem fx:id="Colectivo" mnemonicParsing="false" onAction="#cambiaTipo" text="Colectivo" />
-            <MenuItem fx:id="CGP1" mnemonicParsing="false" onAction="#cambiaTipo" text="Comercios" />
-        </items>
-      </SplitMenuButton>
-      <Group fx:id="datos">
+      <Pane fx:id="infoGeneral" layoutX="15.0" layoutY="8.0" prefHeight="401.0" prefWidth="882.0">
          <children>
-            <TextField fx:id="barrio" layoutX="535.0" layoutY="69.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
-            <TextField fx:id="keyWord" layoutX="149.0" layoutY="201.0" onKeyTyped="#insert" prefHeight="110.0" prefWidth="586.0" />
-            <TextField fx:id="altura" layoutX="535.0" layoutY="112.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
-            <TextField fx:id="calle" layoutX="149.0" layoutY="112.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
-            <TextField fx:id="latitud" layoutX="257.0" layoutY="333.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="155.0" />
-            <TextField fx:id="derecha" layoutX="535.0" layoutY="152.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
-            <TextField fx:id="izquierda" layoutX="149.0" layoutY="152.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
-            <TextField fx:id="Longitud" layoutX="565.0" layoutY="333.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="171.0" />
-            <TextField fx:id="nombre" layoutX="149.0" layoutY="69.0" onKeyTyped="#insert" prefHeight="31.0" prefWidth="201.0" />
+            <Text layoutX="41.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="99.6708984375" />
+            <Text layoutX="41.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calle L. Izquierda:" wrappingWidth="131.6708984375" />
+            <Text layoutX="41.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calle principal:" wrappingWidth="99.6708984375" />
+            <Text layoutX="41.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calle L. Derecha:" wrappingWidth="131.6708984375" />
+            <Text layoutX="41.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Altura:" wrappingWidth="131.6708984375" />
+            <Text layoutX="41.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Latitud:" wrappingWidth="131.6708984375" />
+            <Text layoutX="41.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Longitud:" wrappingWidth="131.6708984375" />
+            <TextField fx:id="nombre" layoutX="191.0" layoutY="42.0" prefHeight="31.0" prefWidth="180.0" />
+            <TextField fx:id="calle" layoutX="191.0" layoutY="89.0" prefHeight="31.0" prefWidth="180.0" />
+            <TextField fx:id="izquierda" layoutX="191.0" layoutY="137.0" prefHeight="31.0" prefWidth="180.0" />
+            <TextField fx:id="derecha" layoutX="191.0" layoutY="185.0" prefHeight="31.0" prefWidth="180.0" />
+            <TextField fx:id="altura" layoutX="191.0" layoutY="225.0" prefHeight="31.0" prefWidth="180.0" />
+            <TextField fx:id="latitud" layoutX="191.0" layoutY="268.0" prefHeight="31.0" prefWidth="180.0" />
+            <TextField fx:id="Longitud" layoutX="191.0" layoutY="312.0" prefHeight="31.0" prefWidth="180.0" />
+            <ComboBox fx:id="Tipo" layoutX="561.0" layoutY="42.0" onAction="#seleccionTipo" prefWidth="150.0" />
+            <Text layoutX="411.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" wrappingWidth="99.6708984375" />
+            <Text layoutX="411.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KeyWords:" wrappingWidth="86.6708984375" />
+            <TextArea fx:id="keyWord" layoutX="528.0" layoutY="191.0" prefHeight="166.0" prefWidth="329.0" />
+            <TextField fx:id="op1" layoutX="561.0" layoutY="89.0" prefHeight="31.0" prefWidth="180.0" />
+            <Text fx:id="top1" layoutX="411.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="opcional1" wrappingWidth="99.6708984375" />
+            <Text fx:id="top2" layoutX="411.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="opcional2" wrappingWidth="99.6708984375" />
+            <TextField fx:id="op2" layoutX="561.0" layoutY="137.0" prefHeight="31.0" prefWidth="180.0" />
          </children>
-      </Group>
-      <Group fx:id="descripcion">
+      </Pane>
+      <Pane fx:id="infoDias" layoutX="258.0" layoutY="409.0" prefHeight="274.0" prefWidth="628.0" visible="false">
          <children>
-            <TextField editable="false" layoutX="14.0" layoutY="201.0" prefHeight="31.0" prefWidth="128.0" text="Palabras Claves" AnchorPane.leftAnchor="14.0" />
-            <Label fx:id="LbGeneral" alignment="CENTER" layoutX="303.0" layoutY="20.0" prefHeight="21.0" prefWidth="161.0" text="Generales" textAlignment="CENTER" textFill="#e31010" underline="true">
-               <font>
-                  <Font name="Bookman Old Style" size="24.0" />
-               </font>
-            </Label>
-            <TextField editable="false" layoutX="17.0" layoutY="112.0" prefHeight="31.0" prefWidth="128.0" text="Calle" AnchorPane.leftAnchor="15.0" />
-            <TextField editable="false" layoutX="15.0" layoutY="70.0" prefHeight="31.0" prefWidth="128.0" text="Nombre" AnchorPane.leftAnchor="15.0" />
-            <TextField editable="false" layoutX="14.0" layoutY="152.0" prefHeight="31.0" prefWidth="128.0" text="C.L.Izquierda" AnchorPane.leftAnchor="14.0" />
-            <TextField editable="false" layoutX="399.0" layoutY="112.0" prefHeight="31.0" prefWidth="128.0" text="Altura" AnchorPane.leftAnchor="399.0" />
-            <TextField editable="false" layoutX="423.0" layoutY="333.0" prefHeight="31.0" prefWidth="128.0" text="Longitud" />
-            <TextField editable="false" layoutX="399.0" layoutY="152.0" prefHeight="31.0" prefWidth="128.0" text="C.L.Derecha" AnchorPane.leftAnchor="399.0" />
-            <TextField editable="false" layoutX="399.0" layoutY="69.0" prefHeight="31.0" prefWidth="128.0" text="Barrio" AnchorPane.leftAnchor="399.0" />
-            <TextField editable="false" layoutX="121.0" layoutY="333.0" prefHeight="31.0" prefWidth="128.0" text="Latitud" />
+            <Text layoutX="22.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dia:" wrappingWidth="123.6708984375" />
+            <TextField fx:id="nombreDia" layoutX="84.0" layoutY="27.0" prefHeight="31.0" prefWidth="180.0" />
+            <Text layoutX="22.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horario 1:" wrappingWidth="86.6708984375" />
+            <Text layoutX="22.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horario 2:" wrappingWidth="86.6708984375" />
+            <TextField fx:id="horaUnoInicio" layoutX="127.0" layoutY="78.0" prefHeight="31.0" prefWidth="124.0" />
+            <TextField fx:id="horaUnoFin" layoutX="264.0" layoutY="79.0" prefHeight="31.0" prefWidth="124.0" />
+            <TextField fx:id="horaDosInicio" layoutX="127.0" layoutY="131.0" prefHeight="31.0" prefWidth="124.0" />
+            <TextField fx:id="horaDosFin" layoutX="264.0" layoutY="131.0" prefHeight="31.0" prefWidth="124.0" />
+            <Button layoutX="44.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#guardarDia" prefHeight="31.0" prefWidth="150.0" text="Confirmar" />
+            <TextArea fx:id="errorDia" layoutX="414.0" layoutY="14.0" prefHeight="176.0" prefWidth="200.0" />
          </children>
-      </Group>
-      <AnchorPane fx:id="error" layoutX="114.0" layoutY="150.0" prefHeight="275.0" prefWidth="538.0" visible="false">
+      </Pane>
+      <ComboBox fx:id="demasInfo" layoutX="51.0" layoutY="423.0" onAction="#seleccionInfo" prefWidth="150.0" />
+      <Pane fx:id="infoServs" layoutX="241.0" layoutY="423.0" prefHeight="274.0" prefWidth="640.0">
          <children>
-            <TextArea fx:id="texterror" editable="false" layoutX="1.0" prefHeight="275.0" prefWidth="538.0" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </TextArea>
-            <Button fx:id="okerror" layoutX="249.0" layoutY="230.0" mnemonicParsing="false" onMouseClicked="#okboton" text="OK" textAlignment="CENTER" />
+            <Text layoutX="27.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Servicio:" wrappingWidth="86.6708984375" />
+            <Text layoutX="27.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion:" wrappingWidth="86.6708984375" />
+            <TextField fx:id="nombreServ" layoutX="133.0" layoutY="6.0" />
+            <TextArea fx:id="descServ" layoutX="133.0" layoutY="84.0" prefHeight="176.0" prefWidth="462.0" />
+            <Button layoutX="376.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#guardarServicio" prefHeight="31.0" prefWidth="200.0" text="Agregar" />
          </children>
-      </AnchorPane>
+      </Pane>
+      <Button layoutX="51.0" layoutY="545.0" mnemonicParsing="false" prefHeight="145.0" prefWidth="150.0" text="Finalizar" />
    </children>
 </AnchorPane>

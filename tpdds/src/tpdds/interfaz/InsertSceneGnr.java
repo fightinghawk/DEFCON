@@ -7,10 +7,13 @@ import java.util.ResourceBundle;
 import org.hibernate.Session;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextArea;
@@ -18,6 +21,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tpdds.hibernate.HibernateSessionFactory;
@@ -32,25 +37,18 @@ import tpdds.ubicacion.Location;
 public class InsertSceneGnr implements Initializable{
 	
 	@FXML
-	TextField nombre;
+	TextField nombre, calle, izquierda, barrio, altura, derecha,
+	op1, op2, latitud, Longitud, nombreDia, horaUnoInicio,
+	horaUnoFin, horaDosInicio, horaDosFin, nombreServ;
 	@FXML
-	TextField calle;
+	TextArea keyWord, errorDia, descServ;
 	@FXML
-	TextField izquierda;
+	ComboBox<String> Tipo, demasInfo;
 	@FXML
-	TextField barrio;
+	Text top1,top2;
 	@FXML
-	TextField altura;
-	@FXML
-	TextField derecha;
-	@FXML
-	TextField keyWord;
-	@FXML
-	TextField latitud;
-	@FXML
-	TextField Longitud;
-	@FXML
-	SplitMenuButton Tipo;
+	Pane infoDias, infoServs;
+	
 	
 	Poi nuevo;
 	FXMLLoader loader;
@@ -58,6 +56,7 @@ public class InsertSceneGnr implements Initializable{
 	HashMap<String, Boolean> palabraOK = new HashMap<>();
 	Stage nuevaStage;
 	//IDCAMPO - SI ESTA OK O NO
+	
 	public void insertSceneRender(){
 		try{
 			nuevaStage = new Stage();
@@ -78,103 +77,69 @@ public class InsertSceneGnr implements Initializable{
 	}
 	
 	@FXML
-	private void insert(KeyEvent evento){
-		TextField textField = (TextField) evento.getSource();
-		String idTF = textField.getId();
-		String str = textField.getText().concat(evento.getCharacter());
-		if(idTF.equals("calle")){
+	private void seleccionTipo(Event evento){
+		switch (Tipo.getAccessibleText()) {
+		case value:
 			
+			break;
+
+		default:
+			break;
 		}
-		else if(idTF.equals("nombre") || idTF.equals("barrio") || idTF.equals("derecha") || idTF.equals("izquierda") ){
-			if(str.matches(".*\\d+.*")){
-				textField.setStyle("-fx-text-fill: red");
-				palabraOK.put(idTF, false);
-			}
-			else{
-				textField.setStyle("-fx-text-fill: black");
-				palabraOK.put(idTF,true);
-			}			
-		}
-		else{
-			if(!str.matches(".*\\d+.*")){
-				textField.setStyle("-fx-text-fill: red");
-				palabraOK.put(idTF, false);
-			}
-			else{
-				textField.setStyle("-fx-text-fill: black");
-				palabraOK.put(idTF, true);
-			}			
-		}
-	}	
-	
-	@FXML
-	private void continuar(MouseEvent evento){
-		boolean ok = true;
-		String mensajeError = "ERROR: \n";
-		if(!(palabraOK.size()==9)){
-			mensajeError = mensajeError.concat(("Faltan: " + (9-palabraOK.size()) + " campos\n"));
-			ok = false;
-		}
-		Collection<Boolean> estadosPalabras = palabraOK.values();
-		for (Boolean boolean1 : estadosPalabras) {
-			if(!boolean1){
-				ok = false;
-				mensajeError = mensajeError.concat(("Hay campos invalidos"));
-				break;
-			}
-		}
-		ok = true;//para test
-		if(!ok){
-			AnchorPane errorPane = (AnchorPane) rootLayout.lookup("#error");
-			TextArea textError = (TextArea) errorPane.lookup("#texterror");
-			textError.setText(mensajeError);
-			errorPane.setVisible(true);
-		}
-		else{
-			String tipoStr = Tipo.getText();
-			Direccion direc  = new Direccion(calle.getText(), Integer.parseInt(altura.getText()), izquierda.getText(), derecha.getText(), barrio.getText());	
-			Location geo = new Location(Double.parseDouble(latitud.getText()), Double.parseDouble(Longitud.getText()));
-			String keys = keyWord.getText();
-			switch (Tipo.getText().toLowerCase()) {
-			case "cgp":
-				Poi poicgp =new Poi(nombre.getText(),tipoStr, direc, geo);
-				nuevo = new CGP(poicgp);
-				break;
-			case "colectivo":
-				Poi poicolectivo = new Poi(nombre.getText(),tipoStr, direc, geo);
-				nuevo = new ParadaColectivo(poicolectivo,60);
-				break;
-			case "bancos":
-				Poi poibancos = new Poi(nombre.getText(),tipoStr, direc, geo);
-				nuevo = new Bancos(poibancos);
-				break;
-			case "comercios":
-				Poi poicomercios = new Poi(nombre.getText(),tipoStr, direc, geo);
-				nuevo = new LocalesComerciales(poicomercios,"COCINA");
-				break;
-			}
-			nuevo.agregarPalabra(keys.split(","));
-			new InsertarDia(nuevo).insertDiaRender(nuevaStage, 0);
-		}
-		
-	}		
-	
-	@FXML
-	public void cambiaTipo(ActionEvent event){
-		MenuItem menu = (MenuItem) event.getSource();
-		String tipoStr = menu.getText();
-		Tipo.setText(tipoStr);
 	}
 	
 	@FXML
-	public void okboton(MouseEvent botonApretado){
-		AnchorPane errorPane = (AnchorPane) rootLayout.lookup("#error");
-		errorPane.setVisible(false);
+	private void seleccionInfo(Event evento){
+		switch (demasInfo.getAccessibleText()) {
+		case "Dias":
+			mostrarPane(infoDias, true);
+			mostrarPane(infoServs, false);
+			break;
+		case "Servicios":
+			mostrarPane(infoDias, false);
+			mostrarPane(infoServs, true);
+			break;
+
+		default:
+			break;
+		} 
+	}
+	
+	@FXML
+	private void guardarServicio(MouseEvent evento){
+		
+	}
+	
+	@FXML
+	private void guardarDia(MouseEvent evento){
+		
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		Tipo.getItems().addAll("Colectivo","Bancos","CGP","L.Comerciales");
+		demasInfo.getItems().addAll("Dias","Servicios");
+		mostrarPane(infoDias, false);
+		mostrarPane(infoServs, false);
+	}
+	
+	private void mostrarPane(Pane panel, boolean valor){
+		for (Node node : panel.getChildren()) {
+			node.setVisible(valor);
+			node.setDisable(!valor);
+		}
+		panel.setVisible(valor);
+		panel.setDisable(!valor);
+	}
+	
+	private void mostrarOpcionales(boolean valor){
+		op1.setVisible(valor);
+		op2.setVisible(valor);
+		top1.setDisable(!valor);
+		top2.setDisable(!valor);
+	}
+	
+	private void mostrarOpcional(Text top,TextField op, boolean valor){
 		
-	}	
+	}
 }
