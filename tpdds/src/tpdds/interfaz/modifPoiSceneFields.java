@@ -99,6 +99,7 @@ public class modifPoiSceneFields implements Initializable {
 		direccion.setIddb(poi.getDireccion().getIddb());
 		Location geoloc = new Location(Double.parseDouble(latitud.getText()), Double.parseDouble(longitud.getText()));
 		geoloc.setIddb(poi.getGeoloc().getIddb());
+		poi.setNombre(nombre.getText());
 		poi.setDireccion(direccion);
 		poi.setGeoloc(geoloc);
 		/*setear mas cosas si fuera necesario(futuro)*/
