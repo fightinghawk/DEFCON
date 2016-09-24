@@ -32,7 +32,6 @@ public class Main extends Application {
 	public void start(Stage primaryStag) {
 		try{
 			Comuna.inicializarComunas();
-			Generales.initDatabase();
 			tablero = archivos.obtenerTablero();
 			pois = Generales.cargarPois();
 		}catch(Exception ex){

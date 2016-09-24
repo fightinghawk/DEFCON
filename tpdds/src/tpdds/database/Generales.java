@@ -29,13 +29,6 @@ import tpdds.ubicacion.Location;
 
 
 public class Generales{
-
-	public static Connection conexion;
-	
-	public static void initDatabase() throws SQLException, ClassNotFoundException{
-		Class.forName("com.mysql.jdbc.Driver");
-		conexion = DriverManager.getConnection("jdbc:mysql://mysql3.gear.host:3306/dds2016", "dds2016", "dds2016.");
-	}	
 	
 	public static  ArrayList<Poi> cargarPois(){
 		Session session = HibernateSessionFactory.getSession();
@@ -73,7 +66,7 @@ public class Generales{
         session.close();
 	}
 	
-	public static void registrarBusqueda(Dispositivo tablero,String busqueda,Integer resultados,double time) throws SQLException, ClassNotFoundException{
+	/*public static void registrarBusqueda(Dispositivo tablero,String busqueda,Integer resultados,double time) throws SQLException, ClassNotFoundException{
 		//Fecha Actual Java
 	    Calendar actual = new GregorianCalendar();
 
@@ -159,5 +152,5 @@ public class Generales{
 		searcht = conexion.prepareStatement("SELECT nombre, sum(resultados) AS Totales FROM busquedas, terminales WHERE terminales.id = busquedas.id_terminal  GROUP BY busquedas.id_terminal ORDER BY terminales.id ASC");
 		listaReporteTerminal = searcht.executeQuery();
 		return listaReporteTerminal;
-	}
+	}*/
 }
