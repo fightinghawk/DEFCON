@@ -70,7 +70,7 @@ public class Poi implements Localizable {
 	inverseJoinColumns=@JoinColumn(name="servicios_serv_id", referencedColumnName="serv_id"),
 	joinColumns=@JoinColumn(name="pois_pois_id", referencedColumnName="pois_id"))
 	private Collection<Servicios> servicios;
-	@Column(insertable = true, updatable = true) 
+	@Column(insertable = false, updatable = true) 
 	private String dtype;
 	public Poi(){super();}
 	
