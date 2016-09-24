@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="615.0" prefWidth="775.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <CheckBox fx:id="permInsPoi" layoutX="171.0" layoutY="456.0" mnemonicParsing="false" text="Insertar Poi" />
+      <CheckBox fx:id="permVRF" layoutX="325.0" layoutY="456.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="103.0" text="VR Fecha" />
+      <CheckBox fx:id="permCTU" layoutX="325.0" layoutY="384.0" mnemonicParsing="false" text="Crear TU" />
+      <CheckBox fx:id="permMTU" layoutX="438.0" layoutY="384.0" mnemonicParsing="false" text="Mod TU" />
+      <CheckBox fx:id="permVRTT" layoutX="438.0" layoutY="456.0" mnemonicParsing="false" text="VR Total" />
+      <CheckBox fx:id="permBusc" layoutX="24.0" layoutY="384.0" mnemonicParsing="false" text="Buscar Poi" />
+      <CheckBox fx:id="permLP" layoutX="171.0" layoutY="384.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="150.0" text="Lanzar Procesos" />
+      <CheckBox fx:id="permVRTM" layoutX="555.0" layoutY="456.0" mnemonicParsing="false" text="VR Terminal" />
+      <CheckBox fx:id="permModPoi" layoutX="24.0" layoutY="456.0" mnemonicParsing="false" text="Modificar Poi" />
+      <CheckBox fx:id="permModUser" layoutX="555.0" layoutY="384.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="116.0" text="Mod User" />
+      <Text layoutX="24.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PERMISOS:" wrappingWidth="271.6708984375" />
+      <Text layoutX="24.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="132.80712890625" />
+      <Text layoutX="24.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion:" wrappingWidth="132.80712890625" />
+      <TextArea layoutX="133.0" layoutY="126.0" prefHeight="168.0" prefWidth="560.0" promptText="Descripcion del TU" />
+      <TextField layoutX="133.0" layoutY="38.0" prefHeight="31.0" prefWidth="213.0" promptText="Nombre del TU" />
+      <TextField layoutX="486.0" layoutY="38.0" prefHeight="31.0" prefWidth="213.0" promptText="Mostrado del TU" />
+      <Text layoutX="377.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mostrado:" wrappingWidth="132.80712890625" />
+   </children>
+</AnchorPane>
