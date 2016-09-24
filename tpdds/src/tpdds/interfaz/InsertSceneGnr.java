@@ -21,9 +21,16 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import tpdds.database.Generales;
+import tpdds.pois.Bancos;
+import tpdds.pois.CGP;
+import tpdds.pois.LocalesComerciales;
+import tpdds.pois.ParadaColectivo;
 import tpdds.pois.Poi;
 import tpdds.pois.componentes.DiaPoi;
 import tpdds.pois.componentes.Servicios;
+import tpdds.ubicacion.Direccion;
+import tpdds.ubicacion.Location;
 public class InsertSceneGnr implements Initializable{
 	
 	@FXML
@@ -119,7 +126,27 @@ public class InsertSceneGnr implements Initializable{
 	
 	@FXML
 	private void insertarPoi(MouseEvent evento){
+	Poi poi;
+	String tipoPoi;
+		tipoPoi = Tipo.getSelectionModel().getSelectedItem();
+		Direccion direccion  = new Direccion(calle.getText(), Integer.parseInt(altura.getText()), izquierda.getText(), derecha.getText(), barrio.getText());
+		Location geo = new Location(Double.parseDouble(latitud.getText()), Double.parseDouble(Longitud.getText()));
+		switch (tipoPoi.toLowerCase()) {
+		case "cgp":
+			nuevo = new CGP(poi);
+			break;
+		case "colectivo":
+			nuevo = new ParadaColectivo(poi,Integer.parseInt(op1.getText()));
+			break;
+		case "bancos":
+			nuevo = new Bancos(poi);
+			break;
+		case "l.comerciales":
+			nuevo = new LocalesComerciales(poi,op1.getText());
+			break;
 		
+		}
+		Generales.agregarPoi(nuevo);
 	}
 	
 	@FXML
