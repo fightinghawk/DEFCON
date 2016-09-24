@@ -20,8 +20,8 @@
       <Button fx:id="InsertarPoi" layoutX="115.0" layoutY="174.0" mnemonicParsing="false" onMouseClicked="#insertarPOI" prefHeight="52.0" prefWidth="262.0" text="INSERTAR POI" />
       <Button fx:id="BuscarPoi" layoutX="115.0" layoutY="94.0" mnemonicParsing="false" onMouseClicked="#buscarPOI" prefHeight="52.0" prefWidth="262.0" text="BUSCAR POI" />
       <Button layoutX="115.0" layoutY="534.0" mnemonicParsing="false" onMouseClicked="#salir" prefHeight="52.0" prefWidth="262.0" text="SALIR" />
-      <Button fx:id="CrearTipoUsuario" layoutX="418.0" layoutY="254.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="272.0" text="CREAR TIPO DE USUARIO" />
-      <Button fx:id="ModificarTipoUsuario" layoutX="418.0" layoutY="331.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="272.0" text="MODIFICAR TIPO DE USUARIO" />
-      <Button fx:id="ModificarUsuario" layoutX="418.0" layoutY="413.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="272.0" text="MODIFICAR USUARIO" />
+      <Button fx:id="CrearTipoUsuario" layoutX="418.0" layoutY="254.0" mnemonicParsing="false" onMouseClicked="#crearTipoUsuario" prefHeight="52.0" prefWidth="272.0" text="CREAR TIPO DE USUARIO" />
+      <Button fx:id="ModificarTipoUsuario" layoutX="418.0" layoutY="331.0" mnemonicParsing="false" onMouseClicked="#modificarTipoUsuario" prefHeight="52.0" prefWidth="272.0" text="MODIFICAR TIPO DE USUARIO" />
+      <Button fx:id="ModificarUsuario" layoutX="418.0" layoutY="413.0" mnemonicParsing="false" onMouseClicked="#modificarUsuario" prefHeight="52.0" prefWidth="272.0" text="MODIFICAR USUARIO" />
    </children>
 </AnchorPane>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="615.0" prefWidth="775.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="615.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <CheckBox fx:id="permInsPoi" layoutX="171.0" layoutY="456.0" mnemonicParsing="false" text="Insertar Poi" />
       <CheckBox fx:id="permVRF" layoutX="325.0" layoutY="456.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="103.0" text="VR Fecha" />
@@ -26,5 +26,14 @@
       <TextField layoutX="133.0" layoutY="38.0" prefHeight="31.0" prefWidth="213.0" promptText="Nombre del TU" />
       <TextField layoutX="486.0" layoutY="38.0" prefHeight="31.0" prefWidth="213.0" promptText="Mostrado del TU" />
       <Text layoutX="377.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mostrado:" wrappingWidth="132.80712890625" />
+      <Pane fx:id="panelConfirmacion" disable="true" layoutX="155.0" layoutY="153.0" prefHeight="63.0" prefWidth="444.0" style="-fx-background-color: white;">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="63.0" stroke="BLACK" strokeType="INSIDE" width="444.0" />
+            <Text layoutX="23.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estas Seguro?" wrappingWidth="97.0" />
+            <Button layoutX="157.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#confirmar" prefHeight="31.0" prefWidth="103.0" text="Guardar" />
+            <Button layoutX="288.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#cancelar" prefHeight="31.0" prefWidth="103.0" text="Cancelar" />
+         </children>
+      </Pane>
+      <Button layoutX="287.0" layoutY="539.0" mnemonicParsing="false" onMouseClicked="#guardar" prefHeight="31.0" prefWidth="179.0" text="Guardar" />
    </children>
 </AnchorPane>

@@ -125,8 +125,24 @@ public class LoginScene implements Initializable {
 	}
 	
 	@FXML
+	public void modificarTipoUsuario(MouseEvent evento){
+		
+	}
+	
+	@FXML
+	public void crearTipoUsuario(MouseEvent evento){
+		new AgregarTipoUsuario().render();
+	}
+	
+	@FXML
+	public void modificarUsuario(MouseEvent evento){
+		
+	}
+	
+	@FXML
 	public void salir(MouseEvent evento){
 		new PreLoginScene().loginSceneRender();
 		this.nuevaStage.close();
 	}
+	
 }
