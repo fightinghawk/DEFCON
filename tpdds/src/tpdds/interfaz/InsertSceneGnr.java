@@ -1,39 +1,29 @@
 package tpdds.interfaz;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-import org.hibernate.Session;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import tpdds.hibernate.HibernateSessionFactory;
-import tpdds.pois.Bancos;
-import tpdds.pois.CGP;
-import tpdds.pois.LocalesComerciales;
-import tpdds.pois.ParadaColectivo;
 import tpdds.pois.Poi;
-import tpdds.ubicacion.Direccion;
-import tpdds.ubicacion.Location;
-
+import tpdds.pois.componentes.DiaPoi;
+import tpdds.pois.componentes.Servicios;
 public class InsertSceneGnr implements Initializable{
 	
 	@FXML
@@ -48,15 +38,16 @@ public class InsertSceneGnr implements Initializable{
 	Text top1,top2;
 	@FXML
 	Pane infoDias, infoServs;
+		
+	private Poi nuevo;
+	private FXMLLoader loader;
+	private AnchorPane rootLayout;
+	private HashMap<String, Boolean> palabraOK = new HashMap<>();
+	private Stage nuevaStage;
+	private Collection<Servicios> servicios;
+	private Collection<DiaPoi> diasAbiertos;
 	
-	
-	Poi nuevo;
-	FXMLLoader loader;
-	AnchorPane rootLayout;
-	HashMap<String, Boolean> palabraOK = new HashMap<>();
-	Stage nuevaStage;
 	//IDCAMPO - SI ESTA OK O NO
-	
 	public void insertSceneRender(){
 		try{
 			nuevaStage = new Stage();
@@ -74,6 +65,11 @@ public class InsertSceneGnr implements Initializable{
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
+	}
+	
+	public InsertSceneGnr() {
+		diasAbiertos = new ArrayList<>();
+		servicios = new ArrayList<>();
 	}
 	
 	@FXML
@@ -121,7 +117,44 @@ public class InsertSceneGnr implements Initializable{
 	
 	@FXML
 	private void guardarDia(MouseEvent evento){
-		
+		try{
+			boolean borrarCampos = false;
+			int dia = this.calcularDia(nombreDia.getText());
+			if(dia==-1){
+				this.mostrarError("Dia invalido", errorDia);
+			}
+			if(!horaUnoFin.getText().isEmpty() && !horaUnoInicio.getText().isEmpty()){
+				Integer horaI = Integer.parseInt(horaUnoInicio.getText().substring(0, 2));
+				Integer minI = Integer.parseInt(horaUnoInicio.getText().substring(2, 4));
+	
+				Integer horaF = Integer.parseInt(horaUnoFin.getText().substring(0, 2));
+				Integer minF = Integer.parseInt(horaUnoFin.getText().substring(2, 4));
+				DiaPoi diaAgregar = new DiaPoi(horaI, horaF, minI, minF, dia, null);
+				diasAbiertos.add(diaAgregar);
+				errorDia.setText("Dia agregado");
+				borrarCampos = true;
+			}
+			
+			if(!horaDosFin.getText().isEmpty() && !horaDosInicio.getText().isEmpty()){
+				Integer horaI = Integer.parseInt(horaDosInicio.getText().substring(0, 2));
+				Integer minI = Integer.parseInt(horaDosInicio.getText().substring(2, 4));
+	
+				Integer horaF = Integer.parseInt(horaDosFin.getText().substring(0, 2));
+				Integer minF = Integer.parseInt(horaDosFin.getText().substring(2, 4));
+				DiaPoi diaAgregar = new DiaPoi(horaI, horaF, minI, minF, dia, null);
+				diasAbiertos.add(diaAgregar);
+				errorDia.appendText("Dia agregado");
+				borrarCampos = true;
+			}
+			if(borrarCampos){
+				horaDosFin.clear();horaDosInicio.clear();horaUnoFin.clear();horaUnoInicio.clear();
+				nombreDia.clear();
+			}
+			
+		}catch(Exception ex){
+			this.mostrarError("Hubo un error", errorDia);
+			ex.printStackTrace();
+		}
 	}
 
 	@Override
@@ -158,5 +191,27 @@ public class InsertSceneGnr implements Initializable{
 		op.setDisable(!valor);
 		top.setVisible(valor);
 		top.setDisable(!valor);
+	}
+	
+	private int calcularDia(String dia){
+		if(dia.equalsIgnoreCase("lunes"))
+			return 2;
+		if(dia.equalsIgnoreCase("martes"))
+			return 3;
+		if(dia.equalsIgnoreCase("miercoles"))
+			return 4;
+		if(dia.equalsIgnoreCase("jueves"))
+			return 5;
+		if(dia.equalsIgnoreCase("viernes"))
+			return 6;
+		if(dia.equalsIgnoreCase("sabado"))
+			return 7;
+		if(dia.equalsIgnoreCase("domingo"))
+			return 1;
+		return -1;
+	}
+	
+	private void mostrarError(String error, TextArea donde){
+		donde.setText(error);
 	}
 }
