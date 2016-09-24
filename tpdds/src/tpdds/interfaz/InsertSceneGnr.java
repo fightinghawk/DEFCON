@@ -77,20 +77,29 @@ public class InsertSceneGnr implements Initializable{
 	}
 	
 	@FXML
-	private void seleccionTipo(Event evento){
-		switch (Tipo.getAccessibleText()) {
-		case value:
-			
+	private void seleccionTipo(ActionEvent evento){
+		if(Tipo.getSelectionModel().getSelectedItem()==null)
+			return;
+		switch (Tipo.getSelectionModel().getSelectedItem()) {
+		case "Colectivo":
+			mostrarOpcional(top1, op1, true);
+			top1.setText("Nro Parada:");
 			break;
-
+		case "L.Comerciales":
+			mostrarOpcional(top1, op1, true);
+			top1.setText("Rubro");
+			break;
 		default:
+			mostrarOpcionales(false);
 			break;
 		}
 	}
 	
 	@FXML
-	private void seleccionInfo(Event evento){
-		switch (demasInfo.getAccessibleText()) {
+	private void seleccionInfo(ActionEvent evento){
+		if(demasInfo.getSelectionModel().getSelectedItem()==null)
+			return;
+		switch (demasInfo.getSelectionModel().getSelectedItem()) {
 		case "Dias":
 			mostrarPane(infoDias, true);
 			mostrarPane(infoServs, false);
@@ -119,6 +128,7 @@ public class InsertSceneGnr implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		Tipo.getItems().addAll("Colectivo","Bancos","CGP","L.Comerciales");
 		demasInfo.getItems().addAll("Dias","Servicios");
+		mostrarOpcionales(false);
 		mostrarPane(infoDias, false);
 		mostrarPane(infoServs, false);
 	}
@@ -135,11 +145,18 @@ public class InsertSceneGnr implements Initializable{
 	private void mostrarOpcionales(boolean valor){
 		op1.setVisible(valor);
 		op2.setVisible(valor);
+		top1.setVisible(valor);
+		top2.setVisible(valor);
+		op1.setDisable(!valor);
+		op2.setDisable(!valor);
 		top1.setDisable(!valor);
 		top2.setDisable(!valor);
 	}
 	
 	private void mostrarOpcional(Text top,TextField op, boolean valor){
-		
+		op.setVisible(valor);
+		op.setDisable(!valor);
+		top.setVisible(valor);
+		top.setDisable(!valor);
 	}
 }
