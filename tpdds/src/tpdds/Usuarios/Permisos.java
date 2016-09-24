@@ -23,6 +23,11 @@ public class Permisos {
 	@Column(name="per_descripciom")
 	private String descripcion;
 	
+	public Permisos(String permiso) {
+		super();
+		this.permiso = permiso;
+	}
+
 	public Permisos(String permiso, String descripcion) {
 		super();
 		this.permiso = permiso;

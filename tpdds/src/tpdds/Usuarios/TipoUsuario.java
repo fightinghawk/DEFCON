@@ -54,6 +54,10 @@ public class TipoUsuario {
 	public String getaMostrar() {
 		return aMostrar;
 	}
+	
+	public void setPermisosUsuarios(Collection<Permisos> permisosUsuarios) {
+		this.permisosUsuarios = permisosUsuarios;
+	}
 
 	public Collection<Permisos> getPermisosUsuarios() {
 		return permisosUsuarios;

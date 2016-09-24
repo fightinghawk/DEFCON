@@ -22,9 +22,9 @@
       <Text layoutX="24.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PERMISOS:" wrappingWidth="271.6708984375" />
       <Text layoutX="24.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="132.80712890625" />
       <Text layoutX="24.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion:" wrappingWidth="132.80712890625" />
-      <TextArea layoutX="133.0" layoutY="126.0" prefHeight="168.0" prefWidth="560.0" promptText="Descripcion del TU" />
-      <TextField layoutX="133.0" layoutY="38.0" prefHeight="31.0" prefWidth="213.0" promptText="Nombre del TU" />
-      <TextField layoutX="486.0" layoutY="38.0" prefHeight="31.0" prefWidth="213.0" promptText="Mostrado del TU" />
+      <TextArea fx:id="desc" layoutX="133.0" layoutY="126.0" prefHeight="168.0" prefWidth="560.0" promptText="Descripcion del TU" />
+      <TextField fx:id="nombre" layoutX="133.0" layoutY="38.0" prefHeight="31.0" prefWidth="213.0" promptText="Nombre del TU" />
+      <TextField fx:id="aMostrar" layoutX="486.0" layoutY="38.0" prefHeight="31.0" prefWidth="213.0" promptText="Mostrado del TU" />
       <Text layoutX="377.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mostrado:" wrappingWidth="132.80712890625" />
       <Pane fx:id="panelConfirmacion" disable="true" layoutX="155.0" layoutY="153.0" prefHeight="63.0" prefWidth="444.0" style="-fx-background-color: white;">
          <children>
