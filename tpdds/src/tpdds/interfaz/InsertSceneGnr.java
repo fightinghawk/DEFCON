@@ -132,30 +132,28 @@ public class InsertSceneGnr implements Initializable{
 		}
 		else{
 			String tipoStr = Tipo.getText();
-			Session aGuardar = HibernateSessionFactory.getSession();
-			aGuardar.beginTransaction();
 			Direccion direc  = new Direccion(calle.getText(), Integer.parseInt(altura.getText()), izquierda.getText(), derecha.getText(), barrio.getText());	
 			Location geo = new Location(Double.parseDouble(latitud.getText()), Double.parseDouble(Longitud.getText()));
 			String keys = keyWord.getText();
-			aGuardar.save(direc);
-			aGuardar.save(geo);
 			switch (Tipo.getText().toLowerCase()) {
 			case "cgp":
-				nuevo =new Poi(nombre.getText(),tipoStr, direc, geo);
+				Poi poicgp =new Poi(nombre.getText(),tipoStr, direc, geo);
+				nuevo = new CGP(poicgp);
 				break;
 			case "colectivo":
-				nuevo = new Poi(nombre.getText(),tipoStr, direc, geo);
+				Poi poicolectivo = new Poi(nombre.getText(),tipoStr, direc, geo);
+				nuevo = new ParadaColectivo(poicolectivo,60);
 				break;
 			case "bancos":
-				nuevo = new Poi(nombre.getText(),tipoStr, direc, geo);
+				Poi poibancos = new Poi(nombre.getText(),tipoStr, direc, geo);
+				nuevo = new Bancos(poibancos);
 				break;
 			case "comercios":
-				nuevo = new Poi(nombre.getText(),tipoStr, direc, geo);
+				Poi poicomercios = new Poi(nombre.getText(),tipoStr, direc, geo);
+				nuevo = new LocalesComerciales(poicomercios,"COCINA");
 				break;
 			}
-			aGuardar.save(nuevo);
 			nuevo.agregarPalabra(keys.split(","));
-			aGuardar.beginTransaction().commit();
 			new InsertarDia(nuevo).insertDiaRender(nuevaStage, 0);
 		}
 		

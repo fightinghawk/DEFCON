@@ -10,6 +10,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="servicios")
 public class Servicios {
+	
+	protected Servicios(){}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

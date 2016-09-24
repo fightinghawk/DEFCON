@@ -94,65 +94,50 @@ public class modifPoiSceneFields implements Initializable {
 	
 	@FXML
 	public void aceptar(MouseEvent evento){
-		Session aGuardar = HibernateSessionFactory.getSession();
-		aGuardar.beginTransaction();
 		String tipoStr = tipo.getText();
-		Poi PoiAEditar = new Poi();
 		Direccion direccion  = new Direccion(cPrincipal.getText(), Integer.parseInt(altura.getText()), cIzquierda.getText(), cDerecha.getText(), barrio.getText());
 		direccion.setIddb(poi.getDireccion().getIddb());
-		aGuardar.saveOrUpdate(direccion);
 		Location geoloc = new Location(Double.parseDouble(latitud.getText()), Double.parseDouble(longitud.getText()));
 		geoloc.setIddb(poi.getGeoloc().getIddb());
-		aGuardar.saveOrUpdate(geoloc);
-		PoiAEditar = new Poi(nombre.getText(),tipoStr,direccion,geoloc);
-		PoiAEditar.setIddb(poi.getIddb());
-		PoiAEditar.setPalabrasClaves(poi.getPalabrasClaves());
-		
-		
-		
-		if(poi.getTipo().equals(tipoStr))
-		{
 		poi.setDireccion(direccion);
 		poi.setGeoloc(geoloc);
-		poi.setPalabrasClaves(poi.getPalabrasClaves());
-		}
-		else
-		{
-			Main.pois.remove(poi);
-			switch (poi.getTipo().toLowerCase()) {
-
-			case "cgp":
-				CGP nuevocgp =new CGP(poi.getIddb(),nombre.getText(),tipoStr,direccion,geoloc,poi.getPalabrasClaves());
-				Main.pois.add(nuevocgp);
-				break;
-			case "colectivo":
-				ParadaColectivo nuevaparada = new ParadaColectivo(poi.getIddb(),nombre.getText(),tipoStr,direccion,geoloc,poi.getPalabrasClaves());
-				Main.pois.add(nuevaparada);
-				break;
-			case "bancos":
-				Bancos nuevobancos = new Bancos(poi.getIddb(),nombre.getText(),tipoStr,direccion,geoloc,poi.getPalabrasClaves());
-				Main.pois.add(nuevobancos);
-				break;
-			case "comercios":
-				LocalesComerciales nuevolocal = new LocalesComerciales(poi.getIddb(),nombre.getText(),tipoStr,direccion,geoloc,poi.getPalabrasClaves());
-				Main.pois.add(nuevolocal);
-				break;
-			}
-			
-		}
-		
-		
-		
-		
-		
-		
+		/*setear mas cosas si fuera necesario(futuro)*/
 		try{
-		aGuardar.saveOrUpdate(PoiAEditar);
-		aGuardar.getTransaction().commit();
-		aGuardar.close();
+			
+			if(poi.getTipo().equals(tipoStr))
+			{
+			Generales.modificarPoi(poi);
+			}
+			else
+			{
+				poi.setTipo(tipoStr);
+				switch (poi.getTipo().toLowerCase()) {
+				case "cgp":
+					CGP nuevocgp =new CGP(poi);
+					Generales.modificarPoi(nuevocgp);
+					Main.pois.add(nuevocgp);
+					break;
+				case "colectivo":
+					ParadaColectivo nuevaparada = new ParadaColectivo(poi,80);
+					Generales.modificarPoi(nuevaparada);
+					Main.pois.add(nuevaparada);
+					break;
+				case "bancos":
+					Bancos nuevobancos = new Bancos(poi);
+					Generales.modificarPoi(nuevobancos);
+					Main.pois.add(nuevobancos);
+					break;
+				case "comercios":
+					LocalesComerciales nuevolocal = new LocalesComerciales(poi,"CINE");
+					Generales.modificarPoi(nuevolocal);
+					Main.pois.add(nuevolocal);
+					break;
+				}
+				Main.pois.remove(poi);
+				
+			}
 		}catch(Exception ex){
 			ex.printStackTrace();
-			aGuardar.getTransaction().rollback();
 		}
 		stg.close();
 		new modfiPoiSceneBuscar().modfiPoiBuscar();

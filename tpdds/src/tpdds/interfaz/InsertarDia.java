@@ -92,10 +92,10 @@ public class InsertarDia implements Initializable {
 	@FXML
 	public void finBoton(){
 		try{
-			Session aGuardar = HibernateSessionFactory.getSession();
-			
+
+		Generales.agregarPoi(poiNuevo);	
 		Main.pois.add(poiNuevo);
-		aGuardar.close();
+
 		}
 		catch(Exception ex){
 			

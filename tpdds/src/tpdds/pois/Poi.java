@@ -38,7 +38,7 @@ import tpdds.usoGlobal.CalculosHorarios;
 
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @Table (name="pois")
 public class Poi implements Localizable {
 	
@@ -51,21 +51,18 @@ public class Poi implements Localizable {
 	@Column(name="strtipo")
 	private String tipo;
 	@Column(name="crtCuadras")
-	private double radioDeCuadras;
-	@Column(name="numero_parada")
-	private int parada;
-	@Column(name="rubro")
-	private String rubro;	
-	@OneToOne(fetch = FetchType.EAGER)
+	private double radioDeCuadras;	
+	@OneToOne(fetch = FetchType.EAGER,cascade= CascadeType.ALL)
 	@JoinColumn(name="direcciones_id")
 	private Direccion direccion;
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER,cascade= CascadeType.ALL)
 	@JoinColumn(name="geoPos_id")
 	private Location geoloc;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="poi",cascade= CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private Collection<KeyWords> palabrasClaves = new HashSet<KeyWords>();
-	@OneToMany(mappedBy="poi",cascade= CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="poi",cascade= CascadeType.ALL)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private Collection<DiaPoi> diasDisp = new ArrayList<DiaPoi>();
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)
@@ -73,21 +70,19 @@ public class Poi implements Localizable {
 	inverseJoinColumns=@JoinColumn(name="servicios_serv_id", referencedColumnName="serv_id"),
 	joinColumns=@JoinColumn(name="pois_pois_id", referencedColumnName="pois_id"))
 	private Collection<Servicios> servicios;
-
+	@Column(insertable = true, updatable = true) 
+	private String dtype;
 	public Poi(){super();}
 	
 	
 	
-	public Poi(int iddb, String nombre, String tipo, double radioDeCuadras, int parada, String rubro,
-			Direccion direccion, Location geoloc, Collection<KeyWords> palabrasClaves, Collection<DiaPoi> diasDisp,
+	public Poi(int iddb, String nombre, String tipo, double radioDeCuadras,Direccion direccion, Location geoloc, Collection<KeyWords> palabrasClaves, Collection<DiaPoi> diasDisp,
 			Collection<Servicios> servicios) {
 		super();
 		this.iddb = iddb;
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.radioDeCuadras = radioDeCuadras;
-		this.parada = parada;
-		this.rubro = rubro;
 		this.direccion = direccion;
 		this.geoloc = geoloc;
 		this.palabrasClaves = palabrasClaves;
@@ -96,7 +91,7 @@ public class Poi implements Localizable {
 	}
 	public Poi(Poi datos){
 		this(datos.getIddb(),datos.getNombre(),datos.getTipo(),
-				datos.getRadioDeCuadras(),datos.getParada(),datos.getRubro(),
+				datos.getRadioDeCuadras(),
 				datos.getDireccion(),datos.getGeoloc(),datos.getPalabrasClaves(),
 				datos.getDiasDisp(),datos.getServicios());
 	}
@@ -137,21 +132,10 @@ public class Poi implements Localizable {
 	public int getIddb() {
 		return iddb;
 	}
-	
-	public int getParada() {
-		return parada;
-	}
-
-	public void setParada(int parada) {
-		this.parada = parada;
-	}
 
 	public String getRubro() {
-		return rubro;
-	}
-
-	public void setRubro(String rubro) {
-		this.rubro = rubro;
+		return "No Posee";
+		
 	}
 
 	public Collection<Servicios> getServicios() {
@@ -284,11 +268,9 @@ public class Poi implements Localizable {
 
 	public void agregarPalabra(String[] palabras) {
 		KeyWords keywords;
-		Session aGuardar = HibernateSessionFactory.getSession();
-		aGuardar.beginTransaction();
 		for (String keyWord : palabras) {
 			keywords = new KeyWords(keyWord,this);
-			aGuardar.save(keywords);
+			this.palabrasClaves.add(keywords);
 		}
 	}
 	
@@ -310,6 +292,27 @@ public class Poi implements Localizable {
 			}
 		}
 		return false;
+	}
+
+
+
+	public int getParada() {
+		return -1;
+
+		
+	
+		
+		
+	}
+
+
+
+	public String getDtype() {
+		return dtype;
+	}
+
+	public void setDtype(String dtype) {
+		this.dtype = dtype;
 	}
 
 }

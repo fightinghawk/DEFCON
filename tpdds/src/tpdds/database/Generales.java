@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -42,40 +43,32 @@ public class Generales{
 		String sql = "SELECT * FROM POIS";
 		SQLQuery query = session.createSQLQuery(sql);
         query.addEntity(Poi.class);
-        List<Poi> POIS = query.list();
-        ArrayList<Poi> poisRev = new  ArrayList<Poi>();
-        for(Poi poi: POIS)
-        {
-			switch (poi.getTipo().toLowerCase()) {
-			case "cgp":
-				CGP nuevocgp = new CGP(poi);
-				poisRev.add(nuevocgp);
-				break;
-			case "colectivo":
-				ParadaColectivo nuevaparada = new ParadaColectivo(poi);
-				poisRev.add(nuevaparada);
-				break;
-			case "bancos":
-				Bancos nuevobancos = new Bancos(poi);
-				poisRev.add(nuevobancos);
-				break;
-			case "comercios":
-				LocalesComerciales nuevolocal = new LocalesComerciales(poi);
-				poisRev.add(nuevolocal);
-				break;
-			}
-        }
+        ArrayList<Poi> poisRev = new  ArrayList<Poi>(query.list());
         session.getTransaction().commit();
         session.close();
 		return poisRev;
+	}
+	
+	public static void agregarPoi(Poi poi){
+		Session session = HibernateSessionFactory.getSession();
+		session.beginTransaction();
+		session.save(poi);
+        session.getTransaction().commit();
+        session.close();
+	}
+	
+	public static void modificarPoi(Poi poi){
+		Session session = HibernateSessionFactory.getSession();
+		session.beginTransaction();
+		session.saveOrUpdate(poi);
+        session.getTransaction().commit();
+        session.close();
 	}
 	
 	public static void borrarPoi(Poi poi){
 		Session session = HibernateSessionFactory.getSession();
 		session.beginTransaction();
 		session.delete(poi);
-		session.delete(poi.getDireccion());
-		session.delete(poi.getGeoloc());
         session.getTransaction().commit();
         session.close();
 	}

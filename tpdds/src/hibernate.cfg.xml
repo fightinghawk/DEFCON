@@ -29,6 +29,10 @@
         <mapping class="tpdds.Usuarios.TipoUsuario"/>
         <mapping class= "tpdds.Usuarios.Permisos"/>
         <mapping class= "tpdds.pois.Poi"/>
+        <mapping class= "tpdds.pois.Bancos"/>
+        <mapping class= "tpdds.pois.CGP"/>
+        <mapping class= "tpdds.pois.LocalesComerciales"/>
+        <mapping class= "tpdds.pois.ParadaColectivo"/>      
         <mapping class= "tpdds.pois.componentes.KeyWords"/>
         <mapping class= "tpdds.pois.componentes.DiaPoi"/>
         <mapping class= "tpdds.ubicacion.Direccion"/>
