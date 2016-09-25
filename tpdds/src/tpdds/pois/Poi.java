@@ -76,23 +76,18 @@ public class Poi implements Localizable {
 	
 	
 	
-	public Poi(String nombre, String tipo, double radioDeCuadras,Direccion direccion, Location geoloc, Collection<KeyWords> palabrasClaves, Collection<DiaPoi> diasDisp,
-			Collection<Servicios> servicios) {
+	public Poi(String nombre, String tipo, double radioDeCuadras,Direccion direccion, Location geoloc) {
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.radioDeCuadras = radioDeCuadras;
 		this.direccion = direccion;
 		this.geoloc = geoloc;
-		this.palabrasClaves = palabrasClaves;
-		this.diasDisp = diasDisp;
-		this.servicios = servicios;
 	}
 	
 	public Poi(Poi datos){
 		this(datos.getNombre(),datos.getTipo(),
 				datos.getRadioDeCuadras(),
-				datos.getDireccion(),datos.getGeoloc(),datos.getPalabrasClaves(),
-				datos.getDiasDisp(),datos.getServicios());
+				datos.getDireccion(),datos.getGeoloc());
 	}
 	
 	public Collection<KeyWords> getPalabrasClaves() {
@@ -170,6 +165,14 @@ public class Poi implements Localizable {
 
 	public void setGeoloc(Location geoloc) {
 		this.geoloc = geoloc;
+	}
+	
+	public void agregarPalabras(String claves) {
+		KeyWords key;
+		for (String keyWord : claves.split(",")) {
+			key = new KeyWords(keyWord,this);
+			this.palabrasClaves.add(key);
+		}
 	}
 
 	// Informa la Distancia entre Pois

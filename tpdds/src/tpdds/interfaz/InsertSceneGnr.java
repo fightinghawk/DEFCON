@@ -54,7 +54,6 @@ public class InsertSceneGnr implements Initializable{
 	private AnchorPane rootLayout;
 	private HashMap<String, Boolean> palabraOK = new HashMap<>();
 	private Stage nuevaStage;
-	private Collection<KeyWords> keywords;
 	private Collection<Servicios> servicios;
 	private Collection<DiaPoi> diasAbiertos;
 	
@@ -79,7 +78,6 @@ public class InsertSceneGnr implements Initializable{
 	}
 	
 	public InsertSceneGnr() {
-		keywords = new HashSet<>();
 		diasAbiertos = new ArrayList<>();
 		servicios = new ArrayList<>();
 
@@ -138,8 +136,8 @@ public class InsertSceneGnr implements Initializable{
 		tipoPoi = Tipo.getSelectionModel().getSelectedItem();
 		Direccion direccion  = new Direccion(calle.getText(), Integer.parseInt(altura.getText()), izquierda.getText(), derecha.getText(),"BARRIO");
 		Location geo = new Location(Double.parseDouble(latitud.getText()), Double.parseDouble(Longitud.getText()));
-		this.agregarPalabras(keyWord.getText().split(","));
-		poi = new Poi(nombre.getText(),tipoPoi,0.1,direccion,geo,keywords,diasAbiertos,servicios);
+		String claves = keyWord.getText();
+		poi = new Poi(nombre.getText(),tipoPoi,0.1,direccion,geo);
 		switch (tipoPoi.toLowerCase()) {
 		case "cgp":
 			nuevo = new CGP(poi);
@@ -155,6 +153,9 @@ public class InsertSceneGnr implements Initializable{
 			break;
 		
 		}
+		nuevo.agregarPalabras(claves);
+		nuevo.setDiasDisp(diasAbiertos);
+		nuevo.setServicios(servicios);
 		Generales.agregarPoi(nuevo);
 		Main.pois.add(nuevo);
 	}
@@ -257,13 +258,5 @@ public class InsertSceneGnr implements Initializable{
 	
 	private void mostrarError(String error, TextArea donde){
 		donde.setText(error);
-	}
-	
-	public void agregarPalabras(String[] palabras) {
-		KeyWords key;
-		for (String keyWord : palabras) {
-			key = new KeyWords(keyWord,nuevo);
-			keywords.add(key);
-		}
 	}
 }
