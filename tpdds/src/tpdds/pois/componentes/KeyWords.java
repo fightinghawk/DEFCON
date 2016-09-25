@@ -1,5 +1,8 @@
 package tpdds.pois.componentes;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,10 +32,10 @@ public class KeyWords {
 	@JoinColumn(name="pois_id")
 	private Poi poi;
 	
-	public KeyWords(String clave, Poi Poi)
+	public KeyWords(String clave, Poi poi)
 	{
 		this.clave = clave;
-		this.poi = Poi;
+		this.poi = poi;
 	}
 	
 	public String getClave() {

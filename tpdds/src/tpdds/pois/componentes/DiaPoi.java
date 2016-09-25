@@ -38,14 +38,14 @@ public class DiaPoi{
 	@JoinColumn(name="pois_id")
 	private Poi poi;
 	
-	public DiaPoi(int horaApertura, int horaClose, int minApertura, int minClose, int dia, Poi poi) {
+	public DiaPoi(int horaApertura, int horaClose, int minApertura, int minClose, int dia,Poi poi) {
 		super();
 		this.horaApertura = horaApertura;
 		this.horaClose = horaClose;
 		this.minApertura = minApertura;
 		this.minClose = minClose;
 		this.dia = dia;
-		this.poi=poi;
+		this.poi = poi;
 	}
 
 	public int getHoraApertura() {

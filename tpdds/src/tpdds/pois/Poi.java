@@ -76,10 +76,8 @@ public class Poi implements Localizable {
 	
 	
 	
-	public Poi(int iddb, String nombre, String tipo, double radioDeCuadras,Direccion direccion, Location geoloc, Collection<KeyWords> palabrasClaves, Collection<DiaPoi> diasDisp,
+	public Poi(String nombre, String tipo, double radioDeCuadras,Direccion direccion, Location geoloc, Collection<KeyWords> palabrasClaves, Collection<DiaPoi> diasDisp,
 			Collection<Servicios> servicios) {
-		super();
-		this.iddb = iddb;
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.radioDeCuadras = radioDeCuadras;
@@ -89,36 +87,12 @@ public class Poi implements Localizable {
 		this.diasDisp = diasDisp;
 		this.servicios = servicios;
 	}
+	
 	public Poi(Poi datos){
-		this(datos.getIddb(),datos.getNombre(),datos.getTipo(),
+		this(datos.getNombre(),datos.getTipo(),
 				datos.getRadioDeCuadras(),
 				datos.getDireccion(),datos.getGeoloc(),datos.getPalabrasClaves(),
 				datos.getDiasDisp(),datos.getServicios());
-	}
-	
-	// Constructor POI
-	public Poi(String nombre,String tipoPOI, Direccion direccion, Location geoloc) {
-		this.nombre = nombre;
-		this.tipo = tipoPOI;
-		this.direccion = direccion;
-		this.geoloc = geoloc;
-		this.iddb = -1;
-		palabrasClaves = new HashSet<KeyWords>();
-		diasDisp = new ArrayList<>();
-		this.esValido();
-	}
-	
-	// Constructor POI
-	public Poi(String nombre, String tipoPOI, Direccion direccion, Location geoloc,HashSet<KeyWords> keywords,ArrayList<DiaPoi> dias,int iddb) {
-		this.nombre = nombre;
-		this.tipo = tipoPOI;
-		this.direccion = direccion;
-		this.geoloc = geoloc;
-		this.iddb = -1;
-		palabrasClaves = keywords;
-		diasDisp = dias;
-		this.iddb = iddb;
-		this.esValido();
 	}
 	
 	public Collection<KeyWords> getPalabrasClaves() {
@@ -154,7 +128,7 @@ public class Poi implements Localizable {
 		this.palabrasClaves = collection;
 	}
 
-	public void setDiasDisp(ArrayList<DiaPoi> diasDisp){
+	public void setDiasDisp(Collection<DiaPoi> diasDisp){
 		this.diasDisp = diasDisp;
 	}
 	
@@ -264,14 +238,6 @@ public class Poi implements Localizable {
 			}
 		}
 		return encontrado;
-	}
-
-	public void agregarPalabra(String[] palabras) {
-		KeyWords keywords;
-		for (String keyWord : palabras) {
-			keywords = new KeyWords(keyWord,this);
-			this.palabrasClaves.add(keywords);
-		}
 	}
 	
 	public boolean estaDisponible(){

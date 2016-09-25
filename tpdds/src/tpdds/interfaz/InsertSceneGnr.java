@@ -3,6 +3,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 
 
@@ -28,6 +29,7 @@ import tpdds.pois.LocalesComerciales;
 import tpdds.pois.ParadaColectivo;
 import tpdds.pois.Poi;
 import tpdds.pois.componentes.DiaPoi;
+import tpdds.pois.componentes.KeyWords;
 import tpdds.pois.componentes.Servicios;
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Location;
@@ -47,10 +49,12 @@ public class InsertSceneGnr implements Initializable{
 	Pane infoDias, infoServs;
 		
 	private Poi nuevo;
+	private Poi poi = new Poi();
 	private FXMLLoader loader;
 	private AnchorPane rootLayout;
 	private HashMap<String, Boolean> palabraOK = new HashMap<>();
 	private Stage nuevaStage;
+	private Collection<KeyWords> keywords;
 	private Collection<Servicios> servicios;
 	private Collection<DiaPoi> diasAbiertos;
 	
@@ -75,8 +79,10 @@ public class InsertSceneGnr implements Initializable{
 	}
 	
 	public InsertSceneGnr() {
+		keywords = new HashSet<>();
 		diasAbiertos = new ArrayList<>();
 		servicios = new ArrayList<>();
+
 	}
 	
 	@FXML
@@ -121,17 +127,19 @@ public class InsertSceneGnr implements Initializable{
 	private void guardarServicio(MouseEvent evento){
 		if(!nombreServ.getText().isEmpty()&&!descServ.getText().isEmpty()){
 			servicios.add(new Servicios(nombreServ.getText(), descServ.getText()));
+			nombreServ.clear();
+			descServ.clear();
 		}
 	}
 	
 	@FXML
 	private void insertarPoi(MouseEvent evento){
-	Poi poi;
 	String tipoPoi;
 		tipoPoi = Tipo.getSelectionModel().getSelectedItem();
-		Direccion direccion  = new Direccion(calle.getText(), Integer.parseInt(altura.getText()), izquierda.getText(), derecha.getText(), barrio.getText());
+		Direccion direccion  = new Direccion(calle.getText(), Integer.parseInt(altura.getText()), izquierda.getText(), derecha.getText(),"BARRIO");
 		Location geo = new Location(Double.parseDouble(latitud.getText()), Double.parseDouble(Longitud.getText()));
-		poi = new Poi(nombre.getText(),tipoPoi,(RadioCuadras),direccion,geo,(KeyWords),diasAbiertos,servicios);
+		this.agregarPalabras(keyWord.getText().split(","));
+		poi = new Poi(nombre.getText(),tipoPoi,0.1,direccion,geo,keywords,diasAbiertos,servicios);
 		switch (tipoPoi.toLowerCase()) {
 		case "cgp":
 			nuevo = new CGP(poi);
@@ -148,6 +156,7 @@ public class InsertSceneGnr implements Initializable{
 		
 		}
 		Generales.agregarPoi(nuevo);
+		Main.pois.add(nuevo);
 	}
 	
 	@FXML
@@ -164,7 +173,7 @@ public class InsertSceneGnr implements Initializable{
 	
 				Integer horaF = Integer.parseInt(horaUnoFin.getText().substring(0, 2));
 				Integer minF = Integer.parseInt(horaUnoFin.getText().substring(2, 4));
-				DiaPoi diaAgregar = new DiaPoi(horaI, horaF, minI, minF, dia, null);
+				DiaPoi diaAgregar = new DiaPoi(horaI, horaF, minI, minF, dia,nuevo);
 				diasAbiertos.add(diaAgregar);
 				errorDia.setText("Dia agregado");
 				borrarCampos = true;
@@ -176,7 +185,7 @@ public class InsertSceneGnr implements Initializable{
 	
 				Integer horaF = Integer.parseInt(horaDosFin.getText().substring(0, 2));
 				Integer minF = Integer.parseInt(horaDosFin.getText().substring(2, 4));
-				DiaPoi diaAgregar = new DiaPoi(horaI, horaF, minI, minF, dia, null);
+				DiaPoi diaAgregar = new DiaPoi(horaI, horaF, minI, minF, dia,nuevo);
 				diasAbiertos.add(diaAgregar);
 				errorDia.appendText("Dia agregado");
 				borrarCampos = true;
@@ -244,9 +253,17 @@ public class InsertSceneGnr implements Initializable{
 		if(dia.equalsIgnoreCase("domingo"))
 			return 1;
 		return -1;
-	}
+	}	
 	
 	private void mostrarError(String error, TextArea donde){
 		donde.setText(error);
+	}
+	
+	public void agregarPalabras(String[] palabras) {
+		KeyWords key;
+		for (String keyWord : palabras) {
+			key = new KeyWords(keyWord,nuevo);
+			keywords.add(key);
+		}
 	}
 }
