@@ -50,6 +50,7 @@ public class modifPoiSceneFields implements Initializable {
 	
 	private String tipoStr;
 	private Poi poi;
+	private Poi nuevo;
 	private FXMLLoader loader;
 	private AnchorPane rootLayout;
 	private Stage stg;
@@ -114,26 +115,21 @@ public class modifPoiSceneFields implements Initializable {
 				poi.setTipo(tipoStr);
 				switch (poi.getTipo().toLowerCase()) {
 				case "cgp":
-					CGP nuevocgp =new CGP(poi);
-					Generales.modificarPoi(nuevocgp);
-					Main.pois.add(nuevocgp);
+					nuevo =new CGP(poi);
+
 					break;
 				case "colectivo":
-					ParadaColectivo nuevaparada = new ParadaColectivo(poi,80);
-					Generales.modificarPoi(nuevaparada);
-					Main.pois.add(nuevaparada);
+					nuevo = new ParadaColectivo(poi,80);
 					break;
 				case "bancos":
-					Bancos nuevobancos = new Bancos(poi);
-					Generales.modificarPoi(nuevobancos);
-					Main.pois.add(nuevobancos);
+					nuevo = new Bancos(poi);
 					break;
 				case "comercios":
-					LocalesComerciales nuevolocal = new LocalesComerciales(poi,"CINE");
-					Generales.modificarPoi(nuevolocal);
-					Main.pois.add(nuevolocal);
+					nuevo = new LocalesComerciales(poi,"CINE");
 					break;
 				}
+				Generales.modificarPoi(nuevo);
+				Main.pois.add(nuevo);
 				Main.pois.remove(poi);
 				
 			}
