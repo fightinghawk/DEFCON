@@ -28,14 +28,20 @@ public class KeyWords {
 	@Column(name="clave")
 	private String clave;
 	
-	@ManyToOne
-	@JoinColumn(name="pois_id")
-	private Poi poi;
+	@Column(name="owner_pois_id")
+	private int pois_id;
 	
-	public KeyWords(String clave, Poi poi)
+	public int getPois_id() {
+		return pois_id;
+	}
+
+	public void setPois_id(int pois_id) {
+		this.pois_id = pois_id;
+	}
+
+	public KeyWords(String clave)
 	{
 		this.clave = clave;
-		this.poi = poi;
 	}
 	
 	public String getClave() {

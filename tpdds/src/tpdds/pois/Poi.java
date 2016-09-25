@@ -18,6 +18,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -58,11 +59,13 @@ public class Poi implements Localizable {
 	@OneToOne(fetch = FetchType.EAGER,cascade= CascadeType.ALL)
 	@JoinColumn(name="geoPos_id")
 	private Location geoloc;
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="poi",cascade= CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER,cascade= CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)
+	@JoinColumn(name="owner_pois_id", referencedColumnName="pois_id")
 	private Collection<KeyWords> palabrasClaves = new HashSet<KeyWords>();
-	@OneToMany(fetch = FetchType.EAGER,mappedBy="poi",cascade= CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER,cascade= CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)
+	@JoinColumn(name="owner_pois_id", referencedColumnName="pois_id")
 	private Collection<DiaPoi> diasDisp = new ArrayList<DiaPoi>();
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)
@@ -76,20 +79,40 @@ public class Poi implements Localizable {
 	
 	
 	
-	public Poi(String nombre, String tipo, double radioDeCuadras,Direccion direccion, Location geoloc) {
+	public Poi(int iddb,String nombre, String tipo, double radioDeCuadras,Direccion direccion, Location geoloc,Collection<KeyWords> palabrasClaves,
+			Collection<DiaPoi> diasAbiertos, Collection<Servicios> servicios) {
+		this.iddb = iddb;
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.radioDeCuadras = radioDeCuadras;
 		this.direccion = direccion;
 		this.geoloc = geoloc;
+		this.palabrasClaves = palabrasClaves;
+		this.diasDisp = diasAbiertos;
+		this.servicios = servicios;
 	}
 	
 	public Poi(Poi datos){
-		this(datos.getNombre(),datos.getTipo(),
+		this(datos.getIddb(),datos.getNombre(),datos.getTipo(),
 				datos.getRadioDeCuadras(),
-				datos.getDireccion(),datos.getGeoloc());
+				datos.getDireccion(),datos.getGeoloc(),datos.getPalabrasClaves(),datos.getDiasDisp(),datos.getServicios());
 	}
 	
+	
+	
+	public Poi(String nombre, String tipoPoi, double radioDeCuadras, Direccion direccion, Location geoloc,
+			Collection<DiaPoi> diasAbiertos, Collection<Servicios> servicios) {
+		this.nombre = nombre;
+		this.tipo = tipoPoi;
+		this.radioDeCuadras = radioDeCuadras;
+		this.direccion = direccion;
+		this.geoloc = geoloc;
+		this.diasDisp = diasAbiertos;
+		this.servicios = servicios;
+	}
+
+
+
 	public Collection<KeyWords> getPalabrasClaves() {
 		return palabrasClaves;
 	}
@@ -170,7 +193,7 @@ public class Poi implements Localizable {
 	public void agregarPalabras(String claves) {
 		KeyWords key;
 		for (String keyWord : claves.split(",")) {
-			key = new KeyWords(keyWord,this);
+			key = new KeyWords(keyWord);
 			this.palabrasClaves.add(key);
 		}
 	}

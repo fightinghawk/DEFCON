@@ -34,18 +34,24 @@ public class DiaPoi{
 	private int minClose = 0;
 	@Column(name="dia")
 	private int dia;
-	@ManyToOne
-	@JoinColumn(name="pois_id")
-	private Poi poi;
+	@Column(name="owner_pois_id")
+	private int pois_id;
 	
-	public DiaPoi(int horaApertura, int horaClose, int minApertura, int minClose, int dia,Poi poi) {
+	public int getPois_id() {
+		return pois_id;
+	}
+
+	public void setPois_id(int pois_id) {
+		this.pois_id = pois_id;
+	}
+
+	public DiaPoi(int horaApertura, int horaClose, int minApertura, int minClose, int dia) {
 		super();
 		this.horaApertura = horaApertura;
 		this.horaClose = horaClose;
 		this.minApertura = minApertura;
 		this.minClose = minClose;
 		this.dia = dia;
-		this.poi = poi;
 	}
 
 	public int getHoraApertura() {

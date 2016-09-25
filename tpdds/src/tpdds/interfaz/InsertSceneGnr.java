@@ -137,7 +137,8 @@ public class InsertSceneGnr implements Initializable{
 		Direccion direccion  = new Direccion(calle.getText(), Integer.parseInt(altura.getText()), izquierda.getText(), derecha.getText(),"BARRIO");
 		Location geo = new Location(Double.parseDouble(latitud.getText()), Double.parseDouble(Longitud.getText()));
 		String claves = keyWord.getText();
-		poi = new Poi(nombre.getText(),tipoPoi,0.1,direccion,geo);
+		poi = new Poi(nombre.getText(),tipoPoi,0.1,direccion,geo,diasAbiertos,servicios);
+		poi.agregarPalabras(claves);
 		switch (tipoPoi.toLowerCase()) {
 		case "cgp":
 			nuevo = new CGP(poi);
@@ -153,9 +154,6 @@ public class InsertSceneGnr implements Initializable{
 			break;
 		
 		}
-		nuevo.agregarPalabras(claves);
-		nuevo.setDiasDisp(diasAbiertos);
-		nuevo.setServicios(servicios);
 		Generales.agregarPoi(nuevo);
 		Main.pois.add(nuevo);
 	}
@@ -174,7 +172,7 @@ public class InsertSceneGnr implements Initializable{
 	
 				Integer horaF = Integer.parseInt(horaUnoFin.getText().substring(0, 2));
 				Integer minF = Integer.parseInt(horaUnoFin.getText().substring(2, 4));
-				DiaPoi diaAgregar = new DiaPoi(horaI, horaF, minI, minF, dia,nuevo);
+				DiaPoi diaAgregar = new DiaPoi(horaI, horaF, minI, minF, dia);
 				diasAbiertos.add(diaAgregar);
 				errorDia.setText("Dia agregado");
 				borrarCampos = true;
@@ -186,7 +184,7 @@ public class InsertSceneGnr implements Initializable{
 	
 				Integer horaF = Integer.parseInt(horaDosFin.getText().substring(0, 2));
 				Integer minF = Integer.parseInt(horaDosFin.getText().substring(2, 4));
-				DiaPoi diaAgregar = new DiaPoi(horaI, horaF, minI, minF, dia,nuevo);
+				DiaPoi diaAgregar = new DiaPoi(horaI, horaF, minI, minF, dia);
 				diasAbiertos.add(diaAgregar);
 				errorDia.appendText("Dia agregado");
 				borrarCampos = true;
