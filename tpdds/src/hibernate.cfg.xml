@@ -38,6 +38,8 @@
         <mapping class= "tpdds.ubicacion.Direccion"/>
         <mapping class= "tpdds.ubicacion.Location"/>
         <mapping class= "tpdds.pois.componentes.Servicios"/>
+        <mapping class= "tpdds.interfaz.componentes.Busqueda"/>
+	    <mapping class= "tpdds.interfaz.componentes.Criterio"/>      
     </session-factory>
 
 </hibernate-configuration>

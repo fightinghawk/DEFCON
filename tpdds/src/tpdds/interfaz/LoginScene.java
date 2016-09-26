@@ -121,7 +121,7 @@ public class LoginScene implements Initializable {
 	
 	@FXML
 	public void buscarPOI(MouseEvent evento){
-		new BuscarPoiScene().buscarSceneRender();
+		new BuscarPoiScene(this.user).buscarSceneRender();
 	}
 	
 	@FXML

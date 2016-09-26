@@ -2,8 +2,12 @@ package tpdds.interfaz;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
 
 import java.util.List;
 
@@ -22,12 +26,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import tpdds.Usuarios.User;
 import tpdds.apiExterna.BancoExterna;
 import tpdds.apiExterna.jsonBancos;
 import tpdds.buscadores.Buscador;
 import tpdds.buscadores.KeySearch;
 import tpdds.buscadores.NameSeach;
 import tpdds.database.Generales;
+import tpdds.hibernate.HibernateSessionFactory;
+import tpdds.interfaz.componentes.Busqueda;
+import tpdds.interfaz.componentes.Criterio;
 import tpdds.pois.Poi;
 import tpdds.usoGlobal.BuscadorPoi;
 import tpdds.usoGlobal.Calculos;
@@ -69,7 +77,14 @@ public class BuscarPoiScene implements Initializable {
 	HashMap<String, Boolean> palabraOK = new HashMap<>();
 	ArrayList<BancoExterna> bancos;
 	ArrayList<Poi> resultados;
+	private Collection<Criterio> criterios;
+	private User usuario;
 
+	public BuscarPoiScene(User usuario) {
+		criterios = new ArrayList<>();
+		this.usuario = usuario;
+	}
+	
 	//IDCAMPO - SI ESTA OK O NO
 	public void buscarSceneRender(){
 		try{
@@ -110,60 +125,28 @@ public class BuscarPoiScene implements Initializable {
 	
 	@FXML
 	private void buscar(MouseEvent event){
+		long inicio = System.currentTimeMillis();
+		long fin;
 		ArrayList<Poi> resultados;
 		if(filtro !=null){
 			resultados = filtro.aplicarBuscador(Main.pois);
 		}else{
 			resultados = Main.pois;
-		}	
+		}
+		fin = System.currentTimeMillis();
+		int tiempoTotal = (int) (fin - inicio);
 		ObservableList<ObsPoi> resultadosTabla =  FXCollections.observableArrayList();
 		for (Poi poi : resultados) {
 			resultadosTabla.add(new ObsPoi(poi.getNombre(), poi.getDireccion().getCallePrincipal(), poi.getDireccion().getAltura(),Calculos.calcularDistanciaA(poi, Main.tablero),poi.getIddb()));
 		}
-		tablaMostrada.setItems(resultadosTabla);
-		
-//		tablaMostrada.getItems().clear();
-//		time_start = System.currentTimeMillis();
-//		String buscado;
-//		ArrayList<Poi> resultados = BuscadorPoi.buscar(buscado, Main.pois);
-//		ObservableList<ObsPoi> resultadosTabla =  FXCollections.observableArrayList();
-//		for (Poi poi : resultados) {
-//			resultadosTabla.add(new ObsPoi(poi.getNombre(), poi.getDireccion().getCallePrincipal(), poi.getDireccion().getAltura(),Calculos.calcularDistanciaA(poi, Main.tablero),poi.getIddb()));
-//		}
-//		//Negrada
-//		bancos = null;
-//		try{
-//			bancos = new ArrayList<>(new jsonBancos().FiltrarBancos("http://private-96b476-ddsutn.apiary-mock.com","banks","bancos",buscado));
-//		}catch(Exception ex){
-//			ex.printStackTrace();
-//		}
-//		// mas Negrada
-//		if(bancos!=null){
-//			for (Object bank : bancos){
-//				String[] temp = bank.toString().split("=");
-//				String[] temp2 = temp[1].split(",");
-//				String[] temp3 = temp[4].split(",");
-//				resultadosTabla.add(new ObsPoi(temp2[0],temp3[0],0,0,-1));
-//			}	
-//		}
-//		time_end = System.currentTimeMillis();
-//		time = (time_end - time_start)/1e6;
-//		
-//		if(time > SEGUNDOS_PARAMETRIZADOS/1e3)
-//		{
-//			frameworkEmails.Email.enviar("testingdds@fighthawk.com", "testuser", "jvillalba@fighthawk.com", "BUSQUEDA DEMORADA", "PROBLEMAS DE PERFOMANCE AL BUSCAR LA PALABRA: " + buscado);
-//		}
-//		
-//		tablaMostrada.setItems(resultadosTabla);
-//		resultados_final = resultadosTabla.size();
-//		if(!buscado.isEmpty()){
-//			Generales.registrarBusqueda(Main.tablero, buscado, resultados_final , time);
-//		}	
+		tablaMostrada.setItems(resultadosTabla);	
+		this.guardarBusqueda(new Busqueda(resultados.size(), tiempoTotal, 1, usuario.getUsuarioid() , criterios));
 	}
 	
 	@FXML
 	public void agregarCriterio(MouseEvent evento){
 		tablaBuscadores.getItems().add(this.chooseBuscador(criterio.getValue(), contenidoCriterio.getText()));
+		criterios.add(new Criterio(criterio.getValue(), contenidoCriterio.getText()));
 	}
 	
 
@@ -191,6 +174,7 @@ public class BuscarPoiScene implements Initializable {
 	public void reiniciarCriterios(MouseEvent evento){
 		filtro = null;
 		tablaBuscadores.getItems().clear();
+		criterios.clear();
 		this.buscar(null);
 	}
 	
@@ -204,6 +188,19 @@ public class BuscarPoiScene implements Initializable {
 			return new ObsBuscador(nombre, contenido);
 		default:
 			return null;
+		}
+	}
+	
+	private void guardarBusqueda(Busqueda busc){
+		Session ses = HibernateSessionFactory.getSession();
+		try{
+			ses.beginTransaction();
+			ses.save(busc);
+			ses.getTransaction().commit();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}finally{
+			ses.close();
 		}
 	}
 }
