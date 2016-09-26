@@ -1,4 +1,4 @@
-package tpdds.interfaz;
+package tpdds.interfaz.componentes;
 
 public class ObsResultadoFecha {
 

@@ -32,7 +32,7 @@ public class Busqueda {
 	private int terminal;
 	@Column(name="usuarios_user_id")
 	private String usuario;
-	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval=true)
 	@JoinColumn(name="busquedaid")
 	private Collection<Criterio> criterios;
 	
@@ -48,6 +48,42 @@ public class Busqueda {
 	}
 	
 	public Busqueda() {}
+
+	public int getId() {
+		return id;
+	}
+
+	public Date getFechaRealizada() {
+		return fechaRealizada;
+	}
+
+	public int getCantResultados() {
+		return cantResultados;
+	}
+
+	public double getDuracion() {
+		return duracion;
+	}
+
+	public int getTerminal() {
+		return terminal;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public Collection<Criterio> getCriterios() {
+		return criterios;
+	}
+	
+	public String getCriteriosToShow(){
+		String resultado = "";
+		for (Criterio criterio : criterios) {
+			resultado.concat("Tipo: " +criterio.getTipo() + " Contenido: "+ criterio.getContenido()+"\n");
+		}
+		return resultado;
+	}
 	
 	
 	

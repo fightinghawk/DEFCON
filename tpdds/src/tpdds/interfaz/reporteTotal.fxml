@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="367.0" prefWidth="601.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="595.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="resultadosTL" layoutX="45.0" layoutY="26.0" prefHeight="317.0" prefWidth="513.0">
+      <Text layoutX="52.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Criterios de busqueda:" wrappingWidth="174.6708984375" />
+      <Text layoutX="52.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:" wrappingWidth="78.67919921875" />
+      <Text layoutX="299.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha:" wrappingWidth="78.67919921875" />
+      <TextField fx:id="userBusc" layoutX="119.0" layoutY="82.0" prefHeight="31.0" prefWidth="166.0" promptText="Nombre Usuario" />
+      <TextField fx:id="diaBusc" layoutX="361.0" layoutY="82.0" prefHeight="31.0" prefWidth="79.0" promptText="Dia" />
+      <TextField fx:id="mesBusc" layoutX="455.0" layoutY="82.0" prefHeight="31.0" prefWidth="79.0" promptText="Mes" />
+      <TextField fx:id="anioBusc" layoutX="546.0" layoutY="82.0" prefHeight="31.0" prefWidth="79.0" promptText="Anio" />
+      <TableView fx:id="resultadosTabla" layoutX="52.0" layoutY="144.0" prefHeight="397.0" prefWidth="721.0">
         <columns>
-          <TableColumn fx:id="terminal" editable="false" prefWidth="75.0" text="Terminal" />
-          <TableColumn fx:id="totales" editable="false" prefWidth="75.0" text="Totales" />
+          <TableColumn fx:id="fechaCol" editable="false" prefWidth="159.0" resizable="false" text="Fecha" />
+          <TableColumn fx:id="userCol" editable="false" prefWidth="109.0" resizable="false" text="Usuario" />
+            <TableColumn fx:id="parametrosCol" editable="false" prefWidth="371.0" resizable="false" text="Parametros" />
+            <TableColumn fx:id="poisCol" editable="false" prefWidth="81.0" resizable="false" text="Pois" />
         </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
       </TableView>
+      <Button layoutX="665.0" layoutY="82.0" mnemonicParsing="false" onMouseClicked="#buscar" prefHeight="31.0" prefWidth="108.0" text="Buscar" />
    </children>
 </AnchorPane>

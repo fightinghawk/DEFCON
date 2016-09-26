@@ -28,6 +28,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tpdds.database.Generales;
 import tpdds.hibernate.HibernateSessionFactory;
+import tpdds.interfaz.componentes.ObsPoi;
 import tpdds.pois.Poi;
 import tpdds.usoGlobal.BuscadorPoi;
 import tpdds.usoGlobal.Calculos;

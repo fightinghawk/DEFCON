@@ -36,6 +36,8 @@ import tpdds.database.Generales;
 import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.interfaz.componentes.Busqueda;
 import tpdds.interfaz.componentes.Criterio;
+import tpdds.interfaz.componentes.ObsBuscador;
+import tpdds.interfaz.componentes.ObsPoi;
 import tpdds.pois.Poi;
 import tpdds.usoGlobal.BuscadorPoi;
 import tpdds.usoGlobal.Calculos;

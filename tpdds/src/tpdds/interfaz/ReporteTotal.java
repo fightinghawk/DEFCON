@@ -2,7 +2,12 @@ package tpdds.interfaz;
 
 import java.net.URL;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,21 +17,40 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tpdds.database.Generales;
+import tpdds.hibernate.HibernateSessionFactory;
+import tpdds.interfaz.componentes.Busqueda;
+import tpdds.interfaz.componentes.ObsBuscador;
+import tpdds.interfaz.componentes.ObsResultadoTotal;
+import tpdds.pois.Poi;
 
 public class ReporteTotal implements Initializable {
 
 	
 	@FXML
-	TableView<ObsResultadoTotal> resultadosTL;
+	TableView<ObsResultadoTotal> resultadosTabla;
 	@FXML
-	TableColumn<ObsResultadoTotal, String> terminal;
+	TableColumn<ObsResultadoTotal, String> fechaCol;
 	@FXML
-	TableColumn<ObsResultadoTotal,Object> totales;
+	TableColumn<ObsResultadoTotal, String> userCol;
+	@FXML
+	TableColumn<ObsResultadoTotal, String> parametrosCol;
+	@FXML
+	TableColumn<ObsResultadoTotal, String> poisCol;
+	@FXML
+	TextField userBusc;
+	@FXML
+	TextField diaBusc;
+	@FXML
+	TextField mesBusc;
+	@FXML
+	TextField anioBusc;
 	
 	Stage nuevaStage;
 	FXMLLoader loader;
@@ -51,25 +75,36 @@ public class ReporteTotal implements Initializable {
 		}
 	}
 	
+	@FXML
+	public void buscar(MouseEvent evento){
+		Session session = HibernateSessionFactory.getSession();
+		session.beginTransaction();
+		String sql = "SELECT * FROM BUSQUEDA" ;
+		SQLQuery query = session.createSQLQuery(sql);
+        query.addEntity(Busqueda.class);
+        ArrayList<Busqueda> poisRev = new  ArrayList<>(query.list());
+        session.getTransaction().commit();
+        session.close();
+        ObservableList<ObsResultadoTotal> resultados = FXCollections.observableArrayList();
+		for (Busqueda busqueda : poisRev) {
+			resultados.add(new ObsResultadoTotal(busqueda.getFechaRealizada().toString(), busqueda.getUsuario(), busqueda.getCriteriosToShow(), busqueda.getCantResultados()+""));
+		}
+		resultadosTabla.setItems(resultados);
+	}
 	
+	
+	private Query crearQuery() {
+		String peticionStr = "Select p From Busqueda p";
+		Query peticion = HibernateSessionFactory.getSession().createQuery(peticionStr);
+		return peticion;
+	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		terminal.setCellValueFactory(new PropertyValueFactory<>("terminal"));
-		totales.setCellValueFactory(new PropertyValueFactory<>("totales"));
-		resultadosTL.getItems().clear();
-		try{
-		ObservableList<ObsResultadoTotal> aMostrar = FXCollections.observableArrayList();
-		ResultSet resultados = Generales.obtenerReporteTerminales();
-	    while ( resultados.next() ) {
-	        	aMostrar.add(new ObsResultadoTotal(resultados.getObject("nombre"),resultados.getObject("totales")));
-	        	
-	    }
-		
-		resultadosTL.setItems(aMostrar);
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-		
+		fechaCol.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+		userCol.setCellValueFactory(new PropertyValueFactory<>("usuario"));
+		parametrosCol.setCellValueFactory(new PropertyValueFactory<>("parametros"));
+		poisCol.setCellValueFactory(new PropertyValueFactory<>("pois"));
 	}
 
 }

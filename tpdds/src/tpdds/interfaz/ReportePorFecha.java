@@ -20,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tpdds.database.Generales;
+import tpdds.interfaz.componentes.ObsResultadoFecha;
 
 public class ReportePorFecha implements Initializable {
 	

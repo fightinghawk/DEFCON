@@ -16,7 +16,7 @@ import org.hibernate.Session;
 import tpdds.dispositivo.Dispositivo;
 import tpdds.factory.POIFactory;
 import tpdds.hibernate.HibernateSessionFactory;
-import tpdds.interfaz.ObsResultadoFecha;
+import tpdds.interfaz.componentes.ObsResultadoFecha;
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;
 import tpdds.pois.LocalesComerciales;

@@ -27,6 +27,14 @@ public class Criterio {
 		this.tipo = tipo;
 		this.contenido = contenido;
 	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public String getContenido() {
+		return contenido;
+	}
 	
 	
 	
