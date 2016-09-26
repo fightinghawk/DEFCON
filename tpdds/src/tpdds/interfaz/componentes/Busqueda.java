@@ -33,7 +33,7 @@ public class Busqueda {
 	@Column(name="usuarios_user_id")
 	private String usuario;
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
-	@JoinColumn(name="busqueda_id")
+	@JoinColumn(name="busquedaid")
 	private Collection<Criterio> criterios;
 	
 	public Busqueda(int cantResultados, double duracion, int terminal, String usuario,

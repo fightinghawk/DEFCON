@@ -140,7 +140,8 @@ public class BuscarPoiScene implements Initializable {
 			resultadosTabla.add(new ObsPoi(poi.getNombre(), poi.getDireccion().getCallePrincipal(), poi.getDireccion().getAltura(),Calculos.calcularDistanciaA(poi, Main.tablero),poi.getIddb()));
 		}
 		tablaMostrada.setItems(resultadosTabla);	
-		this.guardarBusqueda(new Busqueda(resultados.size(), tiempoTotal, 1, usuario.getUsuarioid() , criterios));
+		if(event!=null)
+			this.guardarBusqueda(new Busqueda(resultados.size(), tiempoTotal, 1, usuario.getUsuarioid() , criterios));
 	}
 	
 	@FXML
