@@ -33,6 +33,7 @@ import tpdds.buscadores.Buscador;
 import tpdds.buscadores.KeySearch;
 import tpdds.buscadores.NameSeach;
 import tpdds.database.Generales;
+import tpdds.frameworkEmails.Email;
 import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.interfaz.componentes.Busqueda;
 import tpdds.interfaz.componentes.Criterio;
@@ -46,7 +47,7 @@ public class BuscarPoiScene implements Initializable {
 	
 	private static final double SEGUNDOS_PARAMETRIZADOS = 1;
 	long time_start, time_end;
-	double time;
+	double tiempoTotal;
 	Integer resultados_final;
 	private Buscador filtro;
 	
@@ -127,21 +128,24 @@ public class BuscarPoiScene implements Initializable {
 	
 	@FXML
 	private void buscar(MouseEvent event){
-		long inicio = System.currentTimeMillis();
-		long fin;
+		time_start = System.currentTimeMillis();
 		ArrayList<Poi> resultados;
 		if(filtro !=null){
 			resultados = filtro.aplicarBuscador(Main.pois);
 		}else{
 			resultados = Main.pois;
 		}
-		fin = System.currentTimeMillis();
-		int tiempoTotal = (int) (fin - inicio);
+		time_end = System.currentTimeMillis();
+		tiempoTotal = (time_end - time_start)/1e6;
 		ObservableList<ObsPoi> resultadosTabla =  FXCollections.observableArrayList();
 		for (Poi poi : resultados) {
 			resultadosTabla.add(new ObsPoi(poi.getNombre(), poi.getDireccion().getCallePrincipal(), poi.getDireccion().getAltura(),Calculos.calcularDistanciaA(poi, Main.tablero),poi.getIddb()));
 		}
-		tablaMostrada.setItems(resultadosTabla);	
+		tablaMostrada.setItems(resultadosTabla);
+		if(tiempoTotal > SEGUNDOS_PARAMETRIZADOS/1e3)
+		{
+			Email.enviar("testingdds@fighthawk.com", "testuser", "jvillalba@fighthawk.com", "BUSQUEDA DEMORADA", "PROBLEMAS DE PERFOMANCE");
+		}
 		if(event!=null)
 			this.guardarBusqueda(new Busqueda(resultados.size(), tiempoTotal, 1, usuario.getUsuarioid() , criterios));
 	}
