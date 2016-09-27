@@ -10,8 +10,8 @@
 <AnchorPane prefHeight="622.0" prefWidth="785.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
    <children>
       <Text layoutX="75.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dia:" wrappingWidth="42.7822265625" />
-      <TextField fx:id="diaBuscado" layoutX="118.0" layoutY="49.0" prefHeight="31.0" prefWidth="88.0" />
-      <TextField fx:id="mesBuscado" layoutX="278.0" layoutY="49.0" prefHeight="31.0" prefWidth="88.0" />
+      <ComboBox fx:id="diaBuscado" layoutX="118.0" layoutY="49.0" prefHeight="31.0" prefWidth="88.0" />
+      <ComboBox fx:id="mesBuscado" layoutX="278.0" layoutY="49.0" prefHeight="31.0" prefWidth="88.0" />
       <Text layoutX="235.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mes:" wrappingWidth="42.7822265625" />
       <TextField fx:id="anioBuscado" layoutX="429.0" layoutY="49.0" prefHeight="31.0" prefWidth="88.0" />
       <Text layoutX="386.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Año:" wrappingWidth="42.7822265625" />

@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -26,9 +27,9 @@ import tpdds.interfaz.componentes.reporteFecha;
 public class ReportePorFecha implements Initializable {
 	
 	@FXML
-	TextField diaBuscado;
+	ComboBox<String> diaBuscado;
 	@FXML
-	TextField mesBuscado;
+	ComboBox<String> mesBuscado;
 	@FXML
 	TextField anioBuscado;
 	@FXML
@@ -63,6 +64,8 @@ public class ReportePorFecha implements Initializable {
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		diaBuscado.getItems().addAll("0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31");
+		mesBuscado.getItems().addAll("0","1","2","3","4","5","6","7","8","9","10","11","12");
 		fecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
 		cantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
 		
@@ -73,7 +76,7 @@ public class ReportePorFecha implements Initializable {
 		resultado.getItems().clear();
 		try{
 		ObservableList<ObsResultadoFecha> aMostrar = FXCollections.observableArrayList();
-		ArrayList<reporteFecha> resultados = Generales.obtenerReporteFecha(Integer.parseInt(diaBuscado.getText()), Integer.parseInt(mesBuscado.getText()), Integer.parseInt(anioBuscado.getText()));
+		ArrayList<reporteFecha> resultados = Generales.obtenerReporteFecha(Integer.parseInt(diaBuscado.getSelectionModel().getSelectedItem()), Integer.parseInt(mesBuscado.getSelectionModel().getSelectedItem()), Integer.parseInt(anioBuscado.getText()));
 	    for( reporteFecha resultado : resultados ) {
 	        aMostrar.add(new ObsResultadoFecha(resultado.getFecha(),resultado.getTotales()));
 	        	
