@@ -6,9 +6,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import tpdds.pois.Poi;
+import tpdds.pois.componentes.KeyWords;
 import tpdds.database.Generales;
 import tpdds.dispositivo.Dispositivo;
 import tpdds.pois.LocalesComerciales;
@@ -18,35 +20,37 @@ public class ActualizacionLocalesComerciales extends Proceso implements ComandoE
 	private String ubicacionArchivo;
 	private ArrayList<Poi> listaPois;
 	private BufferedReader bufferedReader;
-	private HashSet<String> palabrasClave;
+	private Collection<KeyWords> palabrasClaves = new HashSet<KeyWords>();
 
-	public ActualizacionLocalesComerciales(String nombreProceso, String usuario, String resultado, int fechaInicio,
-			int fechaFin, String ubicacionArchivo) {
-		super(nombreProceso);
+	public ActualizacionLocalesComerciales(String ubicacionArchivo) {
+		super("Actualizacion Local Comercial");
 		this.setUbicacionArchivo(ubicacionArchivo);
 	}
 
 	@Override
-	public void ejecutarme() throws IOException, ClassNotFoundException, SQLException {
+	public void ejecutarme(){
+		System.out.println("miau");
+	}
+	/*public void ejecutarme() throws IOException, ClassNotFoundException, SQLException {
 		listaPois.addAll(Generales.cargarPois());
 		int control = 0;
 		String lineaArchivo;
 		FileReader fr = new FileReader(this.getUbicacionArchivo());
 		String nombreSucursal;
 		String[] keyWords;
-		palabrasClave = new HashSet<String>();
 		bufferedReader = new BufferedReader(fr);
 		while((lineaArchivo = bufferedReader.readLine())!=null){
 			control = 1;
 			nombreSucursal = lineaArchivo.split(";")[0];
 			keyWords = (lineaArchivo.split(";")[1].split(" "));
-			palabrasClave.addAll(this.deListaAHashSet(keyWords));
+			palabrasClaves.addAll(this.deListaAHashSet(keyWords));
 			Poi poiBuscado = Dispositivo.buscarPOI(nombreSucursal, listaPois);
 			if(poiBuscado!=null){
-				poiBuscado.setPalabrasClaves(palabrasClave);
+				poiBuscado.setPalabrasClaves(palabrasClaves);
 			}else{
-				LocalesComerciales localNuevo = new LocalesComerciales(nombreSucursal, null, null, null);
-				localNuevo.setPalabrasClaves(palabrasClave);
+				Poi datosPoi = new Poi(null,);
+				LocalesComerciales localNuevo = new LocalesComerciales(null, null);
+				localNuevo.setPalabrasClaves(palabrasClaves);
 			}
 		}
 		if(control==1){
@@ -57,22 +61,12 @@ public class ActualizacionLocalesComerciales extends Proceso implements ComandoE
 		Calendar fecha = GregorianCalendar.getInstance();
 		this.setFechaFin(fecha);
 	}
-
+	*/
 	public String getUbicacionArchivo() {
 		return ubicacionArchivo;
 	}
 
 	public void setUbicacionArchivo(String ubicacionArchivo) {
 		this.ubicacionArchivo = ubicacionArchivo;
-	}
-	
-	public HashSet<String> deListaAHashSet(String[] listaPalabras) {
-		HashSet<String> hs = new HashSet<String>();
-		int i;
-		for(i=0; i<listaPalabras.length; i+=1){
-			hs.add(listaPalabras[i]);
-		}
-		return hs;
-	}
-	
+	}	
 }
