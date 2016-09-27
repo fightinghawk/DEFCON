@@ -78,6 +78,13 @@ public class Busqueda {
 		return criterios;
 	}
 	
+	public String criteriosToShow(){
+		String aMostrar = "";
+		for (Criterio criterio : criterios) {
+			aMostrar += ("Tipo: " + criterio.getTipo()+ " Contenido: " + criterio.getContenido()+"\n");
+		}
+		return aMostrar;
+	}
 	
 	
 	

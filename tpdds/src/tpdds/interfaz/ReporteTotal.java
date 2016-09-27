@@ -3,6 +3,7 @@ package tpdds.interfaz;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -86,19 +87,27 @@ public class ReporteTotal implements Initializable {
 	public void buscar(MouseEvent evento){
 		resultadosTabla.getItems().clear();
         ObservableList<ObsResultadoTotal> resultados = FXCollections.observableArrayList();
-        ArrayList<Historial> historiales = Generales.obtenerHistorial(userBusc.getText());
-		for (Historial historial : historiales) {
-
-			resultados.add(new ObsResultadoTotal(historial.getFecha(),historial.getUsuarios_user_id(),historial.getCriteriosShow(),historial.getResultados()));
+        //ArrayList<Historial> historiales = Generales.obtenerHistorial(userBusc.getText());
+		ArrayList<Busqueda> busquedasRealizadas = (ArrayList<Busqueda>) this.doQuery(userBusc.getText()); 
+        for (Busqueda busqueda : busquedasRealizadas) {
+			resultados.add(new ObsResultadoTotal(busqueda.getFechaRealizada().toString(),busqueda.getUsuario(),busqueda.criteriosToShow(),busqueda.getCantResultados()));
 		}
 		resultadosTabla.setItems(resultados);
 	}
 	
 	
-	private Query crearQuery() {
-		String peticionStr = "Select p From Busqueda p";
-		Query peticion = HibernateSessionFactory.getSession().createQuery(peticionStr);
-		return peticion;
+//	private Query crearQuery() {
+//		String peticionStr = "Select p From Busqueda p";
+//		Query peticion = HibernateSessionFactory.getSession().createQuery(peticionStr);
+//	}
+	
+	private Collection<Busqueda> doQuery(String nombre){
+		Session session = HibernateSessionFactory.getSession();
+		Query pedido = session.createQuery("select p from Busqueda p where p.usuario = :nombre").setParameter("nombre", nombre);
+		@SuppressWarnings("unchecked")
+		List<Busqueda> resultados = pedido.list();
+		session.close();
+		return resultados;
 	}
 
 	@Override
@@ -106,7 +115,7 @@ public class ReporteTotal implements Initializable {
 		fechaCol.setCellValueFactory(new PropertyValueFactory<>("fecha"));
 		userCol.setCellValueFactory(new PropertyValueFactory<>("usuario"));
 		parametrosCol.setCellValueFactory(new PropertyValueFactory<>("parametros"));
-		poisCol.setCellValueFactory(new PropertyValueFactory<>("pois"));
+		poisCol.setCellValueFactory(new PropertyValueFactory<>("totales"));
 	}
 
 }

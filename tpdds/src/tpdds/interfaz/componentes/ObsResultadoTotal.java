@@ -29,8 +29,8 @@ public class ObsResultadoTotal {
 		return parametros;
 	}
 
-	public Integer getTotales() {
-		return totales;
+	public String getTotales() {
+		return totales.toString();
 	}
 	
 	
