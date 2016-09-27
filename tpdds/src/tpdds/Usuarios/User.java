@@ -2,6 +2,8 @@ package tpdds.Usuarios;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +14,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import tpdds.proceso.ActualizacionLocalesComerciales;
+import tpdds.proceso.BajaDePois;
 import tpdds.proceso.Proceso;
 
 @Entity
@@ -107,6 +111,14 @@ public class User{
 	public void setEmailUsuario(String emailUsuario) {
 		this.emailUsuario = emailUsuario;
 	}
+	
+	public static ArrayList<Proceso> crearProcesos(){
+		Proceso baja = new BajaDePois();
+		ArrayList<Proceso> listaProcesos = new ArrayList<Proceso>();
+		listaProcesos.add(baja);
+		return listaProcesos;
+	}
+	
 	public boolean hasPermiso(String permiso){
 		for (Permisos permisoAComparar : this.tipoUsuario.getPermisosUsuarios()) {
 			if(permisoAComparar.getPermiso().equalsIgnoreCase(permiso))

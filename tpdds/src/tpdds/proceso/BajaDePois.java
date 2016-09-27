@@ -11,7 +11,7 @@ public class BajaDePois extends Proceso {
 	
 	private ArrayList<Poi> listaPois;
 	
-	public BajaDePois(String nombreProceso, String usuario, String resultado, int fechaInicio, int fechaFin) {
+	public BajaDePois() {
 		super("Baja de Pois");
 	}
 

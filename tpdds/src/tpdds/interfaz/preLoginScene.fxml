@@ -12,8 +12,8 @@
             <Text layoutX="29.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID de Usuario:" wrappingWidth="99.6708984375" />
             <Text layoutX="29.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="99.6708984375" />
             <TextField fx:id="user" layoutX="136.0" layoutY="61.0" promptText="Usuario" />
-            <Button fx:id="submit" layoutX="29.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#submitBoton" prefHeight="31.0" prefWidth="88.0" text="Entrar" />
             <PasswordField id="password" fx:id="password" layoutX="136.0" layoutY="131.0" promptText="Password" />
+            <Button fx:id="submit" layoutX="29.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#submitBoton" prefHeight="31.0" prefWidth="88.0" text="Entrar" />
          </children>
       </Pane>
       <Pane layoutX="361.0" layoutY="45.0" prefHeight="486.0" prefWidth="437.0">

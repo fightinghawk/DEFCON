@@ -34,6 +34,7 @@ public class Main extends Application {
 			Comuna.inicializarComunas();
 			tablero = archivos.obtenerTablero();
 			pois = Generales.cargarPois();
+			listaProcesos = User.crearProcesos();
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
