@@ -11,8 +11,8 @@
    <children>
       <Text layoutX="68.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frase:" wrappingWidth="50.6708984375" />
       <Text layoutX="364.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terminal:" wrappingWidth="98.6708984375" />
-      <TextField fx:id="frase" layoutX="147.0" layoutY="71.0" promptText="dinero" />
-      <TextField fx:id="terminal" layoutX="446.0" layoutY="71.0" promptText="nombre_terminal" />
+      <TextField fx:id="frase" layoutX="147.0" layoutY="71.0" promptText="buscar..." />
+      <ComboBox fx:id="terminal" layoutX="446.0" layoutY="71.0"/>
       <TableView fx:id="resultadoTL" layoutX="47.0" layoutY="140.0" prefHeight="303.0" prefWidth="444.0">
         <columns>
           <TableColumn fx:id="cantidad" prefWidth="75.0" text="Cantidad Resultados Parciales" />

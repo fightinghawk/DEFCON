@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -31,7 +32,7 @@ public class ReportePorTerminal implements Initializable {
 	@FXML
 	TextField frase;
 	@FXML
-	TextField terminal;
+	ComboBox<String> terminal;
 	@FXML
 	TableView<ObsResultadoTerminal> resultadoTL;
 	@FXML
@@ -62,6 +63,7 @@ public class ReportePorTerminal implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		terminal.getItems().addAll(Generales.obtenerTerminales());
 		cantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
 		
 	}
@@ -72,7 +74,7 @@ public class ReportePorTerminal implements Initializable {
 		resultadoTL.getItems().clear();
 		try{
 		ObservableList<ObsResultadoTerminal> aMostrar = FXCollections.observableArrayList();
-		ArrayList<reporteTerminal> resultados = Generales.obtenerReporteBusquedayTerminal(frase.getText(), terminal.getText());
+		ArrayList<reporteTerminal> resultados = Generales.obtenerReporteBusquedayTerminal(frase.getText(), terminal.getSelectionModel().getSelectedItem());
 	    for( reporteTerminal resultado : resultados ) {
 	        aMostrar.add(new ObsResultadoTerminal(resultado.getResultados()));
 	        	

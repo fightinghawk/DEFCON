@@ -56,6 +56,18 @@ public class Generales{
 		return poisRev;
 	}
 	
+	public static  ArrayList<String> obtenerTerminales(){
+		Session session = HibernateSessionFactory.getSession();
+		session.beginTransaction();
+		String sql = "SELECT nombre FROM terminales";
+		SQLQuery query = session.createSQLQuery(sql);
+		query.addScalar("nombre", StringType.INSTANCE);
+        ArrayList<String> terminales = new  ArrayList<String>(query.list());
+        session.getTransaction().commit();
+        session.close();
+		return terminales;
+	}
+	
 	public static void agregarPoi(Poi poi){
 		Session session = HibernateSessionFactory.getSession();
 		session.beginTransaction();
