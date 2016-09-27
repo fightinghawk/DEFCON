@@ -1,11 +1,13 @@
 package tpdds.interfaz.componentes;
 
+import java.math.BigDecimal;
+
 public class ObsResultadoFecha {
 
 	private String fecha;
-	private Object cantidad;
+	private BigDecimal cantidad;
 	
-	public ObsResultadoFecha(String fecha, Object object) {
+	public ObsResultadoFecha(String fecha, BigDecimal object) {
 		super();
 		this.fecha = fecha;
 		this.cantidad = object;
@@ -15,7 +17,7 @@ public class ObsResultadoFecha {
 		return fecha;
 	}
 
-	public Object getCantidad() {
+	public BigDecimal getCantidad() {
 		return cantidad;
 	}
 	

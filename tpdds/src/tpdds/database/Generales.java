@@ -12,11 +12,15 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.transform.Transformers;
+import org.hibernate.type.BigDecimalType;
+import org.hibernate.type.StringType;
 
 import tpdds.dispositivo.Dispositivo;
 import tpdds.factory.POIFactory;
 import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.interfaz.componentes.ObsResultadoFecha;
+import tpdds.interfaz.componentes.reporteFecha;
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;
 import tpdds.pois.LocalesComerciales;
@@ -65,6 +69,78 @@ public class Generales{
         session.getTransaction().commit();
         session.close();
 	}
+	
+	public static ArrayList<reporteFecha> obtenerReporteFecha(Integer dia,Integer mes,Integer anio) {
+		
+		ArrayList<reporteFecha> result = new ArrayList<reporteFecha>();
+            
+
+		if(anio != 0 && mes != 0 && dia !=0)
+		{
+		 /*searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (dia=? AND mes=? AND anio=?) GROUP BY dia,mes,anio");
+		searchr.setInt(1, dia);
+		searchr.setInt(2, mes);
+		searchr.setInt(3, anio);*/
+			Session session = HibernateSessionFactory.getSession();
+			session.beginTransaction();
+			String sql = "SELECT fecha, sum(resultados) AS totales FROM busqueda WHERE DAY(fecha) = :dia AND MONTH(fecha) = :mes AND YEAR(fecha) = :anio   GROUP BY fecha";
+			SQLQuery query = session.createSQLQuery(sql);
+			query.setParameter("dia", dia);
+			query.setParameter("mes", mes);
+			query.setParameter("anio", anio);
+			query.addScalar("fecha", StringType.INSTANCE);
+			query.addScalar("totales", BigDecimalType.INSTANCE);
+			query.setResultTransformer(Transformers.aliasToBean(reporteFecha.class));
+			result = new ArrayList<reporteFecha>(query.list());
+		}
+		else
+		{
+			if(anio != 0 && mes != 0 && dia ==0)
+			{
+			 /*searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (mes=? AND anio=?) GROUP BY dia,mes,anio ORDER BY dia ASC");
+			searchr.setInt(1, mes);
+			searchr.setInt(2, anio);*/
+				Session session = HibernateSessionFactory.getSession();
+				session.beginTransaction();
+				String sql = "SELECT DAY(fecha) AS fecha, sum(resultados) AS totales FROM busqueda WHERE MONTH(fecha) = :mes AND YEAR(fecha) = :anio   GROUP BY DAY(fecha) ORDER BY DAY(fecha) ASC";
+				SQLQuery query = session.createSQLQuery(sql);
+				query.setParameter("mes", mes);
+				query.setParameter("anio", anio);
+				query.addScalar("fecha", StringType.INSTANCE);
+				query.addScalar("totales", BigDecimalType.INSTANCE);
+				query.setResultTransformer(Transformers.aliasToBean(reporteFecha.class));
+				result = new ArrayList<reporteFecha>(query.list());
+			}
+			else
+			{
+				if(anio != 0)
+				{
+					Session session = HibernateSessionFactory.getSession();
+					session.beginTransaction();
+					String sql = "SELECT MONTH(fecha) AS fecha, sum(resultados) AS totales FROM busqueda WHERE YEAR(fecha) = :anio GROUP BY MONTH(fecha) ORDER BY MONTH(fecha) ASC";
+					SQLQuery query = session.createSQLQuery(sql);
+					query.setParameter("anio", anio);
+					query.addScalar("fecha", StringType.INSTANCE);
+					query.addScalar("totales", BigDecimalType.INSTANCE);
+					query.setResultTransformer(Transformers.aliasToBean(reporteFecha.class));
+					result = new ArrayList<reporteFecha>(query.list());
+				}
+				else
+				{
+					Session session = HibernateSessionFactory.getSession();
+					session.beginTransaction();
+					String sql = "SELECT YEAR(fecha) AS fecha, sum(resultados) AS totales FROM busqueda GROUP BY YEAR(fecha) ORDER BY YEAR(fecha) ASC";
+					SQLQuery query = session.createSQLQuery(sql);
+					query.addScalar("fecha", StringType.INSTANCE);
+					query.addScalar("totales", BigDecimalType.INSTANCE);
+					query.setResultTransformer(Transformers.aliasToBean(reporteFecha.class));
+					result = new ArrayList<reporteFecha>(query.list());
+				}
+				}
+			}
+		return result;
+	}
+
 	
 	/*public static void registrarBusqueda(Dispositivo tablero,String busqueda,Integer resultados,double time) throws SQLException, ClassNotFoundException{
 		//Fecha Actual Java

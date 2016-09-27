@@ -21,6 +21,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tpdds.database.Generales;
 import tpdds.interfaz.componentes.ObsResultadoFecha;
+import tpdds.interfaz.componentes.reporteFecha;
 
 public class ReportePorFecha implements Initializable {
 	
@@ -72,9 +73,9 @@ public class ReportePorFecha implements Initializable {
 		resultado.getItems().clear();
 		try{
 		ObservableList<ObsResultadoFecha> aMostrar = FXCollections.observableArrayList();
-		ResultSet resultados = Generales.obtenerReporteFecha(Integer.parseInt(diaBuscado.getText()), Integer.parseInt(mesBuscado.getText()), Integer.parseInt(anioBuscado.getText()));
-	    while ( resultados.next() ) {
-	        	aMostrar.add(new ObsResultadoFecha(""+resultados.getObject("dia")+"/"+resultados.getObject("mes")+"/"+resultados.getObject("anio"),resultados.getObject("totales")));
+		ArrayList<reporteFecha> resultados = Generales.obtenerReporteFecha(Integer.parseInt(diaBuscado.getText()), Integer.parseInt(mesBuscado.getText()), Integer.parseInt(anioBuscado.getText()));
+	    for( reporteFecha resultado : resultados ) {
+	        aMostrar.add(new ObsResultadoFecha(resultado.getFecha(),resultado.getTotales()));
 	        	
 	    }
 		
