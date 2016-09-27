@@ -186,6 +186,7 @@ public class Generales{
 		ArrayList<reporteTerminal> resultados = new ArrayList<reporteTerminal>(query.list());
 		result = new ArrayList<reporteTerminal>(query.list());
         session.getTransaction().commit();
+        session.close();
 	    return resultados;
 	}
 }
