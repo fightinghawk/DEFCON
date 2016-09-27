@@ -74,7 +74,7 @@ public class ReportePorTerminal implements Initializable {
 		ObservableList<ObsResultadoTerminal> aMostrar = FXCollections.observableArrayList();
 		ArrayList<reporteTerminal> resultados = Generales.obtenerReporteBusquedayTerminal(frase.getText(), terminal.getText());
 	    for( reporteTerminal resultado : resultados ) {
-	        aMostrar.add(new ObsResultadoTerminal(resultado.getTotales()));
+	        aMostrar.add(new ObsResultadoTerminal(resultado.getResultados()));
 	        	
 	    }
 		

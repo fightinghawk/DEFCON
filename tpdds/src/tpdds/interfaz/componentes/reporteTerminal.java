@@ -3,20 +3,22 @@ package tpdds.interfaz.componentes;
 import java.math.BigDecimal;
 
 public class reporteTerminal {
-	BigDecimal totales;
+	BigDecimal resultados;
 
 	/**
-	 * @return the totales
+	 * @return the resultados
 	 */
-	public BigDecimal getTotales() {
-		return totales;
+	public BigDecimal getResultados() {
+		return resultados;
 	}
 
 	/**
-	 * @param totales the totales to set
+	 * @param resultados the resultados to set
 	 */
-	public void setTotales(BigDecimal totales) {
-		this.totales = totales;
+	public void setResultados(BigDecimal resultados) {
+		this.resultados = resultados;
 	}
+
+
 
 }

@@ -174,11 +174,18 @@ public class Generales{
 	}
 	
 	public static ArrayList<reporteTerminal> obtenerReporteBusquedayTerminal(String buscada,String terminal) {
+		ArrayList<reporteTerminal> result = new ArrayList<reporteTerminal>();
 		Session session = HibernateSessionFactory.getSession();
 		session.beginTransaction();
-		ArrayList<reporteTerminal> resultados = new ArrayList<reporteTerminal>();
-	   
-
+		String sql = "SELECT sum(b.resultados) AS resultados FROM busqueda b,terminales t,criteriosdebusqueda c WHERE t.nombre = :terminal_nombre AND b.terminales_id = t.id AND c.busquedaid = b.id AND c.cri_contenido = :busqueda group by month(b.fecha) order by  month(b.fecha) asc";
+		SQLQuery query = session.createSQLQuery(sql);
+		query.setParameter("terminal_nombre", terminal);
+		query.setParameter("busqueda", buscada);
+		query.addScalar("resultados", BigDecimalType.INSTANCE);
+		query.setResultTransformer(Transformers.aliasToBean(reporteTerminal.class));
+		ArrayList<reporteTerminal> resultados = new ArrayList<reporteTerminal>(query.list());
+		result = new ArrayList<reporteTerminal>(query.list());
+        session.getTransaction().commit();
 	    return resultados;
 	}
 }
