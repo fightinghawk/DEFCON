@@ -1,8 +1,10 @@
 package tpdds.interfaz;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -88,7 +90,7 @@ public class ReporteTotal implements Initializable {
 		resultadosTabla.getItems().clear();
         ObservableList<ObsResultadoTotal> resultados = FXCollections.observableArrayList();
         //ArrayList<Historial> historiales = Generales.obtenerHistorial(userBusc.getText());
-		ArrayList<Busqueda> busquedasRealizadas = (ArrayList<Busqueda>) this.doQuery(userBusc.getText()); 
+		ArrayList<Busqueda> busquedasRealizadas = (ArrayList<Busqueda>) this.elegirBusquedaAndDoIt();
         for (Busqueda busqueda : busquedasRealizadas) {
 			resultados.add(new ObsResultadoTotal(busqueda.getFechaRealizada().toString(),busqueda.getUsuario(),busqueda.criteriosToShow(),busqueda.getCantResultados()));
 		}
@@ -96,10 +98,13 @@ public class ReporteTotal implements Initializable {
 	}
 	
 	
-//	private Query crearQuery() {
-//		String peticionStr = "Select p From Busqueda p";
-//		Query peticion = HibernateSessionFactory.getSession().createQuery(peticionStr);
-//	}
+	private Collection<Busqueda> doQuery() {
+		Session session = HibernateSessionFactory.getSession();
+		Query pedido = session.createQuery("select p from Busqueda p");
+		List<Busqueda> resultados = pedido.list();
+		session.close();
+		return resultados;
+	}
 	
 	private Collection<Busqueda> doQuery(String nombre){
 		Session session = HibernateSessionFactory.getSession();
@@ -108,6 +113,58 @@ public class ReporteTotal implements Initializable {
 		List<Busqueda> resultados = pedido.list();
 		session.close();
 		return resultados;
+	}
+	
+	private Collection<Busqueda> doQuery(String nombre, Date fecha){
+		Session session = HibernateSessionFactory.getSession();
+		Query pedido = session.createQuery("SELECT p FROM Busqueda p WHERE p.usuario = :nombre AND p.fechaRealizada = :fecha");
+		pedido.setParameter("nombre", nombre);
+		pedido.setParameter("fecha", fecha);
+		@SuppressWarnings("unchecked")
+		List<Busqueda> resultados = pedido.list();
+		session.close();
+		return resultados;
+	}
+	
+	private Collection<Busqueda> elegirBusquedaAndDoIt(){
+		if(userBusc.getText().isEmpty()){
+			return this.doQuery();
+		}
+		else if(fechaCompletaYValida()){
+			return this.doQuery(userBusc.getText(), this.crearFecha(Integer.parseInt(diaBusc.getText()),
+					Integer.parseInt(mesBusc.getText()), Integer.parseInt(anioBusc.getText())));
+		}else{
+			return this.doQuery(userBusc.getText());
+		}
+	}
+	
+	private boolean fechaCompletaYValida(){
+		try{
+			if(diaBusc.getText().isEmpty() || !(Integer.parseInt(diaBusc.getText())<31)){
+				return false;
+			}
+			if(mesBusc.getText().isEmpty() || !(Integer.parseInt(mesBusc.getText())<12)){
+				return false;
+			}
+			if(anioBusc.getText().isEmpty() || !(anioBusc.getText().length() == 4)){
+				//Pruebo convertirlo a int
+				Integer.parseInt(anioBusc.getText());
+				return false;
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	private Date crearFecha(int dia, int mes, int anio){
+		Calendar fechaMake = Calendar.getInstance();
+		fechaMake.clear();
+		fechaMake.set(Calendar.DAY_OF_MONTH, dia);
+		fechaMake.set(Calendar.MONTH, mes);
+		fechaMake.set(Calendar.YEAR, anio);
+		return new Date(fechaMake.getTime().getTime());
 	}
 
 	@Override
