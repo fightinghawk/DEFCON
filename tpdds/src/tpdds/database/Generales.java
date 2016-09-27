@@ -1,5 +1,6 @@
 package tpdds.database;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,18 +10,27 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.Transformers;
 import org.hibernate.type.BigDecimalType;
+import org.hibernate.type.DateType;
+import org.hibernate.type.IntegerType;
 import org.hibernate.type.StringType;
 
 import tpdds.dispositivo.Dispositivo;
 import tpdds.factory.POIFactory;
 import tpdds.hibernate.HibernateSessionFactory;
+import tpdds.interfaz.componentes.Busqueda;
+import tpdds.interfaz.componentes.Criterio;
+import tpdds.interfaz.componentes.Historial;
 import tpdds.interfaz.componentes.ObsResultadoFecha;
 import tpdds.interfaz.componentes.reporteFecha;
+import tpdds.interfaz.componentes.reporteTerminal;
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;
 import tpdds.pois.LocalesComerciales;
@@ -70,6 +80,27 @@ public class Generales{
         session.close();
 	}
 	
+	public static ArrayList<Historial> obtenerHistorial(String usuario){
+		ArrayList<Historial> result = new ArrayList<Historial>();
+		Session session = HibernateSessionFactory.getSession();
+		session.beginTransaction();
+		String sql = "SELECT b.fecha,b.usuarios_user_id,c.cri_tipo,c.cri_contenido,b.resultados from busqueda b, criteriosdebusqueda c WHERE b.usuarios_user_id=:usuario AND c.busquedaid=b.id";
+		SQLQuery query = session.createSQLQuery(sql);
+		query.setParameter("usuario", usuario);
+		query.addScalar("fecha", StringType.INSTANCE);
+		query.addScalar("usuarios_user_id", StringType.INSTANCE);
+		query.addScalar("cri_tipo", StringType.INSTANCE);
+		query.addScalar("cri_contenido", StringType.INSTANCE);
+		query.addScalar("resultados", IntegerType.INSTANCE);
+		query.setResultTransformer(Transformers.aliasToBean(Historial.class));
+
+		result = new ArrayList<Historial>(query.list());
+        session.getTransaction().commit();
+        session.close();
+        
+        return result;
+	}
+	
 	public static ArrayList<reporteFecha> obtenerReporteFecha(Integer dia,Integer mes,Integer anio) {
 		
 		ArrayList<reporteFecha> result = new ArrayList<reporteFecha>();
@@ -77,10 +108,6 @@ public class Generales{
 
 		if(anio != 0 && mes != 0 && dia !=0)
 		{
-		 /*searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (dia=? AND mes=? AND anio=?) GROUP BY dia,mes,anio");
-		searchr.setInt(1, dia);
-		searchr.setInt(2, mes);
-		searchr.setInt(3, anio);*/
 			Session session = HibernateSessionFactory.getSession();
 			session.beginTransaction();
 			String sql = "SELECT fecha, sum(resultados) AS totales FROM busqueda WHERE DAY(fecha) = :dia AND MONTH(fecha) = :mes AND YEAR(fecha) = :anio   GROUP BY fecha";
@@ -92,14 +119,13 @@ public class Generales{
 			query.addScalar("totales", BigDecimalType.INSTANCE);
 			query.setResultTransformer(Transformers.aliasToBean(reporteFecha.class));
 			result = new ArrayList<reporteFecha>(query.list());
+	        session.getTransaction().commit();
+	        session.close();
 		}
 		else
 		{
 			if(anio != 0 && mes != 0 && dia ==0)
 			{
-			 /*searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (mes=? AND anio=?) GROUP BY dia,mes,anio ORDER BY dia ASC");
-			searchr.setInt(1, mes);
-			searchr.setInt(2, anio);*/
 				Session session = HibernateSessionFactory.getSession();
 				session.beginTransaction();
 				String sql = "SELECT DAY(fecha) AS fecha, sum(resultados) AS totales FROM busqueda WHERE MONTH(fecha) = :mes AND YEAR(fecha) = :anio   GROUP BY DAY(fecha) ORDER BY DAY(fecha) ASC";
@@ -110,6 +136,8 @@ public class Generales{
 				query.addScalar("totales", BigDecimalType.INSTANCE);
 				query.setResultTransformer(Transformers.aliasToBean(reporteFecha.class));
 				result = new ArrayList<reporteFecha>(query.list());
+		        session.getTransaction().commit();
+		        session.close();
 			}
 			else
 			{
@@ -124,6 +152,8 @@ public class Generales{
 					query.addScalar("totales", BigDecimalType.INSTANCE);
 					query.setResultTransformer(Transformers.aliasToBean(reporteFecha.class));
 					result = new ArrayList<reporteFecha>(query.list());
+			        session.getTransaction().commit();
+			        session.close();
 				}
 				else
 				{
@@ -135,98 +165,20 @@ public class Generales{
 					query.addScalar("totales", BigDecimalType.INSTANCE);
 					query.setResultTransformer(Transformers.aliasToBean(reporteFecha.class));
 					result = new ArrayList<reporteFecha>(query.list());
+			        session.getTransaction().commit();
+			        session.close();
 				}
 				}
 			}
 		return result;
 	}
-
 	
-	/*public static void registrarBusqueda(Dispositivo tablero,String busqueda,Integer resultados,double time) throws SQLException, ClassNotFoundException{
-		//Fecha Actual Java
-	    Calendar actual = new GregorianCalendar();
+	public static ArrayList<reporteTerminal> obtenerReporteBusquedayTerminal(String buscada,String terminal) {
+		Session session = HibernateSessionFactory.getSession();
+		session.beginTransaction();
+		ArrayList<reporteTerminal> resultados = new ArrayList<reporteTerminal>();
+	   
 
-		PreparedStatement search = conexion.prepareStatement("INSERT INTO busquedas (id_terminal,dia,mes,anio,frase,resultados,time)"
-		+ " values (?,?,?,?,?,?,?)");
-		
-		search.setInt(1, tablero.getId());
-		search.setInt(2, actual.get(Calendar.DATE));
-		search.setInt(3, actual.get(Calendar.MONTH)+1);
-		search.setInt(4, actual.get(Calendar.YEAR));
-		search.setString(5, busqueda);
-		search.setInt(6, resultados);
-		search.setDouble(7, time);
-		search.executeUpdate();
-		
+	    return resultados;
 	}
-	
-	public static ResultSet obtenerReporteFecha(Integer dia,Integer mes,Integer anio) throws SQLException, ClassNotFoundException{
-		ResultSet listaReporteFecha;
-		PreparedStatement searchr;
-		if(anio != 0 && mes != 0 && dia !=0)
-		{
-		 searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (dia=? AND mes=? AND anio=?) GROUP BY dia,mes,anio");
-		searchr.setInt(1, dia);
-		searchr.setInt(2, mes);
-		searchr.setInt(3, anio);
-		}
-		else
-		{
-			if(anio != 0 && mes != 0 && dia ==0)
-			{
-			 searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (mes=? AND anio=?) GROUP BY dia,mes,anio ORDER BY dia ASC");
-			searchr.setInt(1, mes);
-			searchr.setInt(2, anio);
-			}
-			else
-			{
-				if(anio != 0)
-				{
-				 searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas WHERE (anio=?) GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
-				searchr.setInt(1, anio);
-				}
-				else
-				{
-					searchr = conexion.prepareStatement("SELECT dia,mes,anio, sum(resultados) AS Totales FROM busquedas GROUP BY dia,mes,anio ORDER BY dia ASC, mes ASC, anio ASC");
-				}
-				}
-			}
-
-		listaReporteFecha = searchr.executeQuery();
-
-		return listaReporteFecha;
-	}
-	
-	public static ResultSet obtenerReporteBusquedayTerminal(String buscada,Integer terminal) throws SQLException, ClassNotFoundException{
-		ResultSet listaReporte;
-		PreparedStatement searchrf;
-	    Calendar actual = new GregorianCalendar();
-		searchrf = conexion.prepareStatement("SELECT sum(resultados) AS Totales FROM busquedas  where (frase = ? AND id_terminal=? AND anio = ?) GROUP BY frase,id_terminal,mes,anio ORDER BY mes ASC");
-		searchrf.setString(1, buscada);
-		searchrf.setInt(2, terminal);
-		searchrf.setInt(3, actual.get(Calendar.YEAR));
-		listaReporte = searchrf.executeQuery();
-		return listaReporte;
-	}
-	
-	public static void registrarTerminal(Dispositivo tablero) throws SQLException, ClassNotFoundException{
-		
-	    Calendar actual = new GregorianCalendar();
-
-		PreparedStatement search = conexion.prepareStatement("INSERT INTO terminales (nombre)"
-		+ " values (?)");
-		
-		search.setString(1, tablero.getNombre());
-
-		search.executeUpdate();
-		
-	}
-	
-	public static ResultSet obtenerReporteTerminales() throws SQLException, ClassNotFoundException{
-		PreparedStatement searcht;
-		ResultSet listaReporteTerminal;
-		searcht = conexion.prepareStatement("SELECT nombre, sum(resultados) AS Totales FROM busquedas, terminales WHERE terminales.id = busquedas.id_terminal  GROUP BY busquedas.id_terminal ORDER BY terminales.id ASC");
-		listaReporteTerminal = searcht.executeQuery();
-		return listaReporteTerminal;
-	}*/
 }

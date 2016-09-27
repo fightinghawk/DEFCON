@@ -3,11 +3,16 @@ package tpdds.interfaz;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,8 +31,10 @@ import javafx.stage.Stage;
 import tpdds.database.Generales;
 import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.interfaz.componentes.Busqueda;
+import tpdds.interfaz.componentes.Historial;
 import tpdds.interfaz.componentes.ObsBuscador;
 import tpdds.interfaz.componentes.ObsResultadoTotal;
+import tpdds.interfaz.componentes.reporteFecha;
 import tpdds.pois.Poi;
 
 public class ReporteTotal implements Initializable {
@@ -77,17 +84,12 @@ public class ReporteTotal implements Initializable {
 	
 	@FXML
 	public void buscar(MouseEvent evento){
-		Session session = HibernateSessionFactory.getSession();
-		session.beginTransaction();
-		String sql = "SELECT * FROM BUSQUEDA" ;
-		SQLQuery query = session.createSQLQuery(sql);
-        query.addEntity(Busqueda.class);
-        ArrayList<Busqueda> poisRev = new  ArrayList<>(query.list());
-        session.getTransaction().commit();
-        session.close();
+		resultadosTabla.getItems().clear();
         ObservableList<ObsResultadoTotal> resultados = FXCollections.observableArrayList();
-		for (Busqueda busqueda : poisRev) {
-			resultados.add(new ObsResultadoTotal(busqueda.getFechaRealizada().toString(), busqueda.getUsuario(), busqueda.getCriteriosToShow(), busqueda.getCantResultados()+""));
+        ArrayList<Historial> historiales = Generales.obtenerHistorial(userBusc.getText());
+		for (Historial historial : historiales) {
+
+			resultados.add(new ObsResultadoTotal(historial.getFecha(),historial.getUsuarios_user_id(),historial.getCriteriosShow(),historial.getResultados()));
 		}
 		resultadosTabla.setItems(resultados);
 	}

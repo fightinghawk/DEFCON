@@ -1,7 +1,9 @@
 package tpdds.interfaz;
 
+import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -19,7 +21,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tpdds.database.Generales;
+import tpdds.interfaz.componentes.ObsResultadoFecha;
 import tpdds.interfaz.componentes.ObsResultadoTerminal;
+import tpdds.interfaz.componentes.reporteFecha;
+import tpdds.interfaz.componentes.reporteTerminal;
 
 public class ReportePorTerminal implements Initializable {
 
@@ -67,9 +72,9 @@ public class ReportePorTerminal implements Initializable {
 		resultadoTL.getItems().clear();
 		try{
 		ObservableList<ObsResultadoTerminal> aMostrar = FXCollections.observableArrayList();
-		ResultSet resultados = Generales.obtenerReporteBusquedayTerminal(frase.getText(), Integer.parseInt(terminal.getText()));
-	    while ( resultados.next() ) {
-	        	aMostrar.add(new ObsResultadoTerminal(resultados.getObject("totales")));
+		ArrayList<reporteTerminal> resultados = Generales.obtenerReporteBusquedayTerminal(frase.getText(), terminal.getText());
+	    for( reporteTerminal resultado : resultados ) {
+	        aMostrar.add(new ObsResultadoTerminal(resultado.getTotales()));
 	        	
 	    }
 		

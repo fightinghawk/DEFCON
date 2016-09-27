@@ -1,18 +1,20 @@
 package tpdds.interfaz.componentes;
 
+import java.util.Date;
+
 public class ObsResultadoTotal {
 	
 	private String fecha;
 	private String usuario;
 	private String parametros;
-	private String pois;
+	private Integer totales;
 	
-	public ObsResultadoTotal(String fecha, String usuario, String parametros, String pois) {
+	public ObsResultadoTotal(String fecha, String usuario, String parametros, Integer totales) {
 		super();
 		this.fecha = fecha;
 		this.usuario = usuario;
 		this.parametros = parametros;
-		this.pois = pois;
+		this.totales = totales;
 	}
 
 	public String getFecha() {
@@ -27,8 +29,8 @@ public class ObsResultadoTotal {
 		return parametros;
 	}
 
-	public String getPois() {
-		return pois;
+	public Integer getTotales() {
+		return totales;
 	}
 	
 	

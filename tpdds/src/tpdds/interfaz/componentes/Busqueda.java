@@ -1,6 +1,7 @@
 package tpdds.interfaz.componentes;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -34,7 +35,7 @@ public class Busqueda {
 	private String usuario;
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval=true)
 	@JoinColumn(name="busquedaid")
-	private Collection<Criterio> criterios;
+	private Collection<Criterio> criterios = new ArrayList<Criterio>();
 	
 	public Busqueda(int cantResultados, double duracion, int terminal, String usuario,
 			Collection<Criterio> criterios) {
@@ -75,14 +76,6 @@ public class Busqueda {
 
 	public Collection<Criterio> getCriterios() {
 		return criterios;
-	}
-	
-	public String getCriteriosToShow(){
-		String resultado = "";
-		for (Criterio criterio : criterios) {
-			resultado.concat("Tipo: " +criterio.getTipo() + " Contenido: "+ criterio.getContenido()+"\n");
-		}
-		return resultado;
 	}
 	
 	
