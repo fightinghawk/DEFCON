@@ -10,11 +10,11 @@
    <children>
       <Text layoutX="52.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Criterios de busqueda:" wrappingWidth="174.6708984375" />
       <Text layoutX="52.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:" wrappingWidth="78.67919921875" />
-      <Text layoutX="299.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha:" wrappingWidth="78.67919921875" />
+      <Text layoutX="299.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha 1:" wrappingWidth="78.67919921875" />
       <TextField fx:id="userBusc" layoutX="119.0" layoutY="82.0" prefHeight="31.0" prefWidth="166.0" promptText="Nombre Usuario" />
-      <TextField fx:id="diaBusc" layoutX="361.0" layoutY="82.0" prefHeight="31.0" prefWidth="79.0" promptText="Dia" />
-      <TextField fx:id="mesBusc" layoutX="455.0" layoutY="82.0" prefHeight="31.0" prefWidth="79.0" promptText="Mes" />
-      <TextField fx:id="anioBusc" layoutX="546.0" layoutY="82.0" prefHeight="31.0" prefWidth="79.0" promptText="Anio" />
+      <TextField fx:id="diaBusc" layoutX="361.0" layoutY="31.0" prefHeight="31.0" prefWidth="79.0" promptText="Dia (10)" />
+      <TextField fx:id="mesBusc" layoutX="455.0" layoutY="31.0" prefHeight="31.0" prefWidth="79.0" promptText="Mes (7)" />
+      <TextField fx:id="anioBusc" layoutX="546.0" layoutY="31.0" prefHeight="31.0" prefWidth="102.0" promptText="Anio (2008)" />
       <TableView fx:id="resultadosTabla" layoutX="52.0" layoutY="144.0" prefHeight="397.0" prefWidth="721.0">
         <columns>
           <TableColumn fx:id="fechaCol" editable="false" prefWidth="159.0" resizable="false" text="Fecha" />
@@ -24,5 +24,9 @@
         </columns>
       </TableView>
       <Button layoutX="665.0" layoutY="82.0" mnemonicParsing="false" onMouseClicked="#buscar" prefHeight="31.0" prefWidth="108.0" text="Buscar" />
+      <TextField fx:id="anioBusc2" layoutX="546.0" layoutY="80.0" prefHeight="31.0" prefWidth="102.0" promptText="Anio" />
+      <TextField fx:id="mesBusc2" layoutX="455.0" layoutY="80.0" prefHeight="31.0" prefWidth="79.0" promptText="Mes" />
+      <TextField fx:id="diaBusc2" layoutX="361.0" layoutY="80.0" prefHeight="31.0" prefWidth="79.0" promptText="Dia" />
+      <Text layoutX="299.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha 2:" wrappingWidth="78.67919921875" />
    </children>
 </AnchorPane>

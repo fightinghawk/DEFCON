@@ -61,7 +61,12 @@ public class ReporteTotal implements Initializable {
 	TextField mesBusc;
 	@FXML
 	TextField anioBusc;
-	
+	@FXML
+	TextField diaBusc2;
+	@FXML
+	TextField mesBusc2;
+	@FXML
+	TextField anioBusc2;	
 	Stage nuevaStage;
 	FXMLLoader loader;
 	AnchorPane rootLayout;
@@ -126,19 +131,35 @@ public class ReporteTotal implements Initializable {
 		return resultados;
 	}
 	
+	private Collection<Busqueda> doQuery(String nombre, Date fecha, Date fecha2){
+		Session session = HibernateSessionFactory.getSession();
+		Query pedido = session.createQuery("SELECT p FROM Busqueda p WHERE p.usuario = :nombre AND p.fechaRealizada > :fecha AND p.fechaRealizada < :fecha2");
+		pedido.setParameter("nombre", nombre);
+		pedido.setParameter("fecha", fecha);
+		pedido.setParameter("fecha2", fecha2);
+		@SuppressWarnings("unchecked")
+		List<Busqueda> resultados = pedido.list();
+		session.close();
+		return resultados;
+	}
+	
 	private Collection<Busqueda> elegirBusquedaAndDoIt(){
 		if(userBusc.getText().isEmpty()){
+			//Este if muestra todos los resultados de todas las fechas de todos los usuarios
 			return this.doQuery();
 		}
-		else if(fechaCompletaYValida()){
-			return this.doQuery(userBusc.getText(), this.crearFecha(Integer.parseInt(diaBusc.getText()),
-					Integer.parseInt(mesBusc.getText()), Integer.parseInt(anioBusc.getText())));
+		else if(fechaCompletaYValida(diaBusc,mesBusc,anioBusc) && fechaCompletaYValida(diaBusc2, mesBusc2, anioBusc2)){
+			Date fecha1 = this.crearFecha(Integer.parseInt(diaBusc.getText()),
+					Integer.parseInt(mesBusc.getText()), Integer.parseInt(anioBusc.getText()));
+			Date fecha2 = this.crearFecha(Integer.parseInt(diaBusc2.getText()),
+					Integer.parseInt(mesBusc2.getText()), Integer.parseInt(anioBusc2.getText()));
+			return this.doQuery(userBusc.getText(),fecha1, fecha2);
 		}else{
 			return this.doQuery(userBusc.getText());
 		}
 	}
 	
-	private boolean fechaCompletaYValida(){
+	private boolean fechaCompletaYValida(TextField diaBusc, TextField mesBusc , TextField anioBusc){
 		try{
 			if(diaBusc.getText().isEmpty() || !(Integer.parseInt(diaBusc.getText())<31)){
 				return false;
@@ -147,10 +168,10 @@ public class ReporteTotal implements Initializable {
 				return false;
 			}
 			if(anioBusc.getText().isEmpty() || !(anioBusc.getText().length() == 4)){
-				//Pruebo convertirlo a int
-				Integer.parseInt(anioBusc.getText());
 				return false;
 			}
+			//Pruebo convertirlo a int
+			Integer.parseInt(anioBusc.getText());
 		}catch(Exception ex){
 			ex.printStackTrace();
 			return false;
