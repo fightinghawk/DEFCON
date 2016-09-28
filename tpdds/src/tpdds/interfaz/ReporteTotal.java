@@ -162,7 +162,7 @@ public class ReporteTotal implements Initializable {
 		Calendar fechaMake = Calendar.getInstance();
 		fechaMake.clear();
 		fechaMake.set(Calendar.DAY_OF_MONTH, dia);
-		fechaMake.set(Calendar.MONTH, mes);
+		fechaMake.set(Calendar.MONTH, mes-1);
 		fechaMake.set(Calendar.YEAR, anio);
 		return new Date(fechaMake.getTime().getTime());
 	}
