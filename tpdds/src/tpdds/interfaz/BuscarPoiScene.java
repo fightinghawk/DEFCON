@@ -147,7 +147,7 @@ public class BuscarPoiScene implements Initializable {
 			Email.enviar("testingdds@fighthawk.com", "testuser", "jvillalba@fighthawk.com", "BUSQUEDA DEMORADA", "PROBLEMAS DE PERFOMANCE");
 		}
 		if(event!=null)
-			this.guardarBusqueda(new Busqueda(resultados.size(), tiempoTotal, 1, usuario.getUsuarioid() , criterios));
+			this.guardarBusqueda(new Busqueda(resultados.size(), tiempoTotal, 1, usuario.getUsuarioid() , criterios, resultados));
 	}
 	
 	@FXML

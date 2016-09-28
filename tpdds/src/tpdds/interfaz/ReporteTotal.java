@@ -36,13 +36,27 @@ import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.interfaz.componentes.Busqueda;
 import tpdds.interfaz.componentes.Historial;
 import tpdds.interfaz.componentes.ObsBuscador;
+import tpdds.interfaz.componentes.ObsPoi;
 import tpdds.interfaz.componentes.ObsResultadoTotal;
 import tpdds.interfaz.componentes.reporteFecha;
 import tpdds.pois.Poi;
 
 public class ReporteTotal implements Initializable {
 
-	
+	@FXML
+	TableView<ObsPoi> tablaMostradaPoi;
+	@FXML
+	TableColumn<ObsPoi,String> nombre; 
+	@FXML
+	TableColumn<ObsPoi, String> calle;
+	@FXML
+	TableColumn<ObsPoi, Integer> altura;
+	@FXML
+	TableColumn<ObsPoi, Double> distancia;
+	@FXML
+	TableColumn<ObsBuscador, String> tipo;
+	@FXML
+	TableColumn<ObsBuscador, String> content;	
 	@FXML
 	TableView<ObsResultadoTotal> resultadosTabla;
 	@FXML
@@ -94,10 +108,9 @@ public class ReporteTotal implements Initializable {
 	public void buscar(MouseEvent evento){
 		resultadosTabla.getItems().clear();
         ObservableList<ObsResultadoTotal> resultados = FXCollections.observableArrayList();
-        //ArrayList<Historial> historiales = Generales.obtenerHistorial(userBusc.getText());
-		ArrayList<Busqueda> busquedasRealizadas = (ArrayList<Busqueda>) this.elegirBusquedaAndDoIt();
+        ArrayList<Busqueda> busquedasRealizadas = (ArrayList<Busqueda>) this.elegirBusquedaAndDoIt();
         for (Busqueda busqueda : busquedasRealizadas) {
-			resultados.add(new ObsResultadoTotal(busqueda.getFechaRealizada().toString(),busqueda.getUsuario(),busqueda.criteriosToShow(),busqueda.getCantResultados()));
+			resultados.add(new ObsResultadoTotal(busqueda.getFechaRealizada().toString(),busqueda.getUsuario(),busqueda.criteriosToShow(),busqueda.getCantResultados(),busqueda));
 		}
 		resultadosTabla.setItems(resultados);
 	}
@@ -203,10 +216,60 @@ public class ReporteTotal implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+		calle.setCellValueFactory(new PropertyValueFactory<>("calle"));
+		altura.setCellValueFactory(new PropertyValueFactory<>("altura"));
+		distancia.setCellValueFactory(new PropertyValueFactory<>("distancia"));
 		fechaCol.setCellValueFactory(new PropertyValueFactory<>("fecha"));
 		userCol.setCellValueFactory(new PropertyValueFactory<>("usuario"));
 		parametrosCol.setCellValueFactory(new PropertyValueFactory<>("parametros"));
 		poisCol.setCellValueFactory(new PropertyValueFactory<>("totales"));
+		tablaMostradaPoi.setDisable(!false);
+		tablaMostradaPoi.setVisible(!true);
+	}
+	
+	@FXML
+	private void tablaPrecionadaPoi(MouseEvent evento){
+		if(evento.getClickCount()>0){
+			ObservableList<ObsPoi> poisAMostrar = FXCollections.observableArrayList();
+			Busqueda busqueda = resultadosTabla.getSelectionModel().getSelectedItem().getBuscado();
+			if(busqueda == null){
+				return;
+			}
+			for (Integer poiid : busqueda.getPois_encontrados()) {
+				Poi temp = buscarPoi(poiid, Main.pois);
+				poisAMostrar.add(new ObsPoi(temp.getNombre(), temp.getDireccion().getCallePrincipal(), temp.getDireccion().getAltura(), 0, temp.getIddb()));
+				tablaMostradaPoi.getItems().clear();
+				tablaMostradaPoi.setDisable(false);
+				tablaMostradaPoi.setVisible(true);
+				tablaMostradaPoi.setItems(poisAMostrar);
+			}
+		}	
+	}
+	
+	@FXML
+	public void sacarTabla(MouseEvent evento){
+		tablaMostradaPoi.setDisable(!false);
+		tablaMostradaPoi.setVisible(!true);
+		tablaMostradaPoi.getItems().clear();
+	}
+	
+	@FXML
+	public void tablaPrecionadaPoiMostrar(MouseEvent evento){
+		try{
+			Poi poi = buscarPoi(tablaMostradaPoi.getSelectionModel().getSelectedItem().getId(), Main.pois);
+			new MostrarPoi(poi).mostraPoiRender();
+		}catch(Exception ex){
+		}
+	}
+	
+	
+	private Poi buscarPoi(int id, Collection<Poi> pois){
+		for (Poi poi : pois) {
+			if(poi.getIddb()==id)
+				return poi;
+		}
+		return null;
 	}
 
 }

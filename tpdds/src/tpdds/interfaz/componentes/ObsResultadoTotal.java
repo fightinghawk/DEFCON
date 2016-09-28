@@ -2,19 +2,23 @@ package tpdds.interfaz.componentes;
 
 import java.util.Date;
 
+import tpdds.buscadores.Buscador;
+
 public class ObsResultadoTotal {
 	
 	private String fecha;
 	private String usuario;
 	private String parametros;
 	private Integer totales;
+	private Busqueda buscado;
 	
-	public ObsResultadoTotal(String fecha, String usuario, String parametros, Integer totales) {
+	public ObsResultadoTotal(String fecha, String usuario, String parametros, Integer totales, Busqueda buscador) {
 		super();
 		this.fecha = fecha;
 		this.usuario = usuario;
 		this.parametros = parametros;
 		this.totales = totales;
+		this.buscado = buscador;
 	}
 
 	public String getFecha() {
@@ -33,8 +37,9 @@ public class ObsResultadoTotal {
 		return totales.toString();
 	}
 	
-	
-	
+	public Busqueda getBuscado() {
+		return buscado;
+	}
 
 	
 	

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="595.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane onMouseClicked="#sacarTabla" prefHeight="660.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="52.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Criterios de busqueda:" wrappingWidth="174.6708984375" />
       <Text layoutX="52.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:" wrappingWidth="78.67919921875" />
@@ -15,7 +15,7 @@
       <TextField fx:id="diaBusc" layoutX="361.0" layoutY="31.0" prefHeight="31.0" prefWidth="79.0" promptText="Dia (10)" />
       <TextField fx:id="mesBusc" layoutX="455.0" layoutY="31.0" prefHeight="31.0" prefWidth="79.0" promptText="Mes (7)" />
       <TextField fx:id="anioBusc" layoutX="546.0" layoutY="31.0" prefHeight="31.0" prefWidth="102.0" promptText="Anio (2008)" />
-      <TableView fx:id="resultadosTabla" layoutX="52.0" layoutY="144.0" prefHeight="397.0" prefWidth="721.0">
+      <TableView fx:id="resultadosTabla" layoutX="52.0" layoutY="144.0" prefHeight="397.0" prefWidth="721.0"  onMouseClicked="#tablaPrecionadaPoi">
         <columns>
           <TableColumn fx:id="fechaCol" editable="false" prefWidth="159.0" resizable="false" text="Fecha" />
           <TableColumn fx:id="userCol" editable="false" prefWidth="109.0" resizable="false" text="Usuario" />
@@ -28,5 +28,16 @@
       <TextField fx:id="mesBusc2" layoutX="455.0" layoutY="80.0" prefHeight="31.0" prefWidth="79.0" promptText="Mes" />
       <TextField fx:id="diaBusc2" layoutX="361.0" layoutY="80.0" prefHeight="31.0" prefWidth="79.0" promptText="Dia" />
       <Text layoutX="299.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha 2:" wrappingWidth="78.67919921875" />
+      <TableView fx:id="tablaMostradaPoi" layoutX="357.0" layoutY="321.0" prefHeight="339.0" prefWidth="505.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="168.0" AnchorPane.rightAnchor="168.0" AnchorPane.topAnchor="160.0" onMouseClicked="#tablaPrecionadaPoiMostrar">
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <columns>
+            <TableColumn fx:id="nombre" editable="false" prefWidth="75.0" text="Nombre" />
+            <TableColumn fx:id="calle" editable="false" prefWidth="75.0" text="Direccion" />
+            <TableColumn fx:id="altura" editable="false" minWidth="0.0" prefWidth="133.0" text="Altura" />
+            <TableColumn fx:id="distancia" editable="false" prefWidth="118.0" text="Distancia" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>
