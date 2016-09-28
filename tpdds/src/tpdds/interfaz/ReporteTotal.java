@@ -120,9 +120,13 @@ public class ReporteTotal implements Initializable {
 		return resultados;
 	}
 	
-	private Collection<Busqueda> doQuery(String nombre, Date fecha){
+	private Collection<Busqueda> doQuery(String nombre, Date fecha, String comparacion){
 		Session session = HibernateSessionFactory.getSession();
-		Query pedido = session.createQuery("SELECT p FROM Busqueda p WHERE p.usuario = :nombre AND p.fechaRealizada = :fecha");
+		Query pedido;
+		if(comparacion.equals(">"))
+			 pedido = session.createQuery("SELECT p FROM Busqueda p WHERE p.usuario = :nombre AND p.fechaRealizada > :fecha");
+		else
+			pedido = session.createQuery("SELECT p FROM Busqueda p WHERE p.usuario = :nombre AND p.fechaRealizada < :fecha");	
 		pedido.setParameter("nombre", nombre);
 		pedido.setParameter("fecha", fecha);
 		@SuppressWarnings("unchecked")
@@ -154,7 +158,16 @@ public class ReporteTotal implements Initializable {
 			Date fecha2 = this.crearFecha(Integer.parseInt(diaBusc2.getText()),
 					Integer.parseInt(mesBusc2.getText()), Integer.parseInt(anioBusc2.getText()));
 			return this.doQuery(userBusc.getText(),fecha1, fecha2);
-		}else{
+		}else if(fechaCompletaYValida(diaBusc, mesBusc, anioBusc)){
+			Date fecha1 = this.crearFecha(Integer.parseInt(diaBusc.getText()),
+					Integer.parseInt(mesBusc.getText()), Integer.parseInt(anioBusc.getText()));
+			return this.doQuery(userBusc.getText(),fecha1,">");
+		}else if(fechaCompletaYValida(diaBusc2, mesBusc2, anioBusc2)){
+			Date fecha2 = this.crearFecha(Integer.parseInt(diaBusc2.getText()),
+					Integer.parseInt(mesBusc2.getText()), Integer.parseInt(anioBusc2.getText()));
+			return this.doQuery(userBusc.getText(),fecha2,"<");
+		}
+		else{
 			return this.doQuery(userBusc.getText());
 		}
 	}
