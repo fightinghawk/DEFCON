@@ -136,7 +136,7 @@ public class LoginScene implements Initializable {
 	
 	@FXML
 	public void modificarUsuario(MouseEvent evento){
-		
+		new ModificacionDeUsuario().modUserSceneRender();
 	}
 	
 	@FXML
