@@ -17,11 +17,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.control.cell.ChoiceBoxTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tpdds.Usuarios.User;
+import tpdds.database.Generales;
 import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.interfaz.componentes.Busqueda;
 import tpdds.interfaz.componentes.ObsUser;
@@ -31,20 +34,21 @@ public class ModificacionDeUsuario implements Initializable{
 	@FXML
 	TableView<ObsUser> userModificacion;
 	@FXML
-	TableColumn<String, ObsUser> userNombre;
+	TableColumn<ObsUser, String> userNombre;
 	@FXML
-	TableColumn<String, ObsUser> userApellido;
+	TableColumn<ObsUser, String> userApellido;
 	@FXML
-	TableColumn<String, ObsUser> userId;
+	TableColumn<ObsUser, String> userId;
 	@FXML
-	TableColumn<String, ObsUser> userMail;
+	TableColumn<ObsUser, String> userMail;
 	@FXML
-	TableColumn<String, ObsUser> userTipo;
+	TableColumn<ObsUser, String> userTipo;
 	
 	private Stage nuevaStage;
 	private FXMLLoader loader;
 	private AnchorPane rootLayout;
 	private ObservableList<ObsUser> todosLosUsuarios;
+	private ObservableList<String> tiposUsuarios;
 	
 	public void modUserSceneRender(){
 		try{
@@ -77,9 +81,23 @@ public class ModificacionDeUsuario implements Initializable{
 		userMail.setCellValueFactory(new PropertyValueFactory<>("mail"));
 		userTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
 		this.todosLosUsuarios = this.cargarUsuarios();
+		this.tiposUsuarios = this.cargarTipos();
 		this.userModificacion.setItems(this.todosLosUsuarios);
+		this.userModificacion.setEditable(true);
+		userNombre.setCellFactory(TextFieldTableCell.forTableColumn());
+		userApellido.setCellFactory(TextFieldTableCell.forTableColumn());
+		userId.setCellFactory(TextFieldTableCell.forTableColumn());
+		userMail.setCellFactory(TextFieldTableCell.forTableColumn());
+		userTipo.setCellFactory(ChoiceBoxTableCell
+		        .forTableColumn(tiposUsuarios));
 	}
 	
+	private ObservableList<String> cargarTipos() {
+		ObservableList<String> tipos = FXCollections.observableArrayList();
+		tipos.addAll(Generales.cargarTiposUsuarios());
+		return tipos;
+	}
+
 	@FXML
 	public void buscarUsuario(KeyEvent ingresoDeTecla){
 		
