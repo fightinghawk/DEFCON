@@ -21,7 +21,7 @@ public class ParadaColectivo extends Poi  {
 	}
 
 	public String getRubro() {
-		return "Parada Colectivo";
+		return "Tranporte";
 	}
 	
 	public ParadaColectivo(Poi datos,int parada) {
