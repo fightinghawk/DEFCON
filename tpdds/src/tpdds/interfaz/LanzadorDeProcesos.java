@@ -86,6 +86,7 @@ public class LanzadorDeProcesos implements Initializable {
 		}
 		aux.addAll(procesosEnTabla);
 		procesosrun.getItems().clear();
+		
 		procesosrun.setItems(aux);
 	}
 	
