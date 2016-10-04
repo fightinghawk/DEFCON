@@ -20,6 +20,9 @@ public class ParadaColectivo extends Poi  {
 		this.parada = parada;
 	}
 
+	public String getRubro() {
+		return "Parada Colectivo";
+	}
 	
 	public ParadaColectivo(Poi datos,int parada) {
 		super(datos);
