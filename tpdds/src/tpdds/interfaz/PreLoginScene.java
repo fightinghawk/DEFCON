@@ -58,32 +58,6 @@ public class PreLoginScene extends Escena implements Initializable {
 	@FXML
 	TextArea erroresNotificacion;
 	
-	
-	Stage nuevaStage;
-	FXMLLoader loader;
-	AnchorPane rootLayout;
-	
-	public void loginSceneRender(){
-		try{
-			registroValido = true;
-			nuevaStage = new Stage();
-			nuevaStage.initModality(Modality.WINDOW_MODAL);
-			nuevaStage.initOwner(Main.primaryStage);
-			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("PreLogin");
-			loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("preLoginScene.fxml"));
-			loader.setController(this);
-			rootLayout = loader.load();
-			Scene scene = new Scene(rootLayout);
-			nuevaStage.setScene(scene);
-			nuevaStage.show();
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
-	
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub

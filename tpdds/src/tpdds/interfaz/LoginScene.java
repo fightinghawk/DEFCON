@@ -119,7 +119,7 @@ public class LoginScene extends Escena implements Initializable {
 	
 	@FXML
 	public void salir(MouseEvent evento){
-		new PreLoginScene().loginSceneRender();
+		new PreLoginScene().render("Login","preLoginScene.fxml");
 		this.nuevaStage.close();
 	}
 	

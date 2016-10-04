@@ -41,7 +41,7 @@ public class Main extends Application {
 		primaryStage = primaryStag;
 		primaryStage.setResizable(false);
 		primaryStage.setTitle("Pois dds");
-		new PreLoginScene().loginSceneRender();
+		new PreLoginScene().render("Login","preLoginScene.fxml");
 			}
 	
 
