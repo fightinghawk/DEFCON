@@ -137,7 +137,7 @@ public class modifPoiSceneFields implements Initializable {
 			ex.printStackTrace();
 		}
 		stg.close();
-		new modfiPoiSceneBuscar().modfiPoiBuscar();
+		new modfiPoiSceneBuscar().render("Modificar POI", "modifSceneBuscar.fxml");
 		
 		return;
 	}

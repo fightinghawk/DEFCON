@@ -52,10 +52,7 @@ public class AgregarTipoUsuario extends Escena implements Initializable {
 	TextField aMostrar;
 	@FXML
 	TextArea desc;
-	
-	private Stage nuevaStage;
-	private FXMLLoader loader;
-	private AnchorPane rootLayout;
+
 	private ArrayList<Permisos> permisos;
 
 	public AgregarTipoUsuario() {

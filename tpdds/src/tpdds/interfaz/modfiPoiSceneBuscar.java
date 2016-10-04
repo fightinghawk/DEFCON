@@ -33,7 +33,7 @@ import tpdds.pois.Poi;
 import tpdds.usoGlobal.BuscadorPoi;
 import tpdds.usoGlobal.Calculos;
 
-public class modfiPoiSceneBuscar implements Initializable {
+public class modfiPoiSceneBuscar extends Escena implements Initializable {
 	@FXML
 	TextField campoDeBusqueda;
 	@FXML
@@ -48,34 +48,7 @@ public class modfiPoiSceneBuscar implements Initializable {
 	TableColumn<ObsPoi, Double> distancia;
 	
 	ArrayList<Poi> resultados;
-	
-	static Stage nuevaStage;
-	FXMLLoader loader;
-	AnchorPane rootLayout;
 	HashMap<String, Boolean> palabraOK = new HashMap<>();
-
-	//IDCAMPO - SI ESTA OK O NO
-	public void modfiPoiBuscar(){
-		try{
-			//Carga archivo FXML  q tiene la interfaz
-			loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("modifSceneBuscar.fxml"));
-			rootLayout = loader.load();
-
-			//Creo Scene y la configuro
-			Scene scene = new Scene(rootLayout);
-			//Stage a abrirse
-			nuevaStage = new Stage();
-			nuevaStage.initModality(Modality.WINDOW_MODAL);
-			nuevaStage.initOwner(Main.primaryStage);
-			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Buscar POI");
-			nuevaStage.setScene(scene);
-			nuevaStage.show();
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
 	
 	@FXML
 	private void buscar(KeyEvent evento){

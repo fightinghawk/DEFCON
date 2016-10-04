@@ -33,7 +33,7 @@ import tpdds.pois.componentes.KeyWords;
 import tpdds.pois.componentes.Servicios;
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Location;
-public class InsertSceneGnr implements Initializable{
+public class InsertSceneGnr extends Escena implements Initializable{
 	
 	@FXML
 	TextField nombre, calle, izquierda, barrio, altura, derecha,
@@ -50,32 +50,9 @@ public class InsertSceneGnr implements Initializable{
 		
 	private Poi nuevo;
 	private Poi poi = new Poi();
-	private FXMLLoader loader;
-	private AnchorPane rootLayout;
 	private HashMap<String, Boolean> palabraOK = new HashMap<>();
-	private Stage nuevaStage;
 	private Collection<Servicios> servicios;
 	private Collection<DiaPoi> diasAbiertos;
-	
-	//IDCAMPO - SI ESTA OK O NO
-	public void insertSceneRender(){
-		try{
-			nuevaStage = new Stage();
-			nuevaStage.initModality(Modality.WINDOW_MODAL);
-			nuevaStage.initOwner(Main.primaryStage);
-			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Insertar POI");
-			loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("insertSceneGnr.fxml"));
-			loader.setController(this);
-			rootLayout = loader.load();
-			Scene scene = new Scene(rootLayout);
-			nuevaStage.setScene(scene);
-			nuevaStage.show();
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
 	
 	public InsertSceneGnr() {
 		diasAbiertos = new ArrayList<>();

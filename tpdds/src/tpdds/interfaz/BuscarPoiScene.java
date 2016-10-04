@@ -44,7 +44,7 @@ import tpdds.pois.Poi;
 import tpdds.usoGlobal.BuscadorPoi;
 import tpdds.usoGlobal.Calculos;
 
-public class BuscarPoiScene implements Initializable {
+public class BuscarPoiScene extends Escena implements Initializable {
 	
 	private static final double SEGUNDOS_PARAMETRIZADOS = 1;
 	long time_start, time_end;
@@ -74,42 +74,16 @@ public class BuscarPoiScene implements Initializable {
 	TableColumn<ObsBuscador, String> tipo;
 	@FXML
 	TableColumn<ObsBuscador, String> content;
-	
-	Stage nuevaStage;
-	FXMLLoader loader;
-	AnchorPane rootLayout;
-	HashMap<String, Boolean> palabraOK = new HashMap<>();
-	ArrayList<BancoExterna> bancos;
-	ArrayList<Poi> resultados;
+
+	private HashMap<String, Boolean> palabraOK = new HashMap<>();
+	private ArrayList<BancoExterna> bancos;
+	private ArrayList<Poi> resultados;
 	private Collection<Criterio> criterios;
 	private User usuario;
 
 	public BuscarPoiScene(User usuario) {
 		criterios = new ArrayList<>();
 		this.usuario = usuario;
-	}
-	
-	//IDCAMPO - SI ESTA OK O NO
-	public void buscarSceneRender(){
-		try{
-			//Carga archivo FXML  q tiene la interfaz
-			loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("buscarScene.fxml"));
-			loader.setController(this);
-			rootLayout = loader.load();
-			//Creo Scene y la configuro
-			Scene scene = new Scene(rootLayout);
-			//Stage a abrirse
-			nuevaStage = new Stage();
-			nuevaStage.initModality(Modality.WINDOW_MODAL);
-			nuevaStage.initOwner(Main.primaryStage);
-			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Buscar POI");
-			nuevaStage.setScene(scene);
-			nuevaStage.show();
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
 	}
 	
 	@FXML

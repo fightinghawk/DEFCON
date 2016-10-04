@@ -25,7 +25,7 @@ import javafx.util.Callback;
 import tpdds.interfaz.componentes.ObsPoi;
 import tpdds.proceso.Proceso;
 
-public class LanzadorDeProcesos implements Initializable {
+public class LanzadorDeProcesos extends Escena implements Initializable {
 	
 	long time_start, time_end;
 	ObservableList<Proceso> listaProcesos =  FXCollections.observableArrayList();
@@ -43,34 +43,7 @@ public class LanzadorDeProcesos implements Initializable {
 	@FXML
 	TableView<Proceso> procesosrun;
 	
-	Stage nuevaStage;
-	FXMLLoader loader;
-	AnchorPane rootLayout;
-	
-	public void lanzadorRender(){
-		try{
-			//Carga archivo FXML  q tiene la interfaz
-			loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("lanzadorDeProcesos.fxml"));
-			loader.setController(this);
-			rootLayout = loader.load();
-			//Creo Scene y la configuro
-			Scene scene = new Scene(rootLayout);
-			//Stage a abrirse
-			nuevaStage = new Stage();
-			nuevaStage.initModality(Modality.WINDOW_MODAL);
-			nuevaStage.initOwner(Main.primaryStage);
-			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Lanzador de Procesos");
-			nuevaStage.setScene(scene);
-			nuevaStage.show();
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
-	
 	@FXML
-	
 	public void lanzarProceso(MouseEvent botonApretado){
 		System.out.println("Funciona!");
 	}

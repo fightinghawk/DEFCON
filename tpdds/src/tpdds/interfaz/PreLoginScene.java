@@ -35,7 +35,7 @@ import tpdds.Usuarios.User;
 import tpdds.hibernate.HibernateSessionFactory;
 
 
-public class PreLoginScene implements Initializable {
+public class PreLoginScene extends Escena implements Initializable {
 
 	private boolean registroValido;
 	
@@ -100,7 +100,7 @@ public class PreLoginScene implements Initializable {
 			User user = cargar.get(User.class, usuario);
 			if(passWord != null && user.getUsuariopassword().equals(passWord)){
 				System.out.println("Password correcta");
-				new LoginScene(user).loginSceneRender();
+				new LoginScene(user).render("Home","loginScene.fxml");
 				this.cerrar();
 			}else{
 				System.out.println("Error de password");
@@ -134,7 +134,7 @@ public class PreLoginScene implements Initializable {
 		try{
 			aGuardar.save(usuario);
 			aGuardar.getTransaction().commit();
-			new LoginScene(usuario).loginSceneRender();
+			new LoginScene(usuario).render("Home","loginScene.fxml");
 			this.cerrar();
 		}catch(Exception ex){
 			ex.printStackTrace();

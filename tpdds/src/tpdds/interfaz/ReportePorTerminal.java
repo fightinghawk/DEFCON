@@ -27,7 +27,7 @@ import tpdds.interfaz.componentes.ObsResultadoTerminal;
 import tpdds.interfaz.componentes.reporteFecha;
 import tpdds.interfaz.componentes.reporteTerminal;
 
-public class ReportePorTerminal implements Initializable {
+public class ReportePorTerminal extends Escena implements Initializable {
 
 	@FXML
 	TextField frase;
@@ -37,29 +37,6 @@ public class ReportePorTerminal implements Initializable {
 	TableView<ObsResultadoTerminal> resultadoTL;
 	@FXML
 	TableColumn<ObsResultadoTerminal,Integer> cantidad;
-	
-	Stage nuevaStage;
-	FXMLLoader loader;
-	AnchorPane rootLayout;
-	
-	public void ReportePorTerminalRender(){
-		try{
-			nuevaStage = new Stage();
-			nuevaStage.initModality(Modality.WINDOW_MODAL);
-			nuevaStage.initOwner(Main.primaryStage);
-			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Reporte por Búsqueda y Terminal");
-			loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("reportePorTerminaScene.fxml"));
-			loader.setController(this);
-			rootLayout = loader.load();
-			Scene scene = new Scene(rootLayout);
-			nuevaStage.setScene(scene);
-			nuevaStage.show();
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

@@ -41,7 +41,7 @@ import tpdds.interfaz.componentes.ObsResultadoTotal;
 import tpdds.interfaz.componentes.reporteFecha;
 import tpdds.pois.Poi;
 
-public class ReporteTotal implements Initializable {
+public class ReporteTotal extends Escena implements Initializable {
 
 	@FXML
 	TableView<ObsPoi> tablaMostradaPoi;
@@ -81,28 +81,6 @@ public class ReporteTotal implements Initializable {
 	TextField mesBusc2;
 	@FXML
 	TextField anioBusc2;	
-	Stage nuevaStage;
-	FXMLLoader loader;
-	AnchorPane rootLayout;
-	
-	public void ReportePorTerminalRender(){
-		try{
-			nuevaStage = new Stage();
-			nuevaStage.initModality(Modality.WINDOW_MODAL);
-			nuevaStage.initOwner(Main.primaryStage);
-			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Reporte por TERMINALES");
-			loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("reporteTotal.fxml"));
-			loader.setController(this);
-			rootLayout = loader.load();
-			Scene scene = new Scene(rootLayout);
-			nuevaStage.setScene(scene);
-			nuevaStage.show();
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
 	
 	@FXML
 	public void buscar(MouseEvent evento){
