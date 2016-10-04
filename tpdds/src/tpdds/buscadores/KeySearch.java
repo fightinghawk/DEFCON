@@ -14,11 +14,6 @@ public class KeySearch extends Buscador {
 		this.addedBuscador = busc;
 		this.keyWord = keyWord;
 	}
-	
-	
-
-
-
 
 	@Override
 	public boolean cumpleCriterio(Poi poi) {		

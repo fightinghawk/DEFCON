@@ -26,7 +26,6 @@ import javafx.stage.Stage;
 import tpdds.Usuarios.User;
 import tpdds.database.Generales;
 import tpdds.hibernate.HibernateSessionFactory;
-import tpdds.interfaz.componentes.Busqueda;
 import tpdds.interfaz.componentes.ObsUser;
 
 public class ModificacionDeUsuario implements Initializable{

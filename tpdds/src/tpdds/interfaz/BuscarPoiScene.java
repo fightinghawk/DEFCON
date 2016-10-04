@@ -32,6 +32,7 @@ import tpdds.apiExterna.jsonBancos;
 import tpdds.buscadores.Buscador;
 import tpdds.buscadores.KeySearch;
 import tpdds.buscadores.NameSeach;
+import tpdds.buscadores.TipoSearch;
 import tpdds.database.Generales;
 import tpdds.frameworkEmails.Email;
 import tpdds.hibernate.HibernateSessionFactory;
@@ -174,7 +175,7 @@ public class BuscarPoiScene implements Initializable {
 			resultadosTabla.add(new ObsPoi(poi.getNombre(), poi.getDireccion().getCallePrincipal(), poi.getDireccion().getAltura(),Calculos.calcularDistanciaA(poi, Main.tablero),poi.getIddb()));
 		}
 		tablaMostrada.setItems(resultadosTabla);
-		criterio.getItems().addAll("Nombre", "KeyWord");
+		criterio.getItems().addAll("Nombre", "KeyWord", "Tipo");
 	}
 	
 	@FXML
@@ -192,6 +193,9 @@ public class BuscarPoiScene implements Initializable {
 			return new ObsBuscador(nombre, contenido);
 		case "KeyWord":
 			filtro = new KeySearch(filtro, contenido);
+			return new ObsBuscador(nombre, contenido);
+		case "Tipo":
+			filtro = new TipoSearch(filtro, contenido);
 			return new ObsBuscador(nombre, contenido);
 		default:
 			return null;
