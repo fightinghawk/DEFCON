@@ -89,14 +89,12 @@ public class ModificacionDeUsuario implements Initializable{
 		this.todosLosUsuarios = this.cargarUsuarios();
 		this.tiposUsuarios = this.cargarTipos();
 		this.userModificacion.setItems(this.todosLosUsuarios);
-<<<<<<< HEAD
 		this.userModificacion.setEditable(true);
 		userNombre.setCellFactory(TextFieldTableCell.forTableColumn());
 		userApellido.setCellFactory(TextFieldTableCell.forTableColumn());
 		userId.setCellFactory(TextFieldTableCell.forTableColumn());
 		userMail.setCellFactory(TextFieldTableCell.forTableColumn());
 		userTipo.setCellFactory(ChoiceBoxTableCell.forTableColumn(tiposUsuarios));
-=======
 
 	
 	     ContextMenu menu = new ContextMenu();
@@ -146,7 +144,6 @@ public class ModificacionDeUsuario implements Initializable{
 	    	
 	     }});
 
->>>>>>> branch 'master' of https://github.com/fightinghawk/DEFCON.git
 	}
 	
 	private ObservableList<String> cargarTipos() {
