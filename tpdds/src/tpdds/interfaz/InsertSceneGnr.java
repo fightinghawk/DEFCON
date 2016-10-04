@@ -2,26 +2,18 @@ package tpdds.interfaz;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.ResourceBundle;
 
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import tpdds.database.Generales;
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;
@@ -29,11 +21,10 @@ import tpdds.pois.LocalesComerciales;
 import tpdds.pois.ParadaColectivo;
 import tpdds.pois.Poi;
 import tpdds.pois.componentes.DiaPoi;
-import tpdds.pois.componentes.KeyWords;
 import tpdds.pois.componentes.Servicios;
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Location;
-public class InsertSceneGnr implements Initializable{
+public class InsertSceneGnr extends Escena{
 	
 	@FXML
 	TextField nombre, calle, izquierda, barrio, altura, derecha,
@@ -50,32 +41,8 @@ public class InsertSceneGnr implements Initializable{
 		
 	private Poi nuevo;
 	private Poi poi = new Poi();
-	private FXMLLoader loader;
-	private AnchorPane rootLayout;
-	private HashMap<String, Boolean> palabraOK = new HashMap<>();
-	private Stage nuevaStage;
 	private Collection<Servicios> servicios;
 	private Collection<DiaPoi> diasAbiertos;
-	
-	//IDCAMPO - SI ESTA OK O NO
-	public void insertSceneRender(){
-		try{
-			nuevaStage = new Stage();
-			nuevaStage.initModality(Modality.WINDOW_MODAL);
-			nuevaStage.initOwner(Main.primaryStage);
-			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Insertar POI");
-			loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("insertSceneGnr.fxml"));
-			loader.setController(this);
-			rootLayout = loader.load();
-			Scene scene = new Scene(rootLayout);
-			nuevaStage.setScene(scene);
-			nuevaStage.show();
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
 	
 	public InsertSceneGnr() {
 		diasAbiertos = new ArrayList<>();
@@ -156,6 +123,7 @@ public class InsertSceneGnr implements Initializable{
 		}
 		Generales.agregarPoi(nuevo);
 		Main.pois.add(nuevo);
+		this.nuevaStage.close();
 	}
 	
 	@FXML

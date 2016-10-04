@@ -2,38 +2,24 @@ package tpdds.interfaz;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.ResourceBundle;
-
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-
-import org.hibernate.Query;
-import org.hibernate.Session;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import tpdds.database.Generales;
-import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.interfaz.componentes.ObsPoi;
 import tpdds.pois.Poi;
 import tpdds.usoGlobal.BuscadorPoi;
 import tpdds.usoGlobal.Calculos;
 
-public class modfiPoiSceneBuscar implements Initializable {
+public class ModfiPoiSceneBuscar extends Escena {
 	@FXML
 	TextField campoDeBusqueda;
 	@FXML
@@ -48,34 +34,7 @@ public class modfiPoiSceneBuscar implements Initializable {
 	TableColumn<ObsPoi, Double> distancia;
 	
 	ArrayList<Poi> resultados;
-	
-	static Stage nuevaStage;
-	FXMLLoader loader;
-	AnchorPane rootLayout;
 	HashMap<String, Boolean> palabraOK = new HashMap<>();
-
-	//IDCAMPO - SI ESTA OK O NO
-	public void modfiPoiBuscar(){
-		try{
-			//Carga archivo FXML  q tiene la interfaz
-			loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("modifSceneBuscar.fxml"));
-			rootLayout = loader.load();
-
-			//Creo Scene y la configuro
-			Scene scene = new Scene(rootLayout);
-			//Stage a abrirse
-			nuevaStage = new Stage();
-			nuevaStage.initModality(Modality.WINDOW_MODAL);
-			nuevaStage.initOwner(Main.primaryStage);
-			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Buscar POI");
-			nuevaStage.setScene(scene);
-			nuevaStage.show();
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
 	
 	@FXML
 	private void buscar(KeyEvent evento){
@@ -108,7 +67,7 @@ public class modfiPoiSceneBuscar implements Initializable {
 		}
 		for(Poi poi : Main.pois){
 			 if (poi.getIddb() == id){
-				 new modifPoiSceneFields().modfSceneRender(nuevaStage, poi);
+				 new ModifPoiSceneFields().modfSceneRender(nuevaStage, poi);
 				 return;
 			 }
 		 }

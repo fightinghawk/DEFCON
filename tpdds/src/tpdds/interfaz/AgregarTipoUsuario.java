@@ -7,22 +7,16 @@ import java.util.ResourceBundle;
 import org.hibernate.Session;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import tpdds.Usuarios.Permisos;
 import tpdds.Usuarios.TipoUsuario;
 import tpdds.hibernate.HibernateSessionFactory;
 
-public class AgregarTipoUsuario implements Initializable {
+public class AgregarTipoUsuario extends Escena{
 
 	@FXML
 	CheckBox permInsPoi;
@@ -52,36 +46,12 @@ public class AgregarTipoUsuario implements Initializable {
 	TextField aMostrar;
 	@FXML
 	TextArea desc;
-	
-	private Stage nuevaStage;
-	private FXMLLoader loader;
-	private AnchorPane rootLayout;
+
 	private ArrayList<Permisos> permisos;
-	
-	
-	
+
 	public AgregarTipoUsuario() {
 		super();
 		this.permisos = new ArrayList<>();
-	}
-
-	public void render(){
-		try{
-			nuevaStage = new Stage();
-			nuevaStage.initModality(Modality.WINDOW_MODAL);
-			nuevaStage.initOwner(Main.primaryStage);
-			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Insertar Tipo Usuario");
-			loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("CrearTipoUsuariaScene.fxml"));
-			loader.setController(this);
-			rootLayout = loader.load();
-			Scene scene = new Scene(rootLayout);
-			nuevaStage.setScene(scene);
-			nuevaStage.show();
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
 	}
 	
 	@FXML

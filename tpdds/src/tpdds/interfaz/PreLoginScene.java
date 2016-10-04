@@ -3,39 +3,19 @@ package tpdds.interfaz;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Projection;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
-
-import com.sun.javafx.geom.BaseBounds;
-import com.sun.javafx.geom.transform.BaseTransform;
-import com.sun.javafx.scene.BoundsAccessor;
-
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.Effect;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import tpdds.Usuarios.TipoUsuario;
 import tpdds.Usuarios.User;
 import tpdds.hibernate.HibernateSessionFactory;
 
 
-public class PreLoginScene implements Initializable {
+public class PreLoginScene extends Escena{
 
 	private boolean registroValido;
 	
@@ -58,32 +38,6 @@ public class PreLoginScene implements Initializable {
 	@FXML
 	TextArea erroresNotificacion;
 	
-	
-	Stage nuevaStage;
-	FXMLLoader loader;
-	AnchorPane rootLayout;
-	
-	public void loginSceneRender(){
-		try{
-			registroValido = true;
-			nuevaStage = new Stage();
-			nuevaStage.initModality(Modality.WINDOW_MODAL);
-			nuevaStage.initOwner(Main.primaryStage);
-			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("PreLogin");
-			loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("preLoginScene.fxml"));
-			loader.setController(this);
-			rootLayout = loader.load();
-			Scene scene = new Scene(rootLayout);
-			nuevaStage.setScene(scene);
-			nuevaStage.show();
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
-	
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -100,7 +54,7 @@ public class PreLoginScene implements Initializable {
 			User user = cargar.get(User.class, usuario);
 			if(passWord != null && user.getUsuariopassword().equals(passWord)){
 				System.out.println("Password correcta");
-				new LoginScene(user).loginSceneRender();
+				new LoginScene(user).render("Home","loginScene.fxml");
 				this.cerrar();
 			}else{
 				System.out.println("Error de password");
@@ -134,7 +88,7 @@ public class PreLoginScene implements Initializable {
 		try{
 			aGuardar.save(usuario);
 			aGuardar.getTransaction().commit();
-			new LoginScene(usuario).loginSceneRender();
+			new LoginScene(usuario).render("Home","loginScene.fxml");
 			this.cerrar();
 		}catch(Exception ex){
 			ex.printStackTrace();

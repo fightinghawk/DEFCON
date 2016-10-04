@@ -4,18 +4,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import tpdds.Usuarios.User;
 
-public class LoginScene implements Initializable {
+public class LoginScene extends Escena{
 
 	@FXML
 	Button VerReporteFecha;
@@ -44,9 +38,6 @@ public class LoginScene implements Initializable {
 	@FXML
 	Text tipousuario;
 	
-	Stage nuevaStage;
-	FXMLLoader loader;
-	AnchorPane rootLayout;
 	User user;
 	String tipo;
 	
@@ -54,25 +45,6 @@ public class LoginScene implements Initializable {
 		this.user = user;
 	}
 	
-	public void loginSceneRender(){
-		try{
-			nuevaStage = new Stage();
-			nuevaStage.initModality(Modality.WINDOW_MODAL);
-			nuevaStage.initOwner(Main.primaryStage);
-			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Insertar POI");
-			loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("loginScene.fxml"));
-			loader.setController(this);
-			rootLayout = loader.load();
-			Scene scene = new Scene(rootLayout);
-			nuevaStage.setScene(scene);
-			nuevaStage.show();
-			
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		VerReporteFecha.setDisable(!user.hasPermiso("VerReporteFecha"));
@@ -91,37 +63,37 @@ public class LoginScene implements Initializable {
 	
 	@FXML
 	public void verreportefecha(MouseEvent evento){
-		new ReportePorFecha().ReportePorFechaSceneRender();
+		new ReportePorFecha().render("Reportes Por Fecha","reportesPorFechaScene.fxml");
 	}
 
 	@FXML
 	public void verreporteterminal(){
-		new ReportePorTerminal().ReportePorTerminalRender();
+		new ReportePorTerminal().render("Reporte por Terminal","reportePorTerminaScene.fxml");
 	}
 	
 	@FXML
 	public void verreportetotal(){
-		new ReporteTotal().ReportePorTerminalRender();
+		new ReporteTotal().render("Reportes Por Usuario", "reporteTotal.fxml");
 	}
 	
 	@FXML
 	public void ejecutarprocesos(){
-		new LanzadorDeProcesos().lanzadorRender();
+		new LanzadorDeProcesos().render("Ejecucion de Procesos","lanzadorDeProcesos.fxml");
 	}
 	
 	@FXML
 	public void modificarPOI(MouseEvent evento){
-		new modfiPoiSceneBuscar().modfiPoiBuscar();
+		new ModfiPoiSceneBuscar().render("Modificar POI", "modifSceneBuscar.fxml");
 	}
 	
 	@FXML
 	public void insertarPOI(MouseEvent evento){
-		new InsertSceneGnr().insertSceneRender();
+		new InsertSceneGnr().render("Insertar POI", "InsertSceneGnr.fxml");
 	}
 	
 	@FXML
 	public void buscarPOI(MouseEvent evento){
-		new BuscarPoiScene(this.user).buscarSceneRender();
+		new BuscarPoiScene(this.user).render("Buscar POI","BuscarScene.fxml");
 	}
 	
 	@FXML
@@ -131,7 +103,7 @@ public class LoginScene implements Initializable {
 	
 	@FXML
 	public void crearTipoUsuario(MouseEvent evento){
-		new AgregarTipoUsuario().render();
+		new AgregarTipoUsuario().render("Crear Tipo Usuario", "CrearTipoUsuariaScene.fxml");
 	}
 	
 	@FXML
@@ -141,7 +113,7 @@ public class LoginScene implements Initializable {
 	
 	@FXML
 	public void salir(MouseEvent evento){
-		new PreLoginScene().loginSceneRender();
+		new PreLoginScene().render("Login","PreLoginScene.fxml");
 		this.nuevaStage.close();
 	}
 	

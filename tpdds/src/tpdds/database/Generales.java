@@ -22,6 +22,8 @@ import org.hibernate.type.DateType;
 import org.hibernate.type.IntegerType;
 import org.hibernate.type.StringType;
 
+import javafx.collections.ObservableList;
+import tpdds.Usuarios.User;
 import tpdds.dispositivo.Dispositivo;
 import tpdds.factory.POIFactory;
 import tpdds.hibernate.HibernateSessionFactory;
@@ -29,6 +31,7 @@ import tpdds.interfaz.componentes.Busqueda;
 import tpdds.interfaz.componentes.Criterio;
 import tpdds.interfaz.componentes.Historial;
 import tpdds.interfaz.componentes.ObsResultadoFecha;
+import tpdds.interfaz.componentes.ObsUser;
 import tpdds.interfaz.componentes.reporteFecha;
 import tpdds.interfaz.componentes.reporteTerminal;
 import tpdds.pois.Bancos;
@@ -56,6 +59,18 @@ public class Generales{
 		return poisRev;
 	}
 	
+	public static  ArrayList<User> cargarUsuarios(){
+		Session session = HibernateSessionFactory.getSession();
+		session.beginTransaction();
+		String sql = "SELECT * FROM USUARIOS";
+		SQLQuery query = session.createSQLQuery(sql);
+        query.addEntity(User.class);
+        ArrayList<User> userRev = new  ArrayList<User>(query.list());
+        session.getTransaction().commit();
+        session.close();
+		return userRev;
+	}
+	
 	public static  ArrayList<String> cargarTiposUsuarios(){
 		Session session = HibernateSessionFactory.getSession();
 		session.beginTransaction();
@@ -66,6 +81,21 @@ public class Generales{
         session.getTransaction().commit();
         session.close();
 		return tiposRev;
+	}
+	
+	public static void modificarUsuario(ObsUser user){
+		Session session = HibernateSessionFactory.getSession();
+		session.beginTransaction();
+		String sql = "UPDATE usuarios SET user_nombre=:nombre, user_apellido=:apellido, user_mail=:email,usua_tipodeusuario=:tipo WHERE user_id=:nickname";
+		SQLQuery query = session.createSQLQuery(sql);
+		query.setParameter("nombre", user.getNombre());
+		query.setParameter("apellido", user.getApellido());
+		query.setParameter("tipo", user.getTipo());
+		query.setParameter("email", user.getMail());
+		query.setParameter("nickname", user.getId());
+		query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
 	}
 	
 	public static  ArrayList<String> obtenerTerminales(){
@@ -213,4 +243,5 @@ public class Generales{
         session.close();
 	    return resultados;
 	}
+
 }

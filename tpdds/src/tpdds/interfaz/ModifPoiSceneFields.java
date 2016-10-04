@@ -1,9 +1,6 @@
 package tpdds.interfaz;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.ResourceBundle;
-
-import org.hibernate.Session;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +15,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tpdds.database.Generales;
-import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;
 import tpdds.pois.LocalesComerciales;
@@ -27,7 +23,7 @@ import tpdds.pois.Poi;
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Location;
 
-public class modifPoiSceneFields implements Initializable {
+public class ModifPoiSceneFields implements Initializable {
 
 	@FXML
 	private TextField nombre;
@@ -137,7 +133,7 @@ public class modifPoiSceneFields implements Initializable {
 			ex.printStackTrace();
 		}
 		stg.close();
-		new modfiPoiSceneBuscar().modfiPoiBuscar();
+		new ModfiPoiSceneBuscar().render("Modificar POI", "modifSceneBuscar.fxml");
 		
 		return;
 	}

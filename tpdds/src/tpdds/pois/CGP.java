@@ -20,6 +20,10 @@ public class CGP extends Poi  {
 		return comunaThis == comunaLocalizable;	
 	}
 	
+	public String getRubro() {
+		return "Tramites";
+	}
+	
 	public CGP(){}
 	
 }

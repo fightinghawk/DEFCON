@@ -1,19 +1,11 @@
 package tpdds.interfaz;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
-
-import org.hibernate.Session;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import tpdds.Archivos.archivos;
-import tpdds.Usuarios.Permisos;
-import tpdds.Usuarios.TipoUsuario;
 import tpdds.Usuarios.User;
 import tpdds.database.Generales;
 import tpdds.dispositivo.Dispositivo;
-import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.pois.Poi;
 import tpdds.proceso.Proceso;
 import tpdds.ubicacion.Comuna;
@@ -41,9 +33,13 @@ public class Main extends Application {
 		primaryStage = primaryStag;
 		primaryStage.setResizable(false);
 		primaryStage.setTitle("Pois dds");
-		new PreLoginScene().loginSceneRender();
+		new PreLoginScene().render("Login","PreLoginScene.fxml");
 			}
 	
+	@Override
+	public void stop(){
+		System.exit(0);
+	}
 
 	
 	public static void main(String[] args) {
