@@ -22,7 +22,7 @@ import tpdds.Usuarios.Permisos;
 import tpdds.Usuarios.TipoUsuario;
 import tpdds.hibernate.HibernateSessionFactory;
 
-public class AgregarTipoUsuario implements Initializable {
+public class AgregarTipoUsuario extends Escena implements Initializable {
 
 	@FXML
 	CheckBox permInsPoi;
@@ -57,31 +57,10 @@ public class AgregarTipoUsuario implements Initializable {
 	private FXMLLoader loader;
 	private AnchorPane rootLayout;
 	private ArrayList<Permisos> permisos;
-	
-	
-	
+
 	public AgregarTipoUsuario() {
 		super();
 		this.permisos = new ArrayList<>();
-	}
-
-	public void render(){
-		try{
-			nuevaStage = new Stage();
-			nuevaStage.initModality(Modality.WINDOW_MODAL);
-			nuevaStage.initOwner(Main.primaryStage);
-			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Insertar Tipo Usuario");
-			loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("CrearTipoUsuariaScene.fxml"));
-			loader.setController(this);
-			rootLayout = loader.load();
-			Scene scene = new Scene(rootLayout);
-			nuevaStage.setScene(scene);
-			nuevaStage.show();
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
 	}
 	
 	@FXML

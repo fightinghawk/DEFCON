@@ -131,7 +131,7 @@ public class LoginScene implements Initializable {
 	
 	@FXML
 	public void crearTipoUsuario(MouseEvent evento){
-		new AgregarTipoUsuario().render();
+		new AgregarTipoUsuario().render("Crear Tipo Usuario", "CrearTipoUsuariaScene.fxml");
 	}
 	
 	@FXML
