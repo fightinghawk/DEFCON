@@ -108,7 +108,7 @@ public class LoginScene extends Escena{
 	
 	@FXML
 	public void modificarUsuario(MouseEvent evento){
-		new ModificacionDeUsuario().modUserSceneRender();
+		new ModificacionDeUsuario().render("Modificacion de usuarios","ModificacionDeUsuarios.fxml");
 	}
 	
 	@FXML

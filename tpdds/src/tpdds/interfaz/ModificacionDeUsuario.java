@@ -16,6 +16,8 @@ import javafx.scene.input.KeyCode;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -24,6 +26,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import tpdds.Usuarios.User;
 import tpdds.database.Generales;
 import tpdds.hibernate.HibernateSessionFactory;
@@ -32,9 +35,10 @@ import tpdds.interfaz.componentes.ObsUser;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler; 
 
-public class ModificacionDeUsuario implements Initializable{
+public class ModificacionDeUsuario extends Escena{
 
 	@FXML
 	TableView<ObsUser> userModificacion;
@@ -48,101 +52,59 @@ public class ModificacionDeUsuario implements Initializable{
 	TableColumn<ObsUser, String> userMail;
 	@FXML
 	TableColumn<ObsUser, String> userTipo;
-	
-	private Stage nuevaStage;
-	private FXMLLoader loader;
-	private AnchorPane rootLayout;
-	private ObservableList<ObsUser> todosLosUsuarios;
+	@FXML
+	ContextMenu opciones;
+	@FXML
+	MenuItem editar;
+	@FXML
+	MenuItem finalizar;
+	private ObservableList<ObsUser> todosLosUsuariosSinModificar;
+	private ObservableList<ObsUser> todosLosUsuariosModificados;
 	private ObservableList<String> tiposUsuarios;
 	ObsUser usuariofinal;
 	
-	public void modUserSceneRender(){
-		try{
-			nuevaStage = new Stage();
-			nuevaStage.initModality(Modality.WINDOW_MODAL);
-			nuevaStage.initOwner(Main.primaryStage);
-			nuevaStage.setResizable(false);
-			nuevaStage.setTitle("Modificacion de Usuario");
-			loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("ModificacionDeUsuarios.fxml"));
-			loader.setController(this);
-			rootLayout = loader.load();
-			Scene scene = new Scene(rootLayout);
-			nuevaStage.setScene(scene);
-			nuevaStage.show();
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
-	
 	public ModificacionDeUsuario() {
-
+		this.todosLosUsuariosModificados = FXCollections.observableArrayList();
+		
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		this.userModificacion.setRowFactory(new Callback<TableView<ObsUser>, TableRow<ObsUser>>(){
+			@Override
+			public TableRow<ObsUser> call(TableView<ObsUser> param) {
+				return new TableRow<ObsUser>(){
+					@Override
+					protected void updateItem(ObsUser usuario, boolean valorBooleano){
+						if(usuario!=null){
+							if(usuario.modificado){
+		                        setStyle("-fx-background-color:red");
+							}
+
+						}
+                        super.updateItem(usuario, valorBooleano);
+					}
+				};
+			}
+			
+		});
+
 		userApellido.setCellValueFactory(new PropertyValueFactory<>("apellido"));
 		userNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 		userId.setCellValueFactory(new PropertyValueFactory<>("id"));
 		userMail.setCellValueFactory(new PropertyValueFactory<>("mail"));
 		userTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-		this.todosLosUsuarios = this.cargarUsuarios();
-		this.tiposUsuarios = this.cargarTipos();
-		this.userModificacion.setItems(this.todosLosUsuarios);
-		this.userModificacion.setEditable(true);
+		
 		userNombre.setCellFactory(TextFieldTableCell.forTableColumn());
 		userApellido.setCellFactory(TextFieldTableCell.forTableColumn());
-		userId.setCellFactory(TextFieldTableCell.forTableColumn());
 		userMail.setCellFactory(TextFieldTableCell.forTableColumn());
 		userTipo.setCellFactory(ChoiceBoxTableCell.forTableColumn(tiposUsuarios));
-
-	
-	     ContextMenu menu = new ContextMenu();
-	     MenuItem editar = new MenuItem("Editar");
-	     MenuItem finalizar = new MenuItem("Finalizar");
-	     menu.getItems().add(editar);
-	     menu.getItems().add(finalizar);
-	     userModificacion.setContextMenu(menu);
-	     
-	     editar.setOnAction(new EventHandler<ActionEvent>(){
-	     
-	    	 @Override 
-	    	 public void handle(ActionEvent event) {
-	    		 	userModificacion.setEditable(true);
-	    			userNombre.setCellFactory(TextFieldTableCell.forTableColumn());
-	    			userApellido.setCellFactory(TextFieldTableCell.forTableColumn());
-	    			userId.setCellFactory(TextFieldTableCell.forTableColumn());
-	    			userMail.setCellFactory(TextFieldTableCell.forTableColumn());
-	    			userTipo.setCellFactory(ChoiceBoxTableCell
-	    			        .forTableColumn(tiposUsuarios));
-	    		 ObsUser usuario = userModificacion.getSelectionModel().getSelectedItem();
-	    		 userNombre.setOnEditCommit(data -> {
-	    			 usuario.setNombre(data.getNewValue()); 
-	    		 });
-	    		 userApellido.setOnEditCommit(data -> {
-	    			 usuario.setApellido(data.getNewValue());
-	    		 });
-	    		 userId.setOnEditCommit(data -> {
-
-	    		 });
-	    		 userMail.setOnEditCommit(data -> {
-	    			 usuario.setMail(data.getNewValue());
-	    		 });
-	    		 userTipo.setOnEditCommit(data -> {
-	    			 usuario.setTipo(data.getNewValue()); 
-	    		 });
-	    		 usuariofinal = usuario;
-	     }});
-	     
-	     
-	     finalizar.setOnAction(new EventHandler<ActionEvent>(){
-	     
-	    	 @Override 
-	    	 public void handle(ActionEvent event) {
-	    		 userModificacion.setEditable(false);
-	    		 Generales.modificarUsuario(usuariofinal);
-	    	
-	     }});
+		
+		this.todosLosUsuariosSinModificar = this.cargarUsuarios();
+		this.tiposUsuarios = this.cargarTipos();
+		this.userModificacion.setItems(this.todosLosUsuariosSinModificar);
+		this.userModificacion.setEditable(true);
 
 	}
 	
@@ -156,13 +118,39 @@ public class ModificacionDeUsuario implements Initializable{
 	public void buscarUsuario(KeyEvent ingresoDeTecla){
 		
 	}
+	@FXML
+	public void edicionNombre(CellEditEvent<ObsUser, String> evento){
+		ObsUser aEditar = evento.getRowValue();
+		aEditar.modificado = true;
+		aEditar.setNombre(evento.getNewValue());
+		this.usuarioActualizado(aEditar);
+	}
+	@FXML
+	public void edicionApellido(CellEditEvent<ObsUser, String> evento){
+		ObsUser aEditar = evento.getRowValue();
+		aEditar.modificado = true;
+		aEditar.setApellido(evento.getNewValue());
+		this.usuarioActualizado(aEditar);
+	}
+	@FXML
+	public void edicionEmail(CellEditEvent<ObsUser, String> evento){
+		ObsUser aEditar = evento.getRowValue();
+		aEditar.modificado = true;
+		aEditar.setMail(evento.getNewValue());
+		this.usuarioActualizado(aEditar);
+	}
+	@FXML
+	public void edicionTipo(CellEditEvent<ObsUser, String> evento){
+		ObsUser aEditar = evento.getRowValue();
+		aEditar.modificado = true;
+		aEditar.setTipo(evento.getNewValue());
+		this.usuarioActualizado(aEditar);
+	}
 	
 	@FXML
-	public void modificacionUsuario(KeyEvent modificacionUsuario){
-		/*if(modificacionUsuario.getCode() == KeyCode.ENTER) { 
-		Generales.modificarUsuario(usuario);
-		this.usuario = new User();
-		}*/
+	public void finalizarEdicion (ActionEvent evento){
+		 userModificacion.setEditable(false);
+		 Generales.modificarUsuario(usuariofinal);
 	}
 	
 	private ObservableList<ObsUser> cargarUsuarios(){
@@ -173,5 +161,26 @@ public class ModificacionDeUsuario implements Initializable{
 		}
 		return usuariosAMostrar;
 	}
+	
+	private void usuarioActualizado(ObsUser userModificado){
+		if(this.todosLosUsuariosSinModificar.contains(userModificado)){
+			this.todosLosUsuariosSinModificar.remove(userModificado);
+			this.todosLosUsuariosModificados.add(userModificado);
+		}
+		this.actualizarTabla(null);
+	}
+	
+	@FXML
+	private void cambiado(Event evento){
+		System.out.println("hola");
+	}
+	
+	private void actualizarTabla(String buscado){
+		this.userModificacion.setItems(this.todosLosUsuariosSinModificar);
+		this.userModificacion.getItems().addAll(todosLosUsuariosModificados);
+		for(ObsUser userMostrado : this.userModificacion.getItems()){
+		}
+	}
 
+	
 }
