@@ -2,38 +2,24 @@ package tpdds.interfaz;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.ResourceBundle;
-
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-
-import org.hibernate.Query;
-import org.hibernate.Session;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import tpdds.database.Generales;
-import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.interfaz.componentes.ObsPoi;
 import tpdds.pois.Poi;
 import tpdds.usoGlobal.BuscadorPoi;
 import tpdds.usoGlobal.Calculos;
 
-public class ModfiPoiSceneBuscar extends Escena implements Initializable {
+public class ModfiPoiSceneBuscar extends Escena {
 	@FXML
 	TextField campoDeBusqueda;
 	@FXML

@@ -1,12 +1,13 @@
 package tpdds.interfaz;
 
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public abstract class Escena {
+public abstract class Escena implements Initializable {
 
 	protected Stage nuevaStage;
 	protected FXMLLoader loader;

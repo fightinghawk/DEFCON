@@ -2,43 +2,28 @@ package tpdds.interfaz;
 
 import java.net.URL;
 import java.sql.Date;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
-import org.hibernate.transform.Transformers;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import tpdds.database.Generales;
 import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.interfaz.componentes.Busqueda;
-import tpdds.interfaz.componentes.Historial;
 import tpdds.interfaz.componentes.ObsBuscador;
 import tpdds.interfaz.componentes.ObsPoi;
 import tpdds.interfaz.componentes.ObsResultadoTotal;
-import tpdds.interfaz.componentes.reporteFecha;
 import tpdds.pois.Poi;
 
 public class ReporteTotal extends Escena implements Initializable {
@@ -97,6 +82,7 @@ public class ReporteTotal extends Escena implements Initializable {
 	private Collection<Busqueda> doQuery() {
 		Session session = HibernateSessionFactory.getSession();
 		Query pedido = session.createQuery("select p from Busqueda p");
+		@SuppressWarnings("unchecked")
 		List<Busqueda> resultados = pedido.list();
 		session.close();
 		return resultados;

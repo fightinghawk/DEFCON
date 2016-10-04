@@ -3,29 +3,18 @@ package tpdds.interfaz;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.util.Callback;
-import tpdds.interfaz.componentes.ObsPoi;
 import tpdds.proceso.Proceso;
 
-public class LanzadorDeProcesos extends Escena implements Initializable {
+public class LanzadorDeProcesos extends Escena{
 	
 	long time_start, time_end;
 	ObservableList<Proceso> listaProcesos =  FXCollections.observableArrayList();

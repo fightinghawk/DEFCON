@@ -7,22 +7,16 @@ import java.util.ResourceBundle;
 import org.hibernate.Session;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import tpdds.Usuarios.Permisos;
 import tpdds.Usuarios.TipoUsuario;
 import tpdds.hibernate.HibernateSessionFactory;
 
-public class AgregarTipoUsuario extends Escena implements Initializable {
+public class AgregarTipoUsuario extends Escena{
 
 	@FXML
 	CheckBox permInsPoi;

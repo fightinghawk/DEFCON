@@ -2,26 +2,18 @@ package tpdds.interfaz;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.ResourceBundle;
 
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import tpdds.database.Generales;
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;
@@ -29,11 +21,10 @@ import tpdds.pois.LocalesComerciales;
 import tpdds.pois.ParadaColectivo;
 import tpdds.pois.Poi;
 import tpdds.pois.componentes.DiaPoi;
-import tpdds.pois.componentes.KeyWords;
 import tpdds.pois.componentes.Servicios;
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Location;
-public class InsertSceneGnr extends Escena implements Initializable{
+public class InsertSceneGnr extends Escena{
 	
 	@FXML
 	TextField nombre, calle, izquierda, barrio, altura, derecha,
@@ -50,7 +41,6 @@ public class InsertSceneGnr extends Escena implements Initializable{
 		
 	private Poi nuevo;
 	private Poi poi = new Poi();
-	private HashMap<String, Boolean> palabraOK = new HashMap<>();
 	private Collection<Servicios> servicios;
 	private Collection<DiaPoi> diasAbiertos;
 	

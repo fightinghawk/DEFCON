@@ -1,9 +1,6 @@
 package tpdds.interfaz;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.ResourceBundle;
-
-import org.hibernate.Session;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +15,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tpdds.database.Generales;
-import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;
 import tpdds.pois.LocalesComerciales;

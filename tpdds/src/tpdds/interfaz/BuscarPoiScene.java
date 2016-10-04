@@ -1,39 +1,25 @@
 package tpdds.interfaz;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
-
-import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import tpdds.Usuarios.User;
-import tpdds.apiExterna.BancoExterna;
-import tpdds.apiExterna.jsonBancos;
 import tpdds.buscadores.Buscador;
 import tpdds.buscadores.KeySearch;
 import tpdds.buscadores.NameSeach;
 import tpdds.buscadores.TipoSearch;
-import tpdds.database.Generales;
 import tpdds.frameworkEmails.Email;
 import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.interfaz.componentes.Busqueda;
@@ -41,10 +27,9 @@ import tpdds.interfaz.componentes.Criterio;
 import tpdds.interfaz.componentes.ObsBuscador;
 import tpdds.interfaz.componentes.ObsPoi;
 import tpdds.pois.Poi;
-import tpdds.usoGlobal.BuscadorPoi;
 import tpdds.usoGlobal.Calculos;
 
-public class BuscarPoiScene extends Escena implements Initializable {
+public class BuscarPoiScene extends Escena{
 	
 	private static final double SEGUNDOS_PARAMETRIZADOS = 1;
 	long time_start, time_end;
@@ -75,8 +60,6 @@ public class BuscarPoiScene extends Escena implements Initializable {
 	@FXML
 	TableColumn<ObsBuscador, String> content;
 
-	private HashMap<String, Boolean> palabraOK = new HashMap<>();
-	private ArrayList<BancoExterna> bancos;
 	private ArrayList<Poi> resultados;
 	private Collection<Criterio> criterios;
 	private User usuario;

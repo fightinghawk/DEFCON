@@ -4,18 +4,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import tpdds.Usuarios.User;
 
-public class LoginScene extends Escena implements Initializable {
+public class LoginScene extends Escena{
 
 	@FXML
 	Button VerReporteFecha;
@@ -94,12 +88,12 @@ public class LoginScene extends Escena implements Initializable {
 	
 	@FXML
 	public void insertarPOI(MouseEvent evento){
-		new InsertSceneGnr().render("Insertar POI", "insertSceneGnr.fxml");
+		new InsertSceneGnr().render("Insertar POI", "InsertSceneGnr.fxml");
 	}
 	
 	@FXML
 	public void buscarPOI(MouseEvent evento){
-		new BuscarPoiScene(this.user).render("Buscar POI","buscarScene.fxml");
+		new BuscarPoiScene(this.user).render("Buscar POI","BuscarScene.fxml");
 	}
 	
 	@FXML
@@ -119,7 +113,7 @@ public class LoginScene extends Escena implements Initializable {
 	
 	@FXML
 	public void salir(MouseEvent evento){
-		new PreLoginScene().render("Login","preLoginScene.fxml");
+		new PreLoginScene().render("Login","PreLoginScene.fxml");
 		this.nuevaStage.close();
 	}
 	
