@@ -89,7 +89,7 @@ public class ModificacionDeUsuario implements Initializable{
 		this.todosLosUsuarios = this.cargarUsuarios();
 		this.tiposUsuarios = this.cargarTipos();
 		this.userModificacion.setItems(this.todosLosUsuarios);
-		this.userModificacion.setEditable(true);
+
 	
 	     ContextMenu menu = new ContextMenu();
 	     MenuItem editar = new MenuItem("Editar");
@@ -102,6 +102,7 @@ public class ModificacionDeUsuario implements Initializable{
 	     
 	    	 @Override 
 	    	 public void handle(ActionEvent event) {
+	    		 	userModificacion.setEditable(true);
 	    			userNombre.setCellFactory(TextFieldTableCell.forTableColumn());
 	    			userApellido.setCellFactory(TextFieldTableCell.forTableColumn());
 	    			userId.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -132,6 +133,7 @@ public class ModificacionDeUsuario implements Initializable{
 	     
 	    	 @Override 
 	    	 public void handle(ActionEvent event) {
+	    		 userModificacion.setEditable(false);
 	    		 Generales.modificarUsuario(usuariofinal);
 	    	
 	     }});
