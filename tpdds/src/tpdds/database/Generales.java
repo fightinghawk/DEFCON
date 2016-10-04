@@ -59,6 +59,18 @@ public class Generales{
 		return poisRev;
 	}
 	
+	public static  ArrayList<User> cargarUsuarios(){
+		Session session = HibernateSessionFactory.getSession();
+		session.beginTransaction();
+		String sql = "SELECT * FROM USUARIOS";
+		SQLQuery query = session.createSQLQuery(sql);
+        query.addEntity(User.class);
+        ArrayList<User> userRev = new  ArrayList<User>(query.list());
+        session.getTransaction().commit();
+        session.close();
+		return userRev;
+	}
+	
 	public static  ArrayList<String> cargarTiposUsuarios(){
 		Session session = HibernateSessionFactory.getSession();
 		session.beginTransaction();
@@ -84,11 +96,6 @@ public class Generales{
 		query.executeUpdate();
         session.getTransaction().commit();
         session.close();
-        System.out.println(user.getNombre());
-        System.out.println(user.getApellido());
-        System.out.println(user.getTipo());
-        System.out.println(user.getMail());
-        System.out.println(user.getId());
 	}
 	
 	public static  ArrayList<String> obtenerTerminales(){

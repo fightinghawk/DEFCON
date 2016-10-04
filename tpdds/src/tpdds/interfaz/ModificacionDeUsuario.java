@@ -161,14 +161,10 @@ public class ModificacionDeUsuario implements Initializable{
 	
 	private ObservableList<ObsUser> cargarUsuarios(){
 		ObservableList<ObsUser> usuariosAMostrar = FXCollections.observableArrayList();
-		Session session = HibernateSessionFactory.getSession();
-		Query pedido = session.createQuery("SELECT p FROM User p");
-		@SuppressWarnings("unchecked")
-		List<User> resultados = pedido.list();
+		ArrayList<User> resultados = Generales.cargarUsuarios();
 		for (User user : resultados) {
 			usuariosAMostrar.add(new ObsUser(user));
 		}
-		session.close();
 		return usuariosAMostrar;
 	}
 
