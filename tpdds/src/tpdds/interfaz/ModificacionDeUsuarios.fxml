@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="641.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="userModificacion" editable="true" layoutX="7.0" layoutY="125.0" onInputMethodTextChanged="#cambiado" prefHeight="516.0" prefWidth="751.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="125.0">
+      <TableView fx:id="userModificacion" editable="true" layoutX="7.0" layoutY="125.0" prefHeight="516.0" prefWidth="751.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="125.0">
         <columns>
           <TableColumn fx:id="userNombre" onEditCommit="#edicionNombre" prefWidth="75.0" text="Nombre" />
           <TableColumn fx:id="userApellido" onEditCommit="#edicionApellido" prefWidth="75.0" text="Apellido" />
@@ -27,7 +27,8 @@
          </contextMenu>
       </TableView>
       <Label layoutX="22.0" layoutY="62.0" prefHeight="21.0" prefWidth="84.0" text="FIltadror:" />
-      <TextField layoutX="92.0" layoutY="57.0" onKeyTyped="#buscarUsuario" prefHeight="31.0" prefWidth="636.0" />
+      <TextField layoutX="92.0" layoutY="57.0" onKeyTyped="#buscarUsuario" prefHeight="31.0" prefWidth="404.0" />
       <Label layoutX="22.0" layoutY="14.0" prefHeight="21.0" prefWidth="389.0" text="Modificacion de usuarios" />
+      <CheckBox fx:id="modificados" layoutX="528.0" layoutY="62.0" mnemonicParsing="false" onAction="#mostrarSoloModificados" prefHeight="21.0" prefWidth="176.0" text="Solo Modificados" />
    </children>
 </AnchorPane>

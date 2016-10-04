@@ -1,6 +1,10 @@
 package tpdds.interfaz.componentes;
 
+import org.hibernate.Session;
+
+import tpdds.Usuarios.TipoUsuario;
 import tpdds.Usuarios.User;
+import tpdds.hibernate.HibernateSessionFactory;
 
 public class ObsUser {
 
@@ -8,18 +12,18 @@ public class ObsUser {
 	private String apellido;
 	private String id;
 	private String mail;
-	private String tipo;
 	private User usuario;
-	public boolean modificado;
 	
 	public ObsUser(User usuario){
 		this.nombre = usuario.getNombreUsuario();
 		this.apellido = usuario.getApellidoUsuario();
 		this.id = usuario.getUsuarioid();
 		this.mail = usuario.getEmailUsuario();
-		this.tipo = usuario.getTipo();
-		this.modificado = false;
 		this.usuario = usuario;
+	}
+	
+	public User getUsuario() {
+		return usuario;
 	}
 	
 	public String getNombre() {
@@ -35,7 +39,7 @@ public class ObsUser {
 		return mail;
 	}
 	public String getTipo() {
-		return tipo;
+		return this.usuario.getTipo();
 	}
 	public void setNombre(String nombre) {
 		this.usuario.setNombreUsuario(nombre);
@@ -54,7 +58,10 @@ public class ObsUser {
 		this.mail = mail;
 	}
 	public void setTipo(String tipo) {
-		this.tipo = tipo;
+		Session session = HibernateSessionFactory.getSession();
+		session.beginTransaction();
+		this.usuario.setTipoUsuario(session.get(TipoUsuario.class, tipo));
+        session.close();
 	}
 	
 	
