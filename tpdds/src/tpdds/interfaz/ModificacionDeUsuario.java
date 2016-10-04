@@ -88,8 +88,7 @@ public class ModificacionDeUsuario implements Initializable{
 		userApellido.setCellFactory(TextFieldTableCell.forTableColumn());
 		userId.setCellFactory(TextFieldTableCell.forTableColumn());
 		userMail.setCellFactory(TextFieldTableCell.forTableColumn());
-		userTipo.setCellFactory(ChoiceBoxTableCell
-		        .forTableColumn(tiposUsuarios));
+		userTipo.setCellFactory(ChoiceBoxTableCell.forTableColumn(tiposUsuarios));
 	}
 	
 	private ObservableList<String> cargarTipos() {

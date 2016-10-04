@@ -1,6 +1,7 @@
 package tpdds.interfaz;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ObservableValue;
@@ -16,6 +17,8 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -23,12 +26,18 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import tpdds.interfaz.componentes.ObsPoi;
+import tpdds.interfaz.componentes.ObsProceso;
+import tpdds.interfaz.componentes.ObsUser;
+import tpdds.pois.Poi;
 import tpdds.proceso.Proceso;
 
 public class LanzadorDeProcesos implements Initializable {
 	
 	long time_start, time_end;
-	ObservableList<Proceso> listaProcesos =  FXCollections.observableArrayList();
+	ArrayList<Proceso> listaProcesos;
+	ObservableList<ObsProceso> procesosEnTabla =  FXCollections.observableArrayList();
+	ObservableList<ObsProceso> aux =  FXCollections.observableArrayList();
+	
 	
 	@FXML
 	MenuButton mb;
@@ -37,11 +46,11 @@ public class LanzadorDeProcesos implements Initializable {
 	@FXML
 	MenuItem bajapoi;
 	@FXML
-	TableColumn<Proceso, String> proceso;
+	TableColumn<ObsProceso, String> proceso;
 	@FXML
-	TableColumn<Proceso, String> estado;
+	TableColumn<ObsProceso, String> estado;
 	@FXML
-	TableView<Proceso> procesosrun;
+	TableView<ObsProceso> procesosrun;
 	
 	Stage nuevaStage;
 	FXMLLoader loader;
@@ -71,22 +80,41 @@ public class LanzadorDeProcesos implements Initializable {
 	
 	@FXML
 	
-	public void lanzarProceso(MouseEvent botonApretado){
-		System.out.println("Funciona!");
+	public void lanzarProcesos(MouseEvent botonApretado){
+		for (ObsProceso proc : procesosEnTabla) {
+				proc.setResultado("Exitoso");
+		}
+		aux.addAll(procesosEnTabla);
+		procesosrun.getItems().clear();
+		procesosrun.setItems(aux);
 	}
 	
 	@FXML
-	
-	public void agregarProceso(ActionEvent evento){
-		System.out.println("Funciona!");
-		procesosrun.setItems(listaProcesos);
-		System.out.println(listaProcesos.get(0).getNombreProceso());
+	public void agregarAct(ActionEvent evento){
+		for (Proceso proc : listaProcesos) {
+			if (proc.getNombreProceso().equals("Actualizacion Local Comercial")){
+				procesosEnTabla.add(new ObsProceso(proc.getNombreProceso()));
+			}
+		}
+		procesosrun.setItems(procesosEnTabla);
+	}
+	public void agregarBaja(ActionEvent evento){
+		for (Proceso proc : listaProcesos) {
+			if (proc.getNombreProceso().equals("Baja de Pois")){
+				procesosEnTabla.add(new ObsProceso(proc.getNombreProceso()));
+			}
+		}
+		procesosrun.setItems(procesosEnTabla);
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		actualizacioncomercial.setText("Actualizacion Local Comercial");
 		bajapoi.setText("Baja de Pois inactivos");
-		listaProcesos.addAll(Main.listaProcesos);
+		proceso.setCellValueFactory(new PropertyValueFactory<>("nombreProceso"));
+		estado.setCellValueFactory(new PropertyValueFactory<>("resultado"));
+		procesosrun.setEditable(true);
+		listaProcesos = Main.listaProcesos;
 	}
+	
 }

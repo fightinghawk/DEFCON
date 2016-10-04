@@ -28,10 +28,8 @@ public class ActualizacionLocalesComerciales extends Proceso implements ComandoE
 	}
 
 	@Override
-	public void ejecutarme(){
-		System.out.println("miau");
-	}
-	/*public void ejecutarme() throws IOException, ClassNotFoundException, SQLException {
+
+	public void ejecutarme() throws IOException, ClassNotFoundException, SQLException {
 		listaPois.addAll(Generales.cargarPois());
 		int control = 0;
 		String lineaArchivo;
@@ -42,15 +40,12 @@ public class ActualizacionLocalesComerciales extends Proceso implements ComandoE
 		while((lineaArchivo = bufferedReader.readLine())!=null){
 			control = 1;
 			nombreSucursal = lineaArchivo.split(";")[0];
-			keyWords = (lineaArchivo.split(";")[1].split(" "));
-			palabrasClaves.addAll(this.deListaAHashSet(keyWords));
 			Poi poiBuscado = Dispositivo.buscarPOI(nombreSucursal, listaPois);
 			if(poiBuscado!=null){
 				poiBuscado.setPalabrasClaves(palabrasClaves);
 			}else{
-				Poi datosPoi = new Poi(null,);
-				LocalesComerciales localNuevo = new LocalesComerciales(null, null);
-				localNuevo.setPalabrasClaves(palabrasClaves);
+				LocalesComerciales localNuevo = new LocalesComerciales();
+				localNuevo.setNombre(nombreSucursal);
 			}
 		}
 		if(control==1){
@@ -61,7 +56,7 @@ public class ActualizacionLocalesComerciales extends Proceso implements ComandoE
 		Calendar fecha = GregorianCalendar.getInstance();
 		this.setFechaFin(fecha);
 	}
-	*/
+	
 	public String getUbicacionArchivo() {
 		return ubicacionArchivo;
 	}

@@ -17,11 +17,11 @@
    <children>
       <MenuButton fx:id="botonmenu" layoutX="53.0" layoutY="174.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="308.0" text="Menu">
         <items>
-          <MenuItem fx:id="actualizacioncomercial" mnemonicParsing="false" onAction="#agregarProceso" text="Action 1" />
-          <MenuItem fx:id="bajapoi" mnemonicParsing="false" text="Action 2" />
+          <MenuItem fx:id="actualizacioncomercial" mnemonicParsing="false" onAction="#agregarAct" text="Action 1" />
+          <MenuItem fx:id="bajapoi" mnemonicParsing="false" onAction="#agregarBaja" text="Action 2" />
         </items>
       </MenuButton>
-      <Button layoutX="53.0" layoutY="473.0" mnemonicParsing="false" prefHeight="94.0" prefWidth="308.0" text="Ejecutar" />
+      <Button layoutX="53.0" layoutY="473.0" mnemonicParsing="false" onMouseClicked="#lanzarProcesos" prefHeight="94.0" prefWidth="308.0" text="Ejecutar" />
       <Text layoutX="53.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elija el proceso que quiera ejecutar:" wrappingWidth="260.6708984375" />
       <TableView fx:id="procesosrun" layoutX="415.0" layoutY="138.0" prefHeight="432.0" prefWidth="370.0">
         <columns>

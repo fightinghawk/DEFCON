@@ -114,8 +114,10 @@ public class User{
 	
 	public static ArrayList<Proceso> crearProcesos(){
 		Proceso baja = new BajaDePois();
+		Proceso act = new ActualizacionLocalesComerciales("C:/Users/Daniel/git/DEFCON/tpdds/src/comercioTest.txt");
 		ArrayList<Proceso> listaProcesos = new ArrayList<Proceso>();
 		listaProcesos.add(baja);
+		listaProcesos.add(act);
 		return listaProcesos;
 	}
 	
