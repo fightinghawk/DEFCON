@@ -89,7 +89,7 @@ public class LoginScene extends Escena implements Initializable {
 	
 	@FXML
 	public void modificarPOI(MouseEvent evento){
-		new modfiPoiSceneBuscar().render("Modificar POI", "modifSceneBuscar.fxml");
+		new ModfiPoiSceneBuscar().render("Modificar POI", "modifSceneBuscar.fxml");
 	}
 	
 	@FXML

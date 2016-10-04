@@ -21,6 +21,7 @@ public abstract class Escena {
 			nuevaStage.initModality(Modality.WINDOW_MODAL);
 			nuevaStage.initOwner(Main.primaryStage);
 			nuevaStage.setResizable(false);
+			
 			nuevaStage.setTitle(title);
 			//configuracion loader
 			loader.setLocation(getClass().getResource(pathScene));

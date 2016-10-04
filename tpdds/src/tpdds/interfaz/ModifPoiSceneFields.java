@@ -27,7 +27,7 @@ import tpdds.pois.Poi;
 import tpdds.ubicacion.Direccion;
 import tpdds.ubicacion.Location;
 
-public class modifPoiSceneFields implements Initializable {
+public class ModifPoiSceneFields implements Initializable {
 
 	@FXML
 	private TextField nombre;
@@ -137,7 +137,7 @@ public class modifPoiSceneFields implements Initializable {
 			ex.printStackTrace();
 		}
 		stg.close();
-		new modfiPoiSceneBuscar().render("Modificar POI", "modifSceneBuscar.fxml");
+		new ModfiPoiSceneBuscar().render("Modificar POI", "modifSceneBuscar.fxml");
 		
 		return;
 	}

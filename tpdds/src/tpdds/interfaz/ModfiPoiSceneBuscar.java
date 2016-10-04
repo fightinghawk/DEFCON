@@ -33,7 +33,7 @@ import tpdds.pois.Poi;
 import tpdds.usoGlobal.BuscadorPoi;
 import tpdds.usoGlobal.Calculos;
 
-public class modfiPoiSceneBuscar extends Escena implements Initializable {
+public class ModfiPoiSceneBuscar extends Escena implements Initializable {
 	@FXML
 	TextField campoDeBusqueda;
 	@FXML
@@ -81,7 +81,7 @@ public class modfiPoiSceneBuscar extends Escena implements Initializable {
 		}
 		for(Poi poi : Main.pois){
 			 if (poi.getIddb() == id){
-				 new modifPoiSceneFields().modfSceneRender(nuevaStage, poi);
+				 new ModifPoiSceneFields().modfSceneRender(nuevaStage, poi);
 				 return;
 			 }
 		 }

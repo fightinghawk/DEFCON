@@ -133,6 +133,7 @@ public class InsertSceneGnr extends Escena implements Initializable{
 		}
 		Generales.agregarPoi(nuevo);
 		Main.pois.add(nuevo);
+		this.nuevaStage.close();
 	}
 	
 	@FXML
