@@ -1,48 +1,24 @@
 package tpdds.database;
 
-import java.math.BigDecimal;
-import java.sql.*;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.Transformers;
 import org.hibernate.type.BigDecimalType;
-import org.hibernate.type.DateType;
 import org.hibernate.type.IntegerType;
 import org.hibernate.type.StringType;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import tpdds.Usuarios.User;
-import tpdds.dispositivo.Dispositivo;
-import tpdds.factory.POIFactory;
 import tpdds.hibernate.HibernateSessionFactory;
-import tpdds.interfaz.componentes.Busqueda;
-import tpdds.interfaz.componentes.Criterio;
 import tpdds.interfaz.componentes.Historial;
-import tpdds.interfaz.componentes.ObsResultadoFecha;
-import tpdds.interfaz.componentes.ObsUser;
 import tpdds.interfaz.componentes.reporteFecha;
 import tpdds.interfaz.componentes.reporteTerminal;
-import tpdds.pois.Bancos;
-import tpdds.pois.CGP;
-import tpdds.pois.LocalesComerciales;
-import tpdds.pois.ParadaColectivo;
 import tpdds.pois.Poi;
-import tpdds.pois.componentes.DiaPoi;
-import tpdds.pois.componentes.KeyWords;
-import tpdds.ubicacion.Direccion;
-import tpdds.ubicacion.Location;
 
 
 public class Generales{
@@ -71,29 +47,26 @@ public class Generales{
 		return userRev;
 	}
 	
-	public static  ArrayList<String> cargarTiposUsuarios(){
+	public static  ObservableList<String> cargarTiposUsuarios(){
 		Session session = HibernateSessionFactory.getSession();
 		session.beginTransaction();
-		String sql = "SELECT tipodeusuario FROM tipodeusuario";
-		SQLQuery query = session.createSQLQuery(sql);
-		query.addScalar("tipodeusuario", StringType.INSTANCE);
-        ArrayList<String> tiposRev = new  ArrayList<String>(query.list());
-        session.getTransaction().commit();
+		Query pedido = session.createQuery("Select p.tipo FROM TipoUsuario p");
+		@SuppressWarnings("unchecked")
+		ObservableList<String> tiposUsuario = FXCollections.observableArrayList();
+		List<String> hola = pedido.list();
+		for (String string : hola) {
+			tiposUsuario.add(string);
+		}
         session.close();
-		return tiposRev;
+		return tiposUsuario;
 	}
 	
-	public static void modificarUsuario(ObsUser user){
+	public static void modificarUsuario(ArrayList<User> users){
 		Session session = HibernateSessionFactory.getSession();
 		session.beginTransaction();
-		String sql = "UPDATE usuarios SET user_nombre=:nombre, user_apellido=:apellido, user_mail=:email,usua_tipodeusuario=:tipo WHERE user_id=:nickname";
-		SQLQuery query = session.createSQLQuery(sql);
-		query.setParameter("nombre", user.getNombre());
-		query.setParameter("apellido", user.getApellido());
-		query.setParameter("tipo", user.getTipo());
-		query.setParameter("email", user.getMail());
-		query.setParameter("nickname", user.getId());
-		query.executeUpdate();
+		for (User user : users) {
+			session.saveOrUpdate(user);
+		}
         session.getTransaction().commit();
         session.close();
 	}

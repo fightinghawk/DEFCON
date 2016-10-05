@@ -2,41 +2,25 @@ package tpdds.interfaz;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
-
-import org.hibernate.Query;
-import org.hibernate.Session;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.input.KeyCode;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.control.cell.ChoiceBoxTableCell;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.util.Callback;
 import tpdds.Usuarios.User;
 import tpdds.database.Generales;
-import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.interfaz.componentes.ObsUser;
-
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler; 
+import javafx.event.ActionEvent; 
 
 public class ModificacionDeUsuario extends Escena{
 
@@ -58,38 +42,19 @@ public class ModificacionDeUsuario extends Escena{
 	MenuItem editar;
 	@FXML
 	MenuItem finalizar;
+	@FXML
+	CheckBox modificados;
+	
 	private ObservableList<ObsUser> todosLosUsuariosSinModificar;
 	private ObservableList<ObsUser> todosLosUsuariosModificados;
 	private ObservableList<String> tiposUsuarios;
-	ObsUser usuariofinal;
 	
 	public ModificacionDeUsuario() {
 		this.todosLosUsuariosModificados = FXCollections.observableArrayList();
-		
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		this.userModificacion.setRowFactory(new Callback<TableView<ObsUser>, TableRow<ObsUser>>(){
-			@Override
-			public TableRow<ObsUser> call(TableView<ObsUser> param) {
-				return new TableRow<ObsUser>(){
-					@Override
-					protected void updateItem(ObsUser usuario, boolean valorBooleano){
-						if(usuario!=null){
-							if(usuario.modificado){
-		                        setStyle("-fx-background-color:red");
-							}
-
-						}
-                        super.updateItem(usuario, valorBooleano);
-					}
-				};
-			}
-			
-		});
-
 		userApellido.setCellValueFactory(new PropertyValueFactory<>("apellido"));
 		userNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 		userId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -99,10 +64,10 @@ public class ModificacionDeUsuario extends Escena{
 		userNombre.setCellFactory(TextFieldTableCell.forTableColumn());
 		userApellido.setCellFactory(TextFieldTableCell.forTableColumn());
 		userMail.setCellFactory(TextFieldTableCell.forTableColumn());
+		this.tiposUsuarios = this.cargarTipos();
 		userTipo.setCellFactory(ChoiceBoxTableCell.forTableColumn(tiposUsuarios));
 		
 		this.todosLosUsuariosSinModificar = this.cargarUsuarios();
-		this.tiposUsuarios = this.cargarTipos();
 		this.userModificacion.setItems(this.todosLosUsuariosSinModificar);
 		this.userModificacion.setEditable(true);
 
@@ -121,36 +86,42 @@ public class ModificacionDeUsuario extends Escena{
 	@FXML
 	public void edicionNombre(CellEditEvent<ObsUser, String> evento){
 		ObsUser aEditar = evento.getRowValue();
-		aEditar.modificado = true;
 		aEditar.setNombre(evento.getNewValue());
 		this.usuarioActualizado(aEditar);
 	}
 	@FXML
 	public void edicionApellido(CellEditEvent<ObsUser, String> evento){
 		ObsUser aEditar = evento.getRowValue();
-		aEditar.modificado = true;
 		aEditar.setApellido(evento.getNewValue());
 		this.usuarioActualizado(aEditar);
 	}
 	@FXML
 	public void edicionEmail(CellEditEvent<ObsUser, String> evento){
 		ObsUser aEditar = evento.getRowValue();
-		aEditar.modificado = true;
 		aEditar.setMail(evento.getNewValue());
 		this.usuarioActualizado(aEditar);
 	}
 	@FXML
 	public void edicionTipo(CellEditEvent<ObsUser, String> evento){
 		ObsUser aEditar = evento.getRowValue();
-		aEditar.modificado = true;
 		aEditar.setTipo(evento.getNewValue());
 		this.usuarioActualizado(aEditar);
 	}
 	
 	@FXML
 	public void finalizarEdicion (ActionEvent evento){
-		 userModificacion.setEditable(false);
-		 Generales.modificarUsuario(usuariofinal);
+		ArrayList<User> usuariosModificados = new ArrayList<>(); 
+		for (ObsUser user : this.todosLosUsuariosModificados) {
+			usuariosModificados.add(user.getUsuario());
+		}
+		if (!usuariosModificados.isEmpty())
+			Generales.modificarUsuario(usuariosModificados);
+		this.nuevaStage.close();
+	}
+	
+	@FXML
+	public void mostrarSoloModificados(ActionEvent evento){
+		this.actualizarTabla(null);
 	}
 	
 	private ObservableList<ObsUser> cargarUsuarios(){
@@ -170,16 +141,11 @@ public class ModificacionDeUsuario extends Escena{
 		this.actualizarTabla(null);
 	}
 	
-	@FXML
-	private void cambiado(Event evento){
-		System.out.println("hola");
-	}
-	
 	private void actualizarTabla(String buscado){
-		this.userModificacion.setItems(this.todosLosUsuariosSinModificar);
+		this.userModificacion.setItems(FXCollections.observableArrayList());
+		if(!this.modificados.isSelected())
+			this.userModificacion.getItems().addAll(this.todosLosUsuariosSinModificar);
 		this.userModificacion.getItems().addAll(todosLosUsuariosModificados);
-		for(ObsUser userMostrado : this.userModificacion.getItems()){
-		}
 	}
 
 	
