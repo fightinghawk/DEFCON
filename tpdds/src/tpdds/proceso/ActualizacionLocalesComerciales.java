@@ -13,6 +13,7 @@ import tpdds.pois.Poi;
 import tpdds.pois.componentes.KeyWords;
 import tpdds.database.Generales;
 import tpdds.dispositivo.Dispositivo;
+import tpdds.interfaz.Main;
 import tpdds.pois.LocalesComerciales;
 
 public class ActualizacionLocalesComerciales extends Proceso implements ComandoEjecutar {
@@ -30,7 +31,7 @@ public class ActualizacionLocalesComerciales extends Proceso implements ComandoE
 	@Override
 
 	public void ejecutarme() throws IOException, ClassNotFoundException, SQLException {
-		listaPois.addAll(Generales.cargarPois());
+		listaPois.addAll(Main.pois);
 		int control = 0;
 		String lineaArchivo;
 		FileReader fr = new FileReader(this.getUbicacionArchivo());

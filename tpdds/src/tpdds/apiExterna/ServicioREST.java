@@ -9,10 +9,11 @@ import java.util.GregorianCalendar;
 import java.util.Random;
 
 import tpdds.database.*;
+import tpdds.interfaz.Main;
 
 public class ServicioREST{
 	
-	private static ArrayList<Poi> listaPoi = Generales.cargarPois();
+	private static ArrayList<Poi> listaPoi = Main.pois;
 	
 	public ServicioREST() throws ClassNotFoundException, SQLException{
 		}

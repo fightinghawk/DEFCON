@@ -54,7 +54,7 @@ public class ModificacionDeUsuario extends Escena{
 	private ObservableList<ObsUser> todosLosUsuariosSinModificar;
 	private ObservableList<ObsUser> todosLosUsuariosModificados;
 	private ObservableList<String> tiposUsuarios;
-	private String buscado;
+	private String buscado = "";
 	
 	public ModificacionDeUsuario() {
 		this.todosLosUsuariosModificados = FXCollections.observableArrayList();

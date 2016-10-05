@@ -6,11 +6,12 @@ import java.util.GregorianCalendar;
 
 import tpdds.apiExterna.ServicioREST;
 import tpdds.database.Generales;
+import tpdds.interfaz.Main;
 import tpdds.pois.Poi;
 
 public class BajaDePois extends Proceso {
 	
-	private ArrayList<Poi> listaPois = Generales.cargarPois();
+	private ArrayList<Poi> listaPois = Main.pois;
 	
 	public BajaDePois() {
 		super("Baja de Pois");

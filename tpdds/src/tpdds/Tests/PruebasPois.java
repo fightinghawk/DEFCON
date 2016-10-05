@@ -23,6 +23,7 @@ import tpdds.database.Generales;
 import tpdds.dispositivo.Dispositivo;
 import tpdds.factory.POIFactory;
 import tpdds.factory.horarioFactory;
+import tpdds.interfaz.Main;
 import tpdds.pois.Bancos;
 import tpdds.pois.CGP;
 import tpdds.pois.LocalesComerciales;
@@ -53,9 +54,8 @@ public class PruebasPois {
 			return;
 		}
 		Comuna.inicializarComunas();
-		Generales.initDatabase();
 		tablero = archivos.obtenerTablero();
-		listaPois = Generales.cargarPois();
+		listaPois = Main.pois;
 		listo=true;
 	}
 	
