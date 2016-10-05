@@ -23,6 +23,7 @@ public class LanzadorDeProcesos extends Escena{
 	
 	long time_start, time_end;
 	ArrayList<Proceso> listaProcesos;
+	int contAct,contBaja;
 	ObservableList<ObsProceso> procesosEnTabla =  FXCollections.observableArrayList();
 	ObservableList<ObsProceso> aux =  FXCollections.observableArrayList();
 	
@@ -48,15 +49,32 @@ public class LanzadorDeProcesos extends Escena{
 	
 	public void lanzarProcesos(MouseEvent botonApretado){
 		for (ObsProceso proc : procesosEnTabla) {
-				proc.setResultado("Exitoso");
+			if (proc.getNombreProceso().equals("Actualizacion Local Comercial")){
+				if(contAct>2){
+					proc.setResultado("Fallido");
+				}
+				else{
+					proc.setResultado("Exitoso");
+				}
+			}
+			if (proc.getNombreProceso().equals("Baja de Pois")){
+				if(contBaja>4){
+					proc.setResultado("Fallido");
+				}
+				else{
+					proc.setResultado("Exitoso");	
+			}
+		}
 		}
 		aux.addAll(procesosEnTabla);
 		procesosrun.getItems().clear();
 		procesosrun.setItems(aux);
+				
 	}
 	
 	@FXML
 	public void agregarAct(ActionEvent evento){
+		contAct ++;
 		for (Proceso proc : listaProcesos) {
 			if (proc.getNombreProceso().equals("Actualizacion Local Comercial")){
 				procesosEnTabla.add(new ObsProceso(proc.getNombreProceso()));
@@ -64,7 +82,9 @@ public class LanzadorDeProcesos extends Escena{
 		}
 		procesosrun.setItems(procesosEnTabla);
 	}
+	
 	public void agregarBaja(ActionEvent evento){
+		contBaja ++;
 		for (Proceso proc : listaProcesos) {
 			if (proc.getNombreProceso().equals("Baja de Pois")){
 				procesosEnTabla.add(new ObsProceso(proc.getNombreProceso()));
