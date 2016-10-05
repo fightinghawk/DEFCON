@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import org.hibernate.Session;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,6 +18,7 @@ import javafx.scene.control.cell.ChoiceBoxTableCell;
 import javafx.scene.input.KeyEvent;
 import tpdds.Usuarios.User;
 import tpdds.database.Generales;
+import tpdds.hibernate.HibernateSessionFactory;
 import tpdds.interfaz.componentes.ObsUser;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ContextMenu;
@@ -107,7 +110,18 @@ public class ModificacionDeUsuario extends Escena{
 		aEditar.setTipo(evento.getNewValue());
 		this.usuarioActualizado(aEditar);
 	}
-	
+	@FXML
+	public void borrarUsuario(ActionEvent evento){
+		ObsUser userABorrar = this.userModificacion.getSelectionModel().getSelectedItem();
+		Session session = HibernateSessionFactory.getSession();
+		session.beginTransaction();
+		session.delete(userABorrar.getUsuario());
+        session.getTransaction().commit();
+        session.close();
+        this.todosLosUsuariosModificados.remove(userABorrar);
+        this.todosLosUsuariosSinModificar.remove(userABorrar);
+        actualizarTabla(null);
+	}
 	@FXML
 	public void finalizarEdicion (ActionEvent evento){
 		ArrayList<User> usuariosModificados = new ArrayList<>(); 

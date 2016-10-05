@@ -21,7 +21,8 @@
          <contextMenu>
             <ContextMenu fx:id="opciones">
               <items>
-                 <MenuItem fx:id="finalizar" mnemonicParsing="false" onAction="#finalizarEdicion" text="Finalizar" />
+              	<MenuItem fx:id="borrar" mnemonicParsing="false" onAction="#borrarUsuario" text="Borrar" />
+                <MenuItem fx:id="finalizar" mnemonicParsing="false" onAction="#finalizarEdicion" text="Finalizar" />
               </items>
             </ContextMenu>
          </contextMenu>
