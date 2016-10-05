@@ -63,6 +63,8 @@ public class ObsUser {
 		this.usuario.setTipoUsuario(session.get(TipoUsuario.class, tipo));
         session.close();
 	}
-	
+	public boolean contieneSubString(String cosa){
+		return (this.apellido+this.id+this.mail+this.nombre).toLowerCase().contains(cosa.toLowerCase());
+	}
 	
 }

@@ -28,7 +28,7 @@
          </contextMenu>
       </TableView>
       <Label layoutX="22.0" layoutY="62.0" prefHeight="21.0" prefWidth="84.0" text="FIltadror:" />
-      <TextField layoutX="92.0" layoutY="57.0" onKeyTyped="#buscarUsuario" prefHeight="31.0" prefWidth="404.0" />
+      <TextField fx:id="buscador" layoutX="92.0" layoutY="57.0" onKeyTyped="#buscarUsuario" prefHeight="31.0" prefWidth="404.0" />
       <Label layoutX="22.0" layoutY="14.0" prefHeight="21.0" prefWidth="389.0" text="Modificacion de usuarios" />
       <CheckBox fx:id="modificados" layoutX="528.0" layoutY="62.0" mnemonicParsing="false" onAction="#mostrarSoloModificados" prefHeight="21.0" prefWidth="176.0" text="Solo Modificados" />
    </children>

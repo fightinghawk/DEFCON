@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.control.cell.ChoiceBoxTableCell;
@@ -47,10 +48,13 @@ public class ModificacionDeUsuario extends Escena{
 	MenuItem finalizar;
 	@FXML
 	CheckBox modificados;
+	@FXML
+	TextField buscador;
 	
 	private ObservableList<ObsUser> todosLosUsuariosSinModificar;
 	private ObservableList<ObsUser> todosLosUsuariosModificados;
 	private ObservableList<String> tiposUsuarios;
+	private String buscado;
 	
 	public ModificacionDeUsuario() {
 		this.todosLosUsuariosModificados = FXCollections.observableArrayList();
@@ -84,7 +88,8 @@ public class ModificacionDeUsuario extends Escena{
 
 	@FXML
 	public void buscarUsuario(KeyEvent ingresoDeTecla){
-		
+		this.buscado = this.buscador.getText();
+		this.actualizarTabla(this.buscado);
 	}
 	@FXML
 	public void edicionNombre(CellEditEvent<ObsUser, String> evento){
@@ -120,7 +125,7 @@ public class ModificacionDeUsuario extends Escena{
         session.close();
         this.todosLosUsuariosModificados.remove(userABorrar);
         this.todosLosUsuariosSinModificar.remove(userABorrar);
-        actualizarTabla(null);
+        actualizarTabla(this.buscado);
 	}
 	@FXML
 	public void finalizarEdicion (ActionEvent evento){
@@ -135,7 +140,7 @@ public class ModificacionDeUsuario extends Escena{
 	
 	@FXML
 	public void mostrarSoloModificados(ActionEvent evento){
-		this.actualizarTabla(null);
+		this.actualizarTabla(this.buscado);
 	}
 	
 	private ObservableList<ObsUser> cargarUsuarios(){
@@ -152,14 +157,21 @@ public class ModificacionDeUsuario extends Escena{
 			this.todosLosUsuariosSinModificar.remove(userModificado);
 			this.todosLosUsuariosModificados.add(userModificado);
 		}
-		this.actualizarTabla(null);
+		this.actualizarTabla(this.buscado);
 	}
 	
 	private void actualizarTabla(String buscado){
-		this.userModificacion.setItems(FXCollections.observableArrayList());
+		ObservableList<ObsUser> elementosParaFiltrar = FXCollections.observableArrayList();
+		this.userModificacion.setItems(elementosParaFiltrar);
+		elementosParaFiltrar.addAll(todosLosUsuariosModificados);
 		if(!this.modificados.isSelected())
-			this.userModificacion.getItems().addAll(this.todosLosUsuariosSinModificar);
-		this.userModificacion.getItems().addAll(todosLosUsuariosModificados);
+			elementosParaFiltrar.addAll(this.todosLosUsuariosSinModificar);
+		for (ObsUser obsUser : elementosParaFiltrar) {
+			if (!obsUser.contieneSubString(buscado)) {
+				elementosParaFiltrar.remove(obsUser);
+			}
+		}
+		this.userModificacion.setItems(elementosParaFiltrar);
 	}
 
 	
