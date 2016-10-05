@@ -12,20 +12,15 @@ import tpdds.database.*;
 
 public class ServicioREST{
 	
-	private static ArrayList<Poi> listaPoi;
+	private static ArrayList<Poi> listaPoi = Generales.cargarPois();
 	
 	public ServicioREST() throws ClassNotFoundException, SQLException{
-		listaPoi.addAll(Generales.cargarPois());
 		}
 	
-	public static ArrayList<Object> poiInactivo(){
+	public static Poi poiInactivo(){
 		Random rnd = new Random();
 		int numeroRandom = rnd.nextInt(listaPoi.size());
 		Poi poiInactivo = listaPoi.get(numeroRandom);
-		Calendar fechaBaja = new GregorianCalendar(2016, 5, 07);
-		ArrayList<Object> poiYfecha = new ArrayList<Object>();
-		poiYfecha.add(poiInactivo);
-		poiYfecha.add(fechaBaja);
-		return poiYfecha;	
+		return poiInactivo;	
 	}
 }
