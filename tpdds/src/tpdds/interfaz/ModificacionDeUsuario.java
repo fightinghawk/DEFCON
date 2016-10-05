@@ -161,17 +161,18 @@ public class ModificacionDeUsuario extends Escena{
 	}
 	
 	private void actualizarTabla(String buscado){
-		ObservableList<ObsUser> elementosParaFiltrar = FXCollections.observableArrayList();
-		this.userModificacion.setItems(elementosParaFiltrar);
-		elementosParaFiltrar.addAll(todosLosUsuariosModificados);
+		ObservableList<ObsUser> elementosParaFiltrarTemp = FXCollections.observableArrayList();
+		ObservableList<ObsUser> elementosParaFiltrarFinal = FXCollections.observableArrayList();
+		this.userModificacion.setItems(elementosParaFiltrarTemp);
+		elementosParaFiltrarTemp.addAll(todosLosUsuariosModificados);
 		if(!this.modificados.isSelected())
-			elementosParaFiltrar.addAll(this.todosLosUsuariosSinModificar);
-		for (ObsUser obsUser : elementosParaFiltrar) {
-			if (!obsUser.contieneSubString(buscado)) {
-				elementosParaFiltrar.remove(obsUser);
+			elementosParaFiltrarTemp.addAll(this.todosLosUsuariosSinModificar);
+		for (ObsUser obsUser : elementosParaFiltrarTemp) {
+			if (obsUser.contieneSubString(buscado)) {
+				elementosParaFiltrarFinal.add(obsUser);
 			}
 		}
-		this.userModificacion.setItems(elementosParaFiltrar);
+		this.userModificacion.setItems(elementosParaFiltrarFinal);
 	}
 
 	
