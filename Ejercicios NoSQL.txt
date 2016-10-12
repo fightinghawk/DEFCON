@@ -1,0 +1,26 @@
+Ejercicio 1:
+	db.getCollection('Probando').find({}).count()
+
+Ejercicio 2:
+	db.getCollection('Probando').find({},{"_id":0}).limit(1)
+	
+Ejercicio 3:
+	db.getCollection('Probando').find({"nroFactura":1149},{})
+
+Ejercicio 4:
+	db.getCollection('Probando').find({"item.producto":"CORREA 10mm"},{}).sort({"cliente.apellido":-1})
+
+Ejercicio 5:
+	db.getCollection('Probando').find({"item.cantidad":15},{"item.producto":1,"_id":0})
+
+Ejercicio 6:
+	db.getCollection('Probando').insert({nroFactura:999, "cliente":{"apellido":"grupo","nombre":"seis"}, "item":{"cantidad":1, "precio":20.0, "producto":"Destornillador"}})
+
+Ejercicio 7:
+	db.Probando.remove({"cliente.region":"CENTRO"})
+
+Ejercicio 8:
+	db.Probando.update({"nroFactura":1500},{"condPago":"30 Ds FF"})
+
+Ejercicio 9
+	db.Probando.update({"cliente.apellido":"Lavagno"},{$addtoSet: {"cliente":{"tipo":"VIP"}}},{multi:true})
