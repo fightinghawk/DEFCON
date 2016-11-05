@@ -203,7 +203,6 @@ public class ReporteTotal extends Escena implements Initializable {
 			for (Integer poiid : busqueda.getPois_encontrados()) {
 				Poi temp = buscarPoi(poiid, Main.pois);
 				poisAMostrar.add(new ObsPoi(temp.getNombre(), temp.getDireccion().getCallePrincipal(), temp.getDireccion().getAltura(), 0, temp.getIddb()));
-				tablaMostradaPoi.getItems().clear();
 				tablaMostradaPoi.setDisable(false);
 				tablaMostradaPoi.setVisible(true);
 				tablaMostradaPoi.setItems(poisAMostrar);
