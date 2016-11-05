@@ -16,8 +16,6 @@ import tpdds.hibernate.HibernateSessionFactory;
 
 
 public class PreLoginScene extends Escena{
-
-	private boolean registroValido;
 	
 	@FXML
 	TextField user;
@@ -71,12 +69,8 @@ public class PreLoginScene extends Escena{
 	@FXML
 	public void finalizarRegistro(MouseEvent eventoRegistro){
 		
-		if(!registroValido || !camposLlenos()){
-			if(!registroValido){
-				erroresNotificacion.setText("El ID ya se encuentra disponible, prueba otro.");
-			}else{
-				erroresNotificacion.setText("Completa todos los campos");
-			}
+		if(!camposLlenos()){
+			erroresNotificacion.setText("Completa todos los campos");
 			return;
 		}
 		User usuario = 
@@ -91,10 +85,9 @@ public class PreLoginScene extends Escena{
 			new LoginScene(usuario).render("Home","loginScene.fxml");
 			this.cerrar();
 		}catch(Exception ex){
-			ex.printStackTrace();
+			erroresNotificacion.setText("El ID ya se encuentra disponible, prueba otro.");
 			aGuardar.getTransaction().rollback();
 		}finally{
-			erroresNotificacion.clear();
 			aGuardar.close();
 		}
 
