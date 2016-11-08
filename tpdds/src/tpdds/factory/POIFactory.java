@@ -25,6 +25,8 @@ public class POIFactory {
 		 * Por ahora los horarios y las palabras claves se van a ingresar por setter. 
 		 */
 		banco.setDiasDisp(horarioFactory.horarioBanco());
+		
+		
 		banco.agregarPalabra(palabrasClave);
 		
 		return banco;

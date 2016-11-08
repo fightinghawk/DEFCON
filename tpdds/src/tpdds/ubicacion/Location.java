@@ -34,6 +34,8 @@ public class Location{
 		this.latitud = latitud;
 		this.longitud = longitud;
 	}
+	
+	
 
 	public double getLongitud() {
 		return longitud;

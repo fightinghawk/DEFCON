@@ -43,11 +43,12 @@ public class User{
 		super();
 	}
 	public User(String nombre, String apellido, String userid, String password, String email){
-		this.nombreUsuario = nombre;
+		
 		this.apellidoUsuario = apellido;
-		this.usuarioid = userid;
-		this.usuariopassword = password;
+		this.nombreUsuario = nombre;
+		this.usuarioid = userid;	
 		this.emailUsuario = email;
+		this.usuariopassword = password;
 	}
 	public void otorgarPermisos(String usuario, String permiso)
 	{
@@ -57,18 +58,21 @@ public class User{
 		}
 		
 	}
-	public TipoUsuario getTipoUsuario() {
-		return tipoUsuario;
-	}
+
 	public void setTipoUsuario(TipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
-	private void habilitar(String permiso) {
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+	
+	private boolean existeUsuario(String usuario) {
+		return false;
 		// TODO Auto-generated method stub
 		
 	}
-	private boolean existeUsuario(String usuario) {
-		return false;
+	
+	private void habilitar(String permiso) {
 		// TODO Auto-generated method stub
 		
 	}

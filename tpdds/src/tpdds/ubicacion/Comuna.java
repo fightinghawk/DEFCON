@@ -26,7 +26,13 @@ public class Comuna {
 		return -1;
 	}
 
+	
+	
+	
+	
 	public static void inicializarComunas(){
+		
+		//Barrios
 		String[] barriosCm1 = {"retiro","san nicolas","puerto Madero","san Telmo","montserrat","constitucion"};
 		String[] barriosCm2 = {"recoleta"};
 		String[] barriosCm3 = {"balvanera","san cristobal"};
@@ -43,6 +49,9 @@ public class Comuna {
 		String[] barriosCm14 = {"palermo"};
 		String[] barriosCm15 = {"chacarita", "villa crespo", "la paternal", "villa ortúzar", "agronomía" , "parque chas"};
 	
+		//Comunas
+		
+		
 		new Comuna(1, barriosCm1);
 		new Comuna(2, barriosCm2);
 		new Comuna(3, barriosCm3);

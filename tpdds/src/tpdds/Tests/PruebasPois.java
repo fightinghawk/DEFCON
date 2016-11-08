@@ -112,7 +112,7 @@ public class PruebasPois {
 	public void ListaBancosExternos() throws Exception {
 		System.out.println("//////////////CANTIDAD BANCOS POR API EXTERNA");
 		apiBancos = new jsonBancos();
-		bancoexternalista = apiBancos.FiltrarBancos("http://private-96b476-ddsutn.apiary-mock.com","banks","bancos","servicio");
+		//bancoexternalista = apiBancos.FiltrarBancos("http://private-96b476-ddsutn.apiary-mock.com","banks","bancos","servicio");
 		apiBancos.mostrarLista(bancoexternalista);
 		Assert.assertEquals(bancoexternalista.size(), 2);
 	}

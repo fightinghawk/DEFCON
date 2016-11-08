@@ -38,29 +38,35 @@ public class TipoUsuario {
 	
 	public TipoUsuario(String tipo, String descripcion,String aMostrar) {
 		super();
-		this.tipo = tipo;
+		
 		this.descripcion = descripcion;
-		this.permisosUsuarios = new ArrayList<>();
+		this.tipo = tipo;
 		this.aMostrar = aMostrar;
+		this.permisosUsuarios = new ArrayList<>();
+		
 	}
 
 	public String getTipo() {
 		return tipo;
 	}
+	
+	public String getaMostrar() {
+		return aMostrar;
+	}
 
 	public String getDescripcion() {
 		return descripcion;
 	}
-	public String getaMostrar() {
-		return aMostrar;
+	
+	
+	
+
+	public Collection<Permisos> getPermisosUsuarios() {
+		return permisosUsuarios;
 	}
 	
 	public void setPermisosUsuarios(Collection<Permisos> permisosUsuarios) {
 		this.permisosUsuarios = permisosUsuarios;
-	}
-
-	public Collection<Permisos> getPermisosUsuarios() {
-		return permisosUsuarios;
 	}
 	
 	
