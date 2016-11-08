@@ -2,13 +2,14 @@ package tpdds.interfaz;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import tpdds.Archivos.archivos;
 import tpdds.Usuarios.User;
 import tpdds.database.Generales;
 import tpdds.dispositivo.Dispositivo;
 import tpdds.pois.Poi;
 import tpdds.proceso.Proceso;
 import tpdds.ubicacion.Comuna;
+import tpdds.ubicacion.Direccion;
+import tpdds.ubicacion.Location;
 
 public class Main extends Application {
     
@@ -24,7 +25,7 @@ public class Main extends Application {
 	public void start(Stage primaryStag) {
 		try{
 			Comuna.inicializarComunas();
-			tablero = archivos.obtenerTablero();
+			tablero = this.obtenerTablero();
 			pois = Generales.cargarPois();
 			listaProcesos = User.crearProcesos();
 		}catch(Exception ex){
@@ -45,6 +46,17 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		usuarios = new ArrayList<User>();
 		launch(args);
+	}
+	
+	public Dispositivo obtenerTablero() {
+		Dispositivo tablero;
+
+		Direccion direTablero = new Direccion("PARAGUAY", 2155, null, null, "RECOLETA");
+		Location ubicacionTablero = new Location(-34.598415, -58.398260);
+		tablero = new Dispositivo(1, direTablero, ubicacionTablero);
+		tablero.setNombre("Terminal Medicina");
+
+		return tablero;
 	}
 
 }
