@@ -1,0 +1,1125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.11" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="tpdds.apiExterna.RangoServicioDTO" project="tpdds" 
+    file="/tpdds/src/tpdds/apiExterna/RangoServicioDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="358" width="228" x="68" y="1133"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="2" language="java" name="tpdds.apiExterna.apiExterna" project="tpdds" 
+    file="/tpdds/src/tpdds/apiExterna/apiExterna.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="88" width="253" x="600" y="481"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="3" language="java" name="tpdds.apiExterna.ObtenerDTO" project="tpdds" 
+    file="/tpdds/src/tpdds/apiExterna/ObtenerDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="159" width="341" x="68" y="11"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="tpdds.apiExterna.BancoExterna" project="tpdds" 
+    file="/tpdds/src/tpdds/apiExterna/BancoExterna.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="430" width="201" x="449" y="11"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="tpdds.apiExterna.ServicioREST" project="tpdds" 
+    file="/tpdds/src/tpdds/apiExterna/ServicioREST.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="163" x="690" y="11"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="tpdds.apiExterna.jsonBancos" project="tpdds" 
+    file="/tpdds/src/tpdds/apiExterna/jsonBancos.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="382" x="893" y="481"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="tpdds.apiExterna.ServicioDTO" project="tpdds" 
+    file="/tpdds/src/tpdds/apiExterna/ServicioDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="178" width="321" x="68" y="915"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="tpdds.apiExterna.jsonHTTP" project="tpdds" 
+    file="/tpdds/src/tpdds/apiExterna/jsonHTTP.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="253" x="893" y="11"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="tpdds.apiExterna.CentroDTO" project="tpdds" 
+    file="/tpdds/src/tpdds/apiExterna/CentroDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="394" width="473" x="68" y="481"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="tpdds.buscadores.TipoSearch" project="tpdds" 
+    file="/tpdds/src/tpdds/buscadores/TipoSearch.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="191" x="909" y="837"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="tpdds.buscadores.KeySearch" project="tpdds" 
+    file="/tpdds/src/tpdds/buscadores/KeySearch.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="142" width="190" x="1140" y="837"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="tpdds.buscadores.NameSeach" project="tpdds" 
+    file="/tpdds/src/tpdds/buscadores/NameSeach.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="142" width="197" x="1370" y="837"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="tpdds.buscadores.Buscador" project="tpdds" 
+    file="/tpdds/src/tpdds/buscadores/Buscador.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="123" width="305" x="1140" y="664"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="tpdds.database.Generales" project="tpdds" 
+    file="/tpdds/src/tpdds/database/Generales.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="751" y="1329"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="tpdds.dispositivo.Dispositivo" project="tpdds" 
+    file="/tpdds/src/tpdds/dispositivo/Dispositivo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="466" width="324" x="1092" y="1167"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="tpdds.frameworkEmails.Email" project="tpdds" 
+    file="/tpdds/src/tpdds/frameworkEmails/Email.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="279" x="355" y="1551"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="tpdds.frameworkEmails.FEmail" project="tpdds" 
+    file="/tpdds/src/tpdds/frameworkEmails/FEmail.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="292" x="674" y="1551"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="tpdds.hibernate.HibernateSessionFactory" project="tpdds" 
+    file="/tpdds/src/tpdds/hibernate/HibernateSessionFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="142" width="214" x="118" y="1525"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="tpdds.interfaz.ModfiPoiSceneBuscar" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/ModfiPoiSceneBuscar.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="322" width="263" x="2315" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="tpdds.interfaz.ModificacionDeUsuario" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/ModificacionDeUsuario.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="592" width="361" x="2618" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="tpdds.interfaz.LoginScene" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/LoginScene.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="574" width="251" x="3019" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="tpdds.interfaz.ReportePorTerminal" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/ReportePorTerminal.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="346" x="3310" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="tpdds.interfaz.LanzadorDeProcesos" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/LanzadorDeProcesos.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="448" width="306" x="3696" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="tpdds.interfaz.ModifPoiSceneFields" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/ModifPoiSceneFields.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="448" width="231" x="2545" y="116"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="tpdds.interfaz.BuscarPoiScene" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/BuscarPoiScene.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="556" width="286" x="4042" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="tpdds.interfaz.MostrarPoi" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/MostrarPoi.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="394" width="231" x="3046" y="116"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="tpdds.interfaz.Escena" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/Escena.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="177" width="168" x="4042" y="116"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="tpdds.interfaz.PreLoginScene" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/PreLoginScene.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="358" width="231" x="4368" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="tpdds.interfaz.ReporteTotal" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/ReporteTotal.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="664" width="377" x="4639" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="tpdds.interfaz.AgregarTipoUsuario" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/AgregarTipoUsuario.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="448" width="231" x="5056" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="tpdds.interfaz.ReportePorFecha" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/ReportePorFecha.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="232" width="333" x="5327" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="tpdds.interfaz.InsertSceneGnr" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/InsertSceneGnr.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="808" width="284" x="5700" y="604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="tpdds.interfaz.Main" project="tpdds" file="/tpdds/src/tpdds/interfaz/Main.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="250" width="228" x="3546" y="116"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="tpdds.interfaz.componentes.Historial" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/componentes/Historial.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="376" width="212" x="1714" y="2553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="tpdds.interfaz.componentes.ObsBuscador" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/componentes/ObsBuscador.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="160" width="185" x="1966" y="2553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="tpdds.interfaz.componentes.reporteTerminal" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/componentes/reporteTerminal.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="142" width="209" x="2191" y="2553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="tpdds.interfaz.componentes.ObsUser" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/componentes/ObsUser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="394" width="223" x="2837" y="2553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="tpdds.interfaz.componentes.ObsResultadoFecha" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/componentes/ObsResultadoFecha.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="160" width="256" x="3100" y="2553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="tpdds.interfaz.componentes.reporteFecha" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/componentes/reporteFecha.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="185" x="3396" y="2553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="tpdds.interfaz.componentes.ObsResultadoTerminal" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/componentes/ObsResultadoTerminal.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="230" x="3621" y="2553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="tpdds.interfaz.componentes.ObsResultadoTotal" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/componentes/ObsResultadoTotal.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="250" width="357" x="2440" y="2553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="tpdds.interfaz.componentes.Criterio" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/componentes/Criterio.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="162" x="2440" y="3421"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="tpdds.interfaz.componentes.Busqueda" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/componentes/Busqueda.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="394" width="418" x="2440" y="2987"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="tpdds.interfaz.componentes.ObsPoi" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/componentes/ObsPoi.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="358" width="227" x="3891" y="2553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="tpdds.interfaz.componentes.ObsProceso" project="tpdds" 
+    file="/tpdds/src/tpdds/interfaz/componentes/ObsProceso.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="205" x="4158" y="2553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="tpdds.pois.Poi" project="tpdds" file="/tpdds/src/tpdds/pois/Poi.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="970" width="678" x="671" y="2345"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="tpdds.pois.CGP" project="tpdds" file="/tpdds/src/tpdds/pois/CGP.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="142" width="207" x="424" y="3355"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="48" language="java" name="tpdds.pois.Bancos" project="tpdds" file="/tpdds/src/tpdds/pois/Bancos.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="104" x="671" y="3355"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="tpdds.pois.ParadaColectivo" project="tpdds" 
+    file="/tpdds/src/tpdds/pois/ParadaColectivo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="219" x="815" y="3355"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="tpdds.pois.LocalesComerciales" project="tpdds" 
+    file="/tpdds/src/tpdds/pois/LocalesComerciales.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="160" width="208" x="1074" y="3355"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="tpdds.pois.componentes.DiaPoi" project="tpdds" 
+    file="/tpdds/src/tpdds/pois/componentes/DiaPoi.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="394" width="158" x="4681" y="4333"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="tpdds.pois.componentes.Servicios" project="tpdds" 
+    file="/tpdds/src/tpdds/pois/componentes/Servicios.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="214" width="203" x="4879" y="4333"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="53" language="java" name="tpdds.pois.componentes.KeyWords" project="tpdds" 
+    file="/tpdds/src/tpdds/pois/componentes/KeyWords.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="250" width="147" x="5122" y="4333"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="54" language="java" name="tpdds.pois.estadisticas.Estadistica" project="tpdds" 
+    file="/tpdds/src/tpdds/pois/estadisticas/Estadistica.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="88" width="138" x="4101" y="3466"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="55" language="java" name="tpdds.proceso.ComandoEjecutar" project="tpdds" 
+    file="/tpdds/src/tpdds/proceso/ComandoEjecutar.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="88" width="150" x="4826" y="2857"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="56" language="java" name="tpdds.proceso.BajaDePois" project="tpdds" 
+    file="/tpdds/src/tpdds/proceso/BajaDePois.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="124" x="4528" y="2639"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="tpdds.proceso.Proceso" project="tpdds" 
+    file="/tpdds/src/tpdds/proceso/Proceso.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="357" width="205" x="4771" y="2242"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="tpdds.proceso.ActualizacionLocalesComerciales" project="tpdds" 
+    file="/tpdds/src/tpdds/proceso/ActualizacionLocalesComerciales.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="178" width="263" x="4692" y="2639"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="59" language="java" name="tpdds.proceso.LanzadorMultiple" project="tpdds" 
+    file="/tpdds/src/tpdds/proceso/LanzadorMultiple.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="199" x="4771" y="2078"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="60" language="java" name="tpdds.ubicacion.Comuna" project="tpdds" 
+    file="/tpdds/src/tpdds/ubicacion/Comuna.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="160" width="250" x="2810" y="4184"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="61" language="java" name="tpdds.ubicacion.Localizable" project="tpdds" 
+    file="/tpdds/src/tpdds/ubicacion/Localizable.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="164" x="3110" y="4184"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="62" language="java" name="tpdds.ubicacion.Location" project="tpdds" 
+    file="/tpdds/src/tpdds/ubicacion/Location.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="286" width="165" x="3314" y="4184"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="63" language="java" name="tpdds.ubicacion.Direccion" project="tpdds" 
+    file="/tpdds/src/tpdds/ubicacion/Direccion.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="772" width="318" x="3519" y="4184"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="64" language="java" name="tpdds.usoGlobal.Consola" project="tpdds" 
+    file="/tpdds/src/tpdds/usoGlobal/Consola.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="110" x="1795" y="3931"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="65" language="java" name="tpdds.usoGlobal.Calculos" project="tpdds" 
+    file="/tpdds/src/tpdds/usoGlobal/Calculos.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="178" width="331" x="1945" y="3931"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="66" language="java" name="tpdds.usoGlobal.CalculosHorarios" project="tpdds" 
+    file="/tpdds/src/tpdds/usoGlobal/CalculosHorarios.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="160" width="325" x="2316" y="3931"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="67" language="java" name="tpdds.usoGlobal.BuscadorPoi" project="tpdds" 
+    file="/tpdds/src/tpdds/usoGlobal/BuscadorPoi.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="289" x="2681" y="3931"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="68" language="java" name="tpdds.Usuarios.TipoUsuario" project="tpdds" 
+    file="/tpdds/src/tpdds/Usuarios/TipoUsuario.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="250" width="312" x="1024" y="4977"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="69" language="java" name="tpdds.Usuarios.User" project="tpdds" file="/tpdds/src/tpdds/Usuarios/User.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="574" width="252" x="1024" y="4363"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="70" language="java" name="tpdds.Usuarios.Permisos" project="tpdds" 
+    file="/tpdds/src/tpdds/Usuarios/Permisos.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="232" width="180" x="1024" y="5267"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="71">    
+    <end type="SOURCE" refId="59" navigable="false">      
+      <attribute id="72" name="lanzador"/>      
+      <multiplicity id="73" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="57" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="74">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="61"/>  
+  </realization>  
+  <generalization id="75">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <generalization id="76">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="46"/>  
+  </generalization>  
+  <association id="77">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="78" name="usuarioNuevo"/>      
+      <multiplicity id="79" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="69" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="81" name="permisos"/>      
+      <multiplicity id="82" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="70" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="83">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="84" name="poi"/>      
+      <multiplicity id="85" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="86">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <generalization id="87">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="88">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="89" name="tablero"/>      
+      <multiplicity id="90" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="91">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="92" name="procesosEnTabla"/>      
+      <multiplicity id="93" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="94">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="95" name="poi"/>      
+      <multiplicity id="96" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="97">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="98" name="usuarios"/>      
+      <multiplicity id="99" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="69" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="100">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="101" name="pois"/>      
+      <multiplicity id="102" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="103">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <generalization id="104">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="105">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="106" name="buscado"/>      
+      <multiplicity id="107" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="108">    
+    <end type="SOURCE" refId="59"/>    
+    <end type="TARGET" refId="57"/>  
+  </generalization>  
+  <association id="109">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="110" name="resultados"/>      
+      <multiplicity id="111" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="112">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <generalization id="113">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="114">    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="115" name="diasDisp"/>      
+      <multiplicity id="116" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="51" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="117">    
+    <end type="SOURCE" refId="58" navigable="false">      
+      <attribute id="118" name="palabrasClaves"/>      
+      <multiplicity id="119" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="53" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="120">    
+    <end type="SOURCE" refId="46"/>    
+    <end type="TARGET" refId="61"/>  
+  </realization>  
+  <generalization id="121">    
+    <end type="SOURCE" refId="56"/>    
+    <end type="TARGET" refId="57"/>  
+  </generalization>  
+  <association id="122">    
+    <end type="SOURCE" refId="68" navigable="false">      
+      <attribute id="123" name="permisosUsuarios"/>      
+      <multiplicity id="124" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="70" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="125">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="126" name="todosLosUsuariosModificados"/>      
+      <multiplicity id="127" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="128">    
+    <end type="SOURCE" refId="58" navigable="false">      
+      <attribute id="129" name="listaPois"/>      
+      <multiplicity id="130" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="131">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="132" name="listaServicios"/>      
+      <multiplicity id="133" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="134">    
+    <end type="SOURCE" refId="69" navigable="false">      
+      <attribute id="135" name="procesoSeleccionado"/>      
+      <multiplicity id="136" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="57" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="137">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="138" name="geoloc"/>      
+      <multiplicity id="139" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="62" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="140">    
+    <end type="SOURCE" refId="69" navigable="false">      
+      <attribute id="141" name="tipoUsuario"/>      
+      <multiplicity id="142" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="68" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="143">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="144" name="listaProcesos"/>      
+      <multiplicity id="145" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="57" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="146">    
+    <end type="SOURCE" refId="50"/>    
+    <end type="TARGET" refId="46"/>  
+  </generalization>  
+  <association id="147">    
+    <end type="SOURCE" refId="56" navigable="false">      
+      <attribute id="148" name="listaPois"/>      
+      <multiplicity id="149" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="150">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="151">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="152" name="criterios"/>      
+      <multiplicity id="153" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="154">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="155">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="156" name="filtro"/>      
+      <multiplicity id="157" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="158">    
+    <end type="SOURCE" refId="58"/>    
+    <end type="TARGET" refId="55"/>  
+  </realization>  
+  <association id="159">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="160" name="nuevo"/>      
+      <multiplicity id="161" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="162">    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="46"/>  
+  </generalization>  
+  <association id="163">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="164" name="addedBuscador"/>      
+      <multiplicity id="165" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="166">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="167" name="resultados"/>      
+      <multiplicity id="168" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="169">    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="170" name="direccion"/>      
+      <multiplicity id="171" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="63" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="172">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <association id="173">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="174" name="todosLosUsuariosSinModificar"/>      
+      <multiplicity id="175" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="176">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="177">    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="178" name="palabrasClaves"/>      
+      <multiplicity id="179" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="53" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="180">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="181" name="diasAbiertos"/>      
+      <multiplicity id="182" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="51" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="183">    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="184" name="geoloc"/>      
+      <multiplicity id="185" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="62" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="186">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="187" name="listaCentroDTO"/>      
+      <multiplicity id="188" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="189">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <generalization id="190">    
+    <end type="SOURCE" refId="58"/>    
+    <end type="TARGET" refId="57"/>  
+  </generalization>  
+  <association id="191">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="192" name="listaProcesos"/>      
+      <multiplicity id="193" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="57" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="194">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="195" name="direccion"/>      
+      <multiplicity id="196" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="63" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="197">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="198" name="nuevo"/>      
+      <multiplicity id="199" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="200">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <association id="201">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="202" name="listaPoi"/>      
+      <multiplicity id="203" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="204">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="205" name="aux"/>      
+      <multiplicity id="206" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="207">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <generalization id="208">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <generalization id="209">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="210">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="211" name="user"/>      
+      <multiplicity id="212" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="69" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="213">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="214" name="usuario"/>      
+      <multiplicity id="215" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="69" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="216">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="217" name="servicios"/>      
+      <multiplicity id="218" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="219">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="220" name="poi"/>      
+      <multiplicity id="221" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="222">    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="223" name="servicios"/>      
+      <multiplicity id="224" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="225">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="226" name="criterios"/>      
+      <multiplicity id="227" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="228">    
+    <end type="SOURCE" refId="60" navigable="false">      
+      <attribute id="229" name="comunas"/>      
+      <multiplicity id="230" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="60" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="231">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="232" name="usuario"/>      
+      <multiplicity id="233" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="69" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="234">    
+    <end type="SOURCE" refId="48"/>    
+    <end type="TARGET" refId="46"/>  
+  </generalization>  
+  <realization id="235">    
+    <bendpoint x="4985" y="2639"/>    
+    <end type="SOURCE" refId="57"/>    
+    <end type="TARGET" refId="55"/>  
+  </realization>  
+  <association id="236">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="237" name="servicios"/>      
+      <multiplicity id="238" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
