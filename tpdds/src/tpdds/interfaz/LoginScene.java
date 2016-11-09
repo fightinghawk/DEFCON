@@ -55,7 +55,6 @@ public class LoginScene extends Escena{
 		InsertarPoi.setDisable(!user.hasPermiso("InsertarPoi"));
 		BuscarPoi.setDisable(!user.hasPermiso("BuscarPoi"));
 		CrearTipoUsuario.setDisable(!user.hasPermiso("CrearTipoUsuario"));
-		ModificarTipoUsuario.setDisable(!user.hasPermiso("ModificarTipoUsuario"));
 		ModificarUsuario.setDisable(!user.hasPermiso("ModificarUsuario"));
 		nombreusuario.setText(user.getUsuarioid());
 		tipousuario.setText(user.getTipo());
