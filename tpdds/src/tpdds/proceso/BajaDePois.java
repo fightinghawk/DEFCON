@@ -16,6 +16,16 @@ public class BajaDePois extends Proceso {
 	public BajaDePois() {
 		super("Baja de Pois");
 	}
+	
+	public void ejecutarmeTest(ArrayList<Poi> listaPois){
+		int cantPois = listaPois.size();
+		listaPois.remove(ServicioREST.poiInactivo());
+		if(listaPois.size()<cantPois){
+			this.setResultado("OK");
+		}else{
+			this.setResultado("ERROR, NO SE ELIMINO POI");
+		}
+	}
 
 	@Override
 	public void ejecutarme() {

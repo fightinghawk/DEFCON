@@ -18,10 +18,9 @@ public class ServicioREST{
 	public ServicioREST() throws ClassNotFoundException, SQLException{
 		}
 	
-	public static Poi poiInactivo(){
+	public static int poiInactivo(){
 		Random rnd = new Random();
-		int numeroRandom = rnd.nextInt(listaPoi.size());
-		Poi poiInactivo = listaPoi.get(numeroRandom);
-		return poiInactivo;	
+		int numeroRandom = rnd.nextInt(2);
+		return numeroRandom;
 	}
 }

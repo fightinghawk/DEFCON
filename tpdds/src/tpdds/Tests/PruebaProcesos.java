@@ -4,51 +4,49 @@ package tpdds.Tests;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import tpdds.pois.Poi;
+import tpdds.pois.componentes.DiaPoi;
+import tpdds.pois.componentes.Servicios;
 import tpdds.proceso.*;
+import tpdds.ubicacion.Direccion;
+import tpdds.ubicacion.Location;
 
 
 public class PruebaProcesos {
 	
-	ArrayList<Proceso> listaProcesos;
+	ArrayList<BajaDePois> listaProcesos;
+	ArrayList<Poi> listaPoi;
 
 	@Before
-	public void crearProcesos(){
+	public void inicializar(){
 	
-		Proceso bajaPoi;
-		Proceso actComercial;
-		String ubicacionArchivo;
-		
-		ubicacionArchivo = "/tpdds/src/comercioTest.txt";
+		BajaDePois bajaPoi;
 		bajaPoi = new BajaDePois();
-		actComercial = new ActualizacionLocalesComerciales(ubicacionArchivo);
-		listaProcesos = new ArrayList<Proceso>();
+		listaProcesos = new ArrayList<BajaDePois>();
 		listaProcesos.add(bajaPoi);
-		listaProcesos.add(actComercial);
+		Poi banco = new Poi(0, "BancoTest", "1", 0, null, null, null, null, null);
+		Poi parada = new Poi(1, "ParadaTest", "2", 0, null, null, null, null, null);
+		listaPoi = new ArrayList<Poi>();
+		listaPoi.add(banco);
+		listaPoi.add(parada);
 	}
 	
 	@Test
 	public void procesoCreado(){
-		Assert.assertEquals(listaProcesos.size(),2);
+		Assert.assertEquals(listaProcesos.size(),1);
+		Assert.assertEquals(listaPoi.size(),2);
 	}
 	@Test
 	public void bajaDePoi(){
-		for(Proceso proc : listaProcesos){
-			if (proc.getNombreProceso().equals("Baja de Pois")){
-				try {
-					proc.ejecutarme();
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+		try {
+					listaProcesos.get(0).ejecutarmeTest(listaPoi);
+					Assert.assertEquals(listaPoi.size(),1);
+			}finally{}
 	}
 }
