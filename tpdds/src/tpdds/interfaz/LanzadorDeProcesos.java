@@ -50,7 +50,7 @@ public class LanzadorDeProcesos extends Escena{
 	public void lanzarProcesos(MouseEvent botonApretado){
 		for (ObsProceso proc : procesosEnTabla) {
 			if (proc.getNombreProceso().equals("Actualizacion Local Comercial")){
-				if(contAct>2){
+				if(contAct>1){
 					proc.setResultado("Fallido");
 				}
 				else{
@@ -58,7 +58,7 @@ public class LanzadorDeProcesos extends Escena{
 				}
 			}
 			if (proc.getNombreProceso().equals("Baja de Pois")){
-				if(contBaja>4){
+				if(contBaja>2){
 					proc.setResultado("Fallido");
 				}
 				else{
