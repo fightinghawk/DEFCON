@@ -20,6 +20,10 @@
             <Text layoutX="41.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Altura:" wrappingWidth="131.6708984375" />
             <Text layoutX="41.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Latitud:" wrappingWidth="131.6708984375" />
             <Text layoutX="41.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Longitud:" wrappingWidth="131.6708984375" />
+            <Text layoutX="411.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" wrappingWidth="99.6708984375" />
+            <Text fx:id="top1" layoutX="411.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="opcional1" wrappingWidth="99.6708984375" />
+            <Text fx:id="top2" layoutX="411.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="opcional2" wrappingWidth="99.6708984375" />
+            <Text layoutX="411.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KeyWords:" wrappingWidth="86.6708984375" />
             <TextField fx:id="nombre" layoutX="191.0" layoutY="42.0" prefHeight="31.0" prefWidth="180.0" />
             <TextField fx:id="calle" layoutX="191.0" layoutY="89.0" prefHeight="31.0" prefWidth="180.0" />
             <TextField fx:id="izquierda" layoutX="191.0" layoutY="137.0" prefHeight="31.0" prefWidth="180.0" />
@@ -28,13 +32,9 @@
             <TextField fx:id="latitud" layoutX="191.0" layoutY="268.0" prefHeight="31.0" prefWidth="180.0" />
             <TextField fx:id="Longitud" layoutX="191.0" layoutY="312.0" prefHeight="31.0" prefWidth="180.0" />
             <ComboBox fx:id="Tipo" layoutX="561.0" layoutY="42.0" onAction="#seleccionTipo" prefWidth="150.0" />
-            <Text layoutX="411.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" wrappingWidth="99.6708984375" />
-            <Text layoutX="411.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KeyWords:" wrappingWidth="86.6708984375" />
-            <TextArea fx:id="keyWord" layoutX="528.0" layoutY="191.0" prefHeight="166.0" prefWidth="329.0" />
             <TextField fx:id="op1" layoutX="561.0" layoutY="89.0" prefHeight="31.0" prefWidth="180.0" />
-            <Text fx:id="top1" layoutX="411.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="opcional1" wrappingWidth="99.6708984375" />
-            <Text fx:id="top2" layoutX="411.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="opcional2" wrappingWidth="99.6708984375" />
             <TextField fx:id="op2" layoutX="561.0" layoutY="137.0" prefHeight="31.0" prefWidth="180.0" />
+            <TextArea fx:id="keyWord" layoutX="528.0" layoutY="191.0" prefHeight="166.0" prefWidth="329.0" />
          </children>
       </Pane>
       <Pane fx:id="infoDias" layoutX="258.0" layoutY="409.0" prefHeight="274.0" prefWidth="628.0" visible="false">

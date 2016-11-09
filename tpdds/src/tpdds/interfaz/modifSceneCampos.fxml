@@ -20,14 +20,14 @@
             <Label alignment="CENTER" layoutX="357.0" layoutY="175.0" prefHeight="38.0" prefWidth="175.0" text="Calle Derecha" textAlignment="CENTER" />
             <Group layoutX="-180.0" layoutY="-63.0">
                <children>
-                  <TextField fx:id="barrio" layoutX="713.0" layoutY="126.0" />
-                  <TextField fx:id="cIzquierda" layoutX="362.0" layoutY="238.0" />
-                  <TextField fx:id="cDerecha" layoutX="713.0" layoutY="242.0" />
-                  <TextField fx:id="altura" layoutX="713.0" layoutY="188.0" />
-                  <TextField fx:id="cPrincipal" layoutX="362.0" layoutY="184.0" />
-                  <TextField fx:id="longitud" layoutX="713.0" layoutY="301.0" />
-                  <TextField fx:id="latitud" layoutX="362.0" layoutY="297.0" />
                   <TextField fx:id="nombre" layoutX="362.0" layoutY="126.0" />
+                  <TextField fx:id="cPrincipal" layoutX="362.0" layoutY="184.0" />
+                  <TextField fx:id="cIzquierda" layoutX="362.0" layoutY="238.0" />
+                  <TextField fx:id="latitud" layoutX="362.0" layoutY="297.0" />
+                  <TextField fx:id="barrio" layoutX="713.0" layoutY="126.0" />
+                  <TextField fx:id="altura" layoutX="713.0" layoutY="188.0" />
+                  <TextField fx:id="cDerecha" layoutX="713.0" layoutY="242.0" />
+                  <TextField fx:id="longitud" layoutX="713.0" layoutY="301.0" />
                </children>
             </Group>
          </children>

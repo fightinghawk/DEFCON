@@ -11,24 +11,24 @@
          <children>
             <Text layoutX="29.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID de Usuario:" wrappingWidth="99.6708984375" />
             <Text layoutX="29.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="99.6708984375" />
-            <TextField fx:id="user" layoutX="136.0" layoutY="61.0" promptText="Usuario" />
+            <TextField fx:id="user" layoutX="136.0" layoutY="62.0" promptText="Usuario" />
             <PasswordField id="password" fx:id="password" layoutX="136.0" layoutY="131.0" promptText="Password" />
             <Button fx:id="submit" layoutX="29.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#submitBoton" prefHeight="31.0" prefWidth="88.0" text="Entrar" />
          </children>
       </Pane>
       <Pane layoutX="361.0" layoutY="45.0" prefHeight="486.0" prefWidth="437.0">
          <children>
-            <Button fx:id="registrarsedb" layoutX="20.0" layoutY="389.0" mnemonicParsing="false" onMouseClicked="#finalizarRegistro" text="Registrarse" />
-            <TextField fx:id="correousuario" layoutX="147.0" layoutY="311.0" promptText="Email" />
-            <TextField fx:id="idusuario" layoutX="147.0" layoutY="176.0" onKeyReleased="#ingresoDatos" promptText="Id" />
-            <TextField fx:id="apellidousuario" layoutX="147.0" layoutY="111.0" promptText="Apellido" />
             <TextField fx:id="nombreusuario" layoutX="147.0" layoutY="38.0" promptText="Nombre" />
+            <TextField fx:id="apellidousuario" layoutX="147.0" layoutY="111.0" promptText="Apellido" />
+            <TextField fx:id="idusuario" layoutX="147.0" layoutY="176.0" onKeyReleased="#ingresoDatos" promptText="Id" />
+            <PasswordField fx:id="passwordusuario" layoutX="147.0" layoutY="243.0" promptText="Password" />
+            <TextField fx:id="correousuario" layoutX="147.0" layoutY="311.0" promptText="Email" />
+            <Button fx:id="registrarsedb" layoutX="20.0" layoutY="389.0" mnemonicParsing="false" onMouseClicked="#finalizarRegistro" text="Registrarse" />
             <Text layoutX="20.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="74.80712890625" />
             <Text layoutX="20.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="93.00048828125" />
             <Text layoutX="17.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID de Usuario:" wrappingWidth="120.83154296875" />
             <Text layoutX="20.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido" wrappingWidth="74.80712890625" />
             <Text layoutX="20.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="74.80712890625" />
-            <PasswordField fx:id="passwordusuario" layoutX="147.0" layoutY="243.0" promptText="Password" />
          </children>
       </Pane>
       <TextArea fx:id="erroresNotificacion" layoutX="42.0" layoutY="337.0" prefHeight="164.0" prefWidth="281.0" />
