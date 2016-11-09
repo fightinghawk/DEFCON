@@ -1,0 +1,88 @@
+Poi
+{
+	“_id” : “76”
+	"nombre" : "CGP Recoleta",
+	"strTipo" : "Centros de Gestión y Participación",
+	"crtCuadras" : "10",
+	"numero_parada" : "0",
+	"rubro" : "Gubernamental",
+	"dtype" : "CGP",
+	“geoPos”  : {
+                       		 “latitud” : “-34.596621”
+                      		 “longitud” : “-34.596621”
+                    },
+	“direccion”  : {
+                       		 “principal” : “URIBURU”
+                      		 “izquierda” : “SANTA FE AV.”
+ 				 “derecha” : “ALVEAR, MARCELO T. DE”
+                       		 “barrio” : “RECOLETA”
+                      		 “localidad” : “Buenos Aires”
+ 				 “altura” : “1020”
+                       		 “piso” : “0”
+                      		 “dpto” : “null”
+ 				 “unidad” : “null”
+ 				 “codpostal” : “1021”
+                     	 },
+	 “keywords”         : [“dinero”, “asesoramiento”, “cgp”]
+	 “servicios”        : [“tramites dni”, “salud”, “ABL”]
+   	 “diaspoi”     :[
+                      		 {
+                                    “horainicio”        : “09”,
+                                    “horafin”        : “12”,
+                                    “minutoinicio”  : “00”
+                                    “minutofin”  : “00”
+                                    “dia”  : “1”
+                       		},
+                      		 {
+                                    “horainicio”        : “08”,
+                                    “horafin”        : “12”,
+                                    “minutoinicio”  : “00”
+                                    “minutofin”  : “00”
+                                    “dia”  : “2”
+                       		},
+                     	]
+
+}
+
+Usuarios
+{
+	“_id” : “jvillalba”
+	"nombre" : "Javier",
+	"apellido" : "Villalba",
+	"password" : "dds2016.",
+	"mail" : "jvillalba@fighthawk.com",
+	"tipodeusuario" : "Admin",
+}
+
+
+TiposUsuarios
+{
+	“tipodeusuario” : “Admin”
+	"tipo_descripcion" : "Tiene todo habilitado",
+	"tipo_mostrar" : "Administrador",
+	"permisos" : ["buscarPoi","CrearTipoUsuario","InsertarPoi","LanzarProcesos","ModificarPoi","ModificarTipoUsuario",
+		      "ModificarUsuario","VerReporteFecha","VerReportesTerminal","VerReporteTotales"]
+
+}
+
+Busquedas
+{
+	“_id” : “150”
+	"Terminal" : "terminalRecoleta",
+	"fecha" : "2016-11-05",
+	"resultados" : "10",
+	"time" : "0",
+	"usuario" : "jvillalba",
+	"pois" : [76,80,90] (id de pois)
+   	“criterios”     :[
+                      		 {
+                                    “tipo” : “KeyWord”,
+                                    “contenido” : “Pepe”,
+                                    
+                       		},
+                   		 {
+                                    “tipo” : “Nombre”,
+                                    “contenido” : “recoleta”,
+                       		},
+                     	]
+}
